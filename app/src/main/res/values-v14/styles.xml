@@ -1,0 +1,30 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme for API 14+. This theme completely replaces
+        AppBaseTheme from BOTH res/values/styles.xml and
+        res/values-v11/styles.xml on API 14+ devices.
+    -->
+    <style name="AppBaseThemeTranslucent" parent="AppBaseThemeNoAnimation">
+        <!-- API 14 theme customizations can go here. -->
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+  <style name="AppBaseThemeNoHomeAsUp" parent="AppBaseThemeNoAnimation">
+        <item name="android:actionBarStyle">@style/Widget.AppCompat.Light.ActionBar.My.NoHomeAsUp</item>
+        <item name="android:homeAsUpIndicator">@drawable/home_as_up_indicatosr</item>
+    </style>
+    <style name="AppBaseThemeNoAnimation" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/Widget.AppCompat.Light.ActionBar.My</item>
+        <item name="android:actionMenuTextAppearance">@style/MyABmenuTextAppearance</item>
+        <item name="android:homeAsUpIndicator">@drawable/ic_home_up_back</item>
+        <item name="android:actionBarItemBackground">@drawable/ad_selectable_background</item>
+        <item name="numberPickerStyle">@style/NPWidget.Holo.Light.NumberPicker</item>
+    </style>
+    
+    <style name="ampm_label">
+        <item name="android:textSize">@dimen/ampm_label_size</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/ampm_text_color</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

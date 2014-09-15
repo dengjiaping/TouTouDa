@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_bg"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <com.quanliren.quan_two.custom.CustomRelativeLayout
+            android:id="@+id/crl"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="match_parent" >
+
+            <ImageView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="27dp"
+                android:background="@color/fill_line" />
+
+            <com.quanliren.quan_two.pull.PullToRefreshLayout
+                android:id="@+id/layout"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" >
+
+                <ListView
+                    android:id="@+id/listview"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:cacheColorHint="#00000000"
+                    android:divider="#00000000"
+                    android:dividerHeight="8dp"
+                    android:footerDividersEnabled="true"
+                    android:listSelector="#00000000" >
+                </ListView>
+            </com.quanliren.quan_two.pull.PullToRefreshLayout>
+        </com.quanliren.quan_two.custom.CustomRelativeLayout>
+    </FrameLayout>
+
+    <include
+        android:id="@+id/bottom_ll"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        layout="@layout/bottom_reply_layout" />
+
+    <include
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/emoji_pop" />
+
+</LinearLayout>

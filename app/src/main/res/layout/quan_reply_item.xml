@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+     <com.quanliren.quan_two.custom.CircleImageView
+        android:id="@+id/userlogo"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="centerCrop"
+        app:border_color="#00000000" />
+
+    <RelativeLayout
+        android:id="@+id/content_rl"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/userlogo"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@id/userlogo"
+        android:background="@drawable/message_bg"
+        android:layout_marginRight="8dp"
+        android:clickable="true"
+        android:padding="8dp" >
+
+        <TextView
+            android:id="@+id/nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:ellipsize="end"
+            android:maxLength="10"
+            android:singleLine="true"
+            android:textColor="@color/time"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/time"
+            android:textSize="12sp" />
+
+        <com.quanliren.quan_two.custom.emoji.EmoticonsTextView
+            android:id="@+id/content"
+            android:layout_width="fill_parent"
+            android:lineSpacingExtra="4dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/username"
+            android:textSize="14sp"
+            android:layout_below="@id/nickname"/>
+    </RelativeLayout>
+
+</RelativeLayout>

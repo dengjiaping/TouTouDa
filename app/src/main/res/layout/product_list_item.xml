@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <com.quanliren.quan_two.custom.SanJiaoTextView
+        android:layout_width="100dp"
+        android:layout_height="25dp"
+        android:id="@+id/title"
+        android:gravity="center_vertical"
+        android:paddingLeft="8dp"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+
+    <com.quanliren.quan_two.custom.NoScrollGridView
+        android:id="@+id/gridview"
+        android:layout_margin="8dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:horizontalSpacing="8dp"
+        android:numColumns="4"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="4dp" >
+    </com.quanliren.quan_two.custom.NoScrollGridView>
+
+</LinearLayout>

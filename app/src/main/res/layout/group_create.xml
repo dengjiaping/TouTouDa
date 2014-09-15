@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <include
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/title_height"
+            layout="@layout/custom_back_actionbar" />
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="群头像："
+                    android:textColor="@color/title"
+                    android:textSize="16sp" />
+
+                <RelativeLayout
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="4dp" >
+
+                    <ImageView
+                        android:id="@+id/grouplogo"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/publish_add_pic_icon_big" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/drivers_height"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/seting_drivers" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="群名称："
+                    android:textColor="@color/title"
+                    android:textSize="16sp" />
+
+                <com.quanliren.quan_two.custom.UserNameEditText
+                    android:id="@+id/name"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40dp"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="请输入群名称"
+                    app:maxlen="10"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/drivers_height"
+                    android:background="@drawable/seting_drivers" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="群介绍："
+                    android:textColor="@color/title"
+                    android:textSize="16sp" />
+
+                <com.quanliren.quan_two.custom.UserNameEditText
+                    android:id="@+id/summary"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:background="@null"
+                    android:gravity="top"
+                    android:hint="请输入群介绍..."
+                    android:inputType="textMultiLine"
+                    android:lineSpacingExtra="4dp"
+                    app:maxlen="150"
+                    android:minHeight="40dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/drivers_height"
+                    android:background="@drawable/seting_drivers" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <include
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        layout="@layout/popbg" />
+
+</RelativeLayout>

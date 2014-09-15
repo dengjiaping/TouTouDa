@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.quanliren.quan_two.pull.PullToRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:id="@+id/layout"
+    android:background="@color/activity_bg"
+    android:layout_height="fill_parent" >
+
+
+    <com.quanliren.quan_two.pull.XListView
+        android:id="@+id/listview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:cacheColorHint="#00000000"
+        android:divider="@null"
+        android:fastScrollEnabled="false"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"
+        android:listSelector="#00000000"
+        android:scrollbars="vertical" />
+
+</com.quanliren.quan_two.pull.PullToRefreshLayout>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/menu_btm_normal"
+        android:paddingBottom="8dp"
+        android:clickable="false"
+        android:paddingRight="8dp" >
+
+        <com.quanliren.quan_two.custom.RoundAngleImageView
+            android:id="@+id/userlogo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="centerCrop"
+            app:roundHeight="5dp"
+            app:roundWidth="5dp" />
+
+        <include
+            android:id="@+id/nickname_rl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/userlogo"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@id/userlogo"
+            layout="@layout/user_nick_name" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/nickname_rl"
+            android:textColor="@color/time"
+            android:textSize="12sp" />
+
+        <RelativeLayout
+            android:id="@+id/content_rl"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/nickname_rl"
+            android:layout_below="@id/nickname_rl"
+            android:layout_marginTop="4dp"
+            android:clickable="true" >
+
+            <com.quanliren.quan_two.custom.emoji.EmoticonsTextView
+                android:id="@+id/signature"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4dp"
+                android:textColor="@color/signature"
+                android:textSize="14sp" />
+
+            <com.quanliren.quan_two.custom.NoScrollGridView
+                android:id="@+id/pic_gridview"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/signature"
+                android:gravity="center"
+                android:horizontalSpacing="4dp"
+                android:listSelector="#00000000"
+                android:numColumns="3"
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="4dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/pic_gridview"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/comment_icon" />
+
+                <TextView
+                    android:id="@+id/reply_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/red_number"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/pic_gridview"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/message_location_icon" />
+
+                <TextView
+                    android:id="@+id/location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/username"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

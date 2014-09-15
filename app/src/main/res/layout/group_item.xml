@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/title_btn"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/title_btn"
+        android:orientation="horizontal" >
+
+        <com.quanliren.quan_two.custom.RoundAngleImageView
+            android:id="@+id/grouplogo"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:scaleType="centerCrop"
+            app:roundHeight="5dp"
+            app:roundWidth="5dp" />
+
+        <TextView
+            android:id="@+id/groupname"
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:layout_alignTop="@id/grouplogo"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@id/grouplogo"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="@color/title"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/desc"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/groupname"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@id/grouplogo"
+            android:ellipsize="end"
+            android:gravity="bottom"
+            android:maxLines="2"
+            android:textColor="@color/signature"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/drivers_height"
+        android:background="@drawable/seting_drivers" />
+
+</LinearLayout>

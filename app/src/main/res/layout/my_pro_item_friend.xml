@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/menu_mid_selector"
+    android:orientation="horizontal" >
+
+    <com.quanliren.quan_two.custom.RoundAngleImageView
+        android:id="@+id/userlogo"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:scaleType="centerCrop"
+        app:roundHeight="5dp"
+        app:roundWidth="5dp" />
+    
+    <RelativeLayout 
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_marginLeft="4dp"
+        android:layout_height="35dp">
+        <include 
+            layout="@layout/user_nick_name"/>
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:layout_alignParentBottom="true"
+            android:textColor="@color/signature"
+            android:text="怎送给您30个体力"/>
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.quanliren.quan_two.activity"
+    android:versionCode="1"
+    android:versionName="1.0">
+
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="20" />
+
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 网络访问 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 检测wifi -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- SD卡访问 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 检查网络状态 -->
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+    <!-- 创建快捷方式 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- 录音 -->
+    <!-- 下载 -->
+    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <!-- 允许程序禁用键盘锁 -->
+    <!-- 这个权限用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 这个权限用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 这个权限用于获取wifi的获取权限,wifi信息会用来进行网络定位 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!-- 用于读取手机当前的状态 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- SD卡读取权限，用户写入离线定位数据 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <!-- 允许应用读取低级别的系统日志文件 -->
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <!-- 开机 -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!-- 允许程序读取或写入系统设置 -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <!-- 震动 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- 短信 -->
+、
+
+
+
+
+
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true" />
+
+    <application
+        android:name="com.quanliren.quan_two.application.AppClass_"
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:theme="@style/AppBaseThemeNoAnimation" >
+
+        <activity
+            android:name=".PropertiesActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeNoHomeAsUp" >
+            <!-- <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".seting.HtmlActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent" >
+        </activity>
+        <activity
+            android:name=".Whatsnew_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeNoHomeAsUp" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".shop.VipCardActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent" >
+        </activity>
+        <activity
+            android:name=".shop.product.ProductListActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent" >
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+
+            -->
+
+        </activity>
+        <activity
+            android:name=".shop.product.ProductDetailActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent" >
+        </activity>
+        <activity
+            android:name=".shop.product.ProductExchangeActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent" >
+        </activity>
+        <activity
+            android:name=".user.UserInfoActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/TransparentAppBaseTheme" >
+        </activity>
+        <activity
+            android:name=".user.LoginActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/TransparentAppBaseTheme"
+            android:windowSoftInputMode="stateVisible|adjustResize" >
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+
+
+
+            -->
+        </activity>
+        <activity
+            android:name=".user.FilterNearPeopleActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent" >
+        </activity>
+        <activity
+            android:name=".user.MyVisitActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent" >
+        </activity>
+        <activity
+            android:name=".user.SearchFriendActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent"
+            android:windowSoftInputMode="stateVisible|adjustResize" >
+        </activity>
+        <activity
+            android:name=".group.date.DateListActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent" >
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+
+
+            -->
+        </activity>
+        <activity
+            android:name=".group.date.DateDetailActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent" >
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+
+
+            -->
+        </activity>
+        <activity
+            android:name=".group.date.DatePublishActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent" >
+        </activity>
+        <activity
+            android:name=".reg.RegFirst_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent"
+            android:windowSoftInputMode="stateVisible|adjustResize" >
+        </activity>
+        <activity
+            android:name=".seting.emoticon.EmoticonDetailActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent" >
+        </activity>
+        <activity
+            android:name=".user.PersonalDongTaiActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent" >
+        </activity>
+        <activity
+            android:name=".reg.RegSecond_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent"
+            android:windowSoftInputMode="stateVisible|adjustResize" >
+        </activity>
+        <activity
+            android:name=".user.ChatActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+        </activity>
+        <activity
+            android:name=".group.PhotoAlbumMainActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent" >
+        </activity>
+        <activity
+            android:name=".seting.ServiceInfoActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent" >
+        </activity>
+        <activity
+            android:name=".seting.FunctionActivity_"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".reg.RegGetCode_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent"
+            android:windowSoftInputMode="stateVisible|adjustResize" >
+        </activity>
+        <activity
+            android:name=".user.UserOtherInfoActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/TransparentAppBaseTheme" >
+        </activity>
+        <activity
+            android:name=".group.date.DateApplyManageActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent" >
+        </activity>
+        <activity
+            android:name=".seting.EmoticonListActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent" >
+        </activity>
+        <activity
+            android:name=".group.ThroughActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent" >
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+
+
+            -->
+        </activity>
+        <activity
+            android:name=".group.ThroughListActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent" >
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+
+
+            -->
+        </activity>
+        <activity
+            android:name=".group.date.FilterDateActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent" >
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+
+
+            -->
+        </activity>
+        <activity
+            android:name=".group.QuanActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent" >
+        </activity>
+        <activity
+            android:name=".group.PublishActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent" >
+        </activity>
+
+        <activity
+            android:name=".user.BlackListActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent" >
+        </activity>
+        <activity
+            android:name=".shop.product.MyExchangeListActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent" >
+        </activity>
+        <activity
+            android:name=".seting.RemindMessageActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent" >
+        </activity>
+        <activity
+            android:name=".group.date.MyFavoriteDateListActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent" >
+        </activity>
+        <activity
+            android:name=".seting.emoticon.EmoticonHistoryListActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent" >
+        </activity>
+        <activity
+            android:name=".reg.ForgetPassWordActivity1_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent"
+            android:windowSoftInputMode="stateVisible|adjustResize" >
+        </activity>
+        <activity
+            android:name=".group.ChoseLocationActivity_"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <activity
+            android:name=".shop.ShopVipDetail_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent" >
+        </activity>
+        <activity
+            android:name=".reg.ForgetPassWordActivity2_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent"
+            android:windowSoftInputMode="stateVisible|adjustResize" >
+        </activity>
+        <activity
+            android:name=".user.UserInfoEditActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent"
+            android:windowSoftInputMode="stateVisible|adjustResize" >
+        </activity>
+
+        <activity
+            android:name="com.quanliren.quan_two.activity.seting.AboutUsActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent" >
+        </activity>
+        <activity
+            android:name=".group.DongTaiDetailActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent"
+            android:windowSoftInputMode="adjustResize|stateHidden" >
+        </activity>
+
+        <activity
+            android:name="com.quanliren.quan_two.activity.seting.InviteFriendActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent" >
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Noti"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.quanliren.quan_two.activity.user.ModifyPasswordActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseThemeTranslucent" >
+        </activity>
+        <activity
+            android:name="com.quanliren.quan_two.activity.user.MyCareActivity_"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.quanliren.quan_two.activity.image.ImageBrowserActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/TranslucentActivity" >
+        </activity>
+
+        <!-- QQ -->
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent1101960968" />
+            </intent-filter>
+        </activity>
+        <!-- QQ -->
+        <!-- 微信 -->
+        <activity
+            android:name="com.quanliren.quan_two.activity.wxapi.WXEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Animation.Translucent" >
+        </activity>
+        <!-- 微信 -->
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="HGjPExzzkgiFZIUieIIbC2dc" />
+        <!-- 百度定位 -->
+        <!-- 高德地图 -->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="28dc00d8cd15dcbcae8592dc59af7397" />
+        <!-- 高德地图 -->
+        <!-- 支付宝 -->
+        <activity
+            android:name="com.alipay.android.app.sdk.WapPayActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 支付宝 -->
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="@string/app_name" />
+
+        <receiver android:name="com.quanliren.quan_two.receiver.AlarmReceiver" >
+            <intent-filter>
+                <action android:name="com.quanliren.quan_two.service.checkconnect" />
+                <!-- 定时检查登陆状态 -->
+                <action android:name="com.quanliren.quan_two.service.checkmessage" />
+                <!-- 定时检查未发送信息 -->
+                <action android:name="com.quanliren.quan_two.service.outline" />
+                <!-- 下线通知 -->
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <!-- 网络通知 -->
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.quanliren.quan_two.receiver.BootCompletedAlarmReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <!-- 开机启动 -->
+            </intent-filter>
+        </receiver>
+        <!-- android:process=":remote" -->
+        <service
+            android:name="com.quanliren.quan_two.service.QuanPushService"
+            android:enabled="true"
+            android:process=":push"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.quanliren.quan_two.service.connect" />
+                <!-- 登陆 -->
+                <action android:name="com.quanliren.quan_two.service.reconnect" />
+                <!-- 重新登陆 -->
+                <action android:name="com.quanliren.quan_two.service.keep_alive" />
+                <!-- 心跳 -->
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.quanliren.quan_two.service.DownLoadEmoticonService_"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.quanliren.quan_two.service.downloademoticon" />
+                <!-- 下载表情 -->
+            </intent-filter>
+        </service>
+
+        <!-- 短信拦截 -->
+        <receiver android:name="com.quanliren.quan_two.receiver.SmsReceiver" >
+            <intent-filter android:priority="800" >
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

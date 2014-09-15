@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_bg"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <include
+            android:id="@+id/title_in"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/title_height"
+            layout="@layout/custom_back_actionbar" />
+
+        <LinearLayout
+            android:id="@+id/top_btn_ll"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:background="@color/bottom_bg"
+            android:gravity="center_vertical" >
+
+            <TextView
+                android:id="@+id/select"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@drawable/bottom_btn"
+                android:text="全选"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="2px"
+                android:layout_height="30dp"
+                android:background="@drawable/tiao" />
+
+            <TextView
+                android:id="@+id/delete"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bottom_btn"
+                android:gravity="center"
+                android:text="删除"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <me.maxwin.view.XXListView
+            android:id="@+id/photo_list"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:cacheColorHint="#00000000"
+            android:divider="#00000000"
+            android:dividerHeight="4dp"
+            android:drawSelectorOnTop="false"
+            android:listSelector="#00000000"
+            android:scrollbars="vertical" >
+        </me.maxwin.view.XXListView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottom_btn_ll"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/bottom_bg"
+        android:visibility="gone"
+        android:gravity="center_vertical" >
+
+        <TextView
+            android:id="@+id/photo"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bottom_btn"
+            android:gravity="center"
+            android:text="从相册选择"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="2px"
+            android:layout_height="30dp"
+            android:background="@drawable/tiao" />
+
+        <TextView
+            android:id="@+id/camera"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@drawable/bottom_btn"
+            android:text="拍照"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</RelativeLayout>

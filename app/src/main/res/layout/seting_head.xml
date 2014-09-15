@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:padding="8dp" >
+
+        <com.quanliren.quan_two.custom.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/userlogo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/defalut_logo"
+            app:border_color="#FFFFFF"
+            app:border_width="2dp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/userlogo" >
+
+            <TextView
+                android:id="@+id/nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginLeft="4dp"
+                android:ellipsize="end"
+                android:maxLength="10"
+                android:singleLine="true"
+                android:textColor="@color/username"
+                android:textSize="14sp" />
+
+            <com.quanliren.quan_two.custom.CustomVip
+                android:id="@+id/vip"
+                android:layout_width="wrap_content"
+                android:layout_height="14dp"
+                android:layout_alignTop="@id/nickname"
+                android:layout_marginTop="2dp"
+                android:layout_marginLeft="4dp"
+                android:layout_toRightOf="@id/nickname"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_vip_1" />
+
+            <TextView
+                android:id="@+id/ld"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/nickname"
+                android:layout_below="@id/nickname"
+                android:layout_marginTop="4dp"
+                android:layout_toRightOf="@id/power_num"
+                android:text="靓点："
+                android:textColor="@color/signature"
+                android:textSize="12sp" />
+            
+             <TextView
+                android:id="@+id/ld_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/ld"
+                android:layout_toRightOf="@id/ld"
+                android:textSize="12sp" />
+            
+            <TextView
+                android:id="@+id/vip_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+              android:layout_alignTop="@id/ld_txt"
+                android:layout_toRightOf="@id/ld_txt"
+                android:text="会员："
+                android:layout_marginLeft="8dp"
+                android:textColor="@color/signature"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/vip_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/vip_txt"
+                android:layout_toRightOf="@id/vip_txt"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/caret" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="6dp"
+        android:background="@drawable/ic_seting_repeat_img" />
+
+</LinearLayout>

@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="32dp"
+        android:background="@color/activity_bg"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="8dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="题目"
+                android:textColor="@color/filter_title"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/title_btn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/date_publish_select_input_bg"
+                android:clickable="true"
+                android:drawablePadding="8dp"
+                android:drawableRight="@drawable/caret"
+                android:gravity="center"
+                android:hint="@string/please_choise"
+                android:textColor="@color/title"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/want_ll"
+            android:visibility="gone"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="8dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="目的"
+                android:textColor="@color/filter_title"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/want_btn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/date_publish_select_input_bg"
+                android:clickable="true"
+                android:drawablePadding="8dp"
+                android:drawableRight="@drawable/caret"
+                android:gravity="center"
+                android:hint="@string/please_choise"
+                android:textColor="@color/title"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:orientation="horizontal"
+            android:paddingTop="8dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="时间"
+                android:textColor="@color/filter_title"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/date_btn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/date_publish_select_input_bg"
+                android:clickable="true"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:hint="选择日期"
+                android:textColor="@color/title"
+                android:textSize="14sp" />
+            
+            <TextView
+                android:id="@+id/time_btn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                 android:layout_weight="1"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/date_publish_select_input_bg"
+                android:clickable="true"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:hint="选择时间"
+                android:textColor="@color/title"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="8dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="地点"
+                android:textColor="@color/filter_title"
+                android:textSize="14sp" />
+
+            <com.quanliren.quan_two.custom.UserNameEditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:id="@+id/place"
+                android:background="@drawable/date_publish_select_input_bg"
+                android:clickable="true"
+                android:gravity="center_vertical"
+                android:hint="请输入文字"
+                android:textColor="@color/title"
+                android:textSize="14sp"
+                app:maxlen="20" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/people_ll"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="8dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="人数"
+                android:textColor="@color/filter_title"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/date_publish_select_input_bg"
+                android:clickable="true"
+                android:drawablePadding="8dp"
+                android:drawableRight="@drawable/caret_null"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="@color/title"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="8dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="性别"
+                android:textColor="@color/filter_title"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/sex_btn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/date_publish_select_input_bg"
+                android:clickable="true"
+                android:drawablePadding="8dp"
+                android:drawableRight="@drawable/caret"
+                android:gravity="center"
+                android:hint="@string/please_choise"
+                android:textColor="@color/title"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="8dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="消费"
+                android:textColor="@color/filter_title"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/xiaofei_btn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/date_publish_select_input_bg"
+                android:clickable="true"
+                android:drawablePadding="8dp"
+                android:drawableRight="@drawable/caret"
+                android:gravity="center"
+                android:hint="@string/please_choise"
+                android:textColor="@color/title"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="8dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="靓点"
+                android:textColor="@color/filter_title"
+                android:textSize="14sp" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/want_rb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="我要"
+                    android:textColor="@color/title"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/give_rb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="赠送"
+                    android:textColor="@color/title"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/none_rb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="无"
+                    android:checked="true"
+                    android:textColor="@color/title"
+                    android:textSize="14sp" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/money_ll"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:gravity="center_vertical"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="　　"
+                android:textColor="@color/filter_title"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/money_btn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/date_publish_select_input_bg"
+                android:clickable="true"
+                android:drawablePadding="8dp"
+                android:drawableRight="@drawable/caret"
+                android:gravity="center"
+                android:hint="选择数额"
+                android:textColor="@color/title"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="8dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="说明"
+                android:textColor="@color/filter_title"
+                android:textSize="14sp" />
+
+            <com.quanliren.quan_two.custom.UserNameEditText
+                android:layout_width="fill_parent"
+                android:id="@+id/remark_et"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/date_publish_select_input_bg"
+                android:clickable="true"
+                android:gravity="center_vertical"
+                android:hint="请输入文字"
+                android:textColor="@color/title"
+                android:textSize="14sp"
+                app:maxlen="100" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

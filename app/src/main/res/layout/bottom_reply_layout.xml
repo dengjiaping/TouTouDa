@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/reply_ll"
+    android:layout_width="fill_parent"
+    android:layout_height="50dp"
+    android:background="@drawable/menu_top_selector"
+    android:gravity="center_vertical"
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:id="@+id/emoji_btn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_vertical"
+        android:scaleType="centerCrop"
+        android:src="@drawable/face_btn" />
+
+    <com.quanliren.quan_two.custom.emoji.EmoticonsEditText
+        android:id="@+id/reply_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="8dp"
+        android:layout_weight="1"
+        android:background="@drawable/abc_textfield_searchview_holo_light"
+        android:imeOptions="actionSend"
+        android:minHeight="40dp"
+        android:singleLine="true"
+        app:maxlen="50" />
+
+    <Button
+        android:id="@+id/send_btn"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="8dp"
+        android:background="@drawable/login_btn_new"
+        android:gravity="center"
+        android:text="发送"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+
+</LinearLayout>

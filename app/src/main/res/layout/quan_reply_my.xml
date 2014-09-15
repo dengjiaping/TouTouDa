@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/top"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="8dp"
+    android:paddingRight="8dp" >
+
+    <com.quanliren.quan_two.custom.CircleImageView
+        android:id="@+id/userlogo"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="centerCrop"
+        app:border_color="#00000000" />
+
+    <include
+        android:id="@+id/nickname_rl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/userlogo"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@id/userlogo"
+        layout="@layout/user_nick_name" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/nickname_rl"
+        android:textColor="@color/time"
+        android:textSize="12sp" />
+
+    <com.quanliren.quan_two.custom.emoji.EmoticonsTextView
+        android:id="@+id/signature"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/nickname_rl"
+        android:layout_below="@id/nickname_rl"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
+        android:minHeight="50dp"
+        android:background="@drawable/message_bg"
+        android:clickable="true"
+        android:lineSpacingExtra="4dp"
+        android:textColor="@color/signature"
+        android:textSize="14sp" />
+
+
+</RelativeLayout>

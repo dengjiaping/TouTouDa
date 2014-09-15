@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/activity_bg"
+    android:orientation="vertical" >
+
+    <com.quanliren.quan_two.custom.CustomRelativeLayout
+        android:id="@+id/crl"
+        android:visibility="gone"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" >
+
+        <ImageView
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="27dp"
+            android:background="@color/fill_line" />
+
+        <com.quanliren.quan_two.pull.PullToRefreshLayout
+            android:id="@+id/layout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <com.quanliren.quan_two.pull.XListView
+                android:id="@+id/listview"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:cacheColorHint="#00000000"
+                android:divider="@null"
+                android:fastScrollEnabled="false"
+                android:footerDividersEnabled="false"
+                android:headerDividersEnabled="false"
+                android:listSelector="#00000000"
+                android:scrollbars="vertical" >
+            </com.quanliren.quan_two.pull.XListView>
+        </com.quanliren.quan_two.pull.PullToRefreshLayout>
+
+        <LinearLayout
+            android:id="@+id/bottom_ll"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/bottom_bg"
+            android:orientation="horizontal" >
+
+            <com.a.dd.CircularProgressButton
+                android:id="@+id/join"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:padding="0dp"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:cpb_colorIdle="@color/actionbar"
+                app:cpb_colorIndicator="@color/actionbar"
+                app:cpb_colorProgress="@color/bottom_bg"
+                app:cpb_cornerRadius="5dp"
+                app:cpb_textComplete="成功"
+                app:cpb_textEnable="已结束"
+                app:cpb_textError="失败"
+                app:cpb_textIdle="报名" />
+
+            <LinearLayout
+                android:id="@+id/favorite"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bottom_btn"
+                android:gravity="center" >
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_date_tab1" />
+
+                <TextView
+                    android:id="@+id/collect_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:gravity="center"
+                    android:text="收藏"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/manage"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bottom_btn"
+                android:gravity="center"
+                android:visibility="gone" >
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_date_tab3" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:gravity="center"
+                    android:text="报名管理"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/reply"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bottom_btn"
+                android:gravity="center" >
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_date_tab2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:gravity="center"
+                    android:text="评论"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <include
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            layout="@layout/bottom_reply_layout" />
+    </com.quanliren.quan_two.custom.CustomRelativeLayout>
+
+    <include
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/emoji_pop" />
+
+</LinearLayout>

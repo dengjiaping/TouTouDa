@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/top"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="8dp"
+    android:paddingRight="8dp" >
+
+    <com.quanliren.quan_two.custom.CircleImageView
+        android:id="@+id/userlogo"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="centerCrop"
+        app:border_color="#00000000" />
+
+    <LinearLayout
+        android:id="@+id/content_rl"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/userlogo"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@id/userlogo"
+        android:background="@drawable/message_bg"
+        android:clickable="true"
+        android:orientation="vertical"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:paddingTop="8dp" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <com.quanliren.quan_two.custom.StateTextViewBg
+                android:id="@+id/state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+            </com.quanliren.quan_two.custom.StateTextViewBg>
+
+            <TextView
+                android:id="@+id/coin_tv"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/date_coin_repeat_bg_img_d"
+                android:drawableLeft="@drawable/date_coin_san_bg_img"
+                android:gravity="center_vertical|right"
+                android:paddingRight="8dp"
+                android:text="123"
+                android:textColor="@color/darkgray"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal"
+            android:paddingRight="8dp" >
+
+            <com.quanliren.quan_two.custom.UserNickNameRelativeLayout
+                android:id="@+id/nick_ll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/message_location_icon" />
+
+                <TextView
+                    android:id="@+id/location_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/darkgray"
+                    android:text="100km"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginTop="4dp"
+            android:background="@color/border_color" />
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <TableRow
+                android:id="@+id/aim_ll"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="8dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right|center_vertical"
+                    android:text="目的"
+                    android:textColor="@color/signature"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/aim_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="8dp"
+                    android:text="@string/nulls"
+                    android:textColor="@color/darkgray"
+                    android:textSize="14sp" />
+            </TableRow>
+
+            <TableRow
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="8dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right|center_vertical"
+                    android:text="地点"
+                    android:textColor="@color/signature"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/place_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:paddingLeft="8dp"
+                    android:singleLine="true"
+                    android:text="@string/nulls"
+                    android:textColor="@color/darkgray"
+                    android:textSize="14sp" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/people_num_ll"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="8dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right|center_vertical"
+                    android:text="人数"
+                    android:textColor="@color/signature"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/people_num_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="8dp"
+                    android:text="@string/nulls"
+                    android:textColor="@color/darkgray"
+                    android:textSize="14sp" />
+            </TableRow>
+
+            <TableRow
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="8dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right|center_vertical"
+                    android:text="性别"
+                    android:textColor="@color/signature"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/sex_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="8dp"
+                    android:text="@string/nulls"
+                    android:textColor="@color/darkgray"
+                    android:textSize="14sp" />
+            </TableRow>
+
+            <TableRow
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="8dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right|center_vertical"
+                    android:text="消费"
+                    android:textColor="@color/signature"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/money_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="8dp"
+                    android:text="@string/nulls"
+                    android:textColor="@color/darkgray"
+                    android:textSize="14sp" />
+            </TableRow>
+
+            <TableRow
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="8dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right|center_vertical"
+                    android:text="时间"
+                    android:textColor="@color/signature"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/time_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="8dp"
+                    android:text="@string/nulls"
+                    android:textColor="@color/darkgray"
+                    android:textSize="14sp" />
+            </TableRow>
+
+            <TableRow
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="8dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right|center_vertical"
+                    android:text="说明"
+                    android:textColor="@color/signature"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/remark_tv"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:paddingLeft="8dp"
+                    android:singleLine="true"
+                    android:text="@string/nulls"
+                    android:textColor="@color/darkgray"
+                    android:textSize="14sp" />
+            </TableRow>
+        </TableLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical" >
+
+            <TextView
+                android:id="@+id/bm_people_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical|right"
+                android:textColor="@color/darkgray"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:id="@+id/reply_ll"
+                android:layout_width="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp" >
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/comment_icon" />
+
+                <TextView
+                    android:id="@+id/reply_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="2dp"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/red_number"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

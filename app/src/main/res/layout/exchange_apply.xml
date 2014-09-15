@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_bg"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/title_height"
+        layout="@layout/custom_back_actionbar" />
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <TableRow android:background="@drawable/menu_mid_selector" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="姓名"
+                android:textColor="@color/title"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="必填"
+                android:singleLine="true"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_marginTop="1dp"
+            android:background="@drawable/menu_mid_selector" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="手机号码"
+                android:textColor="@color/title"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/phone"
+                android:layout_width="fill_parent"
+                android:layout_weight="1"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="8dp"
+                android:background="@null"
+                android:hint="必填"
+                android:inputType="phone"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_marginTop="1dp"
+            android:background="@drawable/menu_mid_selector" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="支付宝账号"
+                android:textColor="@color/title"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/card"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="8dp"
+                android:background="@null"
+                android:hint="必填"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_marginTop="1dp"
+            android:background="@drawable/menu_mid_selector" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="邮箱"
+                android:textColor="@color/title"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="8dp"
+                android:background="@null"
+                android:hint="选填"
+                android:layout_weight="1"
+                android:inputType="textEmailAddress"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_marginTop="1dp"
+            android:background="@drawable/menu_mid_selector" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="联系地址"
+                android:textColor="@color/title"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/address"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="8dp"
+                android:background="@null"
+                android:hint="选填"
+                android:layout_weight="1"
+                android:maxLength="200"
+                android:singleLine="true"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_marginTop="1dp"
+            android:background="@drawable/menu_mid_selector" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="备注"
+                android:textColor="@color/title"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/remind"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="8dp"
+                android:background="@null"
+                android:hint="选填"
+                android:maxLength="200"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:textSize="14sp" />
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>
