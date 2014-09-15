@@ -27,6 +27,7 @@ import com.quanliren.quan_two.bean.LoginUser;
 import com.quanliren.quan_two.bean.UserTable;
 import com.quanliren.quan_two.custom.CustomProgressBar;
 import com.quanliren.quan_two.db.DBHelper;
+import com.quanliren.quan_two.util.LogUtil;
 import com.quanliren.quan_two.util.URL;
 
 import org.androidannotations.annotations.App;
@@ -63,7 +64,7 @@ public abstract class BaseActivity extends OrmLiteBaseActivity<DBHelper> {
 	protected void onCreate(Bundle savedInstanceState) {
 		AM.getActivityManager().pushActivity(this);
 		super.onCreate(savedInstanceState);
-		
+        LogUtil.d("hehe ");
 		try {
 			getSupportActionBar().setDisplayShowHomeEnabled(false);
 		} catch (Exception e) {
