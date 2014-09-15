@@ -31,7 +31,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-@EActivity(R.layout.whatsnew_viewpager)
+@EActivity
 public class Whatsnew extends BaseActivity {
 
     ArrayList<Fragment> views = new ArrayList<Fragment>();
@@ -67,7 +67,7 @@ public class Whatsnew extends BaseActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
-        setContentView(R.layout.whatsnew_viewpager);
+
         setSwipeBackEnable(false);
 
         createShorcut(R.drawable.icon);
@@ -110,6 +110,9 @@ public class Whatsnew extends BaseActivity {
     public void doSomeThing() {
         String isFirstStart = ac.cs.getIsFirstStart();
         if ("".equals(isFirstStart)) {
+
+            setContentView(R.layout.whatsnew_viewpager);
+
         	bg.setVisibility(View.VISIBLE);
             pages.setVisibility(View.VISIBLE);
             text.setText(str[0]);
