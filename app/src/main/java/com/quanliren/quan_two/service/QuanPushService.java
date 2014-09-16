@@ -248,7 +248,7 @@ public class QuanPushService extends Service {
 					if (jo.has(SocketManage.ORDER)&&jo.getString(SocketManage.ORDER).equals(SocketManage.ORDER_SENDMESSAGE)) {
 						String messageId = jo
 								.getString(SocketManage.MESSAGE_ID);
-						List<DfMessage> msgs = messageDao.queryForEq("msgid",
+						List<DfMessage> msgs = messageDao.queryForEq(SocketManage.MESSAGE_ID,
 								messageId);
 						if (msgs != null && msgs.size() > 0) {
 							DfMessage temp = msgs.get(0);
@@ -260,7 +260,7 @@ public class QuanPushService extends Service {
 				} catch (Exception e) {
 				}
 
-				PrintStream out = new PrintStream(s.getOutputStream());
+				PrintStream out = new PrintStream(s.getOutputStream(),true,"utf-8");
 				out.write(getBytes(str.getBytes().length));
 				Thread.sleep(50);
 				StringBuilder sb = new StringBuilder();
@@ -274,7 +274,6 @@ public class QuanPushService extends Service {
 						out.write(sb.toString().getBytes());
 					}
 				}
-				out.flush();
 				Thread.sleep(100);
 				// PrintWriter out = new PrintWriter(new OutputStreamWriter(
 				// s.getOutputStream()));

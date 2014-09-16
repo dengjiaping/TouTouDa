@@ -3,6 +3,7 @@ package com.quanliren.quan_two.activity.group;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
+import android.widget.TextView;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationListener;
@@ -23,11 +24,12 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
+import org.androidannotations.annotations.ViewById;
 
 @EActivity
 @OptionsMenu(R.menu.through_map_menu)
 public class ThroughActivity extends BaseActivity implements LocationSource,
-		AMapLocationListener {
+		AMapLocationListener,AMap.OnCameraChangeListener {
 	public static final LatLng BEIJING = new LatLng(39.908691, 116.397506);// 北京市经纬度
 
 	private static final String MAP_FRAGMENT_TAG = "map";
@@ -35,6 +37,9 @@ public class ThroughActivity extends BaseActivity implements LocationSource,
 	private OnLocationChangedListener mListener;
 	private LocationManagerProxy mAMapLocationManager;
 	private SupportMapFragment map;
+
+    @ViewById
+    TextView tv_position;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +97,7 @@ public class ThroughActivity extends BaseActivity implements LocationSource,
 		amap.setLocationSource(this);
 		amap.getUiSettings().setMyLocationButtonEnabled(true);
 		amap.setMyLocationEnabled(true);
+        amap.setOnCameraChangeListener(this);
 
 	}
 
@@ -153,4 +159,14 @@ public class ThroughActivity extends BaseActivity implements LocationSource,
 		LatLng mTarget = amap.getCameraPosition().target;
 		ThroughListActivity_.intent(this).ll(mTarget).start();
 	}
+
+    @Override
+    public void onCameraChange(CameraPosition cameraPosition) {
+
+    }
+
+    @Override
+    public void onCameraChangeFinish(CameraPosition cameraPosition) {
+
+    }
 }

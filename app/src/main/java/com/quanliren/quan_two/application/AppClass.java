@@ -11,9 +11,6 @@ import android.telephony.TelephonyManager;
 
 import com.a.loopj.android.http.AsyncHttpClient;
 import com.a.loopj.android.http.PersistentCookieStore;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.table.TableUtils;
 import com.longevitysoft.android.xml.plist.PListXMLHandler;
@@ -21,6 +18,10 @@ import com.longevitysoft.android.xml.plist.PListXMLParser;
 import com.longevitysoft.android.xml.plist.domain.Dict;
 import com.longevitysoft.android.xml.plist.domain.PList;
 import com.longevitysoft.android.xml.plist.domain.PListObject;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.utils.L;
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.bean.LoginUser;
 import com.quanliren.quan_two.db.DBHelper;
@@ -96,6 +97,8 @@ public class AppClass extends Application {
 		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
 				getApplicationContext()).defaultDisplayImageOptions(
 				options_defalut).build();
+        L.writeLogs(false);
+        L.writeDebugLogs(false);
 		ImageLoader.getInstance().init(config);
 
 		initEmoticon();

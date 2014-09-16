@@ -9,15 +9,25 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <LinearLayout
-        android:layout_centerInParent="true"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp" >
 
         <ImageView
             android:layout_width="25dp"
+            android:adjustViewBounds="true"
             android:layout_height="25dp"
+            android:id="@+id/poi_iv"
+            android:layout_centerInParent="true"
             android:src="@drawable/ic_chose_position" />
-    </LinearLayout>
 
+    <TextView
+        android:id="@+id/tv_position"
+        android:layout_above="@+id/poi_iv"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:textSize="14sp"
+        android:visibility="gone"
+        android:textColor="@color/black"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:background="@drawable/ic_preference_sayhi_normal"
+        android:layout_height="wrap_content" />
 </RelativeLayout>
