@@ -3,6 +3,7 @@ package com.quanliren.quan_two.activity.group;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
+import android.view.View;
 import android.widget.TextView;
 
 import com.amap.api.location.AMapLocation;
@@ -17,6 +18,11 @@ import com.amap.api.maps2d.model.BitmapDescriptorFactory;
 import com.amap.api.maps2d.model.CameraPosition;
 import com.amap.api.maps2d.model.LatLng;
 import com.amap.api.maps2d.model.MyLocationStyle;
+import com.amap.api.services.core.LatLonPoint;
+import com.amap.api.services.geocoder.GeocodeResult;
+import com.amap.api.services.geocoder.GeocodeSearch;
+import com.amap.api.services.geocoder.RegeocodeQuery;
+import com.amap.api.services.geocoder.RegeocodeResult;
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.activity.base.BaseActivity;
 
@@ -29,7 +35,7 @@ import org.androidannotations.annotations.ViewById;
 @EActivity
 @OptionsMenu(R.menu.through_map_menu)
 public class ThroughActivity extends BaseActivity implements LocationSource,
-		AMapLocationListener,AMap.OnCameraChangeListener {
+		AMapLocationListener,AMap.OnCameraChangeListener ,GeocodeSearch.OnGeocodeSearchListener{
 	public static final LatLng BEIJING = new LatLng(39.908691, 116.397506);// 北京市经纬度
 
 	private static final String MAP_FRAGMENT_TAG = "map";
@@ -98,7 +104,6 @@ public class ThroughActivity extends BaseActivity implements LocationSource,
 		amap.getUiSettings().setMyLocationButtonEnabled(true);
 		amap.setMyLocationEnabled(true);
         amap.setOnCameraChangeListener(this);
-
 	}
 
 	@Override
@@ -130,6 +135,7 @@ public class ThroughActivity extends BaseActivity implements LocationSource,
 		// TODO Auto-generated method stub
 		if (mListener != null && aLocation != null && aLocation.getAMapException().getErrorCode() == 0) {
 			mListener.onLocationChanged(aLocation);
+            onCameraChangeFinish(null);
 		}
 		deactivate();
 	}
@@ -162,11 +168,42 @@ public class ThroughActivity extends BaseActivity implements LocationSource,
 
     @Override
     public void onCameraChange(CameraPosition cameraPosition) {
-
+        tv_position.setVisibility(View.GONE);
     }
+
+    private  LatLng searchLL=null;
 
     @Override
     public void onCameraChangeFinish(CameraPosition cameraPosition) {
+        GeocodeSearch geocoderSearch = new GeocodeSearch(this);
+        geocoderSearch.setOnGeocodeSearchListener(this);
+        LatLng mTarget = amap.getCameraPosition().target;
+        searchLL=mTarget;
+        LatLonPoint lp=new LatLonPoint(mTarget.latitude,mTarget.longitude);
+        RegeocodeQuery query = new RegeocodeQuery(lp, 200,GeocodeSearch.AMAP);
+        geocoderSearch.getFromLocationAsyn(query);
+    }
+
+    @Override
+    public void onRegeocodeSearched(RegeocodeResult result, int rCode) {
+        LatLng mTarget = amap.getCameraPosition().target;
+        if(mTarget.longitude==searchLL.longitude&&mTarget.latitude==searchLL.latitude) {
+            if (rCode == 0) {
+                if (result != null && result.getRegeocodeAddress() != null
+                        && result.getRegeocodeAddress().getFormatAddress() != null) {
+                    String addressName = result.getRegeocodeAddress().getFormatAddress();
+                    tv_position.setVisibility(View.VISIBLE);
+                    tv_position.setText(addressName);
+                } else {
+                    tv_position.setVisibility(View.GONE);
+                }
+            } else {
+            }
+        }
+    }
+
+    @Override
+    public void onGeocodeSearched(GeocodeResult geocodeResult, int i) {
 
     }
 }

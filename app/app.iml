@@ -90,6 +90,7 @@
     <orderEntry type="library" exported="" name="support-annotations-20.0.0" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-20.0.0" level="project" />
     <orderEntry type="library" exported="" name="AMap_2DMap_V2.2.1" level="project" />
+    <orderEntry type="library" exported="" name="AMap_Services_V2.2.1" level="project" />
     <orderEntry type="library" exported="" name="support-v4-20.0.0" level="project" />
     <orderEntry type="library" exported="" name="open_sdk" level="project" />
     <orderEntry type="library" exported="" name="mta-sdk-1.0.0" level="project" />
