@@ -9,8 +9,8 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 
-import com.a.loopj.android.http.JsonHttpResponseHandler;
-import com.a.loopj.android.http.RequestParams;
+import com.quanliren.quan_two.util.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.google.gson.Gson;
 import com.quanliren.quan_two.activity.R;
@@ -218,7 +218,7 @@ public class UserInfoActivity extends BaseUserActivity implements
 
 	public void uploadUserLogo(final File file) {
 		try {
-			RequestParams ap = getAjaxParams().put("file", file);
+			RequestParams ap = getAjaxParams();ap.put("file", file);
 			ac.finalHttp.post(URL.UPLOAD_USER_LOGO, ap,
 					new JsonHttpResponseHandler() {
 						@Override
@@ -295,7 +295,7 @@ public class UserInfoActivity extends BaseUserActivity implements
 
 	public void uploadWallPic(final File file) {
 		try {
-			RequestParams ap = getAjaxParams().put("file", file);
+			RequestParams ap = getAjaxParams();ap.put("file", file);
 			ac.finalHttp.post(URL.UPLOAD_USERINFO_BG, ap,
 					new JsonHttpResponseHandler() {
 						@Override

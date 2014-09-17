@@ -7,7 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 
-import com.a.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+import com.quanliren.quan_two.util.http.JsonHttpResponseHandler;
 import com.a.me.maxwin.view.XXListView;
 import com.a.me.maxwin.view.XXListView.IXListViewListener;
 import com.google.gson.Gson;
@@ -101,12 +102,14 @@ public class MyCareGragment extends MenuFragmentBase implements IXListViewListen
 	@Override
 	public void onRefresh() {
 		p=0;
-		ac.finalHttp.post(URL.CONCERNLIST,getAjaxParams("p", "0").put("type", type+""), callBack);
+        onLoadMore();
 	}
 
 	@Override
 	public void onLoadMore() {
-		ac.finalHttp.post(URL.CONCERNLIST,getAjaxParams("p", p+"").put("type", type+""), callBack);
+        RequestParams ap = getAjaxParams("p", "0");
+        ap.put("type", type+"");
+		ac.finalHttp.post(URL.CONCERNLIST,ap, callBack);
 	}
 	
 	JsonHttpResponseHandler callBack=new JsonHttpResponseHandler() {

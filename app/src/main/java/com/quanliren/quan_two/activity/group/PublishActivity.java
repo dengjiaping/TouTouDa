@@ -11,8 +11,8 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.a.loopj.android.http.JsonHttpResponseHandler;
-import com.a.loopj.android.http.RequestParams;
+import com.quanliren.quan_two.util.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.activity.base.BaseActivity;
@@ -258,10 +258,10 @@ public class PublishActivity extends BaseActivity implements
 		}
 		LoginUser user = getHelper().getUser();
 		try {
-			RequestParams ap = getAjaxParams()
-					.put("file", new File(fragment.getItem(i)))
-					.put("userid", user.getId()).put("dyid", dyid)
-					.put("position", i + "");
+			RequestParams ap = getAjaxParams();
+            ap.put("file", new File(fragment.getItem(i)));
+            ap.put("userid", user.getId());ap.put("dyid", dyid);
+            ap.put("position", i + "");
 			ac.finalHttp.post(URL.PUBLISH_IMG, ap, new callBack(i));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -341,10 +341,10 @@ public class PublishActivity extends BaseActivity implements
 		if (user != null) {
 			RequestParams ap = getAjaxParams();
 			ap.put("content",
-					EmojiFilter.filterEmoji(edittxt.getText().toString()))
-					.put("area", ac.cs.getArea())
-					.put("longitude", ac.cs.getLng())
-					.put("latitude", ac.cs.getLat());
+					EmojiFilter.filterEmoji(edittxt.getText().toString()));
+            ap.put("area", ac.cs.getArea());
+            ap.put("longitude", ac.cs.getLng());
+            ap.put("latitude", ac.cs.getLat());
 			ac.finalHttp.post(URL.PUBLISH_TXT, ap, callBack);
 		}
 	}

@@ -5,8 +5,8 @@ import android.content.DialogInterface;
 import android.view.View;
 
 import com.a.dd.CircularProgressButton;
-import com.a.loopj.android.http.JsonHttpResponseHandler;
-import com.a.loopj.android.http.RequestParams;
+import com.quanliren.quan_two.util.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.quanliren.quan_two.activity.R;
@@ -70,7 +70,7 @@ public class DateApplyManageActivity extends BaseActivity implements
 
 	@Override
 	public void onLoadMore() {
-		rp.put("p", p).put("dtid", bean.getDtid());
+		rp.put("p", p);rp.put("dtid", bean.getDtid());
 		ac.finalHttp.post(URL.DATE_APPLY_MANAGE, rp, callBack);
 	}
 

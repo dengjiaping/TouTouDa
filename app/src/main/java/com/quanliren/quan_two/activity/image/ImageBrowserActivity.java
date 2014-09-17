@@ -7,8 +7,8 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Toast;
 
-import com.a.loopj.android.http.JsonHttpResponseHandler;
-import com.a.loopj.android.http.RequestParams;
+import com.quanliren.quan_two.util.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.activity.base.BaseActivity;

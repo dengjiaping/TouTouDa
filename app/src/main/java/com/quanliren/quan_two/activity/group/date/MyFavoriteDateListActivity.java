@@ -8,8 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.a.loopj.android.http.JsonHttpResponseHandler;
-import com.a.loopj.android.http.RequestParams;
+import com.quanliren.quan_two.util.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.a.nineoldandroids.animation.Animator;
 import com.a.nineoldandroids.animation.AnimatorListenerAdapter;
 import com.a.nineoldandroids.animation.ValueAnimator;

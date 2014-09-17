@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.AbsListView;
 
-import com.a.loopj.android.http.JsonHttpResponseHandler;
-import com.a.loopj.android.http.RequestParams;
+import com.quanliren.quan_two.util.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.a.me.maxwin.view.XXListView;
 import com.a.me.maxwin.view.XXListView.IXListViewListener;
 import com.a.nineoldandroids.animation.Animator;
@@ -167,7 +167,7 @@ public class MyDateListFragment extends MenuFragmentBase implements
 	@Override
 	public void onRefresh() {
 		p = 0;
-		ap=getAjaxParams().put("p", p + "");
+		ap=getAjaxParams();ap.put("p", p + "");
 		ac.finalHttp.post(URL.MY_DATE_LIST, ap, callBack);
 	}
 	

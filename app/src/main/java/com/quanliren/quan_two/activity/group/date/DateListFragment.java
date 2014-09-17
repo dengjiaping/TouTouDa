@@ -11,8 +11,8 @@ import android.widget.AbsListView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 
-import com.a.loopj.android.http.JsonHttpResponseHandler;
-import com.a.loopj.android.http.RequestParams;
+import com.quanliren.quan_two.util.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.a.me.maxwin.view.XXListView;
 import com.a.me.maxwin.view.XXListView.IXListViewListener;
 import com.a.nineoldandroids.animation.Animator;

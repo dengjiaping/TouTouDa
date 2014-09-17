@@ -11,7 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import com.a.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+import com.quanliren.quan_two.util.http.JsonHttpResponseHandler;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 import com.google.gson.Gson;
@@ -207,7 +208,9 @@ public class EmoticonDetailActivity extends BaseActivity implements
 
 	@Override
 	public void onRefreshStarted(View view) {
-		ac.finalHttp.post(URL.EMOTICON_DETAIL, getAjaxParams().put("id", bean.getId()),
+        RequestParams ap=getAjaxParams();
+        ap.put("id", bean.getId());
+		ac.finalHttp.post(URL.EMOTICON_DETAIL, ap,
 				new JsonHttpResponseHandler() {
 					@Override
 					public void onSuccess(JSONObject response) {

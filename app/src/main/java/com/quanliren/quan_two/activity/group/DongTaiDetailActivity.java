@@ -20,8 +20,8 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
-import com.a.loopj.android.http.JsonHttpResponseHandler;
-import com.a.loopj.android.http.RequestParams;
+import com.quanliren.quan_two.util.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.a.nineoldandroids.view.ViewHelper;
 import com.a.nineoldandroids.view.ViewPropertyAnimator;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -399,7 +399,7 @@ public class DongTaiDetailActivity extends BaseActivity implements
 			return;
 		}
 		RequestParams ap = getAjaxParams();
-		ap.put("dyid", bean.getDyid() + "").put("content", content);
+		ap.put("dyid", bean.getDyid() + "");ap.put("content", content);
 
 		DongTaiReplyBean replayBean = new DongTaiReplyBean();
 
@@ -532,8 +532,10 @@ public class DongTaiDetailActivity extends BaseActivity implements
 
 	@Override
 	public void onRefreshStarted(View view) {
+        RequestParams rp=getAjaxParams();
+        rp.put("dyid", bean.getDyid() + "");
 		ac.finalHttp.post(URL.GETDONGTAI_DETAIL,
-				getAjaxParams().put("dyid", bean.getDyid() + ""), callBack);
+				rp, callBack);
 	}
 
 }

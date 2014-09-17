@@ -6,8 +6,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.a.loopj.android.http.JsonHttpResponseHandler;
-import com.a.loopj.android.http.RequestParams;
+import com.quanliren.quan_two.util.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.a.net.simonvt.numberpicker.NumberPicker;
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.activity.base.BaseActivity;
@@ -86,11 +86,11 @@ public class UserInfoEditActivity extends BaseActivity{
 			return;
 		}
 
-		RequestParams ap = getAjaxParams()
-				.put("nickname", str_nickname).put("birthday", str_age)
-				.put("appearance", str_face)
-				.put("emotion", Arrays.asList(loves).indexOf(str_love)).put("signature", str_signature)
-				.put("income", Arrays.asList(moneys).indexOf(str_money)).put("job", Arrays.asList(ol).indexOf(str_work));
+		RequestParams ap = getAjaxParams();
+        ap.put("nickname", str_nickname);ap.put("birthday", str_age);
+        ap.put("appearance", str_face);
+        ap.put("emotion", Arrays.asList(loves).indexOf(str_love));ap.put("signature", str_signature);
+        ap.put("income", Arrays.asList(moneys).indexOf(str_money));ap.put("job", Arrays.asList(ol).indexOf(str_work));
 
 		ac.finalHttp.post(URL.EDIT_USER_INFO, ap, editInfoCallBack);
 	}

@@ -7,7 +7,7 @@ import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
 
 import com.a.dd.CircularProgressButton;
-import com.a.loopj.android.http.JsonHttpResponseHandler;
+import com.quanliren.quan_two.util.http.JsonHttpResponseHandler;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
 import com.google.gson.Gson;

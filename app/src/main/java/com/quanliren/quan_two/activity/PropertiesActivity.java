@@ -11,8 +11,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.a.loopj.android.http.JsonHttpResponseHandler;
-import com.a.loopj.android.http.RequestParams;
+import com.quanliren.quan_two.util.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.j256.ormlite.dao.Dao;
@@ -424,7 +424,9 @@ public class PropertiesActivity extends BaseActivity {
 				File[] list=file.listFiles();
 				for (File file2 : list) {
 					final File temp=file2;
-					ac.finalHttp.post(URL.SEND_LOG, new RequestParams().put("file", temp),new JsonHttpResponseHandler(){
+                    RequestParams rp=new RequestParams();
+                    rp.put("file", temp);
+					ac.finalHttp.post(URL.SEND_LOG,rp ,new JsonHttpResponseHandler(){
 						@Override
 						public void onSuccess(JSONObject response) {
 							try {

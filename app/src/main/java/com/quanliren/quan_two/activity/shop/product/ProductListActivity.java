@@ -3,7 +3,7 @@ package com.quanliren.quan_two.activity.shop.product;
 import android.view.View;
 import android.widget.ListView;
 
-import com.a.loopj.android.http.JsonHttpResponseHandler;
+import com.quanliren.quan_two.util.http.JsonHttpResponseHandler;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.quanliren.quan_two.activity.R;

@@ -9,8 +9,8 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import android.telephony.TelephonyManager;
 
-import com.a.loopj.android.http.AsyncHttpClient;
-import com.a.loopj.android.http.PersistentCookieStore;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.PersistentCookieStore;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.table.TableUtils;
 import com.longevitysoft.android.xml.plist.PListXMLHandler;

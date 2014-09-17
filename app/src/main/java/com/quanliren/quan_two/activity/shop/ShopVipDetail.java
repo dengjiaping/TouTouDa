@@ -14,7 +14,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.a.dd.CircularProgressButton;
-import com.a.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+import com.quanliren.quan_two.util.http.JsonHttpResponseHandler;
 import com.alipay.Keys;
 import com.alipay.Result;
 import com.alipay.Rsa;
@@ -104,7 +105,9 @@ public class ShopVipDetail extends BaseActivity implements IBuyListener{
 
 
 	public void startBao(final ShopBean sb) {
-		ac.finalHttp.post(URL.GETALIPAY, getAjaxParams().put("gnumber", sb.getId()),
+        RequestParams ap=getAjaxParams();
+        ap.put("gnumber", sb.getId());
+		ac.finalHttp.post(URL.GETALIPAY, ap,
 				new JsonHttpResponseHandler() {
 					@Override
 					public void onSuccess(JSONObject jo) {

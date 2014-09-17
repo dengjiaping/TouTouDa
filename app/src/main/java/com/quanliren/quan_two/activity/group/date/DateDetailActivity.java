@@ -18,8 +18,8 @@ import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
 import com.a.dd.CircularProgressButton;
-import com.a.loopj.android.http.JsonHttpResponseHandler;
-import com.a.loopj.android.http.RequestParams;
+import com.quanliren.quan_two.util.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.a.nineoldandroids.animation.Animator;
 import com.a.nineoldandroids.animation.AnimatorListenerAdapter;
 import com.a.nineoldandroids.view.ViewHelper;
@@ -179,7 +179,7 @@ public class DateDetailActivity extends BaseActivity implements
 			return;
 		}
 		RequestParams ap = getAjaxParams();
-		ap.put("dtid", bean.getDtid() + "").put("content", content);
+		ap.put("dtid", bean.getDtid() + "");ap.put("content", content);
 
 		DongTaiReplyBean replayBean = new DongTaiReplyBean();
 

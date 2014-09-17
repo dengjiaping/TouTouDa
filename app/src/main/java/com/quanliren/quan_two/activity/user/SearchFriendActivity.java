@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.a.loopj.android.http.JsonHttpResponseHandler;
-import com.a.loopj.android.http.RequestParams;
+import com.quanliren.quan_two.util.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.quanliren.quan_two.activity.R;

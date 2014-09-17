@@ -7,11 +7,11 @@ import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 
-import com.a.loopj.android.http.AsyncHttpClient;
-import com.a.loopj.android.http.FileAsyncHttpResponseHandler;
-import com.a.loopj.android.http.JsonHttpResponseHandler;
-import com.a.loopj.android.http.PersistentCookieStore;
-import com.a.loopj.android.http.RequestParams;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.FileAsyncHttpResponseHandler;
+import com.quanliren.quan_two.util.http.JsonHttpResponseHandler;
+import com.loopj.android.http.PersistentCookieStore;
+import com.loopj.android.http.RequestParams;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
@@ -81,8 +81,10 @@ public class DownLoadEmoticonService extends Service {
 				EmoticonZip bean = (EmoticonZip) intent
 						.getSerializableExtra("bean");
 				list.add(bean);
+                RequestParams rp=getAjaxParams();
+                rp .put("id", bean.getId() + "");
 				httpClient.post(URL.DOWNLOAD_EMOTICON_FIRST,
-						getAjaxParams().put("id", bean.getId() + ""),
+                        rp,
 						new downloadRunnable(bean));
 			}
 		}

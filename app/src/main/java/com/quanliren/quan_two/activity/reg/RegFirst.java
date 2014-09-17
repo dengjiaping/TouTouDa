@@ -7,7 +7,7 @@ import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.a.loopj.android.http.JsonHttpResponseHandler;
+import com.quanliren.quan_two.util.http.JsonHttpResponseHandler;
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.activity.base.BaseActivity;
 import com.quanliren.quan_two.activity.seting.ServiceInfoActivity_;
