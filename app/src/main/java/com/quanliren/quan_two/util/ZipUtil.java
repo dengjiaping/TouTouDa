@@ -175,13 +175,13 @@ public class ZipUtil {
 	
 	/** 
      * 解压assets的zip压缩文件到指定目录 
-     * @param context上下文对象 
-     * @param assetName压缩文件名 
-     * @param outputDirectory输出目录 
-     * @param isReWrite是否覆盖 
+     * @param context上下文对象
+     * @param assetName压缩文件名
+     * @param outputDirectory输出目录
+     * @param isReWrite是否覆盖
      * @throws java.io.IOException
-     */  
-    public static void unZip(Context context, String assetName,  
+     */
+    public static void unZip(Context context, String assetName,
             String outputDirectory,boolean isReWrite) throws IOException {  
         //创建解压目标目录  
         File file = new File(outputDirectory);  

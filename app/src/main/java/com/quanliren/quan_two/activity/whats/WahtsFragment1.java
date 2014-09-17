@@ -21,7 +21,6 @@ import com.a.nineoldandroids.view.ViewPropertyAnimator;
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.fragment.base.MenuFragmentBase;
 import com.quanliren.quan_two.fragment.impl.LoaderImpl;
-import com.quanliren.quan_two.util.BitmapCache;
 
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.FragmentArg;
@@ -82,10 +81,10 @@ public class WahtsFragment1 extends MenuFragmentBase implements LoaderImpl{
 
 	public ImageView getPositionImageView(int i_x, int i_y, int res) {
 		float x_scale = (float) i_x / (float) max_w;
-		float x = (float) x_scale * (float) screen_w;
+		float x =  x_scale * (float) screen_w;
 
 		float y_scale = (float) i_y / (float) max_h;
-		float y = (float) y_scale * (float) screen_h;
+		float y =  y_scale * (float) screen_h;
 
 		ImageView img = new ImageView(getActivity());
 		ViewHelper.setX(img, x);
@@ -99,13 +98,12 @@ public class WahtsFragment1 extends MenuFragmentBase implements LoaderImpl{
 
 	public ImageView createImageByCache(int i_x, int i_y, int res) {
 		ImageView img = getPositionImageView(i_x, i_y, res);
-		Bitmap loadedImage = BitmapCache.getInstance().getBitmap(res,
-				getActivity());
+		Bitmap loadedImage = decodeResource(getResources(),res);
 		int i_w = loadedImage.getWidth();
 		int i_h = loadedImage.getHeight();
 
 		float w_scale = (float) i_w / (float) max_w;
-		int n_i_w = (int) ((float) w_scale * (float) screen_w);
+		int n_i_w = (int) ( w_scale * (float) screen_w);
 
 		float n_w_scale = (float) n_i_w / (float) i_w;
 		int n_i_h = (int) ((float) i_h * n_w_scale);
