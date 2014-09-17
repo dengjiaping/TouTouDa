@@ -15,7 +15,7 @@ public class JsonHttpResponseHandler extends com.loopj.android.http.JsonHttpResp
     }
 
     @Override
-    public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+    public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
         onFailure();
     }
 
