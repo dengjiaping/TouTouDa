@@ -9,8 +9,6 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import android.telephony.TelephonyManager;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.PersistentCookieStore;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.table.TableUtils;
 import com.longevitysoft.android.xml.plist.PListXMLHandler;
@@ -18,10 +16,13 @@ import com.longevitysoft.android.xml.plist.PListXMLParser;
 import com.longevitysoft.android.xml.plist.domain.Dict;
 import com.longevitysoft.android.xml.plist.domain.PList;
 import com.longevitysoft.android.xml.plist.domain.PListObject;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.PersistentCookieStore;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.utils.L;
+import com.quanliren.quan_two.activity.BuildConfig;
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.bean.LoginUser;
 import com.quanliren.quan_two.db.DBHelper;
@@ -29,7 +30,6 @@ import com.quanliren.quan_two.service.IQuanPushService;
 import com.quanliren.quan_two.service.QuanPushService;
 import com.quanliren.quan_two.share.CommonShared;
 import com.quanliren.quan_two.util.CrashHandler;
-import com.quanliren.quan_two.util.LogUtil;
 import com.quanliren.quan_two.util.Util;
 
 import org.androidannotations.annotations.EApplication;
@@ -78,7 +78,7 @@ public class AppClass extends Application {
 	@Override
 	public void onCreate() {
 
-		if(!LogUtil.DEBUG){
+		if(!BuildConfig.DEBUG){
 			CrashHandler crashHandler = CrashHandler.getInstance();
 			crashHandler.init(getApplicationContext());
 		}

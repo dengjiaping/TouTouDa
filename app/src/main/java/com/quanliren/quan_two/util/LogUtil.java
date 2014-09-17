@@ -2,13 +2,15 @@ package com.quanliren.quan_two.util;
 
 import android.util.Log;
 
+import com.quanliren.quan_two.activity.BuildConfig;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class LogUtil {
     
     
-    public static final boolean DEBUG = true;  
+    public static final boolean DEBUG = BuildConfig.DEBUG;
     
     public static void d(String TAG, String method, String msg) {  
         Log.d(TAG, "[" + method + "]" + msg);  
