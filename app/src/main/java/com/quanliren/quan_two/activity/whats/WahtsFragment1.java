@@ -1,8 +1,10 @@
 package com.quanliren.quan_two.activity.whats;
 
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -144,29 +146,40 @@ public class WahtsFragment1 extends MenuFragmentBase implements LoaderImpl{
 				.setDuration(200));
 		list.add(set);
 
-        Bitmap loadedImage = BitmapFactory.decodeResource(getResources(),res);
+        Bitmap loadedImage = decodeResource(getResources(),res);
+        img.setImageBitmap(loadedImage);
         int i_w = loadedImage.getWidth();
         int i_h = loadedImage.getHeight();
 
         float w_scale = (float) i_w / (float) max_w;
-        int n_i_w = (int) ((float) w_scale * (float) screen_w);
+        int n_i_w = (int) (w_scale * (float) screen_w);
 
         float n_w_scale = (float) n_i_w / (float) i_w;
         int n_i_h = (int) ((float) i_h * n_w_scale);
 
-        view.setLayoutParams(new FrameLayout.LayoutParams(
+        img.setLayoutParams(new FrameLayout.LayoutParams(
                 n_i_w, n_i_h));
-        ViewHelper.setScaleX(view, 0);
-        ViewHelper.setScaleY(view, 0);
-        ViewHelper.setPivotX(view, n_i_w * 0.5f);
-        ViewHelper.setPivotY(view, n_i_h * 0.5f);
+        ViewHelper.setScaleX(img, 0);
+        ViewHelper.setScaleY(img, 0);
+        ViewHelper.setPivotX(img, n_i_w * 0.5f);
+        ViewHelper.setPivotY(img, n_i_h * 0.5f);
+
+		content.addView(img);
+
         num++;
         if (num >= 5) {
             AnimatorSet setAll = new AnimatorSet();
             setAll.playSequentially(list);
             setAll.start();
         }
-		content.addView(img);
 	}
 
+
+    private Bitmap decodeResource(Resources resources, int id) {
+        TypedValue value = new TypedValue();
+        resources.openRawResource(id, value);
+        BitmapFactory.Options opts = new BitmapFactory.Options();
+        opts.inTargetDensity = value.density;
+        return BitmapFactory.decodeResource(resources, id, opts);
+    }
 }
