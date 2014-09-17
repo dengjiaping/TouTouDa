@@ -212,7 +212,7 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
 
     /**
      * Creates drawable from AssetFileDescriptor.
-     * Convenience wrapper for {@link pl.droidsonroids.gif.GifDrawable#GifDrawable(java.io.FileDescriptor)}
+     * Convenience wrapper for {@link GifDrawable#GifDrawable(java.io.FileDescriptor)}
      *
      * @param afd source
      * @throws NullPointerException if afd is null
@@ -428,7 +428,7 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
     }
 
     /**
-     * An {@link pl.droidsonroids.gif.GifDrawable#GifDrawable(android.content.res.Resources, int)} wrapper but returns null
+     * An {@link GifDrawable#GifDrawable(android.content.res.Resources, int)} wrapper but returns null
      * instead of throwing exception if creation fails.
      *
      * @param res        resources to read from

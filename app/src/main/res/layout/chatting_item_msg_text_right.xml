@@ -49,6 +49,7 @@
                 android:lineSpacingExtra="4dp"
                 android:minHeight="40dp"
                 android:layout_marginRight="4dp"
+                android:visibility="gone"
                 android:layout_weight="1"
                 android:paddingRight="17dp"
                 android:textColor="@color/black"
@@ -113,8 +114,7 @@
                 android:background="@drawable/chat_right_content_selector"
                 android:gravity="right|center_vertical"
                 android:minHeight="40dp"
-                android:minWidth="60dp"
-                android:visibility="gone" >
+                android:minWidth="60dp">
 
                 <ImageView
                     android:id="@+id/voice"

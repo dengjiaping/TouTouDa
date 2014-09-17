@@ -131,6 +131,9 @@ public class MessageAdapter extends ParentsAdapter {
 			holder.img_ll.setVisibility(View.GONE);
 			holder.gif_ll.setVisibility(View.GONE);
 			holder.voice_ll.setVisibility(View.GONE);
+            if (isComMsg == COME_MSG) {
+                lpn.leftMargin=ImageUtil.dip2px(c,4);
+            }else{    lpn.rightMargin=ImageUtil.dip2px(c,4);}
 			holder.voice_ll.setLayoutParams(lpn);
 			holder.time.setVisibility(View.GONE);
 			holder.timel.setVisibility(View.GONE);
@@ -177,6 +180,10 @@ public class MessageAdapter extends ParentsAdapter {
 					} else {
 						holder.lp.width = ImageUtil.dip2px(c, sum);
 					}
+                    if (isComMsg == COME_MSG) {
+                        holder.lp.leftMargin=ImageUtil.dip2px(c,4);
+                    }else{    holder.lp.rightMargin=ImageUtil.dip2px(c,4);}
+
 					holder.voice_ll.setLayoutParams(holder.lp);
 				}
 				if (dm.isPlaying()) {

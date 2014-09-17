@@ -3,7 +3,7 @@ package pl.droidsonroids.gif;
 import java.io.IOException;
 
 /**
- * Exception encapsulating {@link GifError}s. 
+ * Exception encapsulating {@link pl.droidsonroids.gif.GifError}s.
  * @author koral--
  */
 public class GifIOException extends IOException
@@ -24,6 +24,6 @@ public class GifIOException extends IOException
     @SuppressWarnings("UnusedDeclaration") // native code only
 	GifIOException ( int errorCode )
 	{
-		this( GifError.fromCode( errorCode ) );
+		this( GifError.fromCode(errorCode) );
 	}
 }

@@ -253,9 +253,6 @@ public class DateListFragment extends MenuFragmentBase implements
 		if(user==null){
 			startLogin();
 			return;
-		}else if(user.getIsvip()==0){
-			goVip();
-			return;
 		}
 		DatePublishActivity_.intent(this).startForResult(PUBLISH);
 	}

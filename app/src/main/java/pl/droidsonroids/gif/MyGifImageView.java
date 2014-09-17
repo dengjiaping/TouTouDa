@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
- * An {@link android.widget.ImageView} which tries treating background and src as {@link pl.droidsonroids.gif.GifDrawable}
+ * An {@link android.widget.ImageView} which tries treating background and src as {@link GifDrawable}
  *
  * @author koral--
  */
@@ -29,7 +29,7 @@ public class MyGifImageView extends ImageView {
 
     /**
      * Like eqivalent from superclass but also try to interpret src and background
-     * attributes as {@link pl.droidsonroids.gif.GifDrawable}.
+     * attributes as {@link GifDrawable}.
      *
      * @param context
      * @param attrs

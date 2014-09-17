@@ -1,6 +1,7 @@
 package com.quanliren.quan_two.activity.whats;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,8 +16,6 @@ import com.a.nineoldandroids.animation.AnimatorSet;
 import com.a.nineoldandroids.animation.ObjectAnimator;
 import com.a.nineoldandroids.view.ViewHelper;
 import com.a.nineoldandroids.view.ViewPropertyAnimator;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.fragment.base.MenuFragmentBase;
 import com.quanliren.quan_two.fragment.impl.LoaderImpl;
@@ -144,34 +143,29 @@ public class WahtsFragment1 extends MenuFragmentBase implements LoaderImpl{
 				.setDuration(200), ObjectAnimator.ofFloat(img, "scaleY", 0, 1)
 				.setDuration(200));
 		list.add(set);
-		ImageLoader.getInstance().displayImage("drawable://" + res, img,
-				ac.options_no_default, new SimpleImageLoadingListener() {
-					@Override
-					public void onLoadingComplete(String imageUri, View view,
-							Bitmap loadedImage) {
-						int i_w = loadedImage.getWidth();
-						int i_h = loadedImage.getHeight();
 
-						float w_scale = (float) i_w / (float) max_w;
-						int n_i_w = (int) ((float) w_scale * (float) screen_w);
+        Bitmap loadedImage = BitmapFactory.decodeResource(getResources(),res);
+        int i_w = loadedImage.getWidth();
+        int i_h = loadedImage.getHeight();
 
-						float n_w_scale = (float) n_i_w / (float) i_w;
-						int n_i_h = (int) ((float) i_h * n_w_scale);
+        float w_scale = (float) i_w / (float) max_w;
+        int n_i_w = (int) ((float) w_scale * (float) screen_w);
 
-						view.setLayoutParams(new FrameLayout.LayoutParams(
-								n_i_w, n_i_h));
-						ViewHelper.setScaleX(view, 0);
-						ViewHelper.setScaleY(view, 0);
-						ViewHelper.setPivotX(view, n_i_w * 0.5f);
-						ViewHelper.setPivotY(view, n_i_h * 0.5f);
-						num++;
-						if (num >= 5) {
-							AnimatorSet setAll = new AnimatorSet();
-							setAll.playSequentially(list);
-							setAll.start();
-						}
-					}
-				});
+        float n_w_scale = (float) n_i_w / (float) i_w;
+        int n_i_h = (int) ((float) i_h * n_w_scale);
+
+        view.setLayoutParams(new FrameLayout.LayoutParams(
+                n_i_w, n_i_h));
+        ViewHelper.setScaleX(view, 0);
+        ViewHelper.setScaleY(view, 0);
+        ViewHelper.setPivotX(view, n_i_w * 0.5f);
+        ViewHelper.setPivotY(view, n_i_h * 0.5f);
+        num++;
+        if (num >= 5) {
+            AnimatorSet setAll = new AnimatorSet();
+            setAll.playSequentially(list);
+            setAll.start();
+        }
 		content.addView(img);
 	}
 

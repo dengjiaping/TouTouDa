@@ -7,25 +7,23 @@ import android.content.res.Resources.NotFoundException;
 import android.net.Uri;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.widget.ImageView;
+import android.widget.ImageButton;
 
 import java.io.IOException;
 
 /**
- * An {@link android.widget.ImageView} which tries treating background and src as {@link GifDrawable}
+ * An {@link android.widget.ImageButton} which tries treating background and src as {@link GifDrawable}
  *
  * @author koral--
  */
-public class GifImageView extends ImageView {
-    static final String ANDROID_NS = "http://schemas.android.com/apk/res/android";
-
+public class GifImageButton extends ImageButton {
     /**
      * A corresponding superclass constructor wrapper.
      *
      * @param context
      * @see android.widget.ImageView#ImageView(android.content.Context)
      */
-    public GifImageView(Context context) {
+    public GifImageButton(Context context) {
         super(context);
     }
 
@@ -37,7 +35,7 @@ public class GifImageView extends ImageView {
      * @param attrs
      * @see android.widget.ImageView#ImageView(android.content.Context, android.util.AttributeSet)
      */
-    public GifImageView(Context context, AttributeSet attrs) {
+    public GifImageButton(Context context, AttributeSet attrs) {
         super(context, attrs);
         trySetGifDrawable(attrs, getResources());
     }
@@ -51,7 +49,7 @@ public class GifImageView extends ImageView {
      * @param defStyle
      * @see android.widget.ImageView#ImageView(android.content.Context, android.util.AttributeSet, int)
      */
-    public GifImageView(Context context, AttributeSet attrs, int defStyle) {
+    public GifImageButton(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         trySetGifDrawable(attrs, getResources());
     }
@@ -68,11 +66,11 @@ public class GifImageView extends ImageView {
 
     void trySetGifDrawable(AttributeSet attrs, Resources res) {
         if (attrs != null && res != null && !isInEditMode()) {
-            int resId = attrs.getAttributeResourceValue(ANDROID_NS, "src", -1);
+            int resId = attrs.getAttributeResourceValue(GifImageView.ANDROID_NS, "src", -1);
             if (resId > 0 && "drawable".equals(res.getResourceTypeName(resId)))
                 setResource(true, resId, res);
 
-            resId = attrs.getAttributeResourceValue(ANDROID_NS, "background", -1);
+            resId = attrs.getAttributeResourceValue(GifImageView.ANDROID_NS, "background", -1);
             if (resId > 0 && "drawable".equals(res.getResourceTypeName(resId)))
                 setResource(false, resId, res);
         }
@@ -104,7 +102,7 @@ public class GifImageView extends ImageView {
 
     /**
      * Sets the content of this GifImageView to the specified Uri.
-     * If uri destination is not a GIF then {@link android.widget.ImageView#setImageURI(android.net.Uri)}
+     * If uri destination is not a GIF then {@link android.widget.ImageButton#setImageURI(android.net.Uri)}
      * is called as fallback.
      * For supported URI schemes see: {@link android.content.ContentResolver#openAssetFileDescriptor(android.net.Uri, String)}.
      *

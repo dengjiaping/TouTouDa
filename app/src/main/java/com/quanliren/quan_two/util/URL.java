@@ -7,7 +7,7 @@ public class URL {
 //	public static final String IP="192.168.1.21";
 	
 	public static final String URL="http://192.168.1.8:8080";
-	public static final String IP="192.168.1.8";
+    public static final String IP="192.168.1.8";
 //	public static final String URL="http://www.bjqlr.com";
 //	public static final String IP="www.bjqlr.com";
 	public static final Integer PORT=30003;

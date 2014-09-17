@@ -23,6 +23,7 @@ import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.activity.base.BaseActivity;
 import com.quanliren.quan_two.activity.location.GDLocation;
 import com.quanliren.quan_two.activity.location.ILocationImpl;
+import com.quanliren.quan_two.activity.shop.ShopVipDetail_;
 import com.quanliren.quan_two.util.URL;
 import com.quanliren.quan_two.util.Util;
 
@@ -402,6 +403,30 @@ public class DatePublishActivity extends BaseActivity implements ILocationImpl {
 						setResult(1);
 						finish();
 						break;
+                        case 1:
+                            String info =response.getJSONObject(URL.RESPONSE).getString(URL.INFO);
+                            if(info.indexOf("会员")>-1){
+                                new AlertDialog.Builder(DatePublishActivity.this)
+                                        .setMessage(info)
+                                        .setTitle("提示")
+                                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface arg0, int arg1) {
+                                            }
+                                        })
+                                        .setPositiveButton("成为会员",
+                                                new DialogInterface.OnClickListener() {
+
+                                                    @Override
+                                                    public void onClick(DialogInterface dialog,
+                                                                        int which) {
+                                                        ShopVipDetail_.intent(DatePublishActivity.this).start();
+                                                    }
+                                                }).create().show();
+                            }else{
+                                showFailInfo(response);
+                            }
+                            break;
 					default:
 						showFailInfo(response);
 						break;

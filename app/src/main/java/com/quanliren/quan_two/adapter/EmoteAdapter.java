@@ -5,7 +5,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.nostra13.universalimageloader.core.ImageLoader;
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.adapter.base.BaseArrayListAdapter;
 import com.quanliren.quan_two.application.AppClass;
@@ -37,7 +36,8 @@ public class EmoteAdapter extends BaseArrayListAdapter {
 		}
 		String name = (String) getItem(position);
 		int id = AppClass.mEmoticonsId.get(name);
-		ImageLoader.getInstance().displayImage("drawable://"+id, holder.mIvImage,ac.options_no_default);
+        holder.mIvImage.setImageResource(id);
+//		ImageLoader.getInstance().displayImage("drawable://"+id, holder.mIvImage,ac.options_no_default);
 		EmoticonRes er=new EmoticonRes();
 		er.setNickname(name);
 		er.setRes(id);
