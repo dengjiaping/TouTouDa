@@ -3,11 +3,11 @@ package com.quanliren.quan_two.util;
 public class URL {
 //	public static final String URL="http://182.92.158.55";
 //	public static final String IP="182.92.158.55";
-//	public static final String URL="http://192.168.1.21:8888";
-//	public static final String IP="192.168.1.21";
+	public static final String URL="http://192.168.1.21:8888";
+	public static final String IP="192.168.1.21";
 	
-	public static final String URL="http://192.168.1.8:8080";
-    public static final String IP="192.168.1.8";
+//	public static final String URL="http://192.168.1.8:8080";
+//    public static final String IP="192.168.1.8";
 //	public static final String URL="http://www.bjqlr.com";
 //	public static final String IP="www.bjqlr.com";
 	public static final Integer PORT=30003;
@@ -21,12 +21,6 @@ public class URL {
 	public static final String COUNT="count";
 	public static final String LIST="list";
 	
-	/**城市列表**/
-	public static final String CITYS=URL+"/client/get_citys.php";
-	/**首页轮播**/
-	public static final String AD=URL+"/client/get_activity_imgs.php";
-	/**首页列表**/
-	public static final String HOME_USERLIST=URL+"/client/user/home_list.php";
 	/**注册第一步填写手机号**/
 	public static final String REG_FIRST=URL+"/client/send_user_mobile.php";
 	/**注册第二步填写验证码**/
@@ -61,8 +55,6 @@ public class URL {
 	public static final String DELETE_USERLOGO=URL+"/client/user/img/avatar/update_num.php";
 	/**发表动态**/
 	public static final String PUBLISH_TXT=URL+"/client/user/dynamic/pub_text.php";
-	/**发表群动态**/
-	public static final String PUBLISH_GROUP_TXT=URL+"/client/user/dynamic/crowd_pub_text.php";
 	/**评论我的**/
 	public static final String COMMENT_ME=URL+"/client/user/dynamic/comment_my_new.php";
 	/**发表动态图片**/
@@ -73,12 +65,8 @@ public class URL {
 	public static final String CANCLECONCERN=URL+"/client/user/atten/cancel_atten.php";
 	/**关注列表**/
 	public static final String CONCERNLIST=URL+"/client/user/atten/concern_list.php";
-	/**获取联系方式**/
-	public static final String GETCONTACT=URL+"/client/user/contact_he.php";
 	/**获取附近的人列表**/
 	public static final String NearUserList=URL+"/nearby_user_list.php";
-	/**穿越列表**/
-	public static final String THROUGHUSERLIST=URL+"/client/user/roam_list.php";
 	/**动态**/
 	public static final String DONGTAI=URL+"/dy_list.php";
 	/**好友动态**/
@@ -103,46 +91,6 @@ public class URL {
 	public static final String PERSONALDONGTAI=URL+"/user_dy_list.php";
 	/**我收藏的约会**/
 	public static final String DATE_MY_FAVORITE=URL+"/client/user/dating/my_collect_dtlist.php";
-	/**删除动态**/
-	public static final String DELETEDONGTAI=URL+"/client/user/dynamic/update_dy.php";
-	/**留言**/
-	public static final String LEAVEMESSAGE=URL+"/client/user/prv/send_general_msg.php";
-	/**创建群**/
-	public static final String CREATEGROUP=URL+"/client/user/crowd/create_info.php";
-	/**群头像**/
-	public static final String CREATEGROUP_IMG=URL+"/client/user/crowd/create_img.php";
-	/**获取群列表**/
-	public static final String GETGROUPLIST=URL+"/client/user/crowd/crowd_list.php";
-	/**获取群资料**/
-	public static final String GETGROUPDETAIL=URL+"/client/user/crowd/crowd_detail.php";
-	/**获取群成员**/
-	public static final String GETGROUPMEMBERLIST=URL+"/client/user/crowd/member_list.php";
-	/**设置或删除成员**/
-	public static final String AMENTMEMBER=URL+"/client/user/crowd/amend_member.php";
-	/**申请加入群**/
-	public static final String JOINGROUP=URL+"/client/user/crowd/apply_crowd.php";
-	/**邀请加入群**/
-	public static final String INVITEGROUP=URL+"/client/user/crowd/invite_crowd.php";
-	/**私信列表**/
-	public static final String MESSAGELIST=URL+"/client/user/prv/msg_list.php";
-	/**群消息列表**/
-	public static final String GROUPMESSAGELIST=URL+"/client/user/prv/crowd_msgs.php";
-	/**同意拒绝**/
-	public static final String AGREEORNOT=URL+"/client/user/prv/dispose_info.php";
-	/**删除消息**/
-	public static final String DELETEMESSAGE=URL+"/client/user/prv/del_msg.php";
-	/**删除群消息**/
-	public static final String DELETEGROUPMESSAGE=URL+"/client/user/prv/del_crowd_msg.php";
-	/**与某人私信列表**/
-	public static final String CHATLISTWITHSOMEONE=URL+"/client/user/prv/member_msgs.php";
-	/**群相册**/
-	public static final String GROUPPHOTOLIST=URL+"/client/user/crowd/photo_list.php";
-	/**上传群图片**/
-	public static final String UPLOADGROUPPHOTO=URL+"/client/user/crowd/upload_photo.php";
-	/**退出群**/
-	public static final String EXITGROUP=URL+"/client/user/crowd/logout_crowd.php";
-	/**删除群图片**/
-	public static final String DELETEGROUPPHOTO=URL+"/client/user/crowd/del_photo.php";
 	/**获取动态详情**/
 	public static final String GETDONGTAI_DETAIL=URL+"/dynamic_detail.php";
 	/**评论**/
@@ -169,18 +117,8 @@ public class URL {
 	public static final String DELETE_VISITLIST=URL+"/client/user/visit/del_visit.php";
 	/**发送语音图片**/
 	public static final String SENDFILE=URL+"/client/msg/send_file_msg.php";
-	/**获取广告图片**/
-	public static final String ADBANNER=URL+"/client/get_act_banner.php";
 	/**赠送体力**/
 	public static final String GIVETILI=URL+"/client/user/to_give_power.php";
-	/**我的物品**/
-	public static final String MY_PRO=URL+"/client/user/get_my_goods.php";
-	/**退还**/
-	public static final String EXCHANGE_MONEY=URL+"/client/user/exchange_apply.php";
-	/**抽奖号码**/
-	public static final String PRONUM=URL+"/client/user/get_lottery_codes.php";
-	/**删除单号**/
-	public static final String DELETENUM=URL+"/client/user/activity/del_code.php";
 	/**统计**/
 	public static final String TONGJI=URL+"/reg_channel.php";
 	/**上传背景**/

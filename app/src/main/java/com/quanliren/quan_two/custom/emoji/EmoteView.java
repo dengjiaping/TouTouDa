@@ -19,6 +19,7 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.j256.ormlite.dao.Dao;
 import com.quanliren.quan_two.activity.R;
@@ -92,7 +93,7 @@ public class EmoteView extends MenuFragmentBase implements EmoticonListener {
 
 	@AfterViews
 	void initView() {
-		createTab(R.drawable.publish_icon,true);
+		createTab(R.drawable.expression,true);
 		ArrayList<String> temp = null;
 		for (int i = 0; i < AppClass.mEmoticons.size(); i++) {
 			if (i % PAGENUM == 0) {
@@ -122,7 +123,7 @@ public class EmoteView extends MenuFragmentBase implements EmoticonListener {
 		gallerynavigator.setPaints(getResources().getColor(R.color.actionbar),
 				getResources().getColor(R.color.darkgray));
 	}
-	
+    DisplayImageOptions options_no_default = new DisplayImageOptions.Builder().build();
 	public void addMoreEmote(){
 		try {
 			
@@ -132,7 +133,7 @@ public class EmoteView extends MenuFragmentBase implements EmoticonListener {
 			for (EmoticonZip emoticonBean : emoticonList) {
 				ArrayList<ArrayList<EmoticonImageBean>> emotions_large = new ArrayList<ArrayList<EmoticonImageBean>>();
 				createTab(ImageLoader.getInstance().loadImageSync(
-						Util.FILE + emoticonBean.getIconfile()),true);
+						Util.FILE + emoticonBean.getIconfile(),options_no_default),true);
 				ArrayList<EmoticonImageBean> temp_e = null;
 				for (int i = 0; i < emoticonBean.getImglist().size(); i++) {
 					if (i % PAGENUM_LARGE == 0) {
