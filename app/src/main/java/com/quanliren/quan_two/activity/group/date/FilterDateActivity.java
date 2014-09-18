@@ -34,27 +34,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class FilterDateActivity extends BaseActivity {
 
 	@ViewById
-	View filter_all;
-	@ViewById
-	View filter_boy;
-	@ViewById
-	View filter_girl;
-	@ViewById
-	View filter_30min;
-	@ViewById
-	View filter_1day;
-	@ViewById
-	View filter_1hour;
-	@ViewById
-	View filter_3day;
-	@ViewById
-	View filter_state;
-	@ViewById
-	View filter_xing;
-	@ViewById
-	View filter_age;
-	@ViewById
-	View filter_ol;
+	View filter_all,filter_boy,filter_girl,filter_30min,filter_1day,filter_1hour,filter_3day,filter_state,filter_xing,filter_age,filter_ol;
 	@ViewById
 	TextView filter_state_txt;
 
