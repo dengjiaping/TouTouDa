@@ -1,3 +1,4 @@
+package com.a.mirko.android.datetimepicker.time;
 /*
  * Copyright (C) 2013 The Android Open Source Project
  *
@@ -14,8 +15,6 @@
  * limitations under the License.
  */
 
-package com.a.mirko.android.datetimepicker.time;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -24,6 +23,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.quanliren.quan_two.activity.R;
+
 
 /**
  * Draws a simple white circle on which the numbers will be drawn.

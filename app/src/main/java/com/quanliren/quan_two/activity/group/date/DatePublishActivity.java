@@ -3,7 +3,6 @@ package com.quanliren.quan_two.activity.group.date;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.os.Build;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -12,13 +11,12 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-import com.quanliren.quan_two.util.http.JsonHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
 import com.a.mirko.android.datetimepicker.date.DatePickerDialog;
 import com.a.mirko.android.datetimepicker.date.DatePickerDialog.OnDateSetListener;
 import com.a.mirko.android.datetimepicker.time.RadialPickerLayout;
 import com.a.mirko.android.datetimepicker.time.TimePickerDialog;
 import com.a.mirko.android.datetimepicker.time.TimePickerDialog.OnTimeSetListener;
+import com.loopj.android.http.RequestParams;
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.activity.base.BaseActivity;
 import com.quanliren.quan_two.activity.location.GDLocation;
@@ -26,6 +24,7 @@ import com.quanliren.quan_two.activity.location.ILocationImpl;
 import com.quanliren.quan_two.activity.shop.ShopVipDetail_;
 import com.quanliren.quan_two.util.URL;
 import com.quanliren.quan_two.util.Util;
+import com.quanliren.quan_two.util.http.JsonHttpResponseHandler;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -37,6 +36,7 @@ import org.json.JSONObject;
 
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 @EActivity(R.layout.date_publish)
@@ -197,34 +197,33 @@ public class DatePublishActivity extends BaseActivity implements ILocationImpl {
 		switch (v.getId()) {
 		case R.id.date_btn:
 			Calendar calendar = Calendar.getInstance(Locale.CHINA);
-			if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-				android.app.DatePickerDialog dialog_date = new android.app.DatePickerDialog(
-						this, dateListener1, calendar.get(Calendar.YEAR),
-						calendar.get(Calendar.MONTH),
-						calendar.get(Calendar.DAY_OF_MONTH));
-				dialog_date.show();
-			} else {
+//			if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+//				android.app.DatePickerDialog dialog_date = new android.app.DatePickerDialog(
+//						this, dateListener1, calendar.get(Calendar.YEAR),
+//						calendar.get(Calendar.MONTH),
+//						calendar.get(Calendar.DAY_OF_MONTH));
+//				dialog_date.show();
+//			} else {
 				DatePickerDialog datePickerDialog = DatePickerDialog
 						.newInstance(dateListener, calendar.get(Calendar.YEAR),
 								calendar.get(Calendar.MONTH),
 								calendar.get(Calendar.DAY_OF_MONTH));
-				datePickerDialog.setYearRange(calendar.get(Calendar.YEAR),
-						calendar.get(Calendar.YEAR) + 100);
+				datePickerDialog.setYearRange(calendar.get(Calendar.YEAR),datePickerDialog.getMaxYear());
 				datePickerDialog.show(getSupportFragmentManager(), "");
-			}
+//			}
 			break;
 		case R.id.time_btn:
 			Calendar mCalendar = Calendar.getInstance(Locale.CHINA);
-			if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-				android.app.TimePickerDialog dialog_time=new android.app.TimePickerDialog(this, timeListener, mCalendar.get(Calendar.HOUR_OF_DAY), mCalendar
-						.get(Calendar.MINUTE), true);
-				dialog_time.show();
-			} else {
+//			if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+//				android.app.TimePickerDialog dialog_time=new android.app.TimePickerDialog(this, timeListener, mCalendar.get(Calendar.HOUR_OF_DAY), mCalendar
+//						.get(Calendar.MINUTE), true);
+//				dialog_time.show();
+//			} else {
 				TimePickerDialog timePickerDialog24h = TimePickerDialog
 						.newInstance(timeListener1, mCalendar.get(Calendar.HOUR_OF_DAY), mCalendar
 								.get(Calendar.MINUTE), true);
 				timePickerDialog24h.show(getSupportFragmentManager(), "");
-			}
+//			}
 			break;
 		default:
 			String[] str = null;
@@ -322,6 +321,18 @@ public class DatePublishActivity extends BaseActivity implements ILocationImpl {
 			Calendar dateAndTime = Calendar.getInstance(Locale.CHINA);
 			dateAndTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
 			dateAndTime.set(Calendar.MINUTE, minute);
+            if(!date_btn.getText().equals("")){
+                try {
+                    Date date=  Util.fmtDate.parse(date_btn.getText().toString());
+                    Calendar cdate=Calendar.getInstance();
+                    cdate.setTime(date);
+                    dateAndTime.set(Calendar.YEAR,cdate.get(Calendar.YEAR));
+                    dateAndTime.set(Calendar.MONTH,cdate.get(Calendar.MONTH));
+                    dateAndTime.set(Calendar.DAY_OF_MONTH,cdate.get(Calendar.DAY_OF_MONTH));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
 			if (calendar.getTime().after(dateAndTime.getTime())) {
 				showCustomToast("请选择今天或今天以后的日期");
 				return;

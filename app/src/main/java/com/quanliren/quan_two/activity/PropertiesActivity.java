@@ -97,7 +97,7 @@ public class PropertiesActivity extends BaseActivity {
 		getSupportFragmentManager()
 				.beginTransaction()
 				.add(R.id.content, unaddList.get(0),
-						unaddList.get(0).getClass().getName())
+						((Object) unaddList.get(0)).getClass().getName())
 				.commit();
 
 		addedList.add(unaddList.get(0));
@@ -187,9 +187,11 @@ public class PropertiesActivity extends BaseActivity {
 			// }
 		}
 		boolean showComplete = false;
+		Fragment showFragment = null;// 将要显示的
 		for (Fragment fg : addedList) {
-			if (fg.getClass().getName().equals(clazz.getName())) {
+			if (((Object) fg).getClass().getName().equals(clazz.getName())) {
 				ft.show(fg);
+				showFragment = fg;
 				try {
 					getSupportActionBar().setTitle(((ITitle) fg).getTitle());
 				} catch (Exception e) {
@@ -200,8 +202,9 @@ public class PropertiesActivity extends BaseActivity {
 		}
 		if (!showComplete) {
 			for (Fragment fg : unaddList) {
-				if (fg.getClass().getName().equals(clazz.getName())) {
-					ft.add(R.id.content, fg,  fg.getClass().getName());
+				if (((Object) fg).getClass().getName().equals(clazz.getName())) {
+					ft.add(R.id.content, fg, ((Object) fg).getClass().getName());
+					showFragment = fg;
 					addedList.add(fg);
 					try {
 						getSupportActionBar()
@@ -239,7 +242,7 @@ public class PropertiesActivity extends BaseActivity {
 				return;
 			}
 		}
-		switchContent(unaddList.get(list.indexOf(view)).getClass());
+		switchContent(((Object) unaddList.get(list.indexOf(view))).getClass());
 		for (View v : list) {
 			if (!v.equals(view))
 				v.setSelected(false);

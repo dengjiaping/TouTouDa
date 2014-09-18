@@ -1,3 +1,4 @@
+package com.a.mirko.android.datetimepicker.time;
 /*
  * Copyright (C) 2013 The Android Open Source Project
  *
@@ -13,8 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-package com.a.mirko.android.datetimepicker.time;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -112,16 +111,16 @@ public class AmPmCirclesView extends View {
             return -1;
         }
 
-        int squaredYDistance = (int) ((yCoord - mAmPmYCenter)*(yCoord - mAmPmYCenter));
+        int squaredYDistance = (int) ((yCoord - mAmPmYCenter) * (yCoord - mAmPmYCenter));
 
         int distanceToAmCenter =
-                (int) Math.sqrt((xCoord - mAmXCenter)*(xCoord - mAmXCenter) + squaredYDistance);
+                (int) Math.sqrt((xCoord - mAmXCenter) * (xCoord - mAmXCenter) + squaredYDistance);
         if (distanceToAmCenter <= mAmPmCircleRadius) {
             return AM;
         }
 
         int distanceToPmCenter =
-                (int) Math.sqrt((xCoord - mPmXCenter)*(xCoord - mPmXCenter) + squaredYDistance);
+                (int) Math.sqrt((xCoord - mPmXCenter) * (xCoord - mPmXCenter) + squaredYDistance);
         if (distanceToPmCenter <= mAmPmCircleRadius) {
             return PM;
         }

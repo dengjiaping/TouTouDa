@@ -16,7 +16,7 @@
         <item name="actionBarStyle">@style/Widget.AppCompat.Light.ActionBar.My.NoHomeAsUp</item>
         <item name="homeAsUpIndicator">@drawable/home_as_up_indicatosr</item>
     </style>
-    
+
     <style name="TransparentAppBaseTheme" parent="AppBaseThemeTranslucent">
         <!-- API 14 theme customizations can go here. -->
         <item name="windowActionBarOverlay">true</item>
@@ -51,7 +51,10 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:backgroundDimEnabled">true</item>
-    </style>
+    </style>
+
+
+
     -->
     <style name="ScaleAnimationActivity" parent="@android:Theme">
         <item name="android:activityOpenEnterAnimation">@anim/scale_in</item>

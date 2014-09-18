@@ -1,3 +1,4 @@
+package com.a.mirko.android.datetimepicker.time;
 /*
  * Copyright (C) 2013 The Android Open Source Project
  *
@@ -14,8 +15,6 @@
  * limitations under the License.
  */
 
-package com.a.mirko.android.datetimepicker.time;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -29,7 +28,6 @@ import com.a.nineoldandroids.animation.Keyframe;
 import com.a.nineoldandroids.animation.ObjectAnimator;
 import com.a.nineoldandroids.animation.PropertyValuesHolder;
 import com.a.nineoldandroids.animation.ValueAnimator;
-import com.a.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
 import com.quanliren.quan_two.activity.R;
 
 /**
@@ -80,7 +78,7 @@ public class RadialTextsView extends View {
     }
 
     public void initialize(Resources res, String[] texts, String[] innerTexts,
-            boolean is24HourMode, boolean disappearsOut) {
+                           boolean is24HourMode, boolean disappearsOut) {
         if (mIsInitialized) {
             Log.e(TAG, "This RadialTextsView may only be initialized once.");
             return;
@@ -135,8 +133,8 @@ public class RadialTextsView extends View {
         }
 
         mAnimationRadiusMultiplier = 1;
-        mTransitionMidRadiusMultiplier = 1f + (0.05f * (disappearsOut? -1 : 1));
-        mTransitionEndRadiusMultiplier = 1f + (0.3f * (disappearsOut? 1 : -1));
+        mTransitionMidRadiusMultiplier = 1f + (0.05f * (disappearsOut ? -1 : 1));
+        mTransitionEndRadiusMultiplier = 1f + (0.3f * (disappearsOut ? 1 : -1));
         mInvalidateUpdateListener = new InvalidateUpdateListener();
 
         mTextGridValuesDirty = true;
@@ -222,7 +220,7 @@ public class RadialTextsView extends View {
      * textGridWidths parameters.
      */
     private void calculateGridSizes(float numbersRadius, float xCenter, float yCenter,
-            float textSize, float[] textGridHeights, float[] textGridWidths) {
+                                    float textSize, float[] textGridHeights, float[] textGridWidths) {
         /*
          * The numbers need to be drawn in a 7x7 grid, representing the points on the Unit Circle.
          */
@@ -255,7 +253,7 @@ public class RadialTextsView extends View {
      * Draw the 12 text values at the positions specified by the textGrid parameters.
      */
     private void drawTexts(Canvas canvas, float textSize, Typeface typeface, String[] texts,
-            float[] textGridWidths, float[] textGridHeights) {
+                           float[] textGridWidths, float[] textGridHeights) {
         mPaint.setTextSize(textSize);
         mPaint.setTypeface(typeface);
         canvas.drawText(texts[0], textGridWidths[3], textGridHeights[0], mPaint);
@@ -339,7 +337,7 @@ public class RadialTextsView extends View {
         return mReappearAnimator;
     }
 
-    private class InvalidateUpdateListener implements AnimatorUpdateListener {
+    private class InvalidateUpdateListener implements ValueAnimator.AnimatorUpdateListener {
         @Override
         public void onAnimationUpdate(ValueAnimator animation) {
             RadialTextsView.this.invalidate();

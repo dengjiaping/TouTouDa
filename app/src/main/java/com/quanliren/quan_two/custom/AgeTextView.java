@@ -2,7 +2,6 @@ package com.quanliren.quan_two.custom;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
-import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.DatePicker;
@@ -53,13 +52,13 @@ public class AgeTextView extends TextView{
 					e.printStackTrace();
 				}
 			}
-			if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-				DatePickerDialog dialog_date = new DatePickerDialog(
-						context, d, calendar.get(Calendar.YEAR),
-						calendar.get(Calendar.MONTH),
-						calendar.get(Calendar.DAY_OF_MONTH));
-				dialog_date.show();
-			} else {
+//			if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+//				DatePickerDialog dialog_date = new DatePickerDialog(
+//						context, d, calendar.get(Calendar.YEAR),
+//						calendar.get(Calendar.MONTH),
+//						calendar.get(Calendar.DAY_OF_MONTH));
+//				dialog_date.show();
+//			} else {
 				com.a.mirko.android.datetimepicker.date.DatePickerDialog datePickerDialog = com.a.mirko.android.datetimepicker.date.DatePickerDialog
 						.newInstance(dateListener, calendar.get(Calendar.YEAR),
 								calendar.get(Calendar.MONTH),
@@ -68,7 +67,7 @@ public class AgeTextView extends TextView{
 						Calendar.getInstance(Locale.CHINA).get(Calendar.YEAR));
 				datePickerDialog.show(((BaseActivity)context).getSupportFragmentManager(), "");
 			}
-		}
+//		}
 	};
 	
 	Calendar dateAndTime = Calendar.getInstance(Locale.CHINA);

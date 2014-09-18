@@ -1,3 +1,5 @@
+package com.a.mirko.android.datetimepicker.time;
+
 /*
  * Copyright (C) 2013 The Android Open Source Project
  *
@@ -14,16 +16,16 @@
  * limitations under the License.
  */
 
-package com.a.mirko.android.datetimepicker.time;
-
 import android.annotation.SuppressLint;
 import android.app.Service;
 import android.content.Context;
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.os.Vibrator;
+import android.support.v4.view.accessibility.AccessibilityManagerCompat;
 import android.text.format.DateUtils;
 import android.text.format.Time;
 import android.util.AttributeSet;
@@ -59,6 +61,7 @@ public class RadialPickerLayout extends FrameLayout implements OnTouchListener {
     private static final int PM = TimePickerDialog.PM;
 
     private Vibrator mVibrator;
+    private boolean mVibrate = true;
     private long mLastVibrate;
     private int mLastValueSelected;
 
@@ -161,25 +164,28 @@ public class RadialPickerLayout extends FrameLayout implements OnTouchListener {
 
     /**
      * Initialize the Layout with starting values.
+     *
      * @param context
      * @param initialHoursOfDay
      * @param initialMinutes
      * @param is24HourMode
      */
     public void initialize(Context context, int initialHoursOfDay, int initialMinutes,
-            boolean is24HourMode) {
+                           boolean is24HourMode, boolean vibrate) {
         if (mTimeInitialized) {
             Log.e(TAG, "Time has already been initialized.");
             return;
         }
         mIs24HourMode = is24HourMode;
-        mHideAmPm = mAccessibilityManager.isTouchExplorationEnabled()? true : mIs24HourMode;
+        mHideAmPm = AccessibilityManagerCompat.isTouchExplorationEnabled(mAccessibilityManager) ? true : mIs24HourMode;
+
+        mVibrate = vibrate;
 
         // Initialize the circle and AM/PM circles if applicable.
         mCircleView.initialize(context, mHideAmPm);
         mCircleView.invalidate();
         if (!mHideAmPm) {
-            mAmPmCirclesView.initialize(context, initialHoursOfDay < 12? AM : PM);
+            mAmPmCirclesView.initialize(context, initialHoursOfDay < 12 ? AM : PM);
             mAmPmCirclesView.invalidate();
         }
 
@@ -192,13 +198,13 @@ public class RadialPickerLayout extends FrameLayout implements OnTouchListener {
         String[] innerHoursTexts = new String[12];
         String[] minutesTexts = new String[12];
         for (int i = 0; i < 12; i++) {
-            hoursTexts[i] = is24HourMode?
+            hoursTexts[i] = is24HourMode ?
                     String.format("%02d", hours_24[i]) : String.format("%d", hours[i]);
             innerHoursTexts[i] = String.format("%d", hours[i]);
             minutesTexts[i] = String.format("%02d", minutes[i]);
         }
         mHourRadialTextsView.initialize(res,
-                hoursTexts, (is24HourMode? innerHoursTexts : null), mHideAmPm, true);
+                hoursTexts, (is24HourMode ? innerHoursTexts : null), mHideAmPm, true);
         mHourRadialTextsView.invalidate();
         mMinuteRadialTextsView.initialize(res, minutesTexts, null, mHideAmPm, false);
         mMinuteRadialTextsView.invalidate();
@@ -221,6 +227,10 @@ public class RadialPickerLayout extends FrameLayout implements OnTouchListener {
         setItem(MINUTE_INDEX, minutes);
     }
 
+    public void setVibrate(boolean vibrate) {
+        mVibrate = vibrate;
+    }
+
     /**
      * Set either the hour or the minute. Will set the internal value, and set the selection.
      */
@@ -240,6 +250,7 @@ public class RadialPickerLayout extends FrameLayout implements OnTouchListener {
 
     /**
      * Check if a given hour appears in the outer circle or the inner circle
+     *
      * @return true if the hour is in the inner circle, false if it's in the outer circle.
      */
     private boolean isHourInnerCircle(int hourOfDay) {
@@ -285,7 +296,7 @@ public class RadialPickerLayout extends FrameLayout implements OnTouchListener {
     private void setValueForItem(int index, int value) {
         if (index == HOUR_INDEX) {
             mCurrentHoursOfDay = value;
-        } else if (index == MINUTE_INDEX){
+        } else if (index == MINUTE_INDEX) {
             mCurrentMinutes = value;
         } else if (index == AMPM_INDEX) {
             if (value == AM) {
@@ -298,6 +309,7 @@ public class RadialPickerLayout extends FrameLayout implements OnTouchListener {
 
     /**
      * Set the internal value as either AM or PM, and update the AM/PM circle displays.
+     *
      * @param amOrPm
      */
     public void setAmOrPm(int amOrPm) {
@@ -379,10 +391,11 @@ public class RadialPickerLayout extends FrameLayout implements OnTouchListener {
     /**
      * Returns mapping of any input degrees (0 to 360) to one of 12 visible output degrees (all
      * multiples of 30), where the input will be "snapped" to the closest visible degrees.
-     * @param degrees The input degrees
-     * @param forceAboveOrBelow The output may be forced to either the higher or lower step, or may
-     * be allowed to snap to whichever is closer. Use 1 to force strictly higher, -1 to force
-     * strictly lower, and 0 to snap to the closer one.
+     *
+     * @param degrees            The input degrees
+     * @param forceHigherOrLower The output may be forced to either the higher or lower step, or may
+     *                           be allowed to snap to whichever is closer. Use 1 to force strictly higher, -1 to force
+     *                           strictly lower, and 0 to snap to the closer one.
      * @return output degrees, will be a multiple of 30
      */
     private int snapOnly30s(int degrees, int forceHigherOrLower) {
@@ -410,17 +423,18 @@ public class RadialPickerLayout extends FrameLayout implements OnTouchListener {
      * For the currently showing view (either hours or minutes), re-calculate the position for the
      * selector, and redraw it at that position. The input degrees will be snapped to a selectable
      * value.
-     * @param degrees Degrees which should be selected.
-     * @param isInnerCircle Whether the selection should be in the inner circle; will be ignored
-     * if there is no inner circle.
+     *
+     * @param degrees             Degrees which should be selected.
+     * @param isInnerCircle       Whether the selection should be in the inner circle; will be ignored
+     *                            if there is no inner circle.
      * @param forceToVisibleValue Even if the currently-showing circle allows for fine-grained
-     * selection (i.e. minutes), force the selection to one of the visibly-showing values.
-     * @param forceDrawDot The dot in the circle will generally only be shown when the selection
-     * is on non-visible values, but use this to force the dot to be shown.
+     *                            selection (i.e. minutes), force the selection to one of the visibly-showing values.
+     * @param forceDrawDot        The dot in the circle will generally only be shown when the selection
+     *                            is on non-visible values, but use this to force the dot to be shown.
      * @return The value that was selected, i.e. 0-23 for hours, 0-59 for minutes.
      */
     private int reselectSelector(int degrees, boolean isInnerCircle,
-            boolean forceToVisibleValue, boolean forceDrawDot) {
+                                 boolean forceToVisibleValue, boolean forceDrawDot) {
         if (degrees == -1) {
             return -1;
         }
@@ -470,17 +484,18 @@ public class RadialPickerLayout extends FrameLayout implements OnTouchListener {
     /**
      * Calculate the degrees within the circle that corresponds to the specified coordinates, if
      * the coordinates are within the range that will trigger a selection.
-     * @param pointX The x coordinate.
-     * @param pointY The y coordinate.
-     * @param forceLegal Force the selection to be legal, regardless of how far the coordinates are
-     * from the actual numbers.
+     *
+     * @param pointX        The x coordinate.
+     * @param pointY        The y coordinate.
+     * @param forceLegal    Force the selection to be legal, regardless of how far the coordinates are
+     *                      from the actual numbers.
      * @param isInnerCircle If the selection may be in the inner circle, pass in a size-1 boolean
-     * array here, inside which the value will be true if the selection is in the inner circle,
-     * and false if in the outer circle.
+     *                      array here, inside which the value will be true if the selection is in the inner circle,
+     *                      and false if in the outer circle.
      * @return Degrees from 0 to 360, if the selection was within the legal range. -1 if not.
      */
     private int getDegreesFromCoords(float pointX, float pointY, boolean forceLegal,
-            final Boolean[] isInnerCircle) {
+                                     final Boolean[] isInnerCircle) {
         int currentItem = getCurrentItemShowing();
         if (currentItem == HOUR_INDEX) {
             return mHourRadialSelectorView.getDegreesFromCoords(
@@ -498,7 +513,7 @@ public class RadialPickerLayout extends FrameLayout implements OnTouchListener {
      */
     public int getCurrentItemShowing() {
         if (mCurrentItemShowing != HOUR_INDEX && mCurrentItemShowing != MINUTE_INDEX) {
-            Log.e(TAG, "Current item showing was unfortunately set to "+mCurrentItemShowing);
+            Log.e(TAG, "Current item showing was unfortunately set to " + mCurrentItemShowing);
             return -1;
         }
         return mCurrentItemShowing;
@@ -506,13 +521,17 @@ public class RadialPickerLayout extends FrameLayout implements OnTouchListener {
 
     /**
      * Set either minutes or hours as showing.
+     *
      * @param animate True to animate the transition, false to show with no animation.
      */
     public void setCurrentItemShowing(int index, boolean animate) {
         if (index != HOUR_INDEX && index != MINUTE_INDEX) {
-            Log.e(TAG, "TimePicker does not support view at index "+index);
+            Log.e(TAG, "TimePicker does not support view at index " + index);
             return;
         }
+        
+        //NineOldDroids does not work in this case due to denepency recursion. 
+        animate = animate && Build.VERSION.SDK_INT >= 14; 
 
         int lastIndex = getCurrentItemShowing();
         mCurrentItemShowing = index;
@@ -524,7 +543,7 @@ public class RadialPickerLayout extends FrameLayout implements OnTouchListener {
                 anims[1] = mHourRadialSelectorView.getDisappearAnimator();
                 anims[2] = mMinuteRadialTextsView.getReappearAnimator();
                 anims[3] = mMinuteRadialSelectorView.getReappearAnimator();
-            } else if (index == HOUR_INDEX){
+            } else if (index == HOUR_INDEX) {
                 anims[0] = mHourRadialTextsView.getReappearAnimator();
                 anims[1] = mHourRadialSelectorView.getReappearAnimator();
                 anims[2] = mMinuteRadialTextsView.getDisappearAnimator();
@@ -538,12 +557,21 @@ public class RadialPickerLayout extends FrameLayout implements OnTouchListener {
             mTransition.playTogether(anims);
             mTransition.start();
         } else {
-            int hourAlpha = (index == HOUR_INDEX) ? 255 : 0;
-            int minuteAlpha = (index == MINUTE_INDEX) ? 255 : 0;
-            mHourRadialTextsView.setAlpha(hourAlpha);
-            mHourRadialSelectorView.setAlpha(hourAlpha);
-            mMinuteRadialTextsView.setAlpha(minuteAlpha);
-            mMinuteRadialSelectorView.setAlpha(minuteAlpha);
+            if (Build.VERSION.SDK_INT >= 11) {
+                int hourAlpha = (index == HOUR_INDEX) ? 255 : 0;
+                int minuteAlpha = (index == MINUTE_INDEX) ? 255 : 0;
+                mHourRadialTextsView.setAlpha(hourAlpha);
+                mHourRadialSelectorView.setAlpha(hourAlpha);
+                mMinuteRadialTextsView.setAlpha(minuteAlpha);
+                mMinuteRadialSelectorView.setAlpha(minuteAlpha);
+            } else {
+                int hourVisibility = (index == HOUR_INDEX) ? View.VISIBLE : View.INVISIBLE;
+                int minuteVisibility = (index == MINUTE_INDEX) ? View.VISIBLE : View.INVISIBLE;
+                mHourRadialTextsView.setVisibility(hourVisibility);
+                mHourRadialSelectorView.setVisibility(hourVisibility);
+                mMinuteRadialTextsView.setVisibility(minuteVisibility);
+                mMinuteRadialSelectorView.setVisibility(minuteVisibility);
+            }
         }
 
     }
@@ -559,7 +587,7 @@ public class RadialPickerLayout extends FrameLayout implements OnTouchListener {
 
         long millis = SystemClock.uptimeMillis();
 
-        switch(event.getAction()) {
+        switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 if (!mInputEnabled) {
                     return true;
@@ -592,7 +620,7 @@ public class RadialPickerLayout extends FrameLayout implements OnTouchListener {
                 } else {
                     // If we're in accessibility mode, force the touch to be legal. Otherwise,
                     // it will only register within the given touch target zone.
-                    boolean forceLegal = mAccessibilityManager.isTouchExplorationEnabled();
+                    boolean forceLegal = AccessibilityManagerCompat.isTouchExplorationEnabled(mAccessibilityManager);
                     // Calculate the degrees that is currently being touched.
                     mDownDegrees = getDegreesFromCoords(eventX, eventY, forceLegal, isInnerCircle);
                     if (mDownDegrees != -1) {
@@ -717,7 +745,7 @@ public class RadialPickerLayout extends FrameLayout implements OnTouchListener {
      * happen if we have vibrated very recently.
      */
     public void tryVibrate() {
-        if (mVibrator != null) {
+        if (mVibrate && mVibrator != null) {
             long now = SystemClock.uptimeMillis();
             // We want to try to vibrate each individual tick discretely.
             if (now - mLastVibrate >= 125) {
@@ -737,7 +765,7 @@ public class RadialPickerLayout extends FrameLayout implements OnTouchListener {
             return false;
         }
         mInputEnabled = inputEnabled;
-        mGrayBox.setVisibility(inputEnabled? View.INVISIBLE : View.VISIBLE);
+        mGrayBox.setVisibility(inputEnabled ? View.INVISIBLE : View.VISIBLE);
         return true;
     }
 
@@ -745,11 +773,12 @@ public class RadialPickerLayout extends FrameLayout implements OnTouchListener {
      * Necessary for accessibility, to ensure we support "scrolling" forward and backward
      * in the circle.
      */
-    @Override
     public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo info) {
-      super.onInitializeAccessibilityNodeInfo(info);
-      info.addAction(AccessibilityNodeInfo.ACTION_SCROLL_FORWARD);
-      info.addAction(AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD);
+        if (Build.VERSION.SDK_INT >= 14) {
+            super.onInitializeAccessibilityNodeInfo(info);
+            info.addAction(AccessibilityNodeInfo.ACTION_SCROLL_FORWARD);
+            info.addAction(AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD);
+        }
     }
 
     /**
