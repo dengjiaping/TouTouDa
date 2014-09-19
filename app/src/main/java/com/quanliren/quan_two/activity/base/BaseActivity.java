@@ -13,10 +13,10 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.loopj.android.http.RequestParams;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.table.TableUtils;
+import com.loopj.android.http.RequestParams;
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.activity.shop.ShopVipDetail_;
 import com.quanliren.quan_two.activity.user.LoginActivity_;

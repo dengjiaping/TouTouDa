@@ -56,7 +56,6 @@
                 android:layout_alignLeft="@id/nickname"
                 android:layout_below="@id/nickname"
                 android:layout_marginTop="4dp"
-                android:layout_toRightOf="@id/power_num"
                 android:text="靓点："
                 android:textColor="@color/signature"
                 android:textSize="12sp" />

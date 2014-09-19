@@ -21,7 +21,10 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.quanliren.quan_two.util.http.JsonHttpResponseHandler;
+import com.google.gson.Gson;
+import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.stmt.QueryBuilder;
+import com.j256.ormlite.table.TableUtils;
 import com.loopj.android.http.RequestParams;
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorListenerAdapter;
@@ -30,10 +33,6 @@ import com.nineoldandroids.animation.ObjectAnimator;
 import com.nineoldandroids.animation.ValueAnimator;
 import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.google.gson.Gson;
-import com.j256.ormlite.dao.Dao;
-import com.j256.ormlite.stmt.QueryBuilder;
-import com.j256.ormlite.table.TableUtils;
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.activity.base.BaseActivity;
 import com.quanliren.quan_two.activity.location.GDLocation;
@@ -45,13 +44,13 @@ import com.quanliren.quan_two.bean.MoreLoginUser;
 import com.quanliren.quan_two.bean.User;
 import com.quanliren.quan_two.bean.UserTable;
 import com.quanliren.quan_two.custom.CustomRelativeLayout;
-import com.quanliren.quan_two.custom.CustomRelativeLayout.OnSizeChangedListener;
 import com.quanliren.quan_two.custom.RoundImageProgressBar;
 import com.quanliren.quan_two.db.DBHelper;
 import com.quanliren.quan_two.pull.lib.listeners.OnRefreshListener;
 import com.quanliren.quan_two.util.StaticFactory;
 import com.quanliren.quan_two.util.URL;
 import com.quanliren.quan_two.util.Util;
+import com.quanliren.quan_two.util.http.JsonHttpResponseHandler;
 
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
@@ -108,8 +107,6 @@ public class LoginActivity extends BaseActivity implements OnRefreshListener {
 	private List<MoreLoginUser> names = new ArrayList<MoreLoginUser>();
 	String str_username, str_password;
 	GDLocation location;
-	private int _oldh = -1;
-	private boolean isOpenEdit = false;
 
 	@OrmLiteDao(helper = DBHelper.class, model = MoreLoginUser.class)
 	public Dao<MoreLoginUser, Integer> moreLoginUserDao;
@@ -119,19 +116,26 @@ public class LoginActivity extends BaseActivity implements OnRefreshListener {
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login);
+
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//            //透明导航栏
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//        }
+
 		getSupportActionBar().setTitle(R.string.login);
 		// forgetpassword.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG); // 下划线
 		setListener();
 		location = new GDLocation(getApplicationContext(), null, true);
 
-		crl.setOnSizeChangedListener(new OnSizeChangedListener() {
+		crl.setOnSizeChangedListener(new CustomRelativeLayout.OnSizeChangedListener() {
 
 			@Override
 			public void close() {
 				new Handler().post(new Runnable() {
 					public void run() {
+                        getSupportActionBar().show();
 						scrollview.scrollTo(0, 0);
-						getSupportActionBar().show();
 					}
 				});
 
@@ -165,6 +169,7 @@ public class LoginActivity extends BaseActivity implements OnRefreshListener {
 	@Click
 	public void delete_username_btn(View v) {
 		username.setText("");
+        password.setText("");
 	}
 
 	@Click

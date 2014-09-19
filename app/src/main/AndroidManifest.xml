@@ -127,6 +127,7 @@
         <activity
             android:name=".user.LoginActivity_"
             android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"
             android:theme="@style/TransparentAppBaseTheme"
             android:windowSoftInputMode="stateVisible|adjustResize" >
 

@@ -2,6 +2,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:background="@color/activity_bg"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="true"
     android:layout_height="fill_parent" >
 
     <com.a.me.maxwin.view.XXListView

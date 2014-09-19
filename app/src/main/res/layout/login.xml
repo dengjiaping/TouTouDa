@@ -4,6 +4,8 @@
     android:id="@+id/crl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="true"
     android:background="@drawable/login_bg"
     android:orientation="vertical" >
 
