@@ -21,10 +21,10 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.Log;
 import android.view.View;
-import com.a.nineoldandroids.animation.Keyframe;
-import com.a.nineoldandroids.animation.ObjectAnimator;
-import com.a.nineoldandroids.animation.PropertyValuesHolder;
-import com.a.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.Keyframe;
+import com.nineoldandroids.animation.ObjectAnimator;
+import com.nineoldandroids.animation.PropertyValuesHolder;
+import com.nineoldandroids.animation.ValueAnimator;
 import com.quanliren.quan_two.activity.R;
 
 /**

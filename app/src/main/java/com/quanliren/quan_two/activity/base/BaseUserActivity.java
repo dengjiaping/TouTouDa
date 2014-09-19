@@ -1,6 +1,5 @@
 package com.quanliren.quan_two.activity.base;
 
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -11,11 +10,10 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.a.nineoldandroids.view.ViewHelper;
-import com.a.nineoldandroids.view.ViewPropertyAnimator;
+import com.nineoldandroids.view.ViewHelper;
+import com.nineoldandroids.view.ViewPropertyAnimator;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.activity.user.PersonalDongTaiActivity_;
 import com.quanliren.quan_two.activity.user.UserPicFragment_;

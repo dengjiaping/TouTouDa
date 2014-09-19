@@ -64,7 +64,6 @@ import com.quanliren.quan_two.bean.emoticon.EmoticonActivityListBean.EmoticonZip
 import com.quanliren.quan_two.bean.emoticon.EmoticonActivityListBean.EmoticonZip.EmoticonJsonBean;
 import com.quanliren.quan_two.custom.CustomRelativeLayout;
 import com.quanliren.quan_two.custom.CustomRelativeLayout.OnSizeChangedListener;
-import com.quanliren.quan_two.custom.PopFactory;
 import com.quanliren.quan_two.custom.emoji.EmoteGridView.EmoticonListener;
 import com.quanliren.quan_two.custom.emoji.EmoteView;
 import com.quanliren.quan_two.custom.emoji.EmoticonsEditText;
@@ -134,7 +133,6 @@ public class ChatActivity extends BaseActivity implements IXListViewListener,
 	User user;
 	String maxid = "0";
 	RequestParams ap;
-	PopFactory menupop1;
 	String filename;
 	@SystemService
 	NotificationManager nm;
@@ -697,21 +695,6 @@ public class ChatActivity extends BaseActivity implements IXListViewListener,
 		};
 	};
 
-	OnClickListener menuClick1 = new OnClickListener() {
-		public void onClick(View arg0) {
-			switch (arg0.getId()) {
-			case R.id.exit:
-				break;
-			default:
-				RequestParams ap = getAjaxParams();
-				ap.put("otherid", friend.getId());
-				ap.put("type", arg0.getId() + "");
-				ac.finalHttp.post(URL.JUBAOANDBLACK, ap, addBlackCallBack);
-				break;
-			}
-			menupop1.closeMenu();
-		};
-	};
 
 	@Override
 	public void onFocusChange(View v, boolean hasFocus) {

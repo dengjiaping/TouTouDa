@@ -9,7 +9,7 @@ import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.a.nineoldandroids.view.ViewHelper;
+import com.nineoldandroids.view.ViewHelper;
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.util.ImageUtil;
 

@@ -29,8 +29,8 @@ dependencies {
     compile 'com.google.code.gson:gson:2.2.4'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.3'
     compile 'com.loopj.android:android-async-http:1.4.6'
+    compile 'com.nineoldandroids:library:2.4.0'
 }
-
 apt {
     arguments {
         androidManifestFile variant.processResources.manifestFile

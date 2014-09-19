@@ -35,6 +35,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.a.mirko.android.datetimepicker.Utils;
+import com.nineoldandroids.animation.ObjectAnimator;
 import com.quanliren.quan_two.activity.R;
 
 import java.text.DateFormatSymbols;
@@ -445,7 +446,7 @@ public class TimePickerDialog extends DialogFragment implements RadialPickerLayo
         mHourView.setTextColor(hourColor);
         mMinuteView.setTextColor(minuteColor);
 
-        com.a.nineoldandroids.animation.ObjectAnimator pulseAnimator = Utils.getPulseAnimator(labelToAnimate, 0.85f, 1.1f);
+        ObjectAnimator pulseAnimator = Utils.getPulseAnimator(labelToAnimate, 0.85f, 1.1f);
         if (delayLabelAnimate) {
             pulseAnimator.setStartDelay(PULSE_ANIMATOR_DELAY);
         }

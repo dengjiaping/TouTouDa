@@ -3,11 +3,11 @@ package com.a.dd;
 import android.graphics.drawable.GradientDrawable;
 import android.widget.TextView;
 
-import com.a.nineoldandroids.animation.Animator;
-import com.a.nineoldandroids.animation.AnimatorSet;
-import com.a.nineoldandroids.animation.ArgbEvaluator;
-import com.a.nineoldandroids.animation.ObjectAnimator;
-import com.a.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.AnimatorSet;
+import com.nineoldandroids.animation.ArgbEvaluator;
+import com.nineoldandroids.animation.ObjectAnimator;
+import com.nineoldandroids.animation.ValueAnimator;
 
 public class MorphingAnimation {
 

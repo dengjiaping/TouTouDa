@@ -23,12 +23,12 @@ import android.widget.TextView;
 
 import com.quanliren.quan_two.util.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-import com.a.nineoldandroids.animation.Animator;
-import com.a.nineoldandroids.animation.AnimatorListenerAdapter;
-import com.a.nineoldandroids.animation.AnimatorSet;
-import com.a.nineoldandroids.animation.ObjectAnimator;
-import com.a.nineoldandroids.animation.ValueAnimator;
-import com.a.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.AnimatorListenerAdapter;
+import com.nineoldandroids.animation.AnimatorSet;
+import com.nineoldandroids.animation.ObjectAnimator;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.google.gson.Gson;
 import com.j256.ormlite.dao.Dao;
@@ -64,7 +64,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.a.nineoldandroids.view.ViewPropertyAnimator.animate;
+import static com.nineoldandroids.view.ViewPropertyAnimator.animate;
 
 @EActivity
 public class LoginActivity extends BaseActivity implements OnRefreshListener {

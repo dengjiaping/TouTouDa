@@ -22,8 +22,8 @@ import android.widget.TextView.OnEditorActionListener;
 
 import com.quanliren.quan_two.util.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-import com.a.nineoldandroids.view.ViewHelper;
-import com.a.nineoldandroids.view.ViewPropertyAnimator;
+import com.nineoldandroids.view.ViewHelper;
+import com.nineoldandroids.view.ViewPropertyAnimator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;

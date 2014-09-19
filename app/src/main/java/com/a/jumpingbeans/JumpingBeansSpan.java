@@ -23,7 +23,7 @@ import android.view.View;
 import android.view.animation.Interpolator;
 import android.widget.TextView;
 
-import com.a.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator;
 import com.quanliren.quan_two.util.LogUtil;
 
 import java.lang.ref.WeakReference;

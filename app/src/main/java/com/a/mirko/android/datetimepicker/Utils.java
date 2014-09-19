@@ -21,9 +21,9 @@ import android.os.Build;
 import android.text.format.Time;
 import android.view.View;
 
-import com.a.nineoldandroids.animation.Keyframe;
-import com.a.nineoldandroids.animation.ObjectAnimator;
-import com.a.nineoldandroids.animation.PropertyValuesHolder;
+import com.nineoldandroids.animation.Keyframe;
+import com.nineoldandroids.animation.ObjectAnimator;
+import com.nineoldandroids.animation.PropertyValuesHolder;
 
 import java.util.Calendar;
 

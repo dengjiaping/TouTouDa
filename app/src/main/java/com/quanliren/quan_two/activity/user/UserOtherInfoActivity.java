@@ -12,10 +12,10 @@ import android.widget.TextView;
 
 import com.quanliren.quan_two.util.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-import com.a.nineoldandroids.animation.Animator;
-import com.a.nineoldandroids.animation.AnimatorListenerAdapter;
-import com.a.nineoldandroids.view.ViewHelper;
-import com.a.nineoldandroids.view.ViewPropertyAnimator;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.AnimatorListenerAdapter;
+import com.nineoldandroids.view.ViewHelper;
+import com.nineoldandroids.view.ViewPropertyAnimator;
 import com.google.gson.Gson;
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.activity.base.BaseUserActivity;

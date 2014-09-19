@@ -13,11 +13,11 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 
-import com.a.nineoldandroids.animation.Animator;
-import com.a.nineoldandroids.animation.AnimatorSet;
-import com.a.nineoldandroids.animation.ObjectAnimator;
-import com.a.nineoldandroids.view.ViewHelper;
-import com.a.nineoldandroids.view.ViewPropertyAnimator;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.AnimatorSet;
+import com.nineoldandroids.animation.ObjectAnimator;
+import com.nineoldandroids.view.ViewHelper;
+import com.nineoldandroids.view.ViewPropertyAnimator;
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.fragment.base.MenuFragmentBase;
 import com.quanliren.quan_two.fragment.impl.LoaderImpl;

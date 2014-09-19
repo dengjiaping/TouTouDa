@@ -11,11 +11,11 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.a.nineoldandroids.animation.Animator;
-import com.a.nineoldandroids.animation.Animator.AnimatorListener;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.Animator.AnimatorListener;
 import com.quanliren.quan_two.activity.R;
 
-import static com.a.nineoldandroids.view.ViewPropertyAnimator.animate;
+import static com.nineoldandroids.view.ViewPropertyAnimator.animate;
 
 public class CustomProgressBar extends Dialog {
 

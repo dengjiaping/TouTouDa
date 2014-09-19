@@ -40,8 +40,8 @@ import android.view.accessibility.AccessibilityManager;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.FrameLayout;
 
-import com.a.nineoldandroids.animation.AnimatorSet;
-import com.a.nineoldandroids.animation.ObjectAnimator;
+import com.nineoldandroids.animation.AnimatorSet;
+import com.nineoldandroids.animation.ObjectAnimator;
 import com.quanliren.quan_two.activity.R;
 
 public class RadialPickerLayout extends FrameLayout implements OnTouchListener {

@@ -10,7 +10,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-import com.a.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator;
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.util.ImageUtil;
 

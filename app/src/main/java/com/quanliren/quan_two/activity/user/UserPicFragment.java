@@ -17,12 +17,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.nineoldandroids.animation.Animator;
 import com.quanliren.quan_two.util.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestHandle;
 import com.loopj.android.http.RequestParams;
-import com.a.nineoldandroids.animation.AnimatorListenerAdapter;
-import com.a.nineoldandroids.animation.ObjectAnimator;
-import com.a.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.AnimatorListenerAdapter;
+import com.nineoldandroids.animation.ObjectAnimator;
+import com.nineoldandroids.animation.ValueAnimator;
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.activity.group.PhotoAlbumMainActivity_;
 import com.quanliren.quan_two.activity.image.ImageBrowserActivity_;
@@ -364,7 +365,7 @@ public class UserPicFragment extends MenuFragmentBase implements
 																	final int j = index;
 																	va.addListener(new AnimatorListenerAdapter() {
 																		public void onAnimationEnd(
-																				com.a.nineoldandroids.animation.Animator animation) {
+																				Animator animation) {
 																			rp.clearAnimation();
 																			listSource
 																					.remove(j);

@@ -20,7 +20,7 @@ import android.view.animation.Interpolator;
 import android.widget.AbsListView;
 import android.widget.ImageButton;
 
-import com.a.nineoldandroids.view.ViewPropertyAnimator;
+import com.nineoldandroids.view.ViewPropertyAnimator;
 import com.quanliren.quan_two.activity.R;
 
 /**

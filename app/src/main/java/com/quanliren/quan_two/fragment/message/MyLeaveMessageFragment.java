@@ -17,11 +17,11 @@ import android.widget.AdapterView.OnItemLongClickListener;
 
 import com.a.me.maxwin.view.XXListView;
 import com.a.me.maxwin.view.XXListView.IXListViewListener;
-import com.a.nineoldandroids.animation.Animator;
-import com.a.nineoldandroids.animation.AnimatorListenerAdapter;
-import com.a.nineoldandroids.animation.ValueAnimator;
-import com.a.nineoldandroids.view.ViewHelper;
-import com.a.nineoldandroids.view.ViewPropertyAnimator;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.AnimatorListenerAdapter;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.view.ViewHelper;
+import com.nineoldandroids.view.ViewPropertyAnimator;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.stmt.QueryBuilder;

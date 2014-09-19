@@ -36,10 +36,10 @@ import android.view.animation.Interpolator;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.a.nineoldandroids.animation.Animator;
-import com.a.nineoldandroids.animation.AnimatorListenerAdapter;
-import com.a.nineoldandroids.animation.AnimatorSet;
-import com.a.nineoldandroids.animation.ObjectAnimator;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.AnimatorListenerAdapter;
+import com.nineoldandroids.animation.AnimatorSet;
+import com.nineoldandroids.animation.ObjectAnimator;
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.pull.lib.sdk.Compat;
 import com.quanliren.quan_two.pull.smoothprogressbar.SmoothProgressBar;

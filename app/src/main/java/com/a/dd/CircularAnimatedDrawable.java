@@ -13,10 +13,10 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 
-import com.a.nineoldandroids.animation.Animator;
-import com.a.nineoldandroids.animation.ObjectAnimator;
-import com.a.nineoldandroids.animation.ValueAnimator;
-import com.a.nineoldandroids.util.Property;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.ObjectAnimator;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.util.Property;
 
 public class CircularAnimatedDrawable extends Drawable implements Animatable {
 
