@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.bean.User;
+import com.quanliren.quan_two.custom.CustomVip;
 import com.quanliren.quan_two.util.StaticFactory;
 import com.quanliren.quan_two.util.Util;
 
@@ -31,7 +32,7 @@ public class BlackPeopleAdapter extends ParentsAdapter{
 			holder.sex=(TextView) convertView.findViewById(R.id.sex);
 			holder.signature=(TextView) convertView.findViewById(R.id.signature);
 			holder.time=(TextView)convertView.findViewById(R.id.time);
-			holder.vip=convertView.findViewById(R.id.vip);
+			holder.vip=(CustomVip)convertView.findViewById(R.id.vip);
 			convertView.setTag(holder);
 		}else{
 			holder=(ViewHolder) convertView.getTag();
@@ -51,8 +52,9 @@ public class BlackPeopleAdapter extends ParentsAdapter{
 		else
 			holder.time.setText("");
 		holder.time.setCompoundDrawables(null, null, null, null);
-		if(user.getIsvip()==1){
+		if(user.getIsvip()>0){
 			holder.vip.setVisibility(View.VISIBLE);
+            holder.vip.setVip(user.getIsvip());
 			holder.nickname.setTextColor(c.getResources().getColor(R.color.vip_name));
 		}else{
 			holder.vip.setVisibility(View.GONE);
@@ -65,6 +67,6 @@ public class BlackPeopleAdapter extends ParentsAdapter{
 	class ViewHolder{
 		ImageView userlogo;
 		TextView nickname,signature,sex,time;
-		View vip;
+		CustomVip vip;
 	}
 }

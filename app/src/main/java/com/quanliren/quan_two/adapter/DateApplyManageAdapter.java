@@ -11,6 +11,7 @@ import com.a.dd.CircularProgressButton;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.bean.User;
+import com.quanliren.quan_two.custom.CustomVip;
 import com.quanliren.quan_two.util.StaticFactory;
 import com.quanliren.quan_two.util.Util;
 
@@ -40,7 +41,7 @@ public class DateApplyManageAdapter extends ParentsAdapter {
 			holder.signature = (TextView) convertView
 					.findViewById(R.id.signature);
 			holder.time = (TextView) convertView.findViewById(R.id.time);
-			holder.vip = convertView.findViewById(R.id.vip);
+			holder.vip = (CustomVip) convertView.findViewById(R.id.vip);
 			holder.agree = (CircularProgressButton) convertView
 					.findViewById(R.id.agree);
 			holder.agree.setIndeterminateProgressMode(true);
@@ -82,8 +83,9 @@ public class DateApplyManageAdapter extends ParentsAdapter {
 		} else {
 			holder.time.setText("");
 		}
-		if (user.getIsvip() == 1) {
+		if (user.getIsvip() > 0) {
 			holder.vip.setVisibility(View.VISIBLE);
+            holder.vip.setVip(user.getIsvip());
 			holder.nickname.setTextColor(c.getResources().getColor(
 					R.color.vip_name));
 		} else {
@@ -121,7 +123,7 @@ public class DateApplyManageAdapter extends ParentsAdapter {
 		ImageView userlogo;
 		TextView nickname, signature, sex, time;
 		CircularProgressButton agree;
-		View vip;
+		CustomVip vip;
 	}
 	
 	OnClickListener agreeClick=new OnClickListener() {

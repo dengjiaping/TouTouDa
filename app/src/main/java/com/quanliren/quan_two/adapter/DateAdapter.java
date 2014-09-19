@@ -16,6 +16,7 @@ import com.quanliren.quan_two.activity.user.UserInfoActivity_;
 import com.quanliren.quan_two.activity.user.UserOtherInfoActivity_;
 import com.quanliren.quan_two.adapter.QuanAdapter.IQuanAdapter;
 import com.quanliren.quan_two.bean.DateBean;
+import com.quanliren.quan_two.custom.CustomVip;
 import com.quanliren.quan_two.custom.StateTextViewBg;
 import com.quanliren.quan_two.util.StaticFactory;
 import com.quanliren.quan_two.util.Util;
@@ -66,7 +67,7 @@ public class DateAdapter extends ParentsAdapter {
 					.findViewById(R.id.reply_tv);
 			holder.state = (StateTextViewBg) convertView
 					.findViewById(R.id.state);
-			holder.vip = convertView.findViewById(R.id.vip);
+			holder.vip = (CustomVip) convertView.findViewById(R.id.vip);
 			holder.people_num_ll = convertView.findViewById(R.id.people_num_ll);
 			holder.aim_ll = convertView.findViewById(R.id.aim_ll);
 			holder.reply_ll = convertView.findViewById(R.id.reply_ll);
@@ -95,8 +96,9 @@ public class DateAdapter extends ParentsAdapter {
 		holder.userlogo.setOnClickListener(userlogo);
 		holder.state.setState(db.getDtype());
 
-		if (db.getIsvip() == 1) {
+		if (db.getIsvip() >0) {
 			holder.vip.setVisibility(View.VISIBLE);
+            holder.vip.setVip(db.getIsvip());
 			holder.nickname.setTextColor(c.getResources().getColor(
 					R.color.vip_name));
 		} else {
@@ -178,7 +180,8 @@ public class DateAdapter extends ParentsAdapter {
 				aim_tv, sex_tv, money_tv, time_tv, remark_tv, bm_people_num,
 				reply_tv;
 		StateTextViewBg state;
-		View vip, people_num_ll, aim_ll, reply_ll, content_rl;
+		View  people_num_ll, aim_ll, reply_ll, content_rl;
+        CustomVip vip;
 	}
 
 	OnClickListener userlogo = new OnClickListener() {

@@ -20,13 +20,12 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
-import com.quanliren.quan_two.util.http.JsonHttpResponseHandler;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.loopj.android.http.RequestParams;
 import com.nineoldandroids.view.ViewHelper;
 import com.nineoldandroids.view.ViewPropertyAnimator;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.activity.base.BaseActivity;
 import com.quanliren.quan_two.activity.user.UserInfoActivity_;
@@ -40,6 +39,7 @@ import com.quanliren.quan_two.bean.LoginUser;
 import com.quanliren.quan_two.bean.User;
 import com.quanliren.quan_two.custom.CustomRelativeLayout;
 import com.quanliren.quan_two.custom.CustomRelativeLayout.OnSizeChangedListener;
+import com.quanliren.quan_two.custom.CustomVip;
 import com.quanliren.quan_two.custom.emoji.EmoteView;
 import com.quanliren.quan_two.custom.emoji.EmoticonsEditText;
 import com.quanliren.quan_two.pull.PullToRefreshLayout;
@@ -49,6 +49,7 @@ import com.quanliren.quan_two.util.ImageUtil;
 import com.quanliren.quan_two.util.StaticFactory;
 import com.quanliren.quan_two.util.URL;
 import com.quanliren.quan_two.util.Util;
+import com.quanliren.quan_two.util.http.JsonHttpResponseHandler;
 
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
@@ -82,7 +83,7 @@ public class DongTaiDetailActivity extends BaseActivity implements
 	View chat_layout_emote; 
 	@ViewById
 	Button send_btn;
-	View vip;
+    CustomVip vip;
 	@Extra
 	DongTaiBean bean;
 	View headView;
@@ -190,7 +191,7 @@ public class DongTaiDetailActivity extends BaseActivity implements
 		sex = (TextView) headView.findViewById(R.id.sex);
 		signature = (TextView) headView.findViewById(R.id.signature);
 		time = (TextView) headView.findViewById(R.id.time);
-		vip = headView.findViewById(R.id.vip);
+		vip = (CustomVip) headView.findViewById(R.id.vip);
 		imgWidth=(getResources().getDisplayMetrics().widthPixels-ImageUtil.dip2px(this, 88))/3;
 
 		picadapter = new QuanPicAdapter(this, new ArrayList<String>(), imgWidth);
@@ -275,8 +276,9 @@ public class DongTaiDetailActivity extends BaseActivity implements
 		location.setText(bean.getArea().equals("")?"火星":bean.getArea());
 		reply_btn.setText(bean.getCnum());
 
-		if (bean.getIsvip() == 1) {
+		if (bean.getIsvip() > 0) {
 			vip.setVisibility(View.VISIBLE);
+            vip.setVip(bean.getIsvip());
 			username.setTextColor(getResources().getColor(R.color.vip_name));
 		} else {
 			vip.setVisibility(View.GONE);
