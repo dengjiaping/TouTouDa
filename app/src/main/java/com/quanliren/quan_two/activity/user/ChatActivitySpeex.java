@@ -192,7 +192,7 @@ public class ChatActivitySpeex extends BaseActivity implements IXListViewListene
 
 		*/
 /*
-		 * title_right_txt.setCompoundDrawablesWithIntrinsicBounds(getResources()
+         * title_right_txt.setCompoundDrawablesWithIntrinsicBounds(getResources()
 		 * .getDrawable(R.drawable.ban), null, null, null);
 		 * setTitleRightTxt("举报/拉黑");
 		 *//*

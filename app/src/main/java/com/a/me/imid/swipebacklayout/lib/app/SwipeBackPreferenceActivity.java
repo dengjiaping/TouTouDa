@@ -1,4 +1,3 @@
-
 package com.a.me.imid.swipebacklayout.lib.app;
 
 import android.os.Bundle;
@@ -30,11 +29,12 @@ public class SwipeBackPreferenceActivity extends PreferenceActivity implements S
             return mHelper.findViewById(id);
         return v;
     }
-    
+
     @Override
     public SwipeBackLayout getSwipeBackLayout() {
         return mHelper.getSwipeBackLayout();
     }
+
     @Override
     public void setSwipeBackEnable(boolean enable) {
         getSwipeBackLayout().setEnableGesture(enable);

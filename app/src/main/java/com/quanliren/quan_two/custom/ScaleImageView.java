@@ -8,23 +8,21 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 /**
- * 
  * This view will auto determine the width or height by determining if the
  * height or width is set and scale the other dimension depending on the images
  * dimension
- * 
+ * <p/>
  * This view also contains an ImageChangeListener which calls changed(boolean
  * isEmpty) once a change has been made to the ImageView
- * 
+ *
  * @author Maurycy Wojtowicz
- * 
  */
 public class ScaleImageView extends ImageView {
     private Bitmap currentBitmap;
     private ImageChangeListener imageChangeListener;
     private boolean scaleToWidth = false; // this flag determines if should
-                                          // measure height manually dependent
-                                          // of width
+    // measure height manually dependent
+    // of width
 
     public ScaleImageView(Context context) {
         super(context);

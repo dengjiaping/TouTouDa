@@ -11,17 +11,14 @@ import android.database.sqlite.SQLiteOpenHelper;
  * @12-7-12
  * @上午10:53
  */
-public class LocalSqLiteHelper extends SQLiteOpenHelper
-{
+public class LocalSqLiteHelper extends SQLiteOpenHelper {
     public LocalSqLiteHelper(Context context, String name,
-                             SQLiteDatabase.CursorFactory factory, int version)
-    {
+                             SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase)
-    {
+    public void onCreate(SQLiteDatabase sqLiteDatabase) {
         //创建表
         sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS "
                 + SharedData.TABLE_NAME + "(" + SharedData.ID
@@ -38,8 +35,7 @@ public class LocalSqLiteHelper extends SQLiteOpenHelper
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion,
-                          int newVersion)
-    {
+                          int newVersion) {
         onCreate(sqLiteDatabase);
     }
 }

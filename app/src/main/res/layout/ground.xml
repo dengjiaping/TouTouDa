@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/activity_bg"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/ground_msg"
@@ -11,13 +11,13 @@
         android:layout_height="66dp"
         android:background="@drawable/menu_mid_selector"
         android:clickable="true"
-        android:paddingBottom="0dp" >
+        android:paddingBottom="0dp">
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="50dp"
@@ -31,7 +31,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="8dp"
                 android:layout_weight="1"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -71,13 +71,13 @@
         android:layout_height="66dp"
         android:background="@drawable/menu_mid_selector"
         android:clickable="true"
-        android:paddingBottom="0dp" >
+        android:paddingBottom="0dp">
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="50dp"
@@ -91,7 +91,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="8dp"
                 android:layout_weight="1"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -131,13 +131,13 @@
         android:layout_height="66dp"
         android:background="@drawable/menu_mid_selector"
         android:clickable="true"
-        android:paddingBottom="0dp" >
+        android:paddingBottom="0dp">
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="50dp"
@@ -145,14 +145,14 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_ground_shop" />
 
-            
+
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="8dp"
                 android:layout_weight="1"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -192,13 +192,13 @@
         android:layout_height="66dp"
         android:background="@drawable/menu_mid_selector"
         android:clickable="true"
-        android:paddingBottom="0dp" >
+        android:paddingBottom="0dp">
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="50dp"
@@ -206,14 +206,14 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_ground_exchange" />
 
-            
-             <LinearLayout
+
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="8dp"
                 android:layout_weight="1"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -230,7 +230,7 @@
                     android:textColor="@color/signature"
                     android:textSize="12sp" />
             </LinearLayout>
-            
+
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -254,13 +254,13 @@
         android:layout_height="66dp"
         android:background="@drawable/menu_mid_selector"
         android:clickable="true"
-        android:paddingBottom="0dp" >
+        android:paddingBottom="0dp">
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="50dp"
@@ -268,13 +268,13 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_ground_through" />
 
-<LinearLayout
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="8dp"
                 android:layout_weight="1"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -291,6 +291,7 @@
                     android:textColor="@color/signature"
                     android:textSize="12sp" />
             </LinearLayout>
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -18,107 +18,107 @@ import java.util.List;
 
 public class GDLocation implements AMapLocationListener {
 
-	private ILocationImpl locationListener;
+    private ILocationImpl locationListener;
 
-	public void setLocationListener(ILocationImpl locationListener) {
-		this.locationListener = locationListener;
-	}
+    public void setLocationListener(ILocationImpl locationListener) {
+        this.locationListener = locationListener;
+    }
 
-	private LocationManagerProxy mAMapLocationManager;
-	private AppClass_ ac;
-	private Context context;
+    private LocationManagerProxy mAMapLocationManager;
+    private AppClass_ ac;
+    private Context context;
 
-	public GDLocation(Context context, ILocationImpl listener, boolean autoStart) {
-		this.ac = (AppClass_) context.getApplicationContext();
-		this.context = context;
-		this.locationListener = listener;
-		if (autoStart)
-			startLocation();
-	}
+    public GDLocation(Context context, ILocationImpl listener, boolean autoStart) {
+        this.ac = (AppClass_) context.getApplicationContext();
+        this.context = context;
+        this.locationListener = listener;
+        if (autoStart)
+            startLocation();
+    }
 
-	public void startLocation() {
-		if (Util.isFastLocation()) {
-			if (locationListener != null) {
-				locationListener.onLocationSuccess();
-			}
-			return;
-		} else {
-			mAMapLocationManager = LocationManagerProxy.getInstance(context);
-			mAMapLocationManager.requestLocationData(
-					LocationProviderProxy.AMapNetwork, -1, 0, this);
-		}
-	}
+    public void startLocation() {
+        if (Util.isFastLocation()) {
+            if (locationListener != null) {
+                locationListener.onLocationSuccess();
+            }
+            return;
+        } else {
+            mAMapLocationManager = LocationManagerProxy.getInstance(context);
+            mAMapLocationManager.requestLocationData(
+                    LocationProviderProxy.AMapNetwork, -1, 0, this);
+        }
+    }
 
-	@Override
-	public void onLocationChanged(Location location) {
-		// TODO Auto-generated method stub
+    @Override
+    public void onLocationChanged(Location location) {
+        // TODO Auto-generated method stub
 
-	}
+    }
 
-	@Override
-	public void onProviderDisabled(String provider) {
-		// TODO Auto-generated method stub
+    @Override
+    public void onProviderDisabled(String provider) {
+        // TODO Auto-generated method stub
 
-	}
+    }
 
-	@Override
-	public void onProviderEnabled(String provider) {
-		// TODO Auto-generated method stub
+    @Override
+    public void onProviderEnabled(String provider) {
+        // TODO Auto-generated method stub
 
-	}
+    }
 
-	@Override
-	public void onStatusChanged(String provider, int status, Bundle extras) {
-		// TODO Auto-generated method stub
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+        // TODO Auto-generated method stub
 
-	}
+    }
 
-	@Override
-	public void onLocationChanged(AMapLocation aLocation) {
-		deactivate();
-		if (aLocation == null
-				|| aLocation.getAMapException().getErrorCode() != 0) {
-			if (locationListener != null)
-				locationListener.onLocationFail();
-			return;
-		}
-		DecimalFormat df = new DecimalFormat("#.##########");
-		if (!df.format(aLocation.getLatitude()).equals("0"))
-			ac.cs.setLat(df.format(aLocation.getLatitude()));
-		if (!df.format(aLocation.getLongitude()).equals("0"))
-			ac.cs.setLng(df.format(aLocation.getLongitude()));
-		if (aLocation.getDistrict() != null)
-			ac.cs.setArea(aLocation.getDistrict());
-		String city = aLocation.getCity();
-		if (city != null) {
-			List<Area> areaList = ChosePositionFragment.getAreas();
-			Area temp = null;
-			for (Area area : areaList) {
-				if (city.indexOf(area.name) > -1) {
-					temp = area;
-					break;
-				}
-			}
-			if (temp != null) {
-				ac.cs.setLocation(city);
-				ac.cs.setLocationID(temp.id);
-			}
-		}
-		Util.locationTime = System.currentTimeMillis();
-		if (locationListener != null)
-			locationListener.onLocationSuccess();
+    @Override
+    public void onLocationChanged(AMapLocation aLocation) {
+        deactivate();
+        if (aLocation == null
+                || aLocation.getAMapException().getErrorCode() != 0) {
+            if (locationListener != null)
+                locationListener.onLocationFail();
+            return;
+        }
+        DecimalFormat df = new DecimalFormat("#.##########");
+        if (!df.format(aLocation.getLatitude()).equals("0"))
+            ac.cs.setLat(df.format(aLocation.getLatitude()));
+        if (!df.format(aLocation.getLongitude()).equals("0"))
+            ac.cs.setLng(df.format(aLocation.getLongitude()));
+        if (aLocation.getDistrict() != null)
+            ac.cs.setArea(aLocation.getDistrict());
+        String city = aLocation.getCity();
+        if (city != null) {
+            List<Area> areaList = ChosePositionFragment.getAreas();
+            Area temp = null;
+            for (Area area : areaList) {
+                if (city.indexOf(area.name) > -1) {
+                    temp = area;
+                    break;
+                }
+            }
+            if (temp != null) {
+                ac.cs.setLocation(city);
+                ac.cs.setLocationID(temp.id);
+            }
+        }
+        Util.locationTime = System.currentTimeMillis();
+        if (locationListener != null)
+            locationListener.onLocationSuccess();
 
-	}
+    }
 
-	public void deactivate() {
-		if (mAMapLocationManager != null) {
-			mAMapLocationManager.removeUpdates(this);
-			mAMapLocationManager.destroy();
-		}
-		mAMapLocationManager = null;
-	}
+    public void deactivate() {
+        if (mAMapLocationManager != null) {
+            mAMapLocationManager.removeUpdates(this);
+            mAMapLocationManager.destroy();
+        }
+        mAMapLocationManager = null;
+    }
 
-	public void destory() {
-		deactivate();
-	}
+    public void destory() {
+        deactivate();
+    }
 }

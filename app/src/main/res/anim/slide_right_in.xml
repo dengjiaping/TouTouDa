@@ -12,9 +12,8 @@
         android:startOffset="0"
         android:toXScale="1"
         android:toYScale="1" />
-<alpha
-		android:fromAlpha="0.9"
-		android:toAlpha="1"
-		android:duration="300"
-	/>
+    <alpha
+        android:fromAlpha="0.9"
+        android:toAlpha="1"
+        android:duration="300" />
 </set>

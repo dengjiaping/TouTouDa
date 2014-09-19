@@ -45,8 +45,8 @@ apt {
     }
 }
 
-android{
-    lintOptions{
+android {
+    lintOptions {
         checkReleaseBuilds false
     }
 }

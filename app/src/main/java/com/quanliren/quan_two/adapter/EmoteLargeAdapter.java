@@ -21,53 +21,55 @@ import butterknife.InjectView;
 
 public class EmoteLargeAdapter extends ParentsAdapter {
 
-	public EmoteLargeAdapter(Context context, List<EmoticonImageBean> datas) {
-		super(context, datas);
-	}
+    public EmoteLargeAdapter(Context context, List<EmoticonImageBean> datas) {
+        super(context, datas);
+    }
 
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		ViewHolder holder = null;
-		if (convertView == null) {
-			convertView = View.inflate(c,R.layout.listitem_emote_large, null);
-			holder = new ViewHolder(convertView);
-			convertView.setTag(holder);
-		} else {
-			holder = (ViewHolder) convertView.getTag();
-		}
-		EmoticonImageBean name = (EmoticonImageBean) getItem(position);
-		if(name.getGiffile()!=null&&!name.getGiffile().equals("")){
-			ImageLoader.getInstance().displayImage(Util.FILE+name.getPngfile(), holder.mIvImage,ac.options_no_default);
-		}else{
-			ImageLoader.getInstance().displayImage(name.getPngUrl(), holder.mIvImage,ac.options_no_default);	
-		}
-		holder.mIvImage.setTag(name);
-		holder.name.setText(name.getNickname());
-		return convertView;
-	}
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        ViewHolder holder = null;
+        if (convertView == null) {
+            convertView = View.inflate(c, R.layout.listitem_emote_large, null);
+            holder = new ViewHolder(convertView);
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+        }
+        EmoticonImageBean name = (EmoticonImageBean) getItem(position);
+        if (name.getGiffile() != null && !name.getGiffile().equals("")) {
+            ImageLoader.getInstance().displayImage(Util.FILE + name.getPngfile(), holder.mIvImage, ac.options_no_default);
+        } else {
+            ImageLoader.getInstance().displayImage(name.getPngUrl(), holder.mIvImage, ac.options_no_default);
+        }
+        holder.mIvImage.setTag(name);
+        holder.name.setText(name.getNickname());
+        return convertView;
+    }
 
-	class ViewHolder {
-		
-		@InjectView(R.id.emote_item_iv_image)
-		ImageView mIvImage;
-		@InjectView(R.id.name)
-		TextView name;
-		
-		public ViewHolder(View view){
-			ButterKnife.inject(this, view);
-		}
-	}
-	
-	int width,height;
-	
-	ImageLoadingListener listener=new SimpleImageLoadingListener(){
-		public void onLoadingComplete(String imageUri, View view, android.graphics.Bitmap loadedImage) {
-			if(width==0&&height==0){
-				width=loadedImage.getWidth();
-				height=loadedImage.getHeight();
-			}
-			((ImageView)view).setLayoutParams(new LinearLayout.LayoutParams(width,height));
-			((ImageView)view).setImageBitmap(loadedImage);
-		};
-	};
+    class ViewHolder {
+
+        @InjectView(R.id.emote_item_iv_image)
+        ImageView mIvImage;
+        @InjectView(R.id.name)
+        TextView name;
+
+        public ViewHolder(View view) {
+            ButterKnife.inject(this, view);
+        }
+    }
+
+    int width, height;
+
+    ImageLoadingListener listener = new SimpleImageLoadingListener() {
+        public void onLoadingComplete(String imageUri, View view, android.graphics.Bitmap loadedImage) {
+            if (width == 0 && height == 0) {
+                width = loadedImage.getWidth();
+                height = loadedImage.getHeight();
+            }
+            ((ImageView) view).setLayoutParams(new LinearLayout.LayoutParams(width, height));
+            ((ImageView) view).setImageBitmap(loadedImage);
+        }
+
+        ;
+    };
 }

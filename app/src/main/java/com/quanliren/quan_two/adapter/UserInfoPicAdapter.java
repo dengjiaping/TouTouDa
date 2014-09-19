@@ -21,96 +21,96 @@ import java.util.List;
 
 public class UserInfoPicAdapter extends ParentsAdapter {
 
-	OnImageClickListener listener;
-	
-	public UserInfoPicAdapter(Context c, List list,OnImageClickListener listener) {
-		super(c, list);
-		this.listener=listener;
-	}
+    OnImageClickListener listener;
 
-	public boolean ismy=false;
-	
-	@Override
-	public View getView(int position, View convertView, ViewGroup arg2) {
-		ViewHolder holder;
-		if (convertView == null) {
-			holder = new ViewHolder();
-			convertView = View.inflate(c, R.layout.user_info_pic_item, null);
-			holder.iv = (ImageView) convertView.findViewById(R.id.img);
-			holder.iv.setLayoutParams(new RelativeLayout.LayoutParams((c.getResources().getDisplayMetrics().widthPixels-ImageUtil.dip2px(c, 20))/4, (c.getResources().getDisplayMetrics().widthPixels-ImageUtil.dip2px(c, 20))/4));
-			convertView.setTag(holder);
-		} else {
-			holder = (ViewHolder) convertView.getTag();
-		}
-		ImageBean ib=(ImageBean) list.get(position);
-		if(ib.defaults){
-			holder.iv.setImageResource(R.drawable.default_userlogo);
-			holder.iv.setOnClickListener(addImgClick);
-			holder.iv.setOnLongClickListener(null);
-		}else{
-			if(ib.imgpath.startsWith(Util.FILE)){
-				ImageLoader.getInstance().displayImage(ib.imgpath, holder.iv);
-			}else{
-				ImageLoader.getInstance().displayImage(ib.imgpath+StaticFactory._320x320, holder.iv);
-			}
-			holder.iv.setTag(ib);
-			holder.iv.setOnClickListener(imgClick);
-			holder.iv.setOnLongClickListener(longClick);
-		}
-		return convertView;
-	}
+    public UserInfoPicAdapter(Context c, List list, OnImageClickListener listener) {
+        super(c, list);
+        this.listener = listener;
+    }
 
-	class ViewHolder {
-		ImageView iv;
-	}
+    public boolean ismy = false;
 
-	OnClickListener addImgClick = new OnClickListener() {
+    @Override
+    public View getView(int position, View convertView, ViewGroup arg2) {
+        ViewHolder holder;
+        if (convertView == null) {
+            holder = new ViewHolder();
+            convertView = View.inflate(c, R.layout.user_info_pic_item, null);
+            holder.iv = (ImageView) convertView.findViewById(R.id.img);
+            holder.iv.setLayoutParams(new RelativeLayout.LayoutParams((c.getResources().getDisplayMetrics().widthPixels - ImageUtil.dip2px(c, 20)) / 4, (c.getResources().getDisplayMetrics().widthPixels - ImageUtil.dip2px(c, 20)) / 4));
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+        }
+        ImageBean ib = (ImageBean) list.get(position);
+        if (ib.defaults) {
+            holder.iv.setImageResource(R.drawable.default_userlogo);
+            holder.iv.setOnClickListener(addImgClick);
+            holder.iv.setOnLongClickListener(null);
+        } else {
+            if (ib.imgpath.startsWith(Util.FILE)) {
+                ImageLoader.getInstance().displayImage(ib.imgpath, holder.iv);
+            } else {
+                ImageLoader.getInstance().displayImage(ib.imgpath + StaticFactory._320x320, holder.iv);
+            }
+            holder.iv.setTag(ib);
+            holder.iv.setOnClickListener(imgClick);
+            holder.iv.setOnLongClickListener(longClick);
+        }
+        return convertView;
+    }
 
-		@Override
-		public void onClick(View v) {
-			try {
-				listener.addImg();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-	};
-	
-	OnClickListener imgClick = new OnClickListener() {
+    class ViewHolder {
+        ImageView iv;
+    }
 
-		@Override
-		public void onClick(View v) {
-			try {
-				if(c instanceof BaseUserActivity){
-					listener.imgClick((ImageBean)v.getTag());
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-	};
-	
-	OnLongClickListener longClick=new OnLongClickListener() {
-		
-		@Override
-		public boolean onLongClick(View v) {
-			try {
-				if(c instanceof UserInfoActivity){
-					listener.imgLongClick((ImageBean)v.getTag());
-					return true;
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return false;
-		}
-	};
-	
-	public interface OnImageClickListener{
-		void addImg();
-		
-		void imgClick(ImageBean position);
-		
-		void imgLongClick(ImageBean position);
-	}
+    OnClickListener addImgClick = new OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+            try {
+                listener.addImg();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    };
+
+    OnClickListener imgClick = new OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+            try {
+                if (c instanceof BaseUserActivity) {
+                    listener.imgClick((ImageBean) v.getTag());
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    };
+
+    OnLongClickListener longClick = new OnLongClickListener() {
+
+        @Override
+        public boolean onLongClick(View v) {
+            try {
+                if (c instanceof UserInfoActivity) {
+                    listener.imgLongClick((ImageBean) v.getTag());
+                    return true;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return false;
+        }
+    };
+
+    public interface OnImageClickListener {
+        void addImg();
+
+        void imgClick(ImageBean position);
+
+        void imgLongClick(ImageBean position);
+    }
 }

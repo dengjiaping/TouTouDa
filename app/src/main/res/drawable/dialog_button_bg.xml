@@ -2,6 +2,6 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:drawable="@drawable/buttonstyle_left_press" android:state_pressed="true"></item>
-    <item android:drawable="@drawable/buttonstyle_left" ></item>
+    <item android:drawable="@drawable/buttonstyle_left"></item>
 
 </selector>

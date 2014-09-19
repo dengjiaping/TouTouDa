@@ -4,17 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/activity_bg"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <TableLayout
         android:layout_width="fill_parent"
         android:paddingBottom="50dp"
-        android:layout_height="fill_parent" >
+        android:layout_height="fill_parent">
 
         <TableRow
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
-            android:paddingTop="8dp" >
+            android:paddingTop="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -29,7 +29,7 @@
             android:id="@+id/age_ll"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
-            android:paddingTop="8dp" >
+            android:paddingTop="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -43,7 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/age"
@@ -66,7 +66,7 @@
             android:id="@+id/sex_ll"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
-            android:paddingTop="8dp" >
+            android:paddingTop="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -80,7 +80,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/sex"
@@ -103,7 +103,7 @@
             android:id="@+id/xing_ll"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
-            android:paddingTop="8dp" >
+            android:paddingTop="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -117,7 +117,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/xing"
@@ -140,7 +140,7 @@
             android:id="@+id/face_ll"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
-            android:paddingTop="8dp" >
+            android:paddingTop="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -154,7 +154,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/face"
@@ -177,7 +177,7 @@
             android:id="@+id/work_ll"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
-            android:paddingTop="8dp" >
+            android:paddingTop="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -191,7 +191,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/work"
@@ -214,7 +214,7 @@
             android:id="@+id/money_ll"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
-            android:paddingTop="8dp" >
+            android:paddingTop="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -228,7 +228,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/money"
@@ -251,7 +251,7 @@
             android:id="@+id/love_ll"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
-            android:paddingTop="8dp" >
+            android:paddingTop="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -265,7 +265,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/love"
@@ -285,7 +285,7 @@
         </TableRow>
 
 
-        <TableRow android:padding="8dp" >
+        <TableRow android:padding="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -313,7 +313,7 @@
                 android:background="@drawable/message_bg"
                 android:clickable="true"
                 android:gravity="center_vertical"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <com.quanliren.quan_two.custom.RoundAngleImageView
                     android:id="@+id/dyimg"
@@ -328,7 +328,7 @@
                     android:layout_height="fill_parent"
                     android:layout_marginLeft="5dp"
                     android:layout_weight="1"
-                    android:orientation="vertical" >
+                    android:orientation="vertical">
 
                     <com.quanliren.quan_two.custom.emoji.EmoticonsTextView
                         android:id="@+id/dycontent"

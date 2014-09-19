@@ -23,46 +23,46 @@ import java.util.concurrent.atomic.AtomicBoolean;
 @EFragment
 public class EmoticonFragmentLarge extends Fragment {
 
-	AtomicBoolean init = new AtomicBoolean(false);
+    AtomicBoolean init = new AtomicBoolean(false);
 
-	@ViewById
-	EmoteGridView gridview;
+    @ViewById
+    EmoteGridView gridview;
 
-	@FragmentArg
-	ArrayList<EmoticonImageBean> emoticon;
+    @FragmentArg
+    ArrayList<EmoticonImageBean> emoticon;
 
-	EmoteLargeAdapter adapter;
+    EmoteLargeAdapter adapter;
 
-	View view;
-	
-	EmoticonListener listener;
+    View view;
 
-	public void setListener(EmoticonListener listener) {
-		this.listener = listener;
-	}
+    EmoticonListener listener;
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		if (view == null) {
-			view = inflater.inflate(R.layout.emoticon_gridview_large, null);
-		} else {
-			ViewParent parent = view.getParent();
-			if (parent != null && parent instanceof ViewGroup) {
-				((ViewGroup) parent).removeView(view);
-			}
-		}
-		return view;
-	}
+    public void setListener(EmoticonListener listener) {
+        this.listener = listener;
+    }
 
-	@AfterViews
-	public void refresh() {
-		if (getActivity() != null && init.compareAndSet(false, true)) {
-			adapter = new EmoteLargeAdapter(getActivity(), emoticon);
-			gridview.setListener(listener);
-			gridview.setAdapter(adapter);
-		}
-		
-	}
-	
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        if (view == null) {
+            view = inflater.inflate(R.layout.emoticon_gridview_large, null);
+        } else {
+            ViewParent parent = view.getParent();
+            if (parent != null && parent instanceof ViewGroup) {
+                ((ViewGroup) parent).removeView(view);
+            }
+        }
+        return view;
+    }
+
+    @AfterViews
+    public void refresh() {
+        if (getActivity() != null && init.compareAndSet(false, true)) {
+            adapter = new EmoteLargeAdapter(getActivity(), emoticon);
+            gridview.setListener(listener);
+            gridview.setAdapter(adapter);
+        }
+
+    }
+
 }

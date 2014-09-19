@@ -4,14 +4,14 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/activity_bg"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <com.quanliren.quan_two.custom.CustomRelativeLayout
         android:id="@+id/crl"
         android:visibility="gone"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1" >
+        android:layout_weight="1">
 
         <ImageView
             android:layout_width="2dp"
@@ -22,7 +22,7 @@
         <com.quanliren.quan_two.pull.PullToRefreshLayout
             android:id="@+id/layout"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent" >
+            android:layout_height="fill_parent">
 
             <com.quanliren.quan_two.pull.XListView
                 android:id="@+id/listview"
@@ -34,8 +34,7 @@
                 android:footerDividersEnabled="false"
                 android:headerDividersEnabled="false"
                 android:listSelector="#00000000"
-                android:scrollbars="vertical" >
-            </com.quanliren.quan_two.pull.XListView>
+                android:scrollbars="vertical"></com.quanliren.quan_two.pull.XListView>
         </com.quanliren.quan_two.pull.PullToRefreshLayout>
 
         <LinearLayout
@@ -44,7 +43,7 @@
             android:layout_height="50dp"
             android:layout_alignParentBottom="true"
             android:background="@color/bottom_bg"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <com.a.dd.CircularProgressButton
                 android:id="@+id/join"
@@ -70,7 +69,7 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
                 android:background="@drawable/bottom_btn"
-                android:gravity="center" >
+                android:gravity="center">
 
                 <ImageView
                     android:layout_width="20dp"
@@ -95,7 +94,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/bottom_btn"
                 android:gravity="center"
-                android:visibility="gone" >
+                android:visibility="gone">
 
                 <ImageView
                     android:layout_width="20dp"
@@ -118,7 +117,7 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
                 android:background="@drawable/bottom_btn"
-                android:gravity="center" >
+                android:gravity="center">
 
                 <ImageView
                     android:layout_width="20dp"

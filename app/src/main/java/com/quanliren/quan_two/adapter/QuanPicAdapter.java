@@ -17,38 +17,39 @@ import java.util.List;
 
 public class QuanPicAdapter extends ParentsAdapter {
 
-	int imgWidth;
-	public QuanPicAdapter(Context c, List list,int imgwidth) {
-		super(c, list);
-		imgWidth=imgwidth;
-	}
+    int imgWidth;
 
-	public boolean ismy=false;
-	
-	@Override
-	public View getView(int position, View convertView, ViewGroup arg2) {
-		if (convertView == null) {
-			convertView = View.inflate(c, R.layout.quan_pic_item, null);
-			((ImageView)convertView).setLayoutParams(new AbsListView.LayoutParams(imgWidth, imgWidth));
-		} 
-		ImageBean ib=(ImageBean) list.get(position);
-		ImageLoader.getInstance().displayImage(ib.imgpath+StaticFactory._320x320, (ImageView)convertView);
-		((ImageView)convertView).setTag(position);
-		((ImageView)convertView).setOnClickListener(imgClick);
-		return convertView;
-	}
+    public QuanPicAdapter(Context c, List list, int imgwidth) {
+        super(c, list);
+        imgWidth = imgwidth;
+    }
 
-	class ViewHolder {
-		ImageView iv;
-	}
+    public boolean ismy = false;
 
-	OnClickListener imgClick = new OnClickListener() {
+    @Override
+    public View getView(int position, View convertView, ViewGroup arg2) {
+        if (convertView == null) {
+            convertView = View.inflate(c, R.layout.quan_pic_item, null);
+            ((ImageView) convertView).setLayoutParams(new AbsListView.LayoutParams(imgWidth, imgWidth));
+        }
+        ImageBean ib = (ImageBean) list.get(position);
+        ImageLoader.getInstance().displayImage(ib.imgpath + StaticFactory._320x320, (ImageView) convertView);
+        ((ImageView) convertView).setTag(position);
+        ((ImageView) convertView).setOnClickListener(imgClick);
+        return convertView;
+    }
 
-		@Override
-		public void onClick(View v) {
-			int positon=(Integer) v.getTag();
-			
-			ImageBrowserActivity_.intent(c).mPosition(positon).mProfile(list).start();
-		}
-	};
+    class ViewHolder {
+        ImageView iv;
+    }
+
+    OnClickListener imgClick = new OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+            int positon = (Integer) v.getTag();
+
+            ImageBrowserActivity_.intent(c).mPosition(positon).mProfile(list).start();
+        }
+    };
 }

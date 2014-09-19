@@ -18,8 +18,7 @@ import java.util.Date;
  * @下午5:13
  * @since xCloud4.1
  */
-public class SharedDataSqLiteHelper
-{
+public class SharedDataSqLiteHelper {
 
     /**
      * 数据库存放code值 1 - 表示 boolean 中的 true
@@ -54,18 +53,14 @@ public class SharedDataSqLiteHelper
      *
      * @param context
      */
-    public SharedDataSqLiteHelper(Context context)
-    {
+    public SharedDataSqLiteHelper(Context context) {
         localSqLiteHelper = new LocalSqLiteHelper(context,
                 DB_NAME, null, VERSION);
         sDateFormat = new SimpleDateFormat(DATE_FORMAT);
 
-        try
-        {
+        try {
             sqLiteDatabase = localSqLiteHelper.getWritableDatabase();
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -76,28 +71,22 @@ public class SharedDataSqLiteHelper
      * @param sharedData
      * @return
      */
-    public long putData(SharedData sharedData)
-    {
+    public long putData(SharedData sharedData) {
         long id = -1;
-        if (sharedData == null || TextUtils.isEmpty(sharedData.getKey()) || sharedData.getDataType() == null)
-        {
+        if (sharedData == null || TextUtils.isEmpty(sharedData.getKey()) || sharedData.getDataType() == null) {
             return id;
         }
 
         long dataId = hasData(sharedData);
 
-        if (dataId > 0)
-        {
+        if (dataId > 0) {
             sharedData.setId(dataId);
             int row = updateDataById(sharedData);
 
-            if (row > 0)
-            {
+            if (row > 0) {
                 return dataId;
             }
-        }
-        else
-        {
+        } else {
             id = saveData(sharedData);
         }
 
@@ -110,25 +99,20 @@ public class SharedDataSqLiteHelper
      * @param key
      * @return
      */
-    public boolean remove(String key)
-    {
-        if (TextUtils.isEmpty(key))
-        {
+    public boolean remove(String key) {
+        if (TextUtils.isEmpty(key)) {
             return false;
         }
 
         long rows = -1;
 
-        try
-        {
+        try {
             rows = sqLiteDatabase.delete(SharedData.TABLE_NAME,
                     SharedData.KEY + " = ?", new String[]
-                    {
-                            key
-                    });
-        }
-        catch (Exception e)
-        {
+                            {
+                                    key
+                            });
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -141,10 +125,8 @@ public class SharedDataSqLiteHelper
      * @param key
      * @return
      */
-    public SharedData getGlobalDataByKey(String key)
-    {
-        if (TextUtils.isEmpty(key))
-        {
+    public SharedData getGlobalDataByKey(String key) {
+        if (TextUtils.isEmpty(key)) {
             return null;
         }
 
@@ -153,11 +135,9 @@ public class SharedDataSqLiteHelper
                 + SharedData.KEY + "=\"" + key + "\" order by "
                 + SharedData.ID + " desc";
         Cursor cursor = null;
-        try
-        {
+        try {
             cursor = sqLiteDatabase.rawQuery(sql, null);
-            if (cursor.moveToFirst())
-            {
+            if (cursor.moveToFirst()) {
                 long id = cursor.getLong(cursor.getColumnIndex(SharedData.ID));
 
                 String mKey = cursor.getString(cursor
@@ -187,13 +167,10 @@ public class SharedDataSqLiteHelper
 
                 DataType dataType = DataType.getDataTypeByValue(mTypeCode);
 
-                try
-                {
+                try {
                     if (!TextUtils.isEmpty(dataStr))
                         mData = sDateFormat.parse(dataStr);
-                }
-                catch (ParseException e)
-                {
+                } catch (ParseException e) {
                     e.printStackTrace();
                 }
 
@@ -208,15 +185,10 @@ public class SharedDataSqLiteHelper
                 sharedData.setmFloat(mFloat);
                 sharedData.setDataType(dataType);
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
-        }
-        finally
-        {
-            if (null != cursor && !cursor.isClosed())
-            {
+        } finally {
+            if (null != cursor && !cursor.isClosed()) {
                 cursor.close();
             }
         }
@@ -230,12 +202,10 @@ public class SharedDataSqLiteHelper
      * @param sharedData
      * @return
      */
-    private long saveData(SharedData sharedData)
-    {
+    private long saveData(SharedData sharedData) {
         long id = -1;
 
-        if (sharedData == null || TextUtils.isEmpty(sharedData.getKey()) || sharedData.getDataType() == null)
-        {
+        if (sharedData == null || TextUtils.isEmpty(sharedData.getKey()) || sharedData.getDataType() == null) {
             return id;
         }
 
@@ -250,19 +220,15 @@ public class SharedDataSqLiteHelper
 
         String mTime = null;
 
-        if (sharedData.getmDate() != null)
-        {
+        if (sharedData.getmDate() != null) {
             mTime = sDateFormat.format(sharedData.getmDate());
         }
 
         contentValues.put(SharedData.M_DATE, mTime);
 
-        try
-        {
+        try {
             id = sqLiteDatabase.insert(SharedData.TABLE_NAME, null, contentValues);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -276,13 +242,11 @@ public class SharedDataSqLiteHelper
      * @param sharedData
      * @return
      */
-    private int updateDataById(SharedData sharedData)
-    {
+    private int updateDataById(SharedData sharedData) {
         int rows = 0;
 
         if (sharedData == null || TextUtils.isEmpty(sharedData.getKey())
-                || sharedData.getId() <= 0 || sharedData.getDataType() == null)
-        {
+                || sharedData.getId() <= 0 || sharedData.getDataType() == null) {
             return -1;
         }
 
@@ -298,23 +262,19 @@ public class SharedDataSqLiteHelper
 
         String mTime = null;
 
-        if (sharedData.getmDate() != null)
-        {
+        if (sharedData.getmDate() != null) {
             mTime = sDateFormat.format(sharedData.getmDate());
         }
 
         contentValues.put(SharedData.M_DATE, mTime);
 
-        try
-        {
+        try {
             rows = sqLiteDatabase.update(SharedData.TABLE_NAME,
                     contentValues, SharedData.ID + "= ? ", new String[]
-                    {
-                            String.valueOf(sharedData.getId())
-                    });
-        }
-        catch (Exception e)
-        {
+                            {
+                                    String.valueOf(sharedData.getId())
+                            });
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -327,10 +287,8 @@ public class SharedDataSqLiteHelper
      * @param key
      * @return
      */
-    public boolean contains(String key)
-    {
-        if (TextUtils.isEmpty(key))
-        {
+    public boolean contains(String key) {
+        if (TextUtils.isEmpty(key)) {
             return false;
         }
 
@@ -339,24 +297,17 @@ public class SharedDataSqLiteHelper
                 + key + "\"";
 
         Cursor cursor = null;
-        try
-        {
+        try {
             cursor = sqLiteDatabase.rawQuery(sql, null);
             cursor.moveToFirst();
             long count = cursor.getLong(0);
-            if (count > 0)
-            {
+            if (count > 0) {
                 return true;
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
-        }
-        finally
-        {
-            if (null != cursor && !cursor.isClosed())
-            {
+        } finally {
+            if (null != cursor && !cursor.isClosed()) {
                 cursor.close();
             }
         }
@@ -371,10 +322,8 @@ public class SharedDataSqLiteHelper
      * @param sharedData
      * @return
      */
-    private long hasData(SharedData sharedData)
-    {
-        if (sharedData == null || TextUtils.isEmpty(sharedData.getKey()))
-        {
+    private long hasData(SharedData sharedData) {
+        if (sharedData == null || TextUtils.isEmpty(sharedData.getKey())) {
             return -1;
         }
 
@@ -383,29 +332,21 @@ public class SharedDataSqLiteHelper
                 + sharedData.getKey() + "\"";
 
         Cursor cursor = null;
-        try
-        {
+        try {
             cursor = sqLiteDatabase.rawQuery(sql, null);
 
-            if (cursor.moveToFirst())
-            {
+            if (cursor.moveToFirst()) {
                 long id = cursor.getLong(cursor.getColumnIndex(SharedData.ID));
 
-                if (id > 0)
-                {
+                if (id > 0) {
                     return id;
                 }
 
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
-        }
-        finally
-        {
-            if (null != cursor && !cursor.isClosed())
-            {
+        } finally {
+            if (null != cursor && !cursor.isClosed()) {
                 cursor.close();
             }
         }
@@ -414,30 +355,22 @@ public class SharedDataSqLiteHelper
     }
 
 
-    public boolean isClosed()
-    {
+    public boolean isClosed() {
         return isClosed;
     }
 
-    public void close()
-    {
-        if (!isClosed)
-        {
-            try
-            {
-                if (null != localSqLiteHelper)
-                {
+    public void close() {
+        if (!isClosed) {
+            try {
+                if (null != localSqLiteHelper) {
                     localSqLiteHelper.close();
                 }
 
-                if (null != sqLiteDatabase)
-                {
+                if (null != sqLiteDatabase) {
                     sqLiteDatabase.close();
                 }
                 isClosed = true;
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -446,25 +379,18 @@ public class SharedDataSqLiteHelper
     /**
      * 查询记录的总数
      */
-    public long getCount()
-    {
+    public long getCount() {
         String sql = "select count(*) from " + SharedData.TABLE_NAME;
         Cursor cursor = null;
         long length = 0;
-        try
-        {
+        try {
             cursor = sqLiteDatabase.rawQuery(sql, null);
             cursor.moveToFirst();
             length = cursor.getLong(0);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
-        }
-        finally
-        {
-            if (null != cursor && !cursor.isClosed())
-            {
+        } finally {
+            if (null != cursor && !cursor.isClosed()) {
                 cursor.close();
             }
         }
@@ -474,29 +400,22 @@ public class SharedDataSqLiteHelper
     /**
      * 删除表中所有数据
      */
-    public boolean clearAll()
-    {
+    public boolean clearAll() {
         String sql = "delete from " + SharedData.TABLE_NAME;
 
         Cursor cursor = null;
         Boolean hasData = false;
 
-        try
-        {
+        try {
             sqLiteDatabase.execSQL(sql);
             cursor = sqLiteDatabase.query(SharedData.TABLE_NAME, null, null, null,
                     null, null, null);
             hasData = cursor.moveToFirst();
 
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
-        }
-        finally
-        {
-            if (null != cursor && !cursor.isClosed())
-            {
+        } finally {
+            if (null != cursor && !cursor.isClosed()) {
                 cursor.close();
             }
         }

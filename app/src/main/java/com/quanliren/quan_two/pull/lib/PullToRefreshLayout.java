@@ -35,6 +35,7 @@ import com.quanliren.quan_two.pull.lib.viewdelegates.ViewDelegate;
 /**
  * The main component of the library. You wrap the views you wish to be 'pullable' within this layout.
  * This layout is setup by using the {@link ActionBarPullToRefresh} setup-wizard return by
+ *
  * @link ActionBarPullToRefresh#from(android.app.Activity)}.
  */
 public class PullToRefreshLayout extends FrameLayout {
@@ -60,17 +61,16 @@ public class PullToRefreshLayout extends FrameLayout {
      * Manually set this Attacher's refreshing state. The header will be
      * displayed or hidden as requested.
      *
-     * @param refreshing
-     *            - Whether the attacher should be in a refreshing state,
+     * @param refreshing - Whether the attacher should be in a refreshing state,
      */
     public final void setRefreshing(boolean refreshing) {
         ensureAttacher();
         mPullToRefreshAttacher.setRefreshing(refreshing);
     }
-    
-    public final void setRefreshing(boolean refreshing,boolean fromTouch) {
+
+    public final void setRefreshing(boolean refreshing, boolean fromTouch) {
         ensureAttacher();
-        mPullToRefreshAttacher.setRefreshing(refreshing,fromTouch);
+        mPullToRefreshAttacher.setRefreshing(refreshing, fromTouch);
     }
 
     /**
@@ -84,7 +84,7 @@ public class PullToRefreshLayout extends FrameLayout {
     /**
      * Call this when your refresh is complete and this view should reset itself
      * (header view will be hidden).
-     *
+     * <p/>
      * This is the equivalent of calling <code>setRefreshing(false)</code>.
      */
     public final void setRefreshComplete() {
@@ -105,7 +105,7 @@ public class PullToRefreshLayout extends FrameLayout {
 
     /**
      * @return The Header View which is displayed when the user is pulling, or
-     *         we are refreshing.
+     * we are refreshing.
      */
     public final View getHeaderView() {
         ensureAttacher();
@@ -158,7 +158,7 @@ public class PullToRefreshLayout extends FrameLayout {
     }
 
     @SuppressLint("NewApi")
-	@Override
+    @Override
     protected void onConfigurationChanged(Configuration newConfig) {
         if (mPullToRefreshAttacher != null) {
             mPullToRefreshAttacher.onConfigurationChanged(newConfig);
@@ -223,7 +223,7 @@ public class PullToRefreshLayout extends FrameLayout {
     }
 
     protected PullToRefreshAttacher createPullToRefreshAttacher(Activity activity,
-            Options options) {
+                                                                Options options) {
         return new PullToRefreshAttacher(activity, options != null ? options : new Options());
     }
 

@@ -5,7 +5,7 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:paddingBottom="8dp"
-    android:paddingRight="8dp" >
+    android:paddingRight="8dp">
 
     <com.quanliren.quan_two.custom.CircleImageView
         android:id="@+id/userlogo"
@@ -14,7 +14,7 @@
         android:layout_marginLeft="8dp"
         app:border_color="#00000000"
         android:layout_marginTop="8dp"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop" />
 
     <com.quanliren.quan_two.custom.UserNickNameRelativeLayout
         android:id="@+id/nickname_rl"
@@ -45,7 +45,7 @@
         android:clickable="true"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
-        android:paddingTop="8dp" >
+        android:paddingTop="8dp">
 
         <com.quanliren.quan_two.custom.emoji.EmoticonsTextView
             android:id="@+id/signature"
@@ -75,7 +75,7 @@
             android:layout_below="@id/pic_gridview"
             android:layout_marginTop="4dp"
             android:gravity="center_vertical"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="18dp"
@@ -100,7 +100,7 @@
             android:layout_below="@id/pic_gridview"
             android:layout_marginTop="4dp"
             android:gravity="center_vertical"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="13dp"

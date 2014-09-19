@@ -38,11 +38,12 @@ public class Utils {
     static final String SHARED_PREFS_NAME = "com.android.calendar_preferences";
 
     public static boolean isJellybeanOrLater() {
-      return Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN;
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN;
     }
 
     /**
      * Try to speak the specified text, for accessibility. Only available on JB or later.
+     *
      * @param text Text to announce.
      */
     @SuppressLint("NewApi")
@@ -77,7 +78,7 @@ public class Utils {
     /**
      * Takes a number of weeks since the epoch and calculates the Julian day of
      * the Monday for that week.
-     *
+     * <p/>
      * This assumes that the week containing the {@link android.text.format.Time#EPOCH_JULIAN_DAY}
      * is considered week 0. It returns the Julian day for the Monday
      * {@code week} weeks after the Monday of the week containing the epoch.
@@ -92,14 +93,14 @@ public class Utils {
     /**
      * Returns the week since {@link android.text.format.Time#EPOCH_JULIAN_DAY} (Jan 1, 1970)
      * adjusted for first day of week.
-     *
+     * <p/>
      * This takes a julian day and the week start day and calculates which
      * week since {@link android.text.format.Time#EPOCH_JULIAN_DAY} that day occurs in, starting
      * at 0. *Do not* use this to compute the ISO week number for the year.
      *
-     * @param julianDay The julian day to calculate the week number for
+     * @param julianDay      The julian day to calculate the week number for
      * @param firstDayOfWeek Which week day is the first day of the week,
-     *          see {@link android.text.format.Time#SUNDAY}
+     *                       see {@link android.text.format.Time#SUNDAY}
      * @return Weeks since the epoch
      */
     public static int getWeeksSinceEpochFromJulianDay(int julianDay, int firstDayOfWeek) {
@@ -113,11 +114,12 @@ public class Utils {
 
     /**
      * Render an animator to pulsate a view in place.
+     *
      * @param labelToAnimate the view to pulsate.
      * @return The animator object. Use .start() to begin.
      */
     public static ObjectAnimator getPulseAnimator(View labelToAnimate, float decreaseRatio,
-            float increaseRatio) {
+                                                  float increaseRatio) {
         Keyframe k0 = Keyframe.ofFloat(0f, 1f);
         Keyframe k1 = Keyframe.ofFloat(0.275f, decreaseRatio);
         Keyframe k2 = Keyframe.ofFloat(0.69f, increaseRatio);

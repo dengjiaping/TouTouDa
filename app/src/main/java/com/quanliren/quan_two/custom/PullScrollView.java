@@ -18,58 +18,94 @@ import com.quanliren.quan_two.activity.R;
  * @date 2013-09-13
  */
 public class PullScrollView extends ScrollView {
-    /** 阻尼系数,越小阻力就越大. */
+    /**
+     * 阻尼系数,越小阻力就越大.
+     */
     private static final float SCROLL_RATIO = 0.5f;
 
-    /** 滑动至翻转的距离. */
+    /**
+     * 滑动至翻转的距离.
+     */
     private static final int TURN_DISTANCE = 100;
 
-    /** 头部view. */
+    /**
+     * 头部view.
+     */
     private View mHeader;
 
-    /** 头部view高度. */
+    /**
+     * 头部view高度.
+     */
     private int mHeaderHeight;
 
-    /** 头部view显示高度. */
+    /**
+     * 头部view显示高度.
+     */
     private int mHeaderVisibleHeight;
 
-    /** ScrollView的content view. */
+    /**
+     * ScrollView的content view.
+     */
     private View mContentView;
 
-    /** ScrollView的content view矩形. */
+    /**
+     * ScrollView的content view矩形.
+     */
     private Rect mContentRect = new Rect();
 
-    /** 首次点击的Y坐标. */
+    /**
+     * 首次点击的Y坐标.
+     */
     private float mTouchDownY;
 
-    /** 是否关闭ScrollView的滑动. */
+    /**
+     * 是否关闭ScrollView的滑动.
+     */
     private boolean mEnableTouch = false;
 
-    /** 是否开始移动. */
+    /**
+     * 是否开始移动.
+     */
     private boolean isMoving = false;
 
-    /** 是否移动到顶部位置. */
+    /**
+     * 是否移动到顶部位置.
+     */
     private boolean isTop = false;
 
-    /** 头部图片初始顶部和底部. */
+    /**
+     * 头部图片初始顶部和底部.
+     */
     private int mInitTop, mInitBottom;
 
-    /** 头部图片拖动时顶部和底部. */
+    /**
+     * 头部图片拖动时顶部和底部.
+     */
     private int mCurrentTop, mCurrentBottom;
 
-    /** 状态变化时的监听器. */
+    /**
+     * 状态变化时的监听器.
+     */
     private OnTurnListener mOnTurnListener;
 
     private enum State {
-        /**顶部*/
+        /**
+         * 顶部
+         */
         UP,
-        /**底部*/
+        /**
+         * 底部
+         */
         DOWN,
-        /**正常*/
+        /**
+         * 正常
+         */
         NORMAL
     }
 
-    /** 状态. */
+    /**
+     * 状态.
+     */
     private State mState = State.NORMAL;
 
     public PullScrollView(Context context) {
@@ -87,7 +123,7 @@ public class PullScrollView extends ScrollView {
         init(context, attrs);
     }
 
-	private void init(Context context, AttributeSet attrs) {
+    private void init(Context context, AttributeSet attrs) {
         // set scroll mode
         setOverScrollMode(OVER_SCROLL_NEVER);
 
@@ -135,7 +171,7 @@ public class PullScrollView extends ScrollView {
         if (getScrollY() == 0) {
             isTop = true;
         }
-        
+
         if (mOnScrollChangedListener != null) {
             mOnScrollChangedListener.onScrollChanged(this, l, t, oldl, oldt);
         }
@@ -207,13 +243,13 @@ public class PullScrollView extends ScrollView {
             if (isTop) {
                 isTop = false;
                 mTouchDownY = event.getY();
-                mEnableTouch=true;
+                mEnableTouch = true;
             }
         }
 
         float deltaY = event.getY() - mTouchDownY;
 
-        
+
         // 对于首次Touch操作要判断方位：UP OR DOWN
         if (deltaY < 0 && mState == State.NORMAL) {
             mState = State.UP;
@@ -253,47 +289,47 @@ public class PullScrollView extends ScrollView {
 
             // 修正content移动的距离，避免超过header的底边缘
 //            int headerBottom = mCurrentBottom - mHeaderVisibleHeight;
-            int headerBottom = 2*mHeaderVisibleHeight;
+            int headerBottom = 2 * mHeaderVisibleHeight;
             int top = (int) (mContentRect.top + contentMoveHeight);
             int bottom = (int) (mContentRect.bottom + contentMoveHeight);
 //            Log.i(VIEW_LOG_TAG, headerBottom+"-------------"+top+"-----------------"+bottom+"----------"+mCurrentBottom+"-------------"+mHeaderVisibleHeight);
-            if (top <headerBottom) {
+            if (top < headerBottom) {
                 // 移动content view
                 mContentView.layout(mContentRect.left, top, mContentRect.right, bottom);
 
                 // 移动header view
                 mHeader.layout(mHeader.getLeft(), mCurrentTop, mHeader.getRight(), mCurrentBottom);
-                
-                if(mOnTurnListener!=null){
-                	mOnTurnListener.progress((int)(((float)top/(float)headerBottom)*100));
+
+                if (mOnTurnListener != null) {
+                    mOnTurnListener.progress((int) (((float) top / (float) headerBottom) * 100));
                 }
             }
         }
     }
 
     private void rollBackAnimation() {
-    	
+
 //        TranslateAnimation tranAnim = new TranslateAnimation(0, 0,
 //                Math.abs(mInitTop - mCurrentTop), 0);
         TranslateAnimation tranAnim = new TranslateAnimation(0, 0,
-        Math.abs(mInitTop - mHeader.getTop()), 0);
+                Math.abs(mInitTop - mHeader.getTop()), 0);
         tranAnim.setDuration(200);
         mHeader.startAnimation(tranAnim);
 
         mHeader.layout(mHeader.getLeft(), mInitTop, mHeader.getRight(), mInitBottom);
-      
+
         // 开启移动动画
         TranslateAnimation innerAnim = new TranslateAnimation(0, 0, mContentView.getTop(), mContentRect.top);
         innerAnim.setDuration(200);
         mContentView.startAnimation(innerAnim);
-        
-        
+
+
         mContentView.layout(mContentRect.left, mContentRect.top, mContentRect.right, mContentRect.bottom);
 
         mContentRect.setEmpty();
 
         // 回调监听器
-        if ( mOnTurnListener != null){
+        if (mOnTurnListener != null) {
             mOnTurnListener.onTurn();
         }
     }
@@ -315,11 +351,11 @@ public class PullScrollView extends ScrollView {
          * 翻转回调方法
          */
         public void onTurn();
-        
+
         public void progress(int progress);
     }
-    
-    
+
+
     /**
      * @author Cyril Mottier
      */

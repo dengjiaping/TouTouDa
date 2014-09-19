@@ -19,7 +19,7 @@
     <declare-styleable name="StateTextView">
         <attr name="large" format="boolean" />
     </declare-styleable>
-    
+
     <attr name="SwipeBackLayoutStyle" format="reference" />
     <declare-styleable name="GIFView">
         <attr name="gif" format="reference" />

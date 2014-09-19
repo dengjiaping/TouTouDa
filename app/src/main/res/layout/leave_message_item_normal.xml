@@ -7,7 +7,7 @@
     android:paddingBottom="8dp"
     android:paddingLeft="0dp"
     android:paddingRight="8dp"
-    android:paddingTop="0dp" >
+    android:paddingTop="0dp">
 
     <com.quanliren.quan_two.custom.RoundAngleImageView
         android:id="@+id/userlogo"
@@ -36,7 +36,7 @@
         android:layout_marginLeft="8dp"
         android:layout_toRightOf="@id/userlogo"
         android:gravity="center_vertical"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/username"

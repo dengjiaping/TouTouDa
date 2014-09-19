@@ -217,7 +217,7 @@ public class TimePickerDialog extends DialogFragment implements RadialPickerLayo
 
                 @Override
                 public CharSequence getTransformation(CharSequence source, View view) {
-                        return source != null ? source.toString().toUpperCase(locale) : null;
+                    return source != null ? source.toString().toUpperCase(locale) : null;
                 }
 
                 @Override
@@ -373,7 +373,7 @@ public class TimePickerDialog extends DialogFragment implements RadialPickerLayo
             Utils.tryAccessibilityAnnounce(mTimePicker, announcement);
         } else if (pickerIndex == MINUTE_INDEX) {
             setMinute(newValue);
-            if(mCloseOnSingleTapMinute) {
+            if (mCloseOnSingleTapMinute) {
                 onDoneButtonClick();
             }
         } else if (pickerIndex == AMPM_INDEX) {

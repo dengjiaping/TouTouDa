@@ -60,12 +60,12 @@
         android:allowBackup="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
-        android:theme="@style/AppBaseThemeNoAnimation" >
+        android:theme="@style/AppBaseThemeNoAnimation">
 
         <activity
             android:name=".PropertiesActivity_"
             android:screenOrientation="portrait"
-            android:theme="@style/AppBaseThemeNoHomeAsUp" >
+            android:theme="@style/AppBaseThemeNoHomeAsUp">
             <!-- <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -75,12 +75,11 @@
         <activity
             android:name=".seting.HtmlActivity_"
             android:screenOrientation="portrait"
-            android:theme="@style/AppBaseThemeTranslucent" >
-        </activity>
+            android:theme="@style/AppBaseThemeTranslucent"></activity>
         <activity
             android:name=".Whatsnew_"
             android:screenOrientation="portrait"
-            android:theme="@style/AppBaseThemeNoHomeAsUp" >
+            android:theme="@style/AppBaseThemeNoHomeAsUp">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -91,12 +90,11 @@
         <activity
             android:name=".shop.VipCardActivity_"
             android:screenOrientation="portrait"
-            android:theme="@style/AppBaseThemeTranslucent" >
-        </activity>
+            android:theme="@style/AppBaseThemeTranslucent"></activity>
         <activity
             android:name=".shop.product.ProductListActivity_"
             android:screenOrientation="portrait"
-            android:theme="@style/AppBaseThemeTranslucent" >
+            android:theme="@style/AppBaseThemeTranslucent">
 
             <!--
             <intent-filter>
@@ -112,24 +110,21 @@
         <activity
             android:name=".shop.product.ProductDetailActivity_"
             android:screenOrientation="portrait"
-            android:theme="@style/AppBaseThemeTranslucent" >
-        </activity>
+            android:theme="@style/AppBaseThemeTranslucent"></activity>
         <activity
             android:name=".shop.product.ProductExchangeActivity_"
             android:screenOrientation="portrait"
-            android:theme="@style/AppBaseThemeTranslucent" >
-        </activity>
+            android:theme="@style/AppBaseThemeTranslucent"></activity>
         <activity
             android:name=".user.UserInfoActivity_"
             android:screenOrientation="portrait"
-            android:theme="@style/TransparentAppBaseTheme" >
-        </activity>
+            android:theme="@style/TransparentAppBaseTheme"></activity>
         <activity
             android:name=".user.LoginActivity_"
             android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden"
             android:theme="@style/TransparentAppBaseTheme"
-            android:windowSoftInputMode="stateVisible|adjustResize" >
+            android:windowSoftInputMode="stateVisible|adjustResize">
 
             <!--
             <intent-filter>
@@ -146,23 +141,20 @@
         <activity
             android:name=".user.FilterNearPeopleActivity_"
             android:screenOrientation="portrait"
-            android:theme="@style/AppBaseThemeTranslucent" >
-        </activity>
+            android:theme="@style/AppBaseThemeTranslucent"></activity>
         <activity
             android:name=".user.MyVisitActivity_"
             android:screenOrientation="portrait"
-            android:theme="@style/AppBaseThemeTranslucent" >
-        </activity>
+            android:theme="@style/AppBaseThemeTranslucent"></activity>
         <activity
             android:name=".user.SearchFriendActivity_"
             android:screenOrientation="portrait"
             android:theme="@style/AppBaseThemeTranslucent"
-            android:windowSoftInputMode="stateVisible|adjustResize" >
-        </activity>
+            android:windowSoftInputMode="stateVisible|adjustResize"></activity>
         <activity
             android:name=".group.date.DateListActivity_"
             android:screenOrientation="portrait"
-            android:theme="@style/AppBaseThemeTranslucent" >
+            android:theme="@style/AppBaseThemeTranslucent">
 
             <!--
             <intent-filter>
@@ -178,7 +170,7 @@
         <activity
             android:name=".group.date.DateDetailActivity_"
             android:screenOrientation="portrait"
-            android:theme="@style/AppBaseThemeTranslucent" >
+            android:theme="@style/AppBaseThemeTranslucent">
 
             <!--
             <intent-filter>
@@ -194,75 +186,62 @@
         <activity
             android:name=".group.date.DatePublishActivity_"
             android:screenOrientation="portrait"
-            android:theme="@style/AppBaseThemeTranslucent" >
-        </activity>
+            android:theme="@style/AppBaseThemeTranslucent"></activity>
         <activity
             android:name=".reg.RegFirst_"
             android:screenOrientation="portrait"
             android:theme="@style/AppBaseThemeTranslucent"
-            android:windowSoftInputMode="stateVisible|adjustResize" >
-        </activity>
+            android:windowSoftInputMode="stateVisible|adjustResize"></activity>
         <activity
             android:name=".seting.emoticon.EmoticonDetailActivity_"
             android:screenOrientation="portrait"
-            android:theme="@style/AppBaseThemeTranslucent" >
-        </activity>
+            android:theme="@style/AppBaseThemeTranslucent"></activity>
         <activity
             android:name=".user.PersonalDongTaiActivity_"
             android:screenOrientation="portrait"
-            android:theme="@style/AppBaseThemeTranslucent" >
-        </activity>
+            android:theme="@style/AppBaseThemeTranslucent"></activity>
         <activity
             android:name=".reg.RegSecond_"
             android:screenOrientation="portrait"
             android:theme="@style/AppBaseThemeTranslucent"
-            android:windowSoftInputMode="stateVisible|adjustResize" >
-        </activity>
+            android:windowSoftInputMode="stateVisible|adjustResize"></activity>
         <activity
             android:name=".user.ChatActivity_"
             android:screenOrientation="portrait"
             android:theme="@style/AppBaseThemeTranslucent"
-            android:windowSoftInputMode="stateHidden|adjustResize" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustResize"></activity>
         <activity
             android:name=".group.PhotoAlbumMainActivity_"
             android:screenOrientation="portrait"
-            android:theme="@style/AppBaseThemeTranslucent" >
-        </activity>
+            android:theme="@style/AppBaseThemeTranslucent"></activity>
         <activity
             android:name=".seting.ServiceInfoActivity_"
             android:screenOrientation="portrait"
-            android:theme="@style/AppBaseThemeTranslucent" >
-        </activity>
+            android:theme="@style/AppBaseThemeTranslucent"></activity>
         <activity
             android:name=".seting.FunctionActivity_"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".reg.RegGetCode_"
             android:screenOrientation="portrait"
             android:theme="@style/AppBaseThemeTranslucent"
-            android:windowSoftInputMode="stateVisible|adjustResize" >
-        </activity>
+            android:windowSoftInputMode="stateVisible|adjustResize"></activity>
         <activity
             android:name=".user.UserOtherInfoActivity_"
             android:screenOrientation="portrait"
-            android:theme="@style/TransparentAppBaseTheme" >
-        </activity>
+            android:theme="@style/TransparentAppBaseTheme"></activity>
         <activity
             android:name=".group.date.DateApplyManageActivity_"
             android:screenOrientation="portrait"
-            android:theme="@style/AppBaseThemeTranslucent" >
-        </activity>
+            android:theme="@style/AppBaseThemeTranslucent"></activity>
         <activity
             android:name=".seting.EmoticonListActivity_"
             android:screenOrientation="portrait"
-            android:theme="@style/AppBaseThemeTranslucent" >
-        </activity>
+            android:theme="@style/AppBaseThemeTranslucent"></activity>
         <activity
             android:name=".group.ThroughActivity_"
             android:screenOrientation="portrait"
-            android:theme="@style/AppBaseThemeTranslucent" >
+            android:theme="@style/AppBaseThemeTranslucent">
 
             <!--
             <intent-filter>
@@ -278,7 +257,7 @@
         <activity
             android:name=".group.ThroughListActivity_"
             android:screenOrientation="portrait"
-            android:theme="@style/AppBaseThemeTranslucent" >
+            android:theme="@style/AppBaseThemeTranslucent">
 
             <!--
             <intent-filter>
@@ -294,7 +273,7 @@
         <activity
             android:name=".group.date.FilterDateActivity_"
             android:screenOrientation="portrait"
-            android:theme="@style/AppBaseThemeTranslucent" >
+            android:theme="@style/AppBaseThemeTranslucent">
 
             <!--
             <intent-filter>
@@ -310,84 +289,70 @@
         <activity
             android:name=".group.QuanActivity_"
             android:screenOrientation="portrait"
-            android:theme="@style/AppBaseThemeTranslucent" >
-        </activity>
+            android:theme="@style/AppBaseThemeTranslucent"></activity>
         <activity
             android:name=".group.PublishActivity_"
             android:screenOrientation="portrait"
-            android:theme="@style/AppBaseThemeTranslucent" >
-        </activity>
+            android:theme="@style/AppBaseThemeTranslucent"></activity>
 
         <activity
             android:name=".user.BlackListActivity_"
             android:screenOrientation="portrait"
-            android:theme="@style/AppBaseThemeTranslucent" >
-        </activity>
+            android:theme="@style/AppBaseThemeTranslucent"></activity>
         <activity
             android:name=".shop.product.MyExchangeListActivity_"
             android:screenOrientation="portrait"
-            android:theme="@style/AppBaseThemeTranslucent" >
-        </activity>
+            android:theme="@style/AppBaseThemeTranslucent"></activity>
         <activity
             android:name=".seting.RemindMessageActivity_"
             android:screenOrientation="portrait"
-            android:theme="@style/AppBaseThemeTranslucent" >
-        </activity>
+            android:theme="@style/AppBaseThemeTranslucent"></activity>
         <activity
             android:name=".group.date.MyFavoriteDateListActivity_"
             android:screenOrientation="portrait"
-            android:theme="@style/AppBaseThemeTranslucent" >
-        </activity>
+            android:theme="@style/AppBaseThemeTranslucent"></activity>
         <activity
             android:name=".seting.emoticon.EmoticonHistoryListActivity_"
             android:screenOrientation="portrait"
-            android:theme="@style/AppBaseThemeTranslucent" >
-        </activity>
+            android:theme="@style/AppBaseThemeTranslucent"></activity>
         <activity
             android:name=".reg.ForgetPassWordActivity1_"
             android:screenOrientation="portrait"
             android:theme="@style/AppBaseThemeTranslucent"
-            android:windowSoftInputMode="stateVisible|adjustResize" >
-        </activity>
+            android:windowSoftInputMode="stateVisible|adjustResize"></activity>
         <activity
             android:name=".group.ChoseLocationActivity_"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
 
         <activity
             android:name=".shop.ShopVipDetail_"
             android:screenOrientation="portrait"
-            android:theme="@style/AppBaseThemeTranslucent" >
-        </activity>
+            android:theme="@style/AppBaseThemeTranslucent"></activity>
         <activity
             android:name=".reg.ForgetPassWordActivity2_"
             android:screenOrientation="portrait"
             android:theme="@style/AppBaseThemeTranslucent"
-            android:windowSoftInputMode="stateVisible|adjustResize" >
-        </activity>
+            android:windowSoftInputMode="stateVisible|adjustResize"></activity>
         <activity
             android:name=".user.UserInfoEditActivity_"
             android:screenOrientation="portrait"
             android:theme="@style/AppBaseThemeTranslucent"
-            android:windowSoftInputMode="stateVisible|adjustResize" >
-        </activity>
+            android:windowSoftInputMode="stateVisible|adjustResize"></activity>
 
         <activity
             android:name="com.quanliren.quan_two.activity.seting.AboutUsActivity_"
             android:screenOrientation="portrait"
-            android:theme="@style/AppBaseThemeTranslucent" >
-        </activity>
+            android:theme="@style/AppBaseThemeTranslucent"></activity>
         <activity
             android:name=".group.DongTaiDetailActivity_"
             android:screenOrientation="portrait"
             android:theme="@style/AppBaseThemeTranslucent"
-            android:windowSoftInputMode="adjustResize|stateHidden" >
-        </activity>
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
 
         <activity
             android:name="com.quanliren.quan_two.activity.seting.InviteFriendActivity_"
             android:screenOrientation="portrait"
-            android:theme="@style/AppBaseThemeTranslucent" >
+            android:theme="@style/AppBaseThemeTranslucent">
             <intent-filter>
                 <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
 
@@ -397,22 +362,18 @@
         <activity
             android:name=".Noti"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.quanliren.quan_two.activity.user.ModifyPasswordActivity_"
             android:screenOrientation="portrait"
-            android:theme="@style/AppBaseThemeTranslucent" >
-        </activity>
+            android:theme="@style/AppBaseThemeTranslucent"></activity>
         <activity
             android:name="com.quanliren.quan_two.activity.user.MyCareActivity_"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.quanliren.quan_two.activity.image.ImageBrowserActivity_"
             android:screenOrientation="portrait"
-            android:theme="@style/TranslucentActivity" >
-        </activity>
+            android:theme="@style/TranslucentActivity"></activity>
 
         <!-- QQ -->
         <activity
@@ -422,7 +383,7 @@
         <activity
             android:name="com.tencent.tauth.AuthActivity"
             android:launchMode="singleTask"
-            android:noHistory="true" >
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -439,8 +400,7 @@
             android:exported="true"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Animation.Translucent" >
-        </activity>
+            android:theme="@android:style/Animation.Translucent"></activity>
         <!-- 微信 -->
 
         <meta-data
@@ -455,14 +415,13 @@
         <!-- 支付宝 -->
         <activity
             android:name="com.alipay.android.app.sdk.WapPayActivity"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <!-- 支付宝 -->
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="@string/app_name" />
 
-        <receiver android:name="com.quanliren.quan_two.receiver.AlarmReceiver" >
+        <receiver android:name="com.quanliren.quan_two.receiver.AlarmReceiver">
             <intent-filter>
                 <action android:name="com.quanliren.quan_two.service.checkconnect" />
                 <!-- 定时检查登陆状态 -->
@@ -474,7 +433,7 @@
                 <!-- 网络通知 -->
             </intent-filter>
         </receiver>
-        <receiver android:name="com.quanliren.quan_two.receiver.BootCompletedAlarmReceiver" >
+        <receiver android:name="com.quanliren.quan_two.receiver.BootCompletedAlarmReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <!-- 开机启动 -->
@@ -498,7 +457,7 @@
         <service
             android:name="com.quanliren.quan_two.service.DownLoadEmoticonService_"
             android:enabled="true"
-            android:exported="false" >
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.quanliren.quan_two.service.downloademoticon" />
                 <!-- 下载表情 -->
@@ -506,8 +465,8 @@
         </service>
 
         <!-- 短信拦截 -->
-        <receiver android:name="com.quanliren.quan_two.receiver.SmsReceiver" >
-            <intent-filter android:priority="800" >
+        <receiver android:name="com.quanliren.quan_two.receiver.SmsReceiver">
+            <intent-filter android:priority="800">
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>

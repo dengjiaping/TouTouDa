@@ -1,25 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:state_enabled="false"><shape>
+    <item android:state_enabled="false">
+        <shape>
             <solid android:color="@color/login_btn_enable" />
 
             <corners android:radius="8dp" />
-        </shape></item>
-    <item android:state_selected="true"><shape>
+        </shape>
+    </item>
+    <item android:state_selected="true">
+        <shape>
             <solid android:color="@color/login_btn_press" />
 
             <corners android:radius="8dp" />
-        </shape></item>
-    <item android:state_pressed="true"><shape>
+        </shape>
+    </item>
+    <item android:state_pressed="true">
+        <shape>
             <solid android:color="@color/login_btn_press" />
 
             <corners android:radius="8dp" />
-        </shape></item>
-    <item><shape>
+        </shape>
+    </item>
+    <item>
+        <shape>
             <solid android:color="@color/login_btn_normal" />
 
             <corners android:radius="8dp" />
-        </shape></item>
+        </shape>
+    </item>
 
 </selector>

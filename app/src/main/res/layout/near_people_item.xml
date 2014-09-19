@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="76dp"
     android:background="@drawable/menu_btm_selector"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <com.quanliren.quan_two.custom.RoundAngleImageView
         android:id="@+id/userlogo"
@@ -42,8 +42,7 @@
         android:layout_alignLeft="@id/nick_ll"
         android:gravity="center_vertical"
         android:textSize="12sp"
-        android:layout_alignParentBottom="true" >
-    </com.quanliren.quan_two.custom.StateTextView>
+        android:layout_alignParentBottom="true"></com.quanliren.quan_two.custom.StateTextView>
 
     <TextView
         android:id="@+id/time"

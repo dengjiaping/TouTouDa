@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:padding="8dp"
     android:background="@color/white"
-    android:orientation="horizontal" >
+    android:orientation="horizontal">
 
     <com.a.net.simonvt.numberpicker.NumberPicker
         android:id="@+id/height"

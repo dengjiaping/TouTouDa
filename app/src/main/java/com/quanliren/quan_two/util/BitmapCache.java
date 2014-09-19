@@ -11,14 +11,18 @@ import java.util.Hashtable;
 
 public class BitmapCache {
     static private BitmapCache cache;
-    /** 用于Chche内容的存储 */
+    /**
+     * 用于Chche内容的存储
+     */
     private Hashtable<Long, MySoftRef> hashRefs;
-    /** 垃圾Reference的队列（所引用的对象已经被回收，则将该引用存入队列中） */
+    /**
+     * 垃圾Reference的队列（所引用的对象已经被回收，则将该引用存入队列中）
+     */
     private ReferenceQueue<Bitmap> q;
 
     /**
      * 继承SoftReference，使得每一个实例都具有可识别的标识。
-      */
+     */
     private class MySoftRef extends SoftReference<Bitmap> {
         private Long _key = 0l;
 
@@ -35,7 +39,7 @@ public class BitmapCache {
 
     /**
      * 取得缓存器实例
-      */
+     */
     public static BitmapCache getInstance() {
         if (cache == null) {
             cache = new BitmapCache();
@@ -45,10 +49,10 @@ public class BitmapCache {
 
     /**
      * 以软引用的方式对一个Bitmap对象的实例进行引用并保存该引用
-      */
+     */
     private void addCacheBitmap(Bitmap bmp, Long key) {
         cleanCache();// 清除垃圾引用
-         MySoftRef ref = new MySoftRef(bmp, q, key);
+        MySoftRef ref = new MySoftRef(bmp, q, key);
         hashRefs.put(key, ref);
     }
 
@@ -58,57 +62,59 @@ public class BitmapCache {
     public Bitmap getBitmap(int resId, Context context) {
         Bitmap bmp = null;
         // 缓存中是否有该Bitmap实例的软引用，如果有，从软引用中取得。
-         if (hashRefs.containsKey(resId)) {
+        if (hashRefs.containsKey(resId)) {
             MySoftRef ref = (MySoftRef) hashRefs.get(resId);
             bmp = (Bitmap) ref.get();
         }
         // 如果没有软引用，或者从软引用中得到的实例是null，重新构建一个实例，
-         // 并保存对这个新建实例的软引用
-         if (bmp == null) {
+        // 并保存对这个新建实例的软引用
+        if (bmp == null) {
             // 传说decodeStream直接调用JNI>>nativeDecodeAsset()来完成decode，
-              // 无需再使用java层的createBitmap，从而节省了java层的空间。
-              bmp = BitmapFactory.decodeStream(context.getResources()
+            // 无需再使用java层的createBitmap，从而节省了java层的空间。
+            bmp = BitmapFactory.decodeStream(context.getResources()
                     .openRawResource(resId));
             this.addCacheBitmap(bmp, Long.valueOf(resId));
         }
         return bmp;
     }
-    public Bitmap getBitmap(int resId, Context context,boolean b) {
+
+    public Bitmap getBitmap(int resId, Context context, boolean b) {
         Bitmap bmp = null;
         // 缓存中是否有该Bitmap实例的软引用，如果有，从软引用中取得。
-         if (hashRefs.containsKey(resId)) {
+        if (hashRefs.containsKey(resId)) {
             MySoftRef ref = (MySoftRef) hashRefs.get(resId);
             bmp = (Bitmap) ref.get();
         }
         // 如果没有软引用，或者从软引用中得到的实例是null，重新构建一个实例，
-         // 并保存对这个新建实例的软引用
-         if (bmp == null) {
+        // 并保存对这个新建实例的软引用
+        if (bmp == null) {
             // 传说decodeStream直接调用JNI>>nativeDecodeAsset()来完成decode，
-              // 无需再使用java层的createBitmap，从而节省了java层的空间。
-              bmp = BitmapFactory.decodeResource(
-            		  context.getResources(), resId);
+            // 无需再使用java层的createBitmap，从而节省了java层的空间。
+            bmp = BitmapFactory.decodeResource(
+                    context.getResources(), resId);
             this.addCacheBitmap(bmp, Long.valueOf(resId));
         }
         return bmp;
     }
+
     public Bitmap getBitmaps(long resId, Context context) {
         Bitmap bmp = null;
         // 缓存中是否有该Bitmap实例的软引用，如果有，从软引用中取得。
-         if (hashRefs.containsKey(resId)) {
+        if (hashRefs.containsKey(resId)) {
             MySoftRef ref = (MySoftRef) hashRefs.get(resId);
             bmp = (Bitmap) ref.get();
         }
         // 如果没有软引用，或者从软引用中得到的实例是null，重新构建一个实例，
-         // 并保存对这个新建实例的软引用
-         if (bmp == null) {
+        // 并保存对这个新建实例的软引用
+        if (bmp == null) {
             // 传说decodeStream直接调用JNI>>nativeDecodeAsset()来完成decode，
-              // 无需再使用java层的createBitmap，从而节省了java层的空间。
-              bmp = Thumbnails.getThumbnail(context.getContentResolver(),  resId, Thumbnails.MICRO_KIND, null);
-            this.addCacheBitmap(bmp,resId);
+            // 无需再使用java层的createBitmap，从而节省了java层的空间。
+            bmp = Thumbnails.getThumbnail(context.getContentResolver(), resId, Thumbnails.MICRO_KIND, null);
+            this.addCacheBitmap(bmp, resId);
         }
         return bmp;
     }
-    
+
     private void cleanCache() {
         MySoftRef ref = null;
         while ((ref = (MySoftRef) q.poll()) != null) {

@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp" >
+        android:padding="10dp">
 
         <com.quanliren.quan_two.custom.RoundAngleImageView
             android:id="@+id/userlogo"
@@ -55,6 +55,7 @@
             android:text="兵书书uzengsong是那个离开角色"
             android:textColor="@color/signature"
             android:textSize="14sp" />
+
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="20dp"

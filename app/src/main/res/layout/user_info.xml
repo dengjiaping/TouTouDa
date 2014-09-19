@@ -5,7 +5,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/activity_bg"
-    tools:context=".user.UserOtherInfoActivity" >
+    tools:context=".user.UserOtherInfoActivity">
 
     <ImageView
         android:id="@+id/mHeadImg"
@@ -20,7 +20,7 @@
         android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <com.quanliren.quan_two.custom.PullScrollView
             android:id="@+id/scroll_view"
@@ -28,26 +28,26 @@
             android:layout_height="fill_parent"
             android:fillViewport="true"
             app:headerHeight="415dp"
-            app:headerVisibleHeight="100dp" >
+            app:headerVisibleHeight="100dp">
 
             <LinearLayout
                 android:id="@+id/scroll_ll"
                 android:layout_width="fill_parent"
                 android:visibility="gone"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:id="@+id/bg_click_ll"
                     android:orientation="vertical"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content" >
+                    android:layout_height="wrap_content">
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="55dp" >
+                        android:layout_marginTop="55dp">
 
                         <com.quanliren.quan_two.custom.CircleImageView
                             android:id="@+id/userlogo"
@@ -66,8 +66,7 @@
                             android:scaleType="centerCrop"
                             android:src="@drawable/userlogo_border" />
 
-                        <com.quanliren.quan_two.custom.RoundProgressBar
-                            xmlns:pla="http://schemas.android.com/apk/res-auto"
+                        <com.quanliren.quan_two.custom.RoundProgressBar xmlns:pla="http://schemas.android.com/apk/res-auto"
                             android:id="@+id/loadProgressBar"
                             pla:style="STROKE"
                             android:layout_width="82dp"
@@ -110,22 +109,21 @@
                         android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="20dp"/>
+                        android:padding="20dp" />
                 </LinearLayout>
 
                 <FrameLayout
                     android:id="@+id/pic_contents"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white" >
-                </FrameLayout>
+                    android:background="@color/white"></FrameLayout>
 
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="25dp"
                     android:background="@color/white"
                     android:paddingLeft="8dp"
-                    android:paddingRight="8dp" >
+                    android:paddingRight="8dp">
 
                     <TextView
                         android:id="@+id/ld_ds_txt"

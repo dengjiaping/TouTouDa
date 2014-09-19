@@ -21,74 +21,76 @@ import java.util.ArrayList;
 @OptionsMenu(R.menu.filter_people_menu)
 public class PhotoAlbumMainActivity extends BaseActivity {
 
-	@Extra
-	int maxnum = 0;
-	@Extra
-	ArrayList<String> paths = new ArrayList<String>();
+    @Extra
+    int maxnum = 0;
+    @Extra
+    ArrayList<String> paths = new ArrayList<String>();
 
-	@OptionsMenuItem
-	MenuItem ok;
+    @OptionsMenuItem
+    MenuItem ok;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.photo_album_main);
-		getSupportActionBar().setTitle("相册");
-		getSupportFragmentManager().beginTransaction()
-				.replace(R.id.content, new PhotoAlbumActivity_()).commit();
-	}
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.photo_album_main);
+        getSupportActionBar().setTitle("相册");
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.content, new PhotoAlbumActivity_()).commit();
+    }
 
 
-	public boolean onCreateOptionsMenu(android.view.Menu menu) {
-		ok.setTitle("确定(" + paths.size() + "/" + maxnum + ")");
-		return super.onCreateOptionsMenu(menu);
-	};
+    public boolean onCreateOptionsMenu(android.view.Menu menu) {
+        ok.setTitle("确定(" + paths.size() + "/" + maxnum + ")");
+        return super.onCreateOptionsMenu(menu);
+    }
 
-	PhotoActivity pa;
+    ;
 
-	public void replaceFragment(PhotoAibum i) {
+    PhotoActivity pa;
 
-		for (PhotoItem item : i.getBitList()) {
-			if (paths.contains(item.getPath())) {
-				item.setSelect(true);
-			}
-		}
+    public void replaceFragment(PhotoAibum i) {
 
-		Bundle b = new Bundle();
-		b.putSerializable("aibum", i);
-		pa = new PhotoActivity_();
-		pa.setArguments(b);
-		getSupportFragmentManager().beginTransaction()
-				.replace(R.id.content, pa).addToBackStack(null).commit();
-	}
+        for (PhotoItem item : i.getBitList()) {
+            if (paths.contains(item.getPath())) {
+                item.setSelect(true);
+            }
+        }
 
-	public void finishActivity() {
-		if (pa != null && pa.isVisible()) {
-			onBackPressed();
-		} else {
-			scrollToFinishActivity();
-		}
-	}
+        Bundle b = new Bundle();
+        b.putSerializable("aibum", i);
+        pa = new PhotoActivity_();
+        pa.setArguments(b);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.content, pa).addToBackStack(null).commit();
+    }
 
-	@OptionsItem(R.id.ok)
-	public void rightClick() {
-		Intent i = new Intent();
-		i.putStringArrayListExtra("images", paths);
-		setResult(1, i);
-		finish();
-	}
+    public void finishActivity() {
+        if (pa != null && pa.isVisible()) {
+            onBackPressed();
+        } else {
+            scrollToFinishActivity();
+        }
+    }
 
-	public void changeNum() {
-		ok.setTitle("确定(" + paths.size() + "/" + maxnum + ")");
-	}
+    @OptionsItem(R.id.ok)
+    public void rightClick() {
+        Intent i = new Intent();
+        i.putStringArrayListExtra("images", paths);
+        setResult(1, i);
+        finish();
+    }
 
-	public void addPath(String path) {
-		paths.add(path);
-		changeNum();
-	}
+    public void changeNum() {
+        ok.setTitle("确定(" + paths.size() + "/" + maxnum + ")");
+    }
 
-	public void removePath(String path) {
-		paths.remove(path);
-		changeNum();
-	}
+    public void addPath(String path) {
+        paths.add(path);
+        changeNum();
+    }
+
+    public void removePath(String path) {
+        paths.remove(path);
+        changeNum();
+    }
 }

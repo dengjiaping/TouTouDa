@@ -43,195 +43,195 @@ import java.util.Map;
 @EApplication
 public class AppClass extends Application {
 
-	public CommonShared cs = null;
-	public AsyncHttpClient finalHttp;
-	public boolean hasNet = true;
-	public static List<String> mEmoticons = new ArrayList<String>();
-	public static Map<String, Integer> mEmoticonsId = new HashMap<String, Integer>();
+    public CommonShared cs = null;
+    public AsyncHttpClient finalHttp;
+    public boolean hasNet = true;
+    public static List<String> mEmoticons = new ArrayList<String>();
+    public static Map<String, Integer> mEmoticonsId = new HashMap<String, Integer>();
 
-	public AppClass() {
-	}
+    public AppClass() {
+    }
 
-	public static final DisplayImageOptions options_defalut = new DisplayImageOptions.Builder()
-			.showImageOnLoading(R.drawable.image_group_qzl)
-			.showImageForEmptyUri(R.drawable.image_group_qzl)
-			// .displayer(new FadeInBitmapDisplayer(200))
-			.showImageOnFail(R.drawable.image_group_load_f).cacheInMemory(true)
-			.cacheOnDisk(true).build();
+    public static final DisplayImageOptions options_defalut = new DisplayImageOptions.Builder()
+            .showImageOnLoading(R.drawable.image_group_qzl)
+            .showImageForEmptyUri(R.drawable.image_group_qzl)
+                    // .displayer(new FadeInBitmapDisplayer(200))
+            .showImageOnFail(R.drawable.image_group_load_f).cacheInMemory(true)
+            .cacheOnDisk(true).build();
 
-	public static final DisplayImageOptions options_chat = new DisplayImageOptions.Builder()
-			.showImageOnLoading(R.drawable.ic_chat_def_pic)
-			.showImageForEmptyUri(R.drawable.ic_chat_def_emote_failure)
-			.showImageOnFail(R.drawable.ic_chat_def_emote_failure)
-			.cacheInMemory(true).cacheOnDisk(true).build();
+    public static final DisplayImageOptions options_chat = new DisplayImageOptions.Builder()
+            .showImageOnLoading(R.drawable.ic_chat_def_pic)
+            .showImageForEmptyUri(R.drawable.ic_chat_def_emote_failure)
+            .showImageOnFail(R.drawable.ic_chat_def_emote_failure)
+            .cacheInMemory(true).cacheOnDisk(true).build();
 
-	public static final DisplayImageOptions options_userlogo = new DisplayImageOptions.Builder()
-			.showImageOnLoading(R.drawable.defalut_logo)
-			.showImageForEmptyUri(R.drawable.defalut_logo)
-			// .displayer(new FadeInBitmapDisplayer(200))
-			.showImageOnFail(R.drawable.defalut_logo).cacheInMemory(true)
-			.cacheOnDisk(true).build();
+    public static final DisplayImageOptions options_userlogo = new DisplayImageOptions.Builder()
+            .showImageOnLoading(R.drawable.defalut_logo)
+            .showImageForEmptyUri(R.drawable.defalut_logo)
+                    // .displayer(new FadeInBitmapDisplayer(200))
+            .showImageOnFail(R.drawable.defalut_logo).cacheInMemory(true)
+            .cacheOnDisk(true).build();
 
-	public static final DisplayImageOptions options_no_default = new DisplayImageOptions.Builder()
-			.cacheInMemory(true).cacheOnDisk(true).build();
+    public static final DisplayImageOptions options_no_default = new DisplayImageOptions.Builder()
+            .cacheInMemory(true).cacheOnDisk(true).build();
 
-	@Override
-	public void onCreate() {
+    @Override
+    public void onCreate() {
 
-		if(!BuildConfig.DEBUG){
-			CrashHandler crashHandler = CrashHandler.getInstance();
-			crashHandler.init(getApplicationContext());
-		}
-		cs = new CommonShared(getApplicationContext());
-		cs.setVersionName(Util.getAppVersionName(this));
-		cs.setVersionCode(Util.getAppVersionCode(this));
-		cs.setChannel(Util.getChannel(this));
+        if (!BuildConfig.DEBUG) {
+            CrashHandler crashHandler = CrashHandler.getInstance();
+            crashHandler.init(getApplicationContext());
+        }
+        cs = new CommonShared(getApplicationContext());
+        cs.setVersionName(Util.getAppVersionName(this));
+        cs.setVersionCode(Util.getAppVersionCode(this));
+        cs.setChannel(Util.getChannel(this));
 
-		TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-		try {
-			cs.setDeviceId(tm.getDeviceId());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+        TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+        try {
+            cs.setDeviceId(tm.getDeviceId());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
-				getApplicationContext()).defaultDisplayImageOptions(
-				options_defalut).build();
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
+                getApplicationContext()).defaultDisplayImageOptions(
+                options_defalut).build();
         L.writeLogs(false);
         L.writeDebugLogs(false);
-		ImageLoader.getInstance().init(config);
+        ImageLoader.getInstance().init(config);
 
-		initEmoticon();
+        initEmoticon();
 
-		finalHttp = new AsyncHttpClient();
-		finalHttp.setCookieStore(new PersistentCookieStore(this));
-	}
+        finalHttp = new AsyncHttpClient();
+        finalHttp.setCookieStore(new PersistentCookieStore(this));
+    }
 
-	public IQuanPushService remoteService = null;
-	public CounterServiceConnection conn = null;
+    public IQuanPushService remoteService = null;
+    public CounterServiceConnection conn = null;
 
-	public class CounterServiceConnection implements ServiceConnection {
-		public void onServiceConnected(ComponentName name, IBinder service) {
-			remoteService = IQuanPushService.Stub.asInterface(service);
-		}
+    public class CounterServiceConnection implements ServiceConnection {
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            remoteService = IQuanPushService.Stub.asInterface(service);
+        }
 
-		public void onServiceDisconnected(ComponentName name) {
-			remoteService = null;
-		}
-	}
+        public void onServiceDisconnected(ComponentName name) {
+            remoteService = null;
+        }
+    }
 
-	public boolean isConnectSocket() {
-		try {
-			if (remoteService != null && remoteService.getServerSocket()) {
-				return true;
-			} else {
-				return false;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
+    public boolean isConnectSocket() {
+        try {
+            if (remoteService != null && remoteService.getServerSocket()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
-	public void sendMessage(String str) {
-		try {
-			if (remoteService != null) {
-				remoteService.sendMessage(str);
-			}
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-	}
+    public void sendMessage(String str) {
+        try {
+            if (remoteService != null) {
+                remoteService.sendMessage(str);
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
 
-	public void startServices() {
-		stopServices();
-		Intent i = new Intent(
-				com.quanliren.quan_two.util.BroadcastUtil.ACTION_CONNECT);
-		startService(i);
-		bindServices();
-	}
+    public void startServices() {
+        stopServices();
+        Intent i = new Intent(
+                com.quanliren.quan_two.util.BroadcastUtil.ACTION_CONNECT);
+        startService(i);
+        bindServices();
+    }
 
-	public void bindServices() {
-		Intent i = new Intent(this, QuanPushService.class);
-		if (conn == null)
-			conn = new CounterServiceConnection();
-		bindService(i, conn, Context.BIND_AUTO_CREATE);
-	}
+    public void bindServices() {
+        Intent i = new Intent(this, QuanPushService.class);
+        if (conn == null)
+            conn = new CounterServiceConnection();
+        bindService(i, conn, Context.BIND_AUTO_CREATE);
+    }
 
-	public void stopServices() {
-		try {
-			Intent i = new Intent(this, QuanPushService.class);
-			if (conn != null) {
-				unbindService(conn);
-				conn = null;
-			}
-			stopService(i);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+    public void stopServices() {
+        try {
+            Intent i = new Intent(this, QuanPushService.class);
+            if (conn != null) {
+                unbindService(conn);
+                conn = null;
+            }
+            stopService(i);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-	public void dispose() {
-		DBHelper helper = null;
-		try {
-			helper = OpenHelperManager.getHelper(getApplicationContext(),
-					DBHelper.class);
-			TableUtils
-					.clearTable(helper.getConnectionSource(), LoginUser.class);
-			if (remoteService != null) {
-				remoteService.closeAll();
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		stopServices();
-	}
+    public void dispose() {
+        DBHelper helper = null;
+        try {
+            helper = OpenHelperManager.getHelper(getApplicationContext(),
+                    DBHelper.class);
+            TableUtils
+                    .clearTable(helper.getConnectionSource(), LoginUser.class);
+            if (remoteService != null) {
+                remoteService.closeAll();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        stopServices();
+    }
 
-	public String getLoginUserId() {
-		DBHelper helper = null;
-		try {
-			helper = OpenHelperManager.getHelper(getApplicationContext(),
-					DBHelper.class);
-			LoginUser user = helper.getUser();
-			if (user != null) {
-				return user.getId();
-			} else {
-				return "";
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "";
-	}
+    public String getLoginUserId() {
+        DBHelper helper = null;
+        try {
+            helper = OpenHelperManager.getHelper(getApplicationContext(),
+                    DBHelper.class);
+            LoginUser user = helper.getUser();
+            if (user != null) {
+                return user.getId();
+            } else {
+                return "";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
 
-	void initEmoticon() {
-		PListXMLParser parser = new PListXMLParser();
-		PListXMLHandler handler = new PListXMLHandler();
-		parser.setHandler(handler);
+    void initEmoticon() {
+        PListXMLParser parser = new PListXMLParser();
+        PListXMLHandler handler = new PListXMLHandler();
+        parser.setHandler(handler);
 
-		try {
-			parser.parse(getAssets().open("emoticon.plist"));
-		} catch (IllegalStateException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+        try {
+            parser.parse(getAssets().open("emoticon.plist"));
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-		PList actualPList = ((PListXMLHandler) parser.getHandler()).getPlist();
-		Dict root = (Dict) actualPList.getRootElement();
+        PList actualPList = ((PListXMLHandler) parser.getHandler()).getPlist();
+        Dict root = (Dict) actualPList.getRootElement();
 
-		Map<String, PListObject> map = root.getConfigMap();
+        Map<String, PListObject> map = root.getConfigMap();
 
-		for (String key : map.keySet()) {
-			PListObject o = map.get(key);
-			mEmoticons
-					.add(((com.longevitysoft.android.xml.plist.domain.String) o)
-							.getValue());
-			mEmoticonsId.put(
-					((com.longevitysoft.android.xml.plist.domain.String) o)
-							.getValue(),
-					getResources().getIdentifier(key, "drawable",
-							getPackageName()));
-		}
-	}
+        for (String key : map.keySet()) {
+            PListObject o = map.get(key);
+            mEmoticons
+                    .add(((com.longevitysoft.android.xml.plist.domain.String) o)
+                            .getValue());
+            mEmoticonsId.put(
+                    ((com.longevitysoft.android.xml.plist.domain.String) o)
+                            .getValue(),
+                    getResources().getIdentifier(key, "drawable",
+                            getPackageName()));
+        }
+    }
 }

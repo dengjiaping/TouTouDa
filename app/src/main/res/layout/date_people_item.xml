@@ -5,13 +5,13 @@
     android:layout_height="wrap_content"
     android:background="@drawable/menu_btm_selector"
     android:descendantFocusability="blocksDescendants"
-    android:orientation="horizontal" >
+    android:orientation="horizontal">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <com.quanliren.quan_two.custom.RoundAngleImageView
             android:id="@+id/userlogo"

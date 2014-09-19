@@ -3,20 +3,19 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/activity_bg"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <FrameLayout
         android:id="@+id/content"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1" >
-    </FrameLayout>
+        android:layout_weight="1"></FrameLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="@dimen/bottom_height"
         android:background="@drawable/nav_bg"
-        android:gravity="center_vertical" >
+        android:gravity="center_vertical">
 
         <LinearLayout
             android:id="@+id/nav_btn1"
@@ -24,7 +23,7 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <ImageView
                 android:layout_width="26dp"
@@ -46,7 +45,7 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <ImageView
                 android:layout_width="26dp"
@@ -67,7 +66,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/ll"
@@ -75,7 +74,7 @@
                 android:layout_height="fill_parent"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="26dp"
@@ -108,7 +107,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/nav_btn4_ll"
@@ -116,7 +115,7 @@
                 android:layout_height="fill_parent"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="26dp"

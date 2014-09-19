@@ -4,13 +4,13 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:background="@color/msg_editor_backgroud"
-    android:visibility="gone" >
+    android:visibility="gone">
 
 
-        <fragment
-            android:id="@+id/chat_eiv_inputview"
-            android:name="com.quanliren.quan_two.custom.emoji.EmoteView_"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
+    <fragment
+        android:id="@+id/chat_eiv_inputview"
+        android:name="com.quanliren.quan_two.custom.emoji.EmoteView_"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
 
 </FrameLayout>

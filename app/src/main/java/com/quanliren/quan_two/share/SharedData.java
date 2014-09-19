@@ -10,8 +10,7 @@ import java.util.Date;
  * @13-5-24
  * @下午4:28
  */
-public class SharedData implements Serializable, Cloneable
-{
+public class SharedData implements Serializable, Cloneable {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -116,100 +115,81 @@ public class SharedData implements Serializable, Cloneable
      */
     public static final String TABLE_NAME = "t_global_data";
 
-    public long getId()
-    {
+    public long getId() {
         return id;
     }
 
-    public void setId(long id)
-    {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public String getKey()
-    {
+    public String getKey() {
         return key;
     }
 
-    public void setKey(String key)
-    {
+    public void setKey(String key) {
         this.key = key;
     }
 
-    public String getmStr()
-    {
+    public String getmStr() {
         return mStr;
     }
 
-    public void setmStr(String mStr)
-    {
+    public void setmStr(String mStr) {
         this.mStr = mStr;
     }
 
-    public boolean ismBoolean()
-    {
+    public boolean ismBoolean() {
         return mBoolean;
     }
 
-    public void setmBoolean(boolean mBoolean)
-    {
+    public void setmBoolean(boolean mBoolean) {
         this.mBoolean = mBoolean;
     }
 
-    public int getmInt()
-    {
+    public int getmInt() {
         return mInt;
     }
 
-    public void setmInt(int mInt)
-    {
+    public void setmInt(int mInt) {
         this.mInt = mInt;
     }
 
-    public Date getmDate()
-    {
+    public Date getmDate() {
         return mDate;
     }
 
-    public void setmDate(Date mDate)
-    {
+    public void setmDate(Date mDate) {
         this.mDate = mDate;
     }
 
-    public long getmLong()
-    {
+    public long getmLong() {
         return mLong;
     }
 
-    public void setmLong(long mLong)
-    {
+    public void setmLong(long mLong) {
         this.mLong = mLong;
     }
 
-    public float getmFloat()
-    {
+    public float getmFloat() {
         return mFloat;
     }
 
-    public void setmFloat(float mFloat)
-    {
+    public void setmFloat(float mFloat) {
         this.mFloat = mFloat;
     }
 
-    public DataType getDataType()
-    {
+    public DataType getDataType() {
         return dataType;
     }
 
-    public void setDataType(DataType dataType)
-    {
+    public void setDataType(DataType dataType) {
         this.dataType = dataType;
     }
 
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "SharedData{" +
                 "id=" + id +
                 ", key='" + key + '\'' +

@@ -8,96 +8,95 @@ import java.util.List;
 
 /**
  * ��recorder¼�Ƶ�����������ת�룬������writer��װ
- * 
+ *
  * @author Gauss
- * 
  */
 public class SpeexEncoder implements Runnable {
 
-	private static final String TAG="SpeexEncoder";
-	
-	private final Object mutex = new Object();
-	private Speex speex = new Speex();
-	// private long ts;
-	public static int encoder_packagesize = 1024;
-	private byte[] processedData = new byte[encoder_packagesize];
+    private static final String TAG = "SpeexEncoder";
 
-	List<ReadData> list = null;
-	private volatile boolean isRecording;
-	private String fileName;
+    private final Object mutex = new Object();
+    private Speex speex = new Speex();
+    // private long ts;
+    public static int encoder_packagesize = 1024;
+    private byte[] processedData = new byte[encoder_packagesize];
 
-	public SpeexEncoder(String fileName) {
-		super();
-		speex.init();
-		list = Collections.synchronizedList(new LinkedList<ReadData>());
-		this.fileName = fileName;
-	}
-	
+    List<ReadData> list = null;
+    private volatile boolean isRecording;
+    private String fileName;
 
-	public void run() {
+    public SpeexEncoder(String fileName) {
+        super();
+        speex.init();
+        list = Collections.synchronizedList(new LinkedList<ReadData>());
+        this.fileName = fileName;
+    }
 
-		// ����writer�߳�дspeex�ļ���
-		SpeexWriter fileWriter = new SpeexWriter(fileName);
-		Thread consumerThread = new Thread((Runnable) fileWriter);
-		fileWriter.setRecording(true);
-		consumerThread.start();
 
-		android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_URGENT_AUDIO);
+    public void run() {
 
-		int getSize = 0;
-		while (this.isRecording()) {
-			if (list.size() == 0) {
-				try {
-					Thread.sleep(20);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-				continue;
-			}
-			if (list.size() > 0) {
-				synchronized (mutex) {
-					ReadData rawdata = list.remove(0);
-					getSize = speex.encode(rawdata.ready, 0, processedData, rawdata.size);
+        // ����writer�߳�дspeex�ļ���
+        SpeexWriter fileWriter = new SpeexWriter(fileName);
+        Thread consumerThread = new Thread((Runnable) fileWriter);
+        fileWriter.setRecording(true);
+        consumerThread.start();
 
-				}
-				if (getSize > 0) {
-					fileWriter.putData(processedData, getSize);
-					processedData = new byte[encoder_packagesize];
-				}
-			}
-		}
-		fileWriter.setRecording(false);
-	}
+        android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_URGENT_AUDIO);
 
-	/**
-	 * ��Recorder�������������
-	 * 
-	 * @param data
-	 * @param size
-	 */
-	public void putData(short[] data, int size) {
-		ReadData rd = new ReadData();
-		synchronized (mutex) {
-			rd.size = size;
-			System.arraycopy(data, 0, rd.ready, 0, size);
-			list.add(rd);
-		}
-	}
+        int getSize = 0;
+        while (this.isRecording()) {
+            if (list.size() == 0) {
+                try {
+                    Thread.sleep(20);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                continue;
+            }
+            if (list.size() > 0) {
+                synchronized (mutex) {
+                    ReadData rawdata = list.remove(0);
+                    getSize = speex.encode(rawdata.ready, 0, processedData, rawdata.size);
 
-	public void setRecording(boolean isRecording) {
-		synchronized (mutex) {
-			this.isRecording = isRecording;
-		}
-	}
+                }
+                if (getSize > 0) {
+                    fileWriter.putData(processedData, getSize);
+                    processedData = new byte[encoder_packagesize];
+                }
+            }
+        }
+        fileWriter.setRecording(false);
+    }
 
-	public boolean isRecording() {
-		synchronized (mutex) {
-			return isRecording;
-		}
-	}
+    /**
+     * ��Recorder�������������
+     *
+     * @param data
+     * @param size
+     */
+    public void putData(short[] data, int size) {
+        ReadData rd = new ReadData();
+        synchronized (mutex) {
+            rd.size = size;
+            System.arraycopy(data, 0, rd.ready, 0, size);
+            list.add(rd);
+        }
+    }
 
-	class ReadData {
-		private int size;
-		private short[] ready = new short[encoder_packagesize];
-	}
+    public void setRecording(boolean isRecording) {
+        synchronized (mutex) {
+            this.isRecording = isRecording;
+        }
+    }
+
+    public boolean isRecording() {
+        synchronized (mutex) {
+            return isRecording;
+        }
+    }
+
+    class ReadData {
+        private int size;
+        private short[] ready = new short[encoder_packagesize];
+    }
 }

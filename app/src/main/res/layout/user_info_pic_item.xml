@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <com.quanliren.quan_two.custom.RoundAngleSquareImageView
         android:id="@+id/img"
@@ -14,8 +14,7 @@
         app:roundHeight="5dp"
         app:roundWidth="5dp" />
 
-    <com.quanliren.quan_two.custom.RoundProgressBar
-        xmlns:pla="http://schemas.android.com/apk/res-auto"
+    <com.quanliren.quan_two.custom.RoundProgressBar xmlns:pla="http://schemas.android.com/apk/res-auto"
         android:id="@+id/loadProgressBar"
         pla:style="STROKE"
         android:layout_width="40dp"

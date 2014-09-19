@@ -7,33 +7,33 @@ import android.widget.RelativeLayout;
 
 public class CustomRelativeLayout extends RelativeLayout {
 
-	private OnSizeChangedListener listener;
+    private OnSizeChangedListener listener;
 
-	public boolean isOpen = false;
+    public boolean isOpen = false;
 
-	public CustomRelativeLayout(Context context) {
-		super(context);
-	}
-	
-	private View hideView;
+    public CustomRelativeLayout(Context context) {
+        super(context);
+    }
 
-	public View getHideView() {
-		return hideView;
-	}
+    private View hideView;
 
-	public void setHideView(View hideView) {
-		if(!isOpen){
-			hideView.setVisibility(View.VISIBLE);
-		}else{
-			this.hideView = hideView;
-		}
-	}
+    public View getHideView() {
+        return hideView;
+    }
 
-	int keyBoardHeight = 0;
+    public void setHideView(View hideView) {
+        if (!isOpen) {
+            hideView.setVisibility(View.VISIBLE);
+        } else {
+            this.hideView = hideView;
+        }
+    }
 
-	public CustomRelativeLayout(Context context, AttributeSet attrs) {
-		super(context, attrs);
-		/*getViewTreeObserver().addOnGlobalLayoutListener(
+    int keyBoardHeight = 0;
+
+    public CustomRelativeLayout(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        /*getViewTreeObserver().addOnGlobalLayoutListener(
 	            new ViewTreeObserver.OnGlobalLayoutListener() {
 
 	                @Override
@@ -62,50 +62,51 @@ public class CustomRelativeLayout extends RelativeLayout {
 	                    }
 	                    // boolean visible = heightDiff > screenHeight / 3;
 	                }
-	            });	*/}
+	            });	*/
+    }
 
-	@Override
-	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-	}
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
 
-	@Override
-	protected void onLayout(boolean changed, int l, int t, int r, int b) {
-		super.onLayout(changed, l, t, r, b);
-	}
+    @Override
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        super.onLayout(changed, l, t, r, b);
+    }
 
-	int _oldh = -1;
+    int _oldh = -1;
 
-	@Override
-	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
 
-		super.onSizeChanged(w, h, oldw, oldh);
-		if (listener != null && oldh != 0) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        if (listener != null && oldh != 0) {
 
-			if (_oldh == -1) {
-				_oldh = oldh;
-			}
-			if (h >= _oldh) {
-				listener.close();
-				isOpen = false;
-				if(hideView!=null){
-					hideView.setVisibility(View.VISIBLE);
-					hideView=null;
-				}
-			} else if (h < _oldh) {
-				listener.open(_oldh - h);
-				isOpen = true;
-			}
-		}
-	}
+            if (_oldh == -1) {
+                _oldh = oldh;
+            }
+            if (h >= _oldh) {
+                listener.close();
+                isOpen = false;
+                if (hideView != null) {
+                    hideView.setVisibility(View.VISIBLE);
+                    hideView = null;
+                }
+            } else if (h < _oldh) {
+                listener.open(_oldh - h);
+                isOpen = true;
+            }
+        }
+    }
 
-	public void setOnSizeChangedListener(OnSizeChangedListener listener) {
-		this.listener = listener;
-	}
+    public void setOnSizeChangedListener(OnSizeChangedListener listener) {
+        this.listener = listener;
+    }
 
-	public interface OnSizeChangedListener {
-		public void open(int height);
+    public interface OnSizeChangedListener {
+        public void open(int height);
 
-		public void close();
-	}
+        public void close();
+    }
 }

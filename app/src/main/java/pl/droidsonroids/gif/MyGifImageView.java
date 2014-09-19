@@ -53,46 +53,49 @@ public class MyGifImageView extends ImageView {
         super(context, attrs, defStyle);
         handler.post(refere);
     }
-    
-    AtomicBoolean b=new AtomicBoolean(false);
-    int defaultTime=200;
-    
+
+    AtomicBoolean b = new AtomicBoolean(false);
+    int defaultTime = 200;
+
     @Override
     public void setImageDrawable(Drawable drawable) {
-    	if(drawable instanceof GifDrawable){
-    		GifDrawable gif=(GifDrawable) drawable;
-    		gif.setCallBack(callback);
-    		super.setImageDrawable(gif);
-    	}else{
-    		super.setImageDrawable(drawable);
-    	}
+        if (drawable instanceof GifDrawable) {
+            GifDrawable gif = (GifDrawable) drawable;
+            gif.setCallBack(callback);
+            super.setImageDrawable(gif);
+        } else {
+            super.setImageDrawable(drawable);
+        }
     }
-    DrawableCallBack callback = new DrawableCallBack() {
-		@Override
-		public void invalidateDrawable(int time, Drawable draw) {
-			if(b.compareAndSet(false, true)){
-				defaultTime=time;
-			}
-		}
-	};
-	
-	boolean b1=true;
-	
-    Handler handler=new Handler(Looper.getMainLooper());
-    
-    Runnable refere=new Runnable() {
-		
-		@Override
-		public void run() {
-			invalidate();
-			if(b1)
-			handler.postDelayed(this, defaultTime);
-		}
-	};
 
-	@Override
-	protected void onDetachedFromWindow() {
-		super.onDetachedFromWindow();
-		b1=false;
-	};
+    DrawableCallBack callback = new DrawableCallBack() {
+        @Override
+        public void invalidateDrawable(int time, Drawable draw) {
+            if (b.compareAndSet(false, true)) {
+                defaultTime = time;
+            }
+        }
+    };
+
+    boolean b1 = true;
+
+    Handler handler = new Handler(Looper.getMainLooper());
+
+    Runnable refere = new Runnable() {
+
+        @Override
+        public void run() {
+            invalidate();
+            if (b1)
+                handler.postDelayed(this, defaultTime);
+        }
+    };
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        b1 = false;
+    }
+
+    ;
 }

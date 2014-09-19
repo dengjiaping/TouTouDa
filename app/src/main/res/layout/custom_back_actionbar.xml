@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/title_height"
-    android:background="@color/actionbar" >
+    android:background="@color/actionbar">
 
     <LinearLayout
         android:id="@+id/title_left_btn"

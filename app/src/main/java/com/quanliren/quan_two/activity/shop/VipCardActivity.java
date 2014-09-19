@@ -36,213 +36,213 @@ import org.androidannotations.annotations.WindowFeature;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 @EActivity(R.layout.actinfo)
-@WindowFeature(value=Window.FEATURE_INDETERMINATE_PROGRESS)
-public class VipCardActivity extends BaseActivity implements OnRefreshListener{
-	@ViewById(R.id.webview)
-	WebView wView;
-	@ViewById
-	View back;
-	@ViewById
-	View refere;
-	@ViewById
-	View go;
-	@Extra
-	String channelType = "";
-	@Extra
-	ShopBean sb;
-	@ViewById
-	PullToRefreshLayout layout;
-	
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-	}
+@WindowFeature(value = Window.FEATURE_INDETERMINATE_PROGRESS)
+public class VipCardActivity extends BaseActivity implements OnRefreshListener {
+    @ViewById(R.id.webview)
+    WebView wView;
+    @ViewById
+    View back;
+    @ViewById
+    View refere;
+    @ViewById
+    View go;
+    @Extra
+    String channelType = "";
+    @Extra
+    ShopBean sb;
+    @ViewById
+    PullToRefreshLayout layout;
 
-	@AfterViews
-	void initView(){
-		getSupportActionBar().setTitle(sb.getTitle());
-		
-		ActionBarPullToRefresh.from(this).allChildrenArePullable().setAutoStart(false).listener(this).setup(layout);
-		layout.setEnabled(false);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
-		wView.setVerticalScrollBarEnabled(false);
-		wView.setWebChromeClient(new WebChromeClient());
-		wView.setHorizontalScrollBarEnabled(false);
-		WebSettings webSettings = wView.getSettings();
-		webSettings.setJavaScriptEnabled(true);
-		webSettings.setAllowFileAccess(true);
-		webSettings.setBuiltInZoomControls(false);
-		webSettings.setBlockNetworkImage(false);
-		CookieManager.getInstance().setAcceptCookie(true);
-		webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
+    @AfterViews
+    void initView() {
+        getSupportActionBar().setTitle(sb.getTitle());
 
-		wView.setWebViewClient(new MyWebViewClient());
-		wView.addJavascriptInterface(new InJavaScriptLocalObj(), "local_obj");
+        ActionBarPullToRefresh.from(this).allChildrenArePullable().setAutoStart(false).listener(this).setup(layout);
+        layout.setEnabled(false);
 
-		LoginUser user = getHelper().getUser();
-		if (user != null) {
-			wView.loadUrl(URL.URL + "/client/pay/to_alipay.php?gnumber="+sb.getId()+"&token="
-					+ user.getToken());
-		}
-	}
+        wView.setVerticalScrollBarEnabled(false);
+        wView.setWebChromeClient(new WebChromeClient());
+        wView.setHorizontalScrollBarEnabled(false);
+        WebSettings webSettings = wView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        webSettings.setAllowFileAccess(true);
+        webSettings.setBuiltInZoomControls(false);
+        webSettings.setBlockNetworkImage(false);
+        CookieManager.getInstance().setAcceptCookie(true);
+        webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
 
-	AtomicBoolean ab = new AtomicBoolean(false);
-	String awid = "";
-	String finishUrl="";
+        wView.setWebViewClient(new MyWebViewClient());
+        wView.addJavascriptInterface(new InJavaScriptLocalObj(), "local_obj");
 
-	final class MyWebViewClient extends WebViewClient {
-		public boolean shouldOverrideUrlLoading(WebView view, String url) {
-			if(url.indexOf("ex_gateway_cashier")>-1){
-				finishUrl=url;
-			}
-			if (awid.equals("")) {
-				if (url.indexOf("awid") > -1) {
-					String str = url.substring(url.indexOf("awid=")).replace(
-							"awid=", "");
-					awid = str;
-					if (!awid.equals("") && ab.compareAndSet(false, true)) {
-						view.loadUrl(("https://wappaygw.alipay.com/cashier/cashier_gateway_pay.htm?channelType="
-								+ channelType + "&awid=" + awid));
-						awid = "";
-						return true;
-					}
-				}
-			}
-			return false;
-		}
+        LoginUser user = getHelper().getUser();
+        if (user != null) {
+            wView.loadUrl(URL.URL + "/client/pay/to_alipay.php?gnumber=" + sb.getId() + "&token="
+                    + user.getToken());
+        }
+    }
 
-		public void onPageStarted(WebView view, String url, Bitmap favicon) {
-			LogUtil.d("WebView", url);
-			super.onPageStarted(view, url, favicon);
-			if(url.indexOf("ex_gateway_cashier")>-1){
-				finishUrl=url;
-			}
-			if (awid.equals("")) {
-				if (url.indexOf("awid") > -1) {
-					String str = url.substring(url.indexOf("awid=")).replace(
-							"awid=", "");
-					awid = str;
-					
-					if (!awid.equals("") && ab.compareAndSet(false, true)) {
-						view.loadUrl(("https://wappaygw.alipay.com/cashier/cashier_gateway_pay.htm?channelType="
-								+ channelType + "&awid=" + awid));
-						awid = "";
-					}
-				}
-			}
-			
-			
-		}
+    AtomicBoolean ab = new AtomicBoolean(false);
+    String awid = "";
+    String finishUrl = "";
 
-		public void onPageFinished(final WebView view, String url) {
-			super.onPageFinished(view, url);
-			/*if (!awid.equals("") && ab.compareAndSet(false, true)) {
+    final class MyWebViewClient extends WebViewClient {
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            if (url.indexOf("ex_gateway_cashier") > -1) {
+                finishUrl = url;
+            }
+            if (awid.equals("")) {
+                if (url.indexOf("awid") > -1) {
+                    String str = url.substring(url.indexOf("awid=")).replace(
+                            "awid=", "");
+                    awid = str;
+                    if (!awid.equals("") && ab.compareAndSet(false, true)) {
+                        view.loadUrl(("https://wappaygw.alipay.com/cashier/cashier_gateway_pay.htm?channelType="
+                                + channelType + "&awid=" + awid));
+                        awid = "";
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+            LogUtil.d("WebView", url);
+            super.onPageStarted(view, url, favicon);
+            if (url.indexOf("ex_gateway_cashier") > -1) {
+                finishUrl = url;
+            }
+            if (awid.equals("")) {
+                if (url.indexOf("awid") > -1) {
+                    String str = url.substring(url.indexOf("awid=")).replace(
+                            "awid=", "");
+                    awid = str;
+
+                    if (!awid.equals("") && ab.compareAndSet(false, true)) {
+                        view.loadUrl(("https://wappaygw.alipay.com/cashier/cashier_gateway_pay.htm?channelType="
+                                + channelType + "&awid=" + awid));
+                        awid = "";
+                    }
+                }
+            }
+
+
+        }
+
+        public void onPageFinished(final WebView view, String url) {
+            super.onPageFinished(view, url);
+            /*if (!awid.equals("") && ab.compareAndSet(false, true)) {
 				view.loadUrl("https://wappaygw.alipay.com/cashier/cashier_gateway_pay.htm?channelType="
 						+ channelType + "&awid=" + awid);
 				awid = "";
 			}*/
-		}
-		
-		@Override
-		public void onReceivedSslError(WebView view, SslErrorHandler handler,
-				SslError error) {
-			 handler.proceed();
-		}
-	}
+        }
 
-	final class InJavaScriptLocalObj {
-		@JavascriptInterface
-		public void showSource(String html) {
-			// try {
-			// ReadWriteFile.creatTxtFile();
-			// ReadWriteFile.writeTxtFile(html);
-			// } catch (IOException e) {
-			// // TODO Auto-generated catch block
-			// e.printStackTrace();
-			// }
-			LogUtil.d("HTML", html);
-		}
+        @Override
+        public void onReceivedSslError(WebView view, SslErrorHandler handler,
+                                       SslError error) {
+            handler.proceed();
+        }
+    }
 
-		@JavascriptInterface
-		public void callBack() {
-			sendb=true;
-			Intent i = new Intent(SetingMoreFragment.UPDATE_USERINFO);
-			sendBroadcast(i);
-		}
+    final class InJavaScriptLocalObj {
+        @JavascriptInterface
+        public void showSource(String html) {
+            // try {
+            // ReadWriteFile.creatTxtFile();
+            // ReadWriteFile.writeTxtFile(html);
+            // } catch (IOException e) {
+            // // TODO Auto-generated catch block
+            // e.printStackTrace();
+            // }
+            LogUtil.d("HTML", html);
+        }
 
-		@JavascriptInterface
-		public void close() {
-			finish();
-		}
-	}
+        @JavascriptInterface
+        public void callBack() {
+            sendb = true;
+            Intent i = new Intent(SetingMoreFragment.UPDATE_USERINFO);
+            sendBroadcast(i);
+        }
 
-	boolean sendb=false;
+        @JavascriptInterface
+        public void close() {
+            finish();
+        }
+    }
 
-	@Click(R.id.back)
-	public void backs(View v) {
-		if(!finishUrl.equals(wView.getUrl().toString()))
-			wView.goBack();
-	}
+    boolean sendb = false;
 
-	@Click
-	public void refere(View v) {
-		wView.reload();
-	}
+    @Click(R.id.back)
+    public void backs(View v) {
+        if (!finishUrl.equals(wView.getUrl().toString()))
+            wView.goBack();
+    }
 
-	@Click
-	public void go(View v) {
-		wView.goForward();
-	}
+    @Click
+    public void refere(View v) {
+        wView.reload();
+    }
 
-	@Override
-	protected void onDestroy() {
-		// TODO Auto-generated method stub
-		super.onDestroy();
-		if(!sendb){
-			Intent i = new Intent(SetingMoreFragment.UPDATE_USERINFO);
-			sendBroadcast(i);
-		}
-	}
-	
-	@Override
-	public void onBackPressed() {
-		dialogFinish();
-	}
+    @Click
+    public void go(View v) {
+        wView.goForward();
+    }
 
     @Override
-	public void finishActivity() {
-		dialogFinish();
-	}
-	
-	public void dialogFinish() {
-		new AlertDialog.Builder(VipCardActivity.this).setTitle("提示")
-				.setMessage("您确定要取消本次交易吗？")
-				.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+    protected void onDestroy() {
+        // TODO Auto-generated method stub
+        super.onDestroy();
+        if (!sendb) {
+            Intent i = new Intent(SetingMoreFragment.UPDATE_USERINFO);
+            sendBroadcast(i);
+        }
+    }
 
-					public void onClick(DialogInterface dialog, int which) {
-						scrollToFinishActivity();
-					}
-				})
-				.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+    @Override
+    public void onBackPressed() {
+        dialogFinish();
+    }
 
-					public void onClick(DialogInterface arg0, int arg1) {
-					}
-				}).create().show();
-	}
+    @Override
+    public void finishActivity() {
+        dialogFinish();
+    }
 
-	@Override
-	public void onRefreshStarted(View view) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	public class WebChromeClient extends android.webkit.WebChromeClient {
+    public void dialogFinish() {
+        new AlertDialog.Builder(VipCardActivity.this).setTitle("提示")
+                .setMessage("您确定要取消本次交易吗？")
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        scrollToFinishActivity();
+                    }
+                })
+                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface arg0, int arg1) {
+                    }
+                }).create().show();
+    }
+
+    @Override
+    public void onRefreshStarted(View view) {
+        // TODO Auto-generated method stub
+
+    }
+
+    public class WebChromeClient extends android.webkit.WebChromeClient {
         @Override
         public void onProgressChanged(WebView view, int newProgress) {
             if (newProgress == 100) {
                 layout.setRefreshComplete();
             } else {
-            	layout.setRefreshing(true, true);
+                layout.setRefreshing(true, true);
             }
             super.onProgressChanged(view, newProgress);
         }

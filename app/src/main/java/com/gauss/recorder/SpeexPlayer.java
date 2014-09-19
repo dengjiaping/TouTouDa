@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.gauss.recorder;
 
@@ -11,53 +11,54 @@ import java.io.File;
 
 /**
  * @author Gauss
- * 
  */
 public class SpeexPlayer {
-	private String fileName = null;
-	private SpeexDecoder speexdec = null;
-	private Thread th;
+    private String fileName = null;
+    private SpeexDecoder speexdec = null;
+    private Thread th;
 
-	public SpeexPlayer(String fileName) {
+    public SpeexPlayer(String fileName) {
 
-		this.fileName = fileName;
-		System.out.println(this.fileName);
-		try {
-			speexdec = new SpeexDecoder(new File(this.fileName));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public void setOnCompletionListener(OnCompletionListener listener){
-		speexdec.setOnCompletionListener(listener);
-	}
+        this.fileName = fileName;
+        System.out.println(this.fileName);
+        try {
+            speexdec = new SpeexDecoder(new File(this.fileName));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-	public void startPlay() {
-		RecordPlayThread rpt = new RecordPlayThread();
+    public void setOnCompletionListener(OnCompletionListener listener) {
+        speexdec.setOnCompletionListener(listener);
+    }
 
-		th = new Thread(rpt);
-		th.start();
-	}
-	
-	public void stopPlay(){
-		if(th!=null){
-			th.interrupt();
-		}
-	}
+    public void startPlay() {
+        RecordPlayThread rpt = new RecordPlayThread();
 
-	boolean isPlay = true;
+        th = new Thread(rpt);
+        th.start();
+    }
 
-	class RecordPlayThread extends Thread {
+    public void stopPlay() {
+        if (th != null) {
+            th.interrupt();
+        }
+    }
 
-		public void run() {
-			try {
-				if (speexdec != null)
-					speexdec.decode();
+    boolean isPlay = true;
 
-			} catch (Exception t) {
-				t.printStackTrace();
-			}
-		}
-	};
+    class RecordPlayThread extends Thread {
+
+        public void run() {
+            try {
+                if (speexdec != null)
+                    speexdec.decode();
+
+            } catch (Exception t) {
+                t.printStackTrace();
+            }
+        }
+    }
+
+    ;
 }

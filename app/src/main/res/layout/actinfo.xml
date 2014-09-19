@@ -3,13 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/activity_bg"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <com.quanliren.quan_two.pull.PullToRefreshLayout
         android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1" >
+        android:layout_weight="1">
 
         <WebView
             android:id="@+id/webview"
@@ -20,7 +20,7 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="45dp"
-        android:background="@color/actionbar" >
+        android:background="@color/actionbar">
 
         <ImageView
             android:id="@+id/back"

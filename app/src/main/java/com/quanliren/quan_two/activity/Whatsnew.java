@@ -15,13 +15,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.quanliren.quan_two.util.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.quanliren.quan_two.activity.base.BaseActivity;
 import com.quanliren.quan_two.activity.whats.WahtsFragment1_;
 import com.quanliren.quan_two.fragment.impl.LoaderImpl;
 import com.quanliren.quan_two.share.CommonShared;
 import com.quanliren.quan_two.util.URL;
+import com.quanliren.quan_two.util.http.JsonHttpResponseHandler;
 
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
@@ -113,7 +113,7 @@ public class Whatsnew extends BaseActivity {
 
             setContentView(R.layout.whatsnew_viewpager);
 
-        	bg.setVisibility(View.VISIBLE);
+            bg.setVisibility(View.VISIBLE);
             pages.setVisibility(View.VISIBLE);
             text.setText(str[0]);
             con.setText(strMin[0]);

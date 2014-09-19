@@ -70,7 +70,7 @@ public class PullToRefreshAttacher {
     private final int mRefreshMinimizeDelay;
     private final boolean mRefreshMinimize;
     private boolean mIsDestroyed = false;
-    private boolean autoStart=false;
+    private boolean autoStart = false;
 
     private final int[] mViewLocationResult = new int[2];
     private final Rect mRect = new Rect();
@@ -189,19 +189,18 @@ public class PullToRefreshAttacher {
      * Manually set this Attacher's refreshing state. The header will be
      * displayed or hidden as requested.
      *
-     * @param refreshing
-     *            - Whether the attacher should be in a refreshing state,
+     * @param refreshing - Whether the attacher should be in a refreshing state,
      */
     final void setRefreshing(boolean refreshing) {
         setRefreshingInt(null, refreshing, false);
     }
-    
-    final void setRefreshing(boolean refreshing,boolean fromTouch) {
+
+    final void setRefreshing(boolean refreshing, boolean fromTouch) {
         setRefreshingInt(null, refreshing, fromTouch);
     }
-    
-    public void setAutoStart(boolean b){
-    	autoStart=b;
+
+    public void setAutoStart(boolean b) {
+        autoStart = b;
     }
 
     /**
@@ -214,7 +213,7 @@ public class PullToRefreshAttacher {
     /**
      * Call this when your refresh is complete and this view should reset itself
      * (header view will be hidden).
-     *
+     * <p/>
      * This is the equivalent of calling <code>setRefreshing(false)</code>.
      */
     final void setRefreshComplete() {
@@ -256,7 +255,7 @@ public class PullToRefreshAttacher {
 
     /**
      * @return The Header View which is displayed when the user is pulling, or
-     *         we are refreshing.
+     * we are refreshing.
      */
     final View getHeaderView() {
         return mHeaderView;
@@ -492,7 +491,7 @@ public class PullToRefreshAttacher {
     protected EnvironmentDelegate createDefaultEnvironmentDelegate() {
         return new EnvironmentDelegate() {
             @SuppressLint("NewApi")
-			@Override
+            @Override
             public Context getContextForInflater(Activity activity) {
                 Context context = null;
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
@@ -544,7 +543,7 @@ public class PullToRefreshAttacher {
     /**
      * @param fromTouch Whether this is being invoked from a touch event
      * @return true if we're currently in a state where a refresh can be
-     *         started.
+     * started.
      */
     private boolean canRefresh(boolean fromTouch) {
         return !mIsRefreshing && (!fromTouch || mOnRefreshListener != null);
@@ -620,23 +619,23 @@ public class PullToRefreshAttacher {
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
                 PixelFormat.TRANSLUCENT);
         wlp.x = 0;
-        if(mRect.top==0){
-        	wlp.y=getBarHeight();
-        }else{
-        	wlp.y = mRect.top;
+        if (mRect.top == 0) {
+            wlp.y = getBarHeight();
+        } else {
+            wlp.y = mRect.top;
         }
         wlp.gravity = Gravity.TOP;
 
         // Workaround for Issue #182
         headerView.setTag(wlp);
         mActivity.getWindowManager().addView(headerView, wlp);
-        
+
         if (autoStart) {
-        	setRefreshing(true, true);
-		}
+            setRefreshing(true, true);
+        }
     }
-    
-    public int getBarHeight(){
+
+    public int getBarHeight() {
         Class<?> c = null;
         Object obj = null;
         Field field = null;
@@ -660,19 +659,20 @@ public class PullToRefreshAttacher {
         mActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame(mRect);
 
         WindowManager.LayoutParams wlp = null;
-        if(headerView==null||headerView.getLayoutParams()==null){
-        	return;
-        }if (headerView.getLayoutParams() instanceof WindowManager.LayoutParams) {
+        if (headerView == null || headerView.getLayoutParams() == null) {
+            return;
+        }
+        if (headerView.getLayoutParams() instanceof WindowManager.LayoutParams) {
             wlp = (WindowManager.LayoutParams) headerView.getLayoutParams();
-        } else if (headerView.getTag() instanceof  WindowManager.LayoutParams) {
+        } else if (headerView.getTag() instanceof WindowManager.LayoutParams) {
             wlp = (WindowManager.LayoutParams) headerView.getTag();
         }
 
         if (wlp != null && wlp.y != mRect.top) {
-        	if(mRect.top==0){
-            	wlp.y=getBarHeight();
-            }else{
-            	wlp.y = mRect.top;
+            if (mRect.top == 0) {
+                wlp.y = getBarHeight();
+            } else {
+                wlp.y = mRect.top;
             }
             mActivity.getWindowManager().updateViewLayout(headerView, wlp);
         }

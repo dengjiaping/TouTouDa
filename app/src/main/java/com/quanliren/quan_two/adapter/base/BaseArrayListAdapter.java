@@ -12,43 +12,43 @@ import java.util.List;
 
 public class BaseArrayListAdapter extends BaseAdapter {
 
-	protected Context mContext;
-	protected LayoutInflater mInflater;
-	protected List<String> mDatas = new ArrayList<String>();
+    protected Context mContext;
+    protected LayoutInflater mInflater;
+    protected List<String> mDatas = new ArrayList<String>();
 
-	public BaseArrayListAdapter(Context context, String... datas) {
-		mContext = context;
-		mInflater = LayoutInflater.from(context);
-		if (datas != null && datas.length > 0) {
-			mDatas = Arrays.asList(datas);
-		}
-	}
+    public BaseArrayListAdapter(Context context, String... datas) {
+        mContext = context;
+        mInflater = LayoutInflater.from(context);
+        if (datas != null && datas.length > 0) {
+            mDatas = Arrays.asList(datas);
+        }
+    }
 
-	public BaseArrayListAdapter(Context context, List<String> datas) {
-		mContext = context;
-		mInflater = LayoutInflater.from(context);
-		if (datas != null && datas.size() > 0) {
-			mDatas = datas;
-		}
-	}
+    public BaseArrayListAdapter(Context context, List<String> datas) {
+        mContext = context;
+        mInflater = LayoutInflater.from(context);
+        if (datas != null && datas.size() > 0) {
+            mDatas = datas;
+        }
+    }
 
-	@Override
-	public int getCount() {
-		return mDatas.size();
-	}
+    @Override
+    public int getCount() {
+        return mDatas.size();
+    }
 
-	@Override
-	public Object getItem(int position) {
-		return mDatas.get(position);
-	}
+    @Override
+    public Object getItem(int position) {
+        return mDatas.get(position);
+    }
 
-	@Override
-	public long getItemId(int position) {
-		return position;
-	}
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
 
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		return null;
-	}
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        return null;
+    }
 }

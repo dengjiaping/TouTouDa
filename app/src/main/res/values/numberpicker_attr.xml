@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
+
     <!-- Just adding these so I wont have to remove a lot of code from NumberPicker.java. -->
     <item name="np__increment" type="id" />
     <item name="np__decrement" type="id" />
-      <color name="transparent">#00000000</color>
-      
-      
+    <color name="transparent">#00000000</color>
+
+
     <!-- Copy one of these attributes to your own theme (choose either dark or light).
         <item name="numberPickerStyle">@style/NPWidget.Holo.NumberPicker</item>
         <item name="numberPickerStyle">@style/NPWidget.Holo.Light.NumberPicker</item>
@@ -35,7 +35,7 @@
         <!-- @hide The layout of the number picker. -->
         <attr name="internalLayout" format="reference" />
         <!-- @hide The drawable for pressed virtual (increment/decrement) buttons. -->
-        <attr name="virtualButtonPressedDrawable" format="reference"/>
+        <attr name="virtualButtonPressedDrawable" format="reference" />
     </declare-styleable>
 
     <style name="NPWidget">

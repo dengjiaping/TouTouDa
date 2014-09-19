@@ -15,17 +15,17 @@ public class MorphingAnimation {
 
     private OnAnimationEndListener mListener;
 
-    private int duration=ANIMATION_DURATION;
-    
+    private int duration = ANIMATION_DURATION;
+
     public int getDuration() {
-		return duration;
-	}
+        return duration;
+    }
 
-	public void setDuration(int duration) {
-		this.duration = duration;
-	}
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
 
-	private int mFromWidth;
+    private int mFromWidth;
     private int mToWidth;
 
     private int mFromColor;
@@ -110,7 +110,7 @@ public class MorphingAnimation {
 
                 gradientDrawable
                         .setBounds(leftOffset + padding, padding, rightOffset - padding, mView.getHeight() - padding);
-                
+
                 mView.invalidate();
             }
         });

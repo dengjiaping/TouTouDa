@@ -7,12 +7,14 @@
         <item name="displayOptions">homeAsUp|showTitle</item>
         <item name="indeterminateProgressStyle">@style/IndeterminateProgress</item>
     </style>
-     <style name="IndeterminateProgress" parent="@style/Widget.AppCompat.ProgressBar">
+
+    <style name="IndeterminateProgress" parent="@style/Widget.AppCompat.ProgressBar">
         <item name="android:minWidth">32dip</item>
         <item name="android:maxWidth">32dip</item>
         <item name="android:minHeight">32dip</item>
         <item name="android:maxHeight">32dip</item>
     </style>
+
     <style name="Widget.AppCompat.Light.ActionBar.My.NoHomeAsUp" parent="Widget.AppCompat.Light.ActionBar.My">
         <item name="displayOptions">showTitle</item>
     </style>
@@ -22,7 +24,7 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">20sp</item>
     </style>
-    
+
     <!-- menu -->
     <style name="MyABmenuTextAppearance" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu">
         <item name="android:textSize">16sp</item>

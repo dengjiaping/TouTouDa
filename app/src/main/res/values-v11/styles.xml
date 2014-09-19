@@ -7,10 +7,13 @@
     <style name="AppBaseThemeTranslucent" parent="AppBaseThemeNoAnimation">
         <item name="android:windowIsTranslucent">true</item>
     </style>
-<style name="AppBaseThemeNoHomeAsUp" parent="AppBaseThemeNoAnimation">
-        <item name="android:actionBarStyle">@style/Widget.AppCompat.Light.ActionBar.My.NoHomeAsUp</item>
+
+    <style name="AppBaseThemeNoHomeAsUp" parent="AppBaseThemeNoAnimation">
+        <item name="android:actionBarStyle">@style/Widget.AppCompat.Light.ActionBar.My.NoHomeAsUp
+        </item>
         <item name="android:homeAsUpIndicator">@drawable/home_as_up_indicatosr</item>
     </style>
+
     <style name="AppBaseThemeNoAnimation" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:actionBarStyle">@style/Widget.AppCompat.Light.ActionBar.My</item>
         <item name="android:actionMenuTextAppearance">@style/MyABmenuTextAppearance</item>

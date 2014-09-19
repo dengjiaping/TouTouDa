@@ -19,83 +19,89 @@ import static com.nineoldandroids.view.ViewPropertyAnimator.animate;
 
 public class CustomProgressBar extends Dialog {
 
-	private TextView tv;
-	private String str;
-	private FrameLayout designCenterFrameLayout;
-	private ImageView designCenterLinearLayout;
-	public CustomProgressBar(Context context, int theme) {
-		super(context, theme);
-		// TODO Auto-generated constructor stub
-	}
+    private TextView tv;
+    private String str;
+    private FrameLayout designCenterFrameLayout;
+    private ImageView designCenterLinearLayout;
 
-	protected CustomProgressBar(Context context, boolean cancelable,
-			OnCancelListener cancelListener) {
-		super(context, cancelable, cancelListener);
-		// TODO Auto-generated constructor stub
-	}
+    public CustomProgressBar(Context context, int theme) {
+        super(context, theme);
+        // TODO Auto-generated constructor stub
+    }
 
-	public CustomProgressBar(Context context) {
-		super(context);
-		// TODO Auto-generated constructor stub
-	}
-	public void setMessage(String str){
-		this.str=str;
-	}
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
-		
-		View view = LayoutInflater.from(getContext()).inflate(R.layout.customprogress, null);
-		tv = (TextView) view.findViewById(R.id.id_tv_loadingmsg);
-		designCenterFrameLayout= (FrameLayout) view.findViewById(R.id.designCenterFrameLayout);
-		designCenterLinearLayout =  (ImageView) view.findViewById(R.id.designCenterLinearLayout);
-		this.tv.setText(str);
-		setContentView(view);
-	}
-	
-	@Override
-	public void show() {
-		// TODO Auto-generated method stub
-		super.show();
+    protected CustomProgressBar(Context context, boolean cancelable,
+                                OnCancelListener cancelListener) {
+        super(context, cancelable, cancelListener);
+        // TODO Auto-generated constructor stub
+    }
+
+    public CustomProgressBar(Context context) {
+        super(context);
+        // TODO Auto-generated constructor stub
+    }
+
+    public void setMessage(String str) {
+        this.str = str;
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        // TODO Auto-generated method stub
+        super.onCreate(savedInstanceState);
+
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.customprogress, null);
+        tv = (TextView) view.findViewById(R.id.id_tv_loadingmsg);
+        designCenterFrameLayout = (FrameLayout) view.findViewById(R.id.designCenterFrameLayout);
+        designCenterLinearLayout = (ImageView) view.findViewById(R.id.designCenterLinearLayout);
+        this.tv.setText(str);
+        setContentView(view);
+    }
+
+    @Override
+    public void show() {
+        // TODO Auto-generated method stub
+        super.show();
 //		listent.onAnimationEnd(null);
-		animate(designCenterLinearLayout).setDuration(1000).setInterpolator(new LinearInterpolator()).setListener(listent).rotationYBy(360);
-	}
-	public void stopAnimation(){
-		designCenterFrameLayout.clearAnimation();
-		designCenterLinearLayout.clearAnimation();
-	}
-	@Override
-	public void dismiss() {
-		// TODO Auto-generated method stub
-		super.dismiss(); 
-		stopAnimation();
-		listent=null;
-	}
-	
-	public void setMsg(String txt) {
-		tv.setText(txt);
-	}
-	AnimatorListener listent = new AnimatorListener() {
+        animate(designCenterLinearLayout).setDuration(1000).setInterpolator(new LinearInterpolator()).setListener(listent).rotationYBy(360);
+    }
 
-		@Override
-		public void onAnimationStart(Animator animation) {
+    public void stopAnimation() {
+        designCenterFrameLayout.clearAnimation();
+        designCenterLinearLayout.clearAnimation();
+    }
 
-		}
+    @Override
+    public void dismiss() {
+        // TODO Auto-generated method stub
+        super.dismiss();
+        stopAnimation();
+        listent = null;
+    }
 
-		@Override
-		public void onAnimationRepeat(Animator animation) {
+    public void setMsg(String txt) {
+        tv.setText(txt);
+    }
 
-		}
+    AnimatorListener listent = new AnimatorListener() {
 
-		@Override
-		public void onAnimationEnd(Animator animation) {
-			animate(designCenterLinearLayout).setDuration(1000).setInterpolator(new LinearInterpolator()).setListener(listent).rotationYBy(360);
-		}
+        @Override
+        public void onAnimationStart(Animator animation) {
 
-		@Override
-		public void onAnimationCancel(Animator animation) {
+        }
 
-		}
-	};
+        @Override
+        public void onAnimationRepeat(Animator animation) {
+
+        }
+
+        @Override
+        public void onAnimationEnd(Animator animation) {
+            animate(designCenterLinearLayout).setDuration(1000).setInterpolator(new LinearInterpolator()).setListener(listent).rotationYBy(360);
+        }
+
+        @Override
+        public void onAnimationCancel(Animator animation) {
+
+        }
+    };
 }

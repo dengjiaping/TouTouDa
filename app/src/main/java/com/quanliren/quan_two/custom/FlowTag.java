@@ -6,43 +6,43 @@ import android.content.res.AssetManager;
 import com.quanliren.quan_two.util.Constants;
 
 public class FlowTag {
-	
-	public final int what = Constants.HANDLER_WHAT;
-	
-	private int flowId;
-	private String fileName;
-	private int ItemWidth;
-	private AssetManager assetManager;
 
-	public int getFlowId() {
-		return flowId;
-	}
+    public final int what = Constants.HANDLER_WHAT;
 
-	public void setFlowId(int flowId) {
-		this.flowId = flowId;
-	}
+    private int flowId;
+    private String fileName;
+    private int ItemWidth;
+    private AssetManager assetManager;
 
-	public String getFileName() {
-		return fileName;
-	}
+    public int getFlowId() {
+        return flowId;
+    }
 
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
-	}
+    public void setFlowId(int flowId) {
+        this.flowId = flowId;
+    }
 
-	public AssetManager getAssetManager() {
-		return assetManager;
-	}
+    public String getFileName() {
+        return fileName;
+    }
 
-	public void setAssetManager(AssetManager assetManager) {
-		this.assetManager = assetManager;
-	}
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
 
-	public int getItemWidth() {
-		return ItemWidth;
-	}
+    public AssetManager getAssetManager() {
+        return assetManager;
+    }
 
-	public void setItemWidth(int itemWidth) {
-		ItemWidth = itemWidth;
-	}
+    public void setAssetManager(AssetManager assetManager) {
+        this.assetManager = assetManager;
+    }
+
+    public int getItemWidth() {
+        return ItemWidth;
+    }
+
+    public void setItemWidth(int itemWidth) {
+        ItemWidth = itemWidth;
+    }
 }

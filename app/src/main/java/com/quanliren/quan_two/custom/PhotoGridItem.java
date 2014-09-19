@@ -13,75 +13,78 @@ import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.util.ImageUtil;
 
 public class PhotoGridItem extends RelativeLayout implements Checkable {
-	private Context mContext;
-	private boolean mCheck;
-	private ImageView mImageView;
-	private RoundProgressBar progress;
-	public RoundProgressBar getProgress() {
-		return progress;
-	}
+    private Context mContext;
+    private boolean mCheck;
+    private ImageView mImageView;
+    private RoundProgressBar progress;
 
-	public ImageView getmImageView() {
-		return mImageView;
-	}
-
-	private ImageView mSelect;
-	
-	public PhotoGridItem(Context context) {
-		this(context, null, 0);
-	}
-	
-	public PhotoGridItem(Context context, AttributeSet attrs) {  
-        this(context, attrs, 0);  
+    public RoundProgressBar getProgress() {
+        return progress;
     }
 
-	public PhotoGridItem(Context context, AttributeSet attrs, int defStyle) {
-		super(context, attrs, defStyle);
-		mContext = context;
-		LayoutInflater.from(mContext).inflate(R.layout.photoalbum_gridview_item, this);
-		mImageView = (ImageView)findViewById(R.id.photo_img_view);
-		
-		int width=(int)((float)(context.getResources().getDisplayMetrics().widthPixels-ImageUtil.dip2px(context, 16))/3.0);
-		LayoutParams lp = new LayoutParams(width,width);
-		mImageView.setLayoutParams(lp);
-		
-		mSelect = (ImageView)findViewById(R.id.photo_select);
-		progress=(RoundProgressBar)findViewById(R.id.loadProgressBar);
-	}
-	@Override
-	public void setChecked(boolean checked) {
-		mCheck = checked;
-//		mSelect.setImageDrawable(getResources().getDrawable(R.drawable.cb_on));
-		mSelect.setImageDrawable(checked ? getResources().getDrawable(R.drawable.invite_checked) : getResources().getDrawable(R.drawable.invite_unchecked));
-		//mSelect.setVisibility(checked?View.VISIBLE:View.GONE);
-	}   
-	
-	@Override
-	public boolean isChecked() {
-		return mCheck;
-	}
+    public ImageView getmImageView() {
+        return mImageView;
+    }
 
-	@Override
-	public void toggle() {  
-		setChecked(!mCheck);
-	}
-	
-	public void setImgResID(int id){
-		if(mImageView != null){
-			mImageView.setBackgroundResource(id);
-		}
-	}
-	
-	public void SetBitmap(Bitmap bit){
-		if(mImageView != null){
-			mImageView.setImageBitmap(bit);
-		}
-	}
-	
-	public void hideSelect(){
-		mSelect.setVisibility(View.GONE);
-	}
-	public void showSelect(){
-		mSelect.setVisibility(View.VISIBLE);
-	}
+    private ImageView mSelect;
+
+    public PhotoGridItem(Context context) {
+        this(context, null, 0);
+    }
+
+    public PhotoGridItem(Context context, AttributeSet attrs) {
+        this(context, attrs, 0);
+    }
+
+    public PhotoGridItem(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        mContext = context;
+        LayoutInflater.from(mContext).inflate(R.layout.photoalbum_gridview_item, this);
+        mImageView = (ImageView) findViewById(R.id.photo_img_view);
+
+        int width = (int) ((float) (context.getResources().getDisplayMetrics().widthPixels - ImageUtil.dip2px(context, 16)) / 3.0);
+        LayoutParams lp = new LayoutParams(width, width);
+        mImageView.setLayoutParams(lp);
+
+        mSelect = (ImageView) findViewById(R.id.photo_select);
+        progress = (RoundProgressBar) findViewById(R.id.loadProgressBar);
+    }
+
+    @Override
+    public void setChecked(boolean checked) {
+        mCheck = checked;
+//		mSelect.setImageDrawable(getResources().getDrawable(R.drawable.cb_on));
+        mSelect.setImageDrawable(checked ? getResources().getDrawable(R.drawable.invite_checked) : getResources().getDrawable(R.drawable.invite_unchecked));
+        //mSelect.setVisibility(checked?View.VISIBLE:View.GONE);
+    }
+
+    @Override
+    public boolean isChecked() {
+        return mCheck;
+    }
+
+    @Override
+    public void toggle() {
+        setChecked(!mCheck);
+    }
+
+    public void setImgResID(int id) {
+        if (mImageView != null) {
+            mImageView.setBackgroundResource(id);
+        }
+    }
+
+    public void SetBitmap(Bitmap bit) {
+        if (mImageView != null) {
+            mImageView.setImageBitmap(bit);
+        }
+    }
+
+    public void hideSelect() {
+        mSelect.setVisibility(View.GONE);
+    }
+
+    public void showSelect() {
+        mSelect.setVisibility(View.VISIBLE);
+    }
 }

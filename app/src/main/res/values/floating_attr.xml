@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-        <dimen name="fab_size_normal">60dp</dimen>
+    <dimen name="fab_size_normal">60dp</dimen>
     <dimen name="fab_size_mini">40dp</dimen>
     <dimen name="fab_shadow_size">8dp</dimen>
     <dimen name="fab_mini_shadow_size">6dp</dimen>
-    
-        <string name="define_FloatingActionButton"></string>
+
+    <string name="define_FloatingActionButton"></string>
     <!-- Author section -->
     <string name="library_FloatingActionButton_author">Oleksandr Melnykov</string>
     <string name="library_FloatingActionButton_authorWebsite">https://github.com/makovkastar/FloatingActionButton</string>
@@ -19,14 +19,14 @@
     <string name="library_FloatingActionButton_repositoryLink">https://github.com/makovkastar/FloatingActionButton</string>
     <!-- License section -->
     <string name="library_FloatingActionButton_licenseId">mit</string>
-    
-        <declare-styleable name="FloatingActionButton">
-        <attr name="fab_colorPressed" format="color"/>
-        <attr name="fab_colorNormal" format="color"/>
-        <attr name="fab_shadow" format="boolean"/>
+
+    <declare-styleable name="FloatingActionButton">
+        <attr name="fab_colorPressed" format="color" />
+        <attr name="fab_colorNormal" format="color" />
+        <attr name="fab_shadow" format="boolean" />
         <attr name="fab_type" format="enum">
-            <enum name="normal" value="0"/>
-            <enum name="mini" value="1"/>
+            <enum name="normal" value="0" />
+            <enum name="mini" value="1" />
         </attr>
     </declare-styleable>
 </resources>

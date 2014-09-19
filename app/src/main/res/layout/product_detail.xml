@@ -3,20 +3,20 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/activity_bg"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <com.quanliren.quan_two.pull.PullToRefreshLayout
         android:id="@+id/layout"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_weight="1"
-        android:background="@color/activity_bg" >
+        android:background="@color/activity_bg">
 
         <ScrollView
             android:id="@+id/scrollview"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:fillViewport="true" >
+            android:fillViewport="true">
 
             <include
                 android:layout_width="fill_parent"
@@ -25,12 +25,12 @@
         </ScrollView>
     </com.quanliren.quan_two.pull.PullToRefreshLayout>
 
-    <Button 
+    <Button
         android:layout_width="fill_parent"
         android:id="@+id/buy_btn"
         android:text="兑换"
         android:layout_height="45dp"
         android:textSize="16sp"
         android:textColor="@color/white"
-        android:background="@drawable/buy_vip_selector"/>
+        android:background="@drawable/buy_vip_selector" />
 </LinearLayout>

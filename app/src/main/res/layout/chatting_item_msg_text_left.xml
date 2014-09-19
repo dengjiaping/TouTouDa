@@ -2,7 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/time"
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:gravity="top"
         android:orientation="horizontal"
-        android:padding="8dip" >
+        android:padding="8dip">
 
         <com.quanliren.quan_two.custom.RoundAngleImageView
             android:id="@+id/chat_user_logo"
@@ -48,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
-            android:visibility="gone" >
+            android:visibility="gone">
 
             <pl.droidsonroids.gif.MyGifImageView
                 android:id="@+id/gif"
@@ -74,7 +74,7 @@
             android:gravity="center_vertical"
             android:layout_marginLeft="4dp"
             android:minHeight="40dp"
-            android:minWidth="60dp" >
+            android:minWidth="60dp">
 
             <ImageView
                 android:id="@+id/voice"
@@ -100,7 +100,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/chat_left_content_selector"
             android:layout_marginLeft="4dp"
-            android:visibility="gone" >
+            android:visibility="gone">
 
             <com.quanliren.quan_two.custom.RoundAngleImageView
                 android:id="@+id/img"

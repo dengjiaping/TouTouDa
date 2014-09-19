@@ -256,21 +256,21 @@ public class QuanPushService extends Service {
                 } catch (Exception e) {
                 }
 
-				PrintStream out = new PrintStream(s.getOutputStream(),true,"utf-8");
-				out.write(getBytes(str.getBytes().length));
-				Thread.sleep(50);
-				StringBuilder sb = new StringBuilder();
-				for (int i = 0; i < str.length(); i++) {
-					sb.append(str.substring(i, i + 1));
-					if (sb.length() >= 50) {
-						out.write(sb.toString().getBytes());
-						Thread.sleep(50);
-						sb = new StringBuilder();
-					} else if (i == str.length() - 1) {
-						out.write(sb.toString().getBytes());
-					}
-				}
-				Thread.sleep(100);
+                PrintStream out = new PrintStream(s.getOutputStream(), true, "utf-8");
+                out.write(getBytes(str.getBytes().length));
+                Thread.sleep(50);
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < str.length(); i++) {
+                    sb.append(str.substring(i, i + 1));
+                    if (sb.length() >= 50) {
+                        out.write(sb.toString().getBytes());
+                        Thread.sleep(50);
+                        sb = new StringBuilder();
+                    } else if (i == str.length() - 1) {
+                        out.write(sb.toString().getBytes());
+                    }
+                }
+                Thread.sleep(100);
 //                PrintWriter out = new PrintWriter(new OutputStreamWriter(
 //                        s.getOutputStream()));
 //                Thread.sleep(50);

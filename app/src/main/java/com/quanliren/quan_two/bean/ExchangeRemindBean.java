@@ -3,49 +3,50 @@ package com.quanliren.quan_two.bean;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-@DatabaseTable(tableName="ExchangeRemindBean")
+@DatabaseTable(tableName = "ExchangeRemindBean")
 public class ExchangeRemindBean {
 
-	@DatabaseField(id=true)
-	private int id;
-	public int getId() {
-		return id;
-	}
+    @DatabaseField(id = true)
+    private int id;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	@DatabaseField()
-	private String eaid;
-	@DatabaseField
-	private String userId;
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public String getUserId() {
-		return userId;
-	}
+    @DatabaseField()
+    private String eaid;
+    @DatabaseField
+    private String userId;
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+    public String getUserId() {
+        return userId;
+    }
 
-	public String getEaid() {
-		return eaid;
-	}
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
-	public void setEaid(String eaid) {
-		this.eaid = eaid;
-	}
+    public String getEaid() {
+        return eaid;
+    }
+
+    public void setEaid(String eaid) {
+        this.eaid = eaid;
+    }
 
 
-	public ExchangeRemindBean(String eaid, String userId) {
-		super();
-		this.eaid = eaid;
-		this.userId = userId;
-	}
+    public ExchangeRemindBean(String eaid, String userId) {
+        super();
+        this.eaid = eaid;
+        this.userId = userId;
+    }
 
-	public ExchangeRemindBean() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+    public ExchangeRemindBean() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 }

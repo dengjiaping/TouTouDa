@@ -13,5 +13,5 @@
     <string name="state_movie">我想看电影</string>
     <color name="state_movie_color">#125c60</color>
     <string name="state_normal">无状态</string>
-    
+
 </resources>

@@ -4,7 +4,7 @@
     android:background="@color/activity_bg"
     android:fitsSystemWindows="true"
     android:clipToPadding="true"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent">
 
     <com.a.me.maxwin.view.XXListView
         android:id="@+id/listview"

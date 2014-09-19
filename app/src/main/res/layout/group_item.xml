@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/title_btn"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="80dp"
         android:background="@drawable/title_btn"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <com.quanliren.quan_two.custom.RoundAngleImageView
             android:id="@+id/grouplogo"

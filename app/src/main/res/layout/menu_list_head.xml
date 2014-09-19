@@ -6,7 +6,7 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:paddingBottom="20dp"
-    android:paddingTop="20dp" >
+    android:paddingTop="20dp">
 
 
     <com.quanliren.quan_two.custom.CircleImageView

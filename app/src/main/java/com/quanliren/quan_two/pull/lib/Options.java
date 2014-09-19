@@ -34,7 +34,8 @@ public final class Options {
         return new Builder();
     }
 
-    Options() {}
+    Options() {
+    }
 
     EnvironmentDelegate environmentDelegate = null;
     int headerLayout = DEFAULT_HEADER_LAYOUT;

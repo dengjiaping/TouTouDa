@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item><layer-list>
+    <item>
+        <layer-list>
 
             <!-- 连框颜色值 -->
-            <item><shape>
+            <item>
+                <shape>
                     <solid android:color="@color/border_color" />
-                </shape></item>
+                </shape>
+            </item>
             <!-- 主体背景颜色值 -->
-            <item android:bottom="1px"><shape>
+            <item android:bottom="1px">
+                <shape>
                     <solid android:color="@color/white" />
 
                     <padding android:left="8dp" android:right="8dp" />
-                </shape></item>
-        </layer-list></item>
+                </shape>
+            </item>
+        </layer-list>
+    </item>
 
 </selector>

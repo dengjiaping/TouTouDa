@@ -24,73 +24,75 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ImageAdapter extends PagerAdapter {
-	
-	List<ImageBean> urllist=new ArrayList<ImageBean>();
-	
-	IProductGridListener listener=null;
-	
-	public ImageAdapter(List<ImageBean> list,IProductGridListener listener){
-		this.urllist=list;
-		this.listener=listener;
-	}
-	
-	public void setList(List<ImageBean> list){
-		this.urllist=list;
-	}
-	
-	@Override
-	public int getCount() {
-		return urllist.size();
-	}
 
-	@Override
-	public boolean isViewFromObject(View view, Object object) {
-		return view == object;
-	}
-	private final DisplayImageOptions options_no_default = new DisplayImageOptions.Builder().cacheInMemory(true)
-			.cacheOnDisk(true).build();
-	@Override
-	public View instantiateItem(final ViewGroup container, int position) {
-		View view=View.inflate(container.getContext(), R.layout.image_item, null);
-		final ImageView photoView = (ImageView) view.findViewById(R.id.img);
-		final RoundProgressBar rp=(RoundProgressBar) view.findViewById(R.id.progressBar);
-		ImageLoader.getInstance().displayImage(urllist.get(position).imgpath+StaticFactory._600x600, photoView,options_no_default,new SimpleImageLoadingListener(){
-			@Override
-			public void onLoadingComplete(String imageUri, View view,
-					Bitmap loadedImage) {
-				float h=ImageUtil.dip2px(container.getContext(), 240)*loadedImage.getWidth()/loadedImage.getHeight();
-				RelativeLayout.LayoutParams rl=new RelativeLayout.LayoutParams((int)h,ImageUtil.dip2px(container.getContext(), 240));
-				rl.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
-				((ImageView)view).setLayoutParams(rl);
-			}
-		},new ImageLoadingProgressListener() {
-			
-			@Override
-			public void onProgressUpdate(String imageUri, View view, int current,
-					int total) {
-				if(current==total){
-					rp.setVisibility(View.GONE);
-				}else{
-					rp.setVisibility(View.VISIBLE);
-					rp.setMax(total);
-					rp.setProgress(current);
-				}
-			}
-		});
-		photoView.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				listener.imgClick(photoView);
-			}
-		});
-		container.addView(view, LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-		return view;
-	}
+    List<ImageBean> urllist = new ArrayList<ImageBean>();
 
-	@Override
-	public void destroyItem(ViewGroup container, int position, Object object) {
-		container.removeView((View) object);
-	}
+    IProductGridListener listener = null;
+
+    public ImageAdapter(List<ImageBean> list, IProductGridListener listener) {
+        this.urllist = list;
+        this.listener = listener;
+    }
+
+    public void setList(List<ImageBean> list) {
+        this.urllist = list;
+    }
+
+    @Override
+    public int getCount() {
+        return urllist.size();
+    }
+
+    @Override
+    public boolean isViewFromObject(View view, Object object) {
+        return view == object;
+    }
+
+    private final DisplayImageOptions options_no_default = new DisplayImageOptions.Builder().cacheInMemory(true)
+            .cacheOnDisk(true).build();
+
+    @Override
+    public View instantiateItem(final ViewGroup container, int position) {
+        View view = View.inflate(container.getContext(), R.layout.image_item, null);
+        final ImageView photoView = (ImageView) view.findViewById(R.id.img);
+        final RoundProgressBar rp = (RoundProgressBar) view.findViewById(R.id.progressBar);
+        ImageLoader.getInstance().displayImage(urllist.get(position).imgpath + StaticFactory._600x600, photoView, options_no_default, new SimpleImageLoadingListener() {
+            @Override
+            public void onLoadingComplete(String imageUri, View view,
+                                          Bitmap loadedImage) {
+                float h = ImageUtil.dip2px(container.getContext(), 240) * loadedImage.getWidth() / loadedImage.getHeight();
+                RelativeLayout.LayoutParams rl = new RelativeLayout.LayoutParams((int) h, ImageUtil.dip2px(container.getContext(), 240));
+                rl.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
+                ((ImageView) view).setLayoutParams(rl);
+            }
+        }, new ImageLoadingProgressListener() {
+
+            @Override
+            public void onProgressUpdate(String imageUri, View view, int current,
+                                         int total) {
+                if (current == total) {
+                    rp.setVisibility(View.GONE);
+                } else {
+                    rp.setVisibility(View.VISIBLE);
+                    rp.setMax(total);
+                    rp.setProgress(current);
+                }
+            }
+        });
+        photoView.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                listener.imgClick(photoView);
+            }
+        });
+        container.addView(view, LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+        return view;
+    }
+
+    @Override
+    public void destroyItem(ViewGroup container, int position, Object object) {
+        container.removeView((View) object);
+    }
 
 }

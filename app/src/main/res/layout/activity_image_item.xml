@@ -8,8 +8,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" />
 
-    <com.quanliren.quan_two.custom.RoundProgressBar
-        xmlns:pla="http://schemas.android.com/apk/res-auto"
+    <com.quanliren.quan_two.custom.RoundProgressBar xmlns:pla="http://schemas.android.com/apk/res-auto"
         android:id="@+id/loadProgressBar"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -19,7 +18,7 @@
         pla:style="STROKE"
         pla:proroundProgressColor="@color/title_press_txt"
         pla:proroundColor="@color/white"
-       	pla:textColor="@color/title_press_txt"
+        pla:textColor="@color/title_press_txt"
         android:progressDrawable="@drawable/progressbar" />
 
 </RelativeLayout>

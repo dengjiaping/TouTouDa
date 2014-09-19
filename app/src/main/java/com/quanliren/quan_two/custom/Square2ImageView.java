@@ -23,9 +23,9 @@ public class Square2ImageView extends ImageView {
         setMeasuredDimension(getDefaultSize(0, widthMeasureSpec), getDefaultSize(0, heightMeasureSpec));
 
         int childWidthSize = getMeasuredWidth();
-        int childHeightSize = (int)((float)childWidthSize/2);
+        int childHeightSize = (int) ((float) childWidthSize / 2);
         widthMeasureSpec = MeasureSpec.makeMeasureSpec(childWidthSize, MeasureSpec.EXACTLY);
-        heightMeasureSpec =MeasureSpec.makeMeasureSpec(childHeightSize, MeasureSpec.EXACTLY);
+        heightMeasureSpec = MeasureSpec.makeMeasureSpec(childHeightSize, MeasureSpec.EXACTLY);
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 }

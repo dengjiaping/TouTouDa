@@ -14,30 +14,29 @@ import java.io.PrintWriter;
 import java.io.RandomAccessFile;
 
 public class ReadWriteFile {
-	public static BufferedReader bufread;
+    public static BufferedReader bufread;
     //指定文件路径和名称
-    private static String path = StaticFactory.APKCardPath+"text.txt";
-    private static  File filename = new File(path);
-    private static String readStr ="";
+    private static String path = StaticFactory.APKCardPath + "text.txt";
+    private static File filename = new File(path);
+    private static String readStr = "";
 
 
     /**
      * 创建文本文件.
+     *
      * @throws java.io.IOException
-     * 
      */
-    public static void creatTxtFile() throws IOException{
+    public static void creatTxtFile() throws IOException {
         if (!filename.exists()) {
             filename.createNewFile();
             System.err.println(filename + "已创建！");
         }
     }
-    
+
     /**
      * 读取文本文件.
-     * 
      */
-    public static String readTxtFile(){
+    public static String readTxtFile() {
         String read;
         FileReader fileread;
         try {
@@ -45,7 +44,7 @@ public class ReadWriteFile {
             bufread = new BufferedReader(fileread);
             try {
                 while ((read = bufread.readLine()) != null) {
-                    readStr = readStr + read+ "\r\n";
+                    readStr = readStr + read + "\r\n";
                 }
             } catch (IOException e) {
                 // TODO Auto-generated catch block
@@ -59,12 +58,11 @@ public class ReadWriteFile {
 //        System.out.println("文件内容是:"+ "\r\n" + readStr);
         return readStr;
     }
-    
+
     /**
      * 写文件.
-     * 
      */
-    public static void writeTxtFile(String newStr) throws IOException{
+    public static void writeTxtFile(String newStr) throws IOException {
         //先读取原有文件内容，然后进行写入操作
         String filein = newStr + "\r\n" + readStr + "\r\n";
         RandomAccessFile mm = null;
@@ -85,16 +83,14 @@ public class ReadWriteFile {
             }
         }
     }
-    
+
     /**
      * 将文件中指定内容的第一行替换为其它内容.
-     * 
-     * @param oldStr
-     *            查找内容
-     * @param replaceStr
-     *            替换内容
+     *
+     * @param oldStr     查找内容
+     * @param replaceStr 替换内容
      */
-    public static void replaceTxtByStr(String oldStr,String replaceStr) {
+    public static void replaceTxtByStr(String oldStr, String replaceStr) {
         String temp = "";
         try {
             File file = new File(path);
@@ -129,8 +125,10 @@ public class ReadWriteFile {
             e.printStackTrace();
         }
     }
+
     /**
      * main方法测试
+     *
      * @param s
      * @throws java.io.IOException
      */

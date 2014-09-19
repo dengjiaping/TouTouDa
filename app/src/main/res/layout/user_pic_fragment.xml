@@ -2,13 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/pic_wall_ll"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content" >
+    android:layout_height="wrap_content">
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
-    </android.support.v4.view.ViewPager>
+        android:layout_height="fill_parent"></android.support.v4.view.ViewPager>
 
     <LinearLayout
         android:id="@+id/album_selecter"
@@ -16,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/viewpager"
         android:layout_centerHorizontal="true"
-        android:visibility="gone" >
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/page_select0"

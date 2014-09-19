@@ -14,8 +14,7 @@ import java.util.HashMap;
  * @13-5-24
  * @下午5:59
  */
-public class SharedDataUtil
-{
+public class SharedDataUtil {
     /**
      * 数据库操作助手
      */
@@ -25,23 +24,18 @@ public class SharedDataUtil
 
     private SharedDataEditor sharedDataEditor;
 
-    private SharedDataUtil(Context context)
-    {
-        if (sharedDataSqLiteHelper == null || sharedDataSqLiteHelper.isClosed())
-        {
+    private SharedDataUtil(Context context) {
+        if (sharedDataSqLiteHelper == null || sharedDataSqLiteHelper.isClosed()) {
             this.sharedDataSqLiteHelper = new SharedDataSqLiteHelper(context);
         }
     }
 
-    public static synchronized SharedDataUtil getInstance(Context context)
-    {
-        if (context == null)
-        {
+    public static synchronized SharedDataUtil getInstance(Context context) {
+        if (context == null) {
             return null;
         }
 
-        if (sharedDataUtil == null)
-        {
+        if (sharedDataUtil == null) {
             sharedDataUtil = new SharedDataUtil(context);
         }
 
@@ -55,15 +49,13 @@ public class SharedDataUtil
      * @param defaultValue 默认值，无值时返回传入的默认值
      * @return
      */
-    public String getString(String key, String defaultValue)
-    {
+    public String getString(String key, String defaultValue) {
         if (TextUtils.isEmpty(key))
             return defaultValue;
 
         SharedData sharedData = this.sharedDataSqLiteHelper.getGlobalDataByKey(key);
 
-        if (sharedData == null || sharedData.getDataType() != DataType.STRING)
-        {
+        if (sharedData == null || sharedData.getDataType() != DataType.STRING) {
             return defaultValue;
         }
 
@@ -77,15 +69,13 @@ public class SharedDataUtil
      * @param defaultValue 默认值，无值时返回传入的默认值
      * @return
      */
-    public boolean getBoolean(String key, boolean defaultValue)
-    {
+    public boolean getBoolean(String key, boolean defaultValue) {
         if (TextUtils.isEmpty(key))
             return defaultValue;
 
         SharedData sharedData = this.sharedDataSqLiteHelper.getGlobalDataByKey(key);
 
-        if (sharedData == null || sharedData.getDataType() != DataType.BOOLEAN)
-        {
+        if (sharedData == null || sharedData.getDataType() != DataType.BOOLEAN) {
             return defaultValue;
         }
 
@@ -99,15 +89,13 @@ public class SharedDataUtil
      * @param defaultValue 默认值，无值时返回传入的默认值
      * @return
      */
-    public int getInt(String key, int defaultValue)
-    {
+    public int getInt(String key, int defaultValue) {
         if (TextUtils.isEmpty(key))
             return defaultValue;
 
         SharedData sharedData = this.sharedDataSqLiteHelper.getGlobalDataByKey(key);
 
-        if (sharedData == null || sharedData.getDataType() != DataType.INT)
-        {
+        if (sharedData == null || sharedData.getDataType() != DataType.INT) {
             return defaultValue;
         }
 
@@ -121,15 +109,13 @@ public class SharedDataUtil
      * @param defaultValue 默认值，无值时返回传入的默认值
      * @return
      */
-    public Date getDate(String key, Date defaultValue)
-    {
+    public Date getDate(String key, Date defaultValue) {
         if (TextUtils.isEmpty(key))
             return defaultValue;
 
         SharedData sharedData = this.sharedDataSqLiteHelper.getGlobalDataByKey(key);
 
-        if (sharedData == null || sharedData.getDataType() != DataType.DATA)
-        {
+        if (sharedData == null || sharedData.getDataType() != DataType.DATA) {
             return defaultValue;
         }
 
@@ -143,15 +129,13 @@ public class SharedDataUtil
      * @param defaultValue 默认值，无值时返回传入的默认值
      * @return
      */
-    public long getLong(String key, long defaultValue)
-    {
+    public long getLong(String key, long defaultValue) {
         if (TextUtils.isEmpty(key))
             return defaultValue;
 
         SharedData sharedData = this.sharedDataSqLiteHelper.getGlobalDataByKey(key);
 
-        if (sharedData == null || sharedData.getDataType() != DataType.LONG)
-        {
+        if (sharedData == null || sharedData.getDataType() != DataType.LONG) {
             return defaultValue;
         }
 
@@ -165,15 +149,13 @@ public class SharedDataUtil
      * @param defaultValue 默认值，无值时返回传入的默认值
      * @return
      */
-    public float getFloat(String key, float defaultValue)
-    {
+    public float getFloat(String key, float defaultValue) {
         if (TextUtils.isEmpty(key))
             return defaultValue;
 
         SharedData sharedData = this.sharedDataSqLiteHelper.getGlobalDataByKey(key);
 
-        if (sharedData == null || sharedData.getDataType() != DataType.FLOAT)
-        {
+        if (sharedData == null || sharedData.getDataType() != DataType.FLOAT) {
             return defaultValue;
         }
 
@@ -187,8 +169,7 @@ public class SharedDataUtil
      * @param key
      * @return
      */
-    public boolean contains(String key)
-    {
+    public boolean contains(String key) {
         if (TextUtils.isEmpty(key))
             return false;
 
@@ -201,8 +182,7 @@ public class SharedDataUtil
      * @param key
      * @return
      */
-    public boolean remove(String key)
-    {
+    public boolean remove(String key) {
         if (TextUtils.isEmpty(key))
             return false;
 
@@ -214,8 +194,7 @@ public class SharedDataUtil
      *
      * @return
      */
-    public boolean clear()
-    {
+    public boolean clear() {
         return this.sharedDataSqLiteHelper.clearAll();
     }
 
@@ -225,10 +204,8 @@ public class SharedDataUtil
      *
      * @return
      */
-    public SharedDataEditor getSharedDataEditor()
-    {
-        if (sharedDataEditor == null)
-        {
+    public SharedDataEditor getSharedDataEditor() {
+        if (sharedDataEditor == null) {
             sharedDataEditor = new SharedDataEditor();
         }
 
@@ -241,18 +218,13 @@ public class SharedDataUtil
      * <br>数据编辑器<br/>
      * <br>最后使用commit()提交数据保存<br/>
      */
-    public class SharedDataEditor
-    {
+    public class SharedDataEditor {
         private HashMap<String, SharedData> sharedDataHashMap;
 
-        public SharedDataEditor()
-        {
-            if (sharedDataHashMap == null)
-            {
+        public SharedDataEditor() {
+            if (sharedDataHashMap == null) {
                 sharedDataHashMap = new HashMap<String, SharedData>();
-            }
-            else
-            {
+            } else {
                 sharedDataHashMap.clear();
             }
         }
@@ -264,10 +236,8 @@ public class SharedDataUtil
          * @param value
          * @return
          */
-        public SharedDataEditor putString(String key, String value)
-        {
-            if (TextUtils.isEmpty(key))
-            {
+        public SharedDataEditor putString(String key, String value) {
+            if (TextUtils.isEmpty(key)) {
                 return this;
             }
 
@@ -288,8 +258,7 @@ public class SharedDataUtil
          * @param value
          * @return
          */
-        public SharedDataEditor putBoolean(String key, boolean value)
-        {
+        public SharedDataEditor putBoolean(String key, boolean value) {
             if (TextUtils.isEmpty(key))
                 return this;
 
@@ -309,8 +278,7 @@ public class SharedDataUtil
          * @param value
          * @return
          */
-        public SharedDataEditor putInt(String key, int value)
-        {
+        public SharedDataEditor putInt(String key, int value) {
             if (TextUtils.isEmpty(key))
                 return this;
 
@@ -331,8 +299,7 @@ public class SharedDataUtil
          * @param date
          * @return
          */
-        public SharedDataEditor putDate(String key, Date date)
-        {
+        public SharedDataEditor putDate(String key, Date date) {
             if (TextUtils.isEmpty(key) || date == null)
                 return this;
 
@@ -353,8 +320,7 @@ public class SharedDataUtil
          * @param value
          * @return
          */
-        public SharedDataEditor putLong(String key, long value)
-        {
+        public SharedDataEditor putLong(String key, long value) {
             if (TextUtils.isEmpty(key))
                 return this;
 
@@ -374,8 +340,7 @@ public class SharedDataUtil
          * @param value
          * @return
          */
-        public SharedDataEditor putFloat(String key, float value)
-        {
+        public SharedDataEditor putFloat(String key, float value) {
             if (TextUtils.isEmpty(key))
                 return this;
 
@@ -393,16 +358,13 @@ public class SharedDataUtil
          *
          * @return
          */
-        public synchronized boolean commit()
-        {
+        public synchronized boolean commit() {
             boolean isSuccess = false;
 
             SharedDataSqLiteHelper sharedDataSqLiteHelper1 = sharedDataSqLiteHelper;
-            HashMap<String, SharedData> copyOfsharedDataHashMap=(HashMap<String, SharedData>) sharedDataHashMap.clone();
-            for (SharedData sharedData : copyOfsharedDataHashMap.values())
-            {
-                if (sharedData != null)
-                {
+            HashMap<String, SharedData> copyOfsharedDataHashMap = (HashMap<String, SharedData>) sharedDataHashMap.clone();
+            for (SharedData sharedData : copyOfsharedDataHashMap.values()) {
+                if (sharedData != null) {
                     long id = sharedDataSqLiteHelper1.putData(sharedData);
 
                     isSuccess = id > 0;
@@ -417,8 +379,7 @@ public class SharedDataUtil
         /**
          * 清除数据
          */
-        public void clearDatas()
-        {
+        public void clearDatas() {
             if (sharedDataHashMap != null)
                 sharedDataHashMap.clear();
         }
@@ -430,8 +391,7 @@ public class SharedDataUtil
      *
      * @return
      */
-    private SharedData getDefaultData()
-    {
+    private SharedData getDefaultData() {
         SharedData sharedData = new SharedData();
         sharedData.setmStr(null);
         sharedData.setmBoolean(false);

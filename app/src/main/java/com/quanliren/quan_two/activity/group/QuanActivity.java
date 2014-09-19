@@ -27,83 +27,85 @@ import java.util.List;
 @EActivity(R.layout.quan)
 public class QuanActivity extends BaseActivity implements OnTabClickListener {
 
-	@ViewById
-	TabLinearLayout bottom_tab;
-	@ViewById
-	ViewPager viewpager;
-	List<Fragment> views = new ArrayList<Fragment>();
+    @ViewById
+    TabLinearLayout bottom_tab;
+    @ViewById
+    ViewPager viewpager;
+    List<Fragment> views = new ArrayList<Fragment>();
 
-	@AfterViews
-	void initView() {
+    @AfterViews
+    void initView() {
 
-		List<TabLinearLayout.TabBean> list = new ArrayList<TabLinearLayout.TabBean>();
-		list.add(new TabLinearLayout.TabBean(R.drawable.ic_date_tab2, "留言板"));
-		list.add(new TabLinearLayout.TabBean(R.drawable.ic_dongtai_tab1, "好友动态"));
-		list.add(new TabLinearLayout.TabBean(R.drawable.ic_dongtai_tab2, "评价我的"));
-		bottom_tab.setDate(list);
-		bottom_tab.setListener(this);
+        List<TabLinearLayout.TabBean> list = new ArrayList<TabLinearLayout.TabBean>();
+        list.add(new TabLinearLayout.TabBean(R.drawable.ic_date_tab2, "留言板"));
+        list.add(new TabLinearLayout.TabBean(R.drawable.ic_dongtai_tab1, "好友动态"));
+        list.add(new TabLinearLayout.TabBean(R.drawable.ic_dongtai_tab2, "评价我的"));
+        bottom_tab.setDate(list);
+        bottom_tab.setListener(this);
 
-		getSupportActionBar().setTitle(R.string.quan);
+        getSupportActionBar().setTitle(R.string.quan);
 
-		QuanPullListViewFragment_ pull = new QuanPullListViewFragment_();
-		Bundle b = new Bundle();
-		b.putInt("type", QuanPullListViewFragment.ALL);
-		pull.setArguments(b);
-		views.add(pull);
-		
-		QuanPullListViewFragment_ pull1 = new QuanPullListViewFragment_();
-		Bundle b1 = new Bundle();
-		b1.putInt("type", QuanPullListViewFragment.MYCARE);
-		pull1.setArguments(b1);
-		views.add(pull1);
-		
-		QuanAboutMeFragment_ pull2=new QuanAboutMeFragment_();
-		views.add(pull2);
-		
-		viewpager.setOnPageChangeListener(new OnPageChangeListener() {
-			public void onPageSelected(int arg0) {
-				bottom_tab.setCurrentIndex(arg0);
-			}
-			public void onPageScrolled(int arg0, float arg1, int arg2) {
-			}
-			public void onPageScrollStateChanged(int arg0) {
-			}
-		});
-		viewpager.setAdapter(new mPagerAdapter(getSupportFragmentManager()));
-	}
+        QuanPullListViewFragment_ pull = new QuanPullListViewFragment_();
+        Bundle b = new Bundle();
+        b.putInt("type", QuanPullListViewFragment.ALL);
+        pull.setArguments(b);
+        views.add(pull);
 
-	@Override
-	public void onTabClick(int position) {
-		if(position>0){
-			if(getHelper().getUser()==null){
-				startLogin();
-				return;
-			}
-		}
-		viewpager.setCurrentItem(position);
-	}
-	
-	class mPagerAdapter extends FragmentPagerAdapter {
+        QuanPullListViewFragment_ pull1 = new QuanPullListViewFragment_();
+        Bundle b1 = new Bundle();
+        b1.putInt("type", QuanPullListViewFragment.MYCARE);
+        pull1.setArguments(b1);
+        views.add(pull1);
 
-		public mPagerAdapter(FragmentManager fm) {
-			super(fm);
-		}
+        QuanAboutMeFragment_ pull2 = new QuanAboutMeFragment_();
+        views.add(pull2);
 
-		@Override
-		public Fragment getItem(int arg0) {
-			return views.get(arg0);
-		}
+        viewpager.setOnPageChangeListener(new OnPageChangeListener() {
+            public void onPageSelected(int arg0) {
+                bottom_tab.setCurrentIndex(arg0);
+            }
 
-		@Override
-		public int getCount() {
-			return views.size();
-		}
+            public void onPageScrolled(int arg0, float arg1, int arg2) {
+            }
 
-		@Override
-		public void setPrimaryItem(ViewGroup container, int position,
-				Object object) {
-			((LoaderImpl)views.get(position)).refresh();
-			super.setPrimaryItem(container, position, object);
-		}
-	}
+            public void onPageScrollStateChanged(int arg0) {
+            }
+        });
+        viewpager.setAdapter(new mPagerAdapter(getSupportFragmentManager()));
+    }
+
+    @Override
+    public void onTabClick(int position) {
+        if (position > 0) {
+            if (getHelper().getUser() == null) {
+                startLogin();
+                return;
+            }
+        }
+        viewpager.setCurrentItem(position);
+    }
+
+    class mPagerAdapter extends FragmentPagerAdapter {
+
+        public mPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int arg0) {
+            return views.get(arg0);
+        }
+
+        @Override
+        public int getCount() {
+            return views.size();
+        }
+
+        @Override
+        public void setPrimaryItem(ViewGroup container, int position,
+                                   Object object) {
+            ((LoaderImpl) views.get(position)).refresh();
+            super.setPrimaryItem(container, position, object);
+        }
+    }
 }

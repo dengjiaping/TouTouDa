@@ -2,7 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/time"
@@ -15,7 +15,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:id="@+id/chat_content_relativelayout_parent"
@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:orientation="horizontal"
-            android:padding="8dip" >
+            android:padding="8dip">
 
             <ProgressBar
                 android:id="@+id/progress"
@@ -58,10 +58,10 @@
             <LinearLayout
                 android:id="@+id/img_ll"
                 android:layout_width="wrap_content"
-                 android:layout_marginRight="4dp"
+                android:layout_marginRight="4dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/chat_right_content_selector"
-                android:visibility="gone" >
+                android:visibility="gone">
 
                 <com.quanliren.quan_two.custom.RoundAngleImageView
                     android:id="@+id/img"
@@ -78,7 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="4dp"
-                android:visibility="gone" >
+                android:visibility="gone">
 
                 <pl.droidsonroids.gif.MyGifImageView
                     android:id="@+id/gif"
@@ -110,7 +110,7 @@
                 android:id="@+id/voice_ll"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                 android:layout_marginRight="4dp"
+                android:layout_marginRight="4dp"
                 android:background="@drawable/chat_right_content_selector"
                 android:gravity="right|center_vertical"
                 android:minHeight="40dp"

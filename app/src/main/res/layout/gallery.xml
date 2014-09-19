@@ -3,12 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="5dp"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <com.quanliren.quan_two.custom.ScrollViewPager
         android:id="@+id/homeGalley"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout1"
@@ -16,7 +16,7 @@
         android:layout_height="10dp"
         android:layout_alignBottom="@id/homeGalley"
         android:layout_centerHorizontal="true"
-        android:gravity="right" >
+        android:gravity="right">
 
         <com.quanliren.quan_two.custom.GalleryNavigator
             android:id="@+id/gallerynavigator"

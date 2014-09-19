@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:id="@+id/layout"
     android:background="@color/activity_bg"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent">
 
 
     <com.quanliren.quan_two.pull.XListView

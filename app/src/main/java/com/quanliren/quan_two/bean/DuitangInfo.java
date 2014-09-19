@@ -2,44 +2,45 @@ package com.quanliren.quan_two.bean;
 
 public class DuitangInfo {
 
-	private int height;
-	private String albid = "";
-	private String msg = "";
-	private String isrc = "";
+    private int height;
+    private String albid = "";
+    private String msg = "";
+    private String isrc = "";
 
-	public int getWidth(){
-		return 200;
-	}
-	public String getAlbid() {
-		return albid;
-	}
+    public int getWidth() {
+        return 200;
+    }
 
-	public void setAlbid(String albid) {
-		this.albid = albid;
-	}
+    public String getAlbid() {
+        return albid;
+    }
 
-	public String getMsg() {
-		return msg;
-	}
+    public void setAlbid(String albid) {
+        this.albid = albid;
+    }
 
-	public void setMsg(String msg) {
-		this.msg = msg;
-	}
+    public String getMsg() {
+        return msg;
+    }
 
-	public String getIsrc() {
-		return isrc;
-	}
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
 
-	public void setIsrc(String isrc) {
-		this.isrc = isrc;
-	}
+    public String getIsrc() {
+        return isrc;
+    }
 
-	public int getHeight() {
-		return height;
-	}
+    public void setIsrc(String isrc) {
+        this.isrc = isrc;
+    }
 
-	public void setHeight(int height) {
-		this.height = height;
-	}
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
 
 }

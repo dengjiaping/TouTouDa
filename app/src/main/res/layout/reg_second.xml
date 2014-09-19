@@ -3,19 +3,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/activity_bg" >
+    android:background="@color/activity_bg">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="40dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/menu_mid_selector"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -54,7 +54,7 @@
             android:layout_height="40dp"
             android:layout_marginTop="1dp"
             android:background="@drawable/menu_mid_selector"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -64,8 +64,7 @@
                 android:textColor="@color/title"
                 android:textSize="14sp" />
 
-            <com.quanliren.quan_two.custom.AgeTextView
-                xmlns:ptr="http://schemas.android.com/apk/res/com.quanliren.quan_two.activity"
+            <com.quanliren.quan_two.custom.AgeTextView xmlns:ptr="http://schemas.android.com/apk/res/com.quanliren.quan_two.activity"
                 android:id="@+id/age"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
@@ -81,7 +80,7 @@
             android:layout_height="40dp"
             android:layout_marginTop="1dp"
             android:background="@drawable/menu_mid_selector"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -107,7 +106,7 @@
             android:layout_height="40dp"
             android:layout_marginTop="1dp"
             android:background="@drawable/menu_mid_selector"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -132,7 +131,7 @@
             android:layout_height="40dp"
             android:layout_marginTop="1dp"
             android:background="@drawable/menu_mid_selector"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -158,7 +157,7 @@
             android:layout_height="40dp"
             android:layout_marginTop="1dp"
             android:background="@drawable/menu_mid_selector"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -184,7 +183,7 @@
             android:layout_height="40dp"
             android:layout_marginTop="1dp"
             android:background="@drawable/menu_mid_selector"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -210,7 +209,7 @@
             android:layout_height="40dp"
             android:layout_marginTop="1dp"
             android:background="@drawable/menu_mid_selector"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"

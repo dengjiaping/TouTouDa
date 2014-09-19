@@ -14,24 +14,24 @@ import org.androidannotations.annotations.ViewById;
 @EActivity(R.layout.serviceinfo)
 public class HtmlActivity extends BaseActivity {
 
-	@Extra
-	String url;
-	@Extra
-	String title;
-	@ViewById
-	WebView webview;
+    @Extra
+    String url;
+    @Extra
+    String title;
+    @ViewById
+    WebView webview;
 
-	@Override
-	protected void onResume() {
-		// TODO Auto-generated method stub
-		super.onResume();
-		getSupportActionBar().setTitle(title);
-	}
-	
-	@AfterViews
-	void initView(){
-		WebSettings webSettings = webview.getSettings();
-		webSettings.setJavaScriptEnabled(true);
-		webview.loadUrl(url);
-	}
+    @Override
+    protected void onResume() {
+        // TODO Auto-generated method stub
+        super.onResume();
+        getSupportActionBar().setTitle(title);
+    }
+
+    @AfterViews
+    void initView() {
+        WebSettings webSettings = webview.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        webview.loadUrl(url);
+    }
 }

@@ -6,8 +6,7 @@ import org.json.JSONObject;
 /**
  * Created by BingBing on 2014/9/17.
  */
-public class JsonHttpResponseHandler extends com.loopj.android.http.JsonHttpResponseHandler
-{
+public class JsonHttpResponseHandler extends com.loopj.android.http.JsonHttpResponseHandler {
 
     @Override
     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -19,11 +18,11 @@ public class JsonHttpResponseHandler extends com.loopj.android.http.JsonHttpResp
         onFailure();
     }
 
-    public void onSuccess(JSONObject response){
+    public void onSuccess(JSONObject response) {
 
     }
 
-    public void onFailure(){
+    public void onFailure() {
 
     }
 }

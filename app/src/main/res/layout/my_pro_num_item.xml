@@ -6,19 +6,20 @@
     android:padding="0dp"
     android:orientation="horizontal">
 
-    <View 
+    <View
         android:id="@+id/color_view"
         android:layout_width="4dp"
         android:layout_height="60dp"
-        android:background="#329fcd"/>
-    
-    <LinearLayout 
+        android:background="#329fcd" />
+
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="8dp"
         android:layout_height="60dp"
         android:orientation="vertical">
-        <TextView 
+
+        <TextView
             android:id="@+id/title"
             android:layout_width="fill_parent"
             android:gravity="center_vertical"
@@ -26,35 +27,39 @@
             android:singleLine="true"
             android:ellipsize="end"
             android:textSize="16sp"
-            android:textColor="@color/title"/>
-        <TextView 
+            android:textColor="@color/title" />
+
+        <TextView
             android:id="@+id/num"
             android:layout_width="fill_parent"
             android:layout_height="18dp"
             android:gravity="center_vertical"
             android:textSize="14sp"
-            android:textColor="@color/red_number"/>
-        <LinearLayout 
+            android:textColor="@color/red_number" />
+
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="20dp"
             android:orientation="horizontal">
-            <TextView 
+
+            <TextView
                 android:id="@+id/time"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:layout_weight="1"
-            android:textSize="12sp"
-            android:gravity="center_vertical"
-            android:textColor="@color/title"/>
-              <TextView 
-                  android:id="@+id/status"
-            android:layout_width="wrap_content"
-            android:layout_height="18dp"
-            android:textSize="12sp"
-            android:gravity="center_vertical"
-            android:textColor="@color/title"/>
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:textSize="12sp"
+                android:gravity="center_vertical"
+                android:textColor="@color/title" />
+
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:textSize="12sp"
+                android:gravity="center_vertical"
+                android:textColor="@color/title" />
         </LinearLayout>
-        
+
     </LinearLayout>
 
 </LinearLayout>

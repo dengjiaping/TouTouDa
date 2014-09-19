@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:gravity="center" >
+    android:gravity="center">
 
     <com.quanliren.quan_two.custom.emoji.EmoteGridView
         android:id="@+id/gridview"
@@ -17,7 +17,6 @@
         android:padding="8dp"
         android:scrollingCache="false"
         android:stretchMode="columnWidth"
-        android:verticalSpacing="8dip" >
-    </com.quanliren.quan_two.custom.emoji.EmoteGridView>
+        android:verticalSpacing="8dip"></com.quanliren.quan_two.custom.emoji.EmoteGridView>
 
 </RelativeLayout>

@@ -120,8 +120,8 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
         @Override
         public void run() {
             invalidateSelf();
-            if(callBack!=null){
-            	callBack.invalidateDrawable(mMetaData[4],GifDrawable.this);
+            if (callBack != null) {
+                callBack.invalidateDrawable(mMetaData[4], GifDrawable.this);
             }
         }
     };
@@ -138,9 +138,9 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
      *
      * @param res Resources to read from
      * @param id  resource id
-     * @throws android.content.res.Resources.NotFoundException    if the given ID does not exist.
-     * @throws java.io.IOException          when opening failed
-     * @throws NullPointerException if res is null
+     * @throws android.content.res.Resources.NotFoundException if the given ID does not exist.
+     * @throws java.io.IOException                             when opening failed
+     * @throws NullPointerException                            if res is null
      */
     public GifDrawable(Resources res, int id) throws NotFoundException, IOException {
         this(res.openRawResourceFd(id));
@@ -151,7 +151,7 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
      *
      * @param assets    AssetManager to read from
      * @param assetName name of the asset
-     * @throws java.io.IOException          when opening failed
+     * @throws java.io.IOException  when opening failed
      * @throws NullPointerException if assets or assetName is null
      */
     public GifDrawable(AssetManager assets, String assetName) throws IOException {
@@ -165,7 +165,7 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
      * {@link android.os.StrictMode} policy if disk reads detection is enabled.<br>
      *
      * @param filePath path to the GIF file
-     * @throws java.io.IOException          when opening failed
+     * @throws java.io.IOException  when opening failed
      * @throws NullPointerException if filePath is null
      */
     public GifDrawable(String filePath) throws IOException {
@@ -180,7 +180,7 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
      * Equivalent to {@code} GifDrawable(file.getPath())}
      *
      * @param file the GIF file
-     * @throws java.io.IOException          when opening failed
+     * @throws java.io.IOException  when opening failed
      * @throws NullPointerException if file is null
      */
     public GifDrawable(File file) throws IOException {
@@ -196,7 +196,7 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
      * InputStream must support marking, IllegalArgumentException will be thrown otherwise.
      *
      * @param stream stream to read from
-     * @throws java.io.IOException              when opening failed
+     * @throws java.io.IOException      when opening failed
      * @throws IllegalArgumentException if stream does not support marking
      * @throws NullPointerException     if stream is null
      */
@@ -216,7 +216,7 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
      *
      * @param afd source
      * @throws NullPointerException if afd is null
-     * @throws java.io.IOException          when opening failed
+     * @throws java.io.IOException  when opening failed
      */
     public GifDrawable(AssetFileDescriptor afd) throws IOException {
         if (afd == null)
@@ -236,7 +236,7 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
      * Creates drawable from FileDescriptor
      *
      * @param fd source
-     * @throws java.io.IOException          when opening failed
+     * @throws java.io.IOException  when opening failed
      * @throws NullPointerException if fd is null
      */
     public GifDrawable(FileDescriptor fd) throws IOException {
@@ -252,7 +252,7 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
      * It can be larger than size of the GIF data. Bytes beyond GIF terminator are not accessed.
      *
      * @param bytes raw GIF bytes
-     * @throws java.io.IOException          if bytes does not contain valid GIF data
+     * @throws java.io.IOException  if bytes does not contain valid GIF data
      * @throws NullPointerException if bytes are null
      */
     public GifDrawable(byte[] bytes) throws IOException {
@@ -268,7 +268,7 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
      * Buffer can be larger than size of the GIF data. Bytes beyond GIF terminator are not accessed.
      *
      * @param buffer buffer containing GIF data
-     * @throws java.io.IOException              if buffer does not contain valid GIF data
+     * @throws java.io.IOException      if buffer does not contain valid GIF data
      * @throws IllegalArgumentException if buffer is indirect
      * @throws NullPointerException     if buffer is null
      */
@@ -682,9 +682,9 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
     }
 
     public void setAntiAlias(boolean b) {
-		// TODO Auto-generated method stub
-    	mPaint.setAntiAlias(b);
-	}
+        // TODO Auto-generated method stub
+        mPaint.setAntiAlias(b);
+    }
 
     /**
      * Reads and renders new frame if needed then draws last rendered frame.
@@ -710,10 +710,10 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
             if (colors != null)
                 canvas.drawBitmap(colors, 0, mMetaData[0], 0f, 0f, mMetaData[0], mMetaData[1], true, mPaint);
 
-            if (mMetaData[4] >= 0 && mMetaData[2] > 1){
+            if (mMetaData[4] >= 0 && mMetaData[2] > 1) {
                 UI_HANDLER.postDelayed(mInvalidateTask, mMetaData[4]);//TODO don't post if message for given frame was already posted
             }
-        } else{
+        } else {
             canvas.drawRect(mDstRect, mPaint);
         }
     }
@@ -751,10 +751,10 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
     public int getMinimumWidth() {
         return mMetaData[0];
     }
-    
+
     DrawableCallBack callBack;
-    
-    public void setCallBack(DrawableCallBack callBack){
-    	this.callBack=callBack;
+
+    public void setCallBack(DrawableCallBack callBack) {
+        this.callBack = callBack;
     }
 }

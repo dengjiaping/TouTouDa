@@ -3,12 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/activity_bg"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <include
             android:id="@+id/title_in"
@@ -21,7 +21,7 @@
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:background="@color/bottom_bg"
-            android:gravity="center_vertical" >
+            android:gravity="center_vertical">
 
             <TextView
                 android:id="@+id/select"
@@ -60,8 +60,7 @@
             android:dividerHeight="4dp"
             android:drawSelectorOnTop="false"
             android:listSelector="#00000000"
-            android:scrollbars="vertical" >
-        </me.maxwin.view.XXListView>
+            android:scrollbars="vertical"></me.maxwin.view.XXListView>
     </LinearLayout>
 
     <LinearLayout
@@ -71,7 +70,7 @@
         android:layout_alignParentBottom="true"
         android:background="@color/bottom_bg"
         android:visibility="gone"
-        android:gravity="center_vertical" >
+        android:gravity="center_vertical">
 
         <TextView
             android:id="@+id/photo"

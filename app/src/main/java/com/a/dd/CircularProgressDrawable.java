@@ -17,11 +17,11 @@ public class CircularProgressDrawable extends Drawable {
     private int mStrokeColor;
     private String text;
 
-	public void setText(String text) {
-		this.text = text;
-	}
+    public void setText(String text) {
+        this.text = text;
+    }
 
-	public CircularProgressDrawable(int size, int strokeWidth, int strokeColor) {
+    public CircularProgressDrawable(int size, int strokeWidth, int strokeColor) {
         mSize = size;
         mStrokeWidth = strokeWidth;
         mStrokeColor = strokeColor;
@@ -66,7 +66,7 @@ public class CircularProgressDrawable extends Drawable {
 
     private RectF mRectF;
     private Paint mPaint;
- 
+
     private Path mPath;
 
     private RectF getRect() {
@@ -87,6 +87,6 @@ public class CircularProgressDrawable extends Drawable {
         }
         return mPaint;
     }
-    
-   
+
+
 }

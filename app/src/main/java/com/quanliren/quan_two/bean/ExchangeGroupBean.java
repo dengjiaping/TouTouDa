@@ -3,37 +3,38 @@ package com.quanliren.quan_two.bean;
 import java.io.Serializable;
 import java.util.List;
 
-public class ExchangeGroupBean implements Serializable{
+public class ExchangeGroupBean implements Serializable {
 
-	private String title;
-	public String getTitle() {
-		return title;
-	}
+    private String title;
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	private List<ExchangeItemBean> itemlist;
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public List<ExchangeItemBean> getItemlist() {
-		return itemlist;
-	}
+    private List<ExchangeItemBean> itemlist;
 
-	public void setItemlist(List<ExchangeItemBean> itemlist) {
-		this.itemlist = itemlist;
-	}
+    public List<ExchangeItemBean> getItemlist() {
+        return itemlist;
+    }
 
-	public ExchangeGroupBean(String title, List<ExchangeItemBean> itemlist) {
-		super();
-		this.title = title;
-		this.itemlist = itemlist;
-	}
+    public void setItemlist(List<ExchangeItemBean> itemlist) {
+        this.itemlist = itemlist;
+    }
 
-	public ExchangeGroupBean() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-	
+    public ExchangeGroupBean(String title, List<ExchangeItemBean> itemlist) {
+        super();
+        this.title = title;
+        this.itemlist = itemlist;
+    }
+
+    public ExchangeGroupBean() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+
 }

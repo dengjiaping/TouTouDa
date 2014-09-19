@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="76dp"
     android:background="@drawable/menu_btm_selector"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <com.quanliren.quan_two.custom.RoundAngleImageView
         android:id="@+id/userlogo"

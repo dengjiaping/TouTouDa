@@ -80,7 +80,7 @@ import java.lang.ref.WeakReference;
         TextView v = textView.get();
         if (v != null) {
             if (isAttachedToHierarchy(v)) {
-                shift =Integer.valueOf(animation.getAnimatedValue().toString());
+                shift = Integer.valueOf(animation.getAnimatedValue().toString());
                 v.invalidate();
             } else {
                 animation.setCurrentPlayTime(0);

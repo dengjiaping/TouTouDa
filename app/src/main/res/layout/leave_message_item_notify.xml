@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <com.quanliren.quan_two.custom.MessageCustomLinearLayout
         android:id="@+id/top"
@@ -11,13 +11,13 @@
         android:layout_height="wrap_content"
         android:background="@color/activity_bg"
         android:orientation="horizontal"
-        app:btn_num="1" >
+        app:btn_num="1">
 
         <com.quanliren.quan_two.custom.MessageCustomRelativeLayout
             android:id="@+id/click_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="8dp" >
+            android:padding="8dp">
 
             <com.quanliren.quan_two.custom.RoundAngleImageView
                 android:id="@+id/userlogo"
@@ -35,7 +35,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_toRightOf="@id/userlogo"
                 android:gravity="center_vertical"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/username"

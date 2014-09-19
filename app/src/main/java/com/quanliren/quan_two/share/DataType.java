@@ -8,24 +8,20 @@ package com.quanliren.quan_two.share;
  * @13-5-27
  * @上午10:29
  */
-public enum DataType
-{
+public enum DataType {
     STRING(0), BOOLEAN(1), INT(2), DATA(3), LONG(4), FLOAT(5);
 
     private int value;
 
-    private DataType(int value)
-    {
+    private DataType(int value) {
         this.value = value;
     }
 
-    public int getValue()
-    {
+    public int getValue() {
         return value;
     }
 
-    public void setValue(int value)
-    {
+    public void setValue(int value) {
         this.value = value;
     }
 
@@ -35,12 +31,9 @@ public enum DataType
      * @param value
      * @return
      */
-    public static DataType getDataTypeByValue(int value)
-    {
-        for (DataType type : DataType.values())
-        {
-            if (type.value == value)
-            {
+    public static DataType getDataTypeByValue(int value) {
+        for (DataType type : DataType.values()) {
+            if (type.value == value) {
                 return type;
             }
         }

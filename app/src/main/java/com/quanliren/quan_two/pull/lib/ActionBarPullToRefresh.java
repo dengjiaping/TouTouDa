@@ -58,10 +58,10 @@ public class ActionBarPullToRefresh {
             refreshableViews = null;
             return this;
         }
-        
-        public SetupWizard setAutoStart(boolean b){
-        	autoStart=b;
-        	return this;
+
+        public SetupWizard setAutoStart(boolean b) {
+            autoStart = b;
+            return this;
         }
 
         public SetupWizard theseChildrenArePullable(int... viewIds) {
@@ -124,7 +124,7 @@ public class ActionBarPullToRefresh {
         }
 
         private static void insertLayoutIntoViewGroup(ViewGroup viewGroup,
-                PullToRefreshLayout pullToRefreshLayout) {
+                                                      PullToRefreshLayout pullToRefreshLayout) {
             // Move all children to PullToRefreshLayout. This code looks a bit silly but the child
             // indices change every time we remove a View (so we can't just iterate through)
             View child = viewGroup.getChildAt(0);

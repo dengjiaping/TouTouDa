@@ -4,13 +4,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-   	android:background="@color/activity_bg"
-    android:orientation="vertical" >
+    android:background="@color/activity_bg"
+    android:orientation="vertical">
+
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_weight="1"
-        tools:context=".user.UserOtherInfoActivity" >
+        tools:context=".user.UserOtherInfoActivity">
 
         <ImageView
             android:id="@+id/mHeadImg"
@@ -25,7 +26,7 @@
             android:id="@+id/layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <com.quanliren.quan_two.custom.PullScrollView
                 android:id="@+id/scroll_view"
@@ -33,26 +34,26 @@
                 android:layout_height="fill_parent"
                 android:fillViewport="true"
                 app:headerHeight="415dp"
-                app:headerVisibleHeight="100dp" >
+                app:headerVisibleHeight="100dp">
 
                 <LinearLayout
                     android:id="@+id/scroll_ll"
                     android:visibility="gone"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical" >
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:id="@+id/bg_click_ll"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="55dp" >
+                            android:layout_marginTop="55dp">
 
                             <com.quanliren.quan_two.custom.CircleImageView
                                 android:id="@+id/userlogo"
@@ -100,15 +101,14 @@
                         android:id="@+id/pic_contents"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/white" >
-                    </FrameLayout>
+                        android:background="@color/white"></FrameLayout>
 
                     <RelativeLayout
                         android:layout_width="fill_parent"
                         android:layout_height="25dp"
                         android:background="@color/white"
                         android:paddingLeft="8dp"
-                        android:paddingRight="8dp" >
+                        android:paddingRight="8dp">
 
                         <TextView
                             android:id="@+id/ld_ds_txt"
@@ -153,7 +153,7 @@
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:background="@color/bottom_bg"
-        android:gravity="center_vertical" >
+        android:gravity="center_vertical">
 
         <LinearLayout
             android:id="@+id/guanzhu_btn"
@@ -163,7 +163,7 @@
             android:background="@drawable/bottom_btn"
             android:clickable="true"
             android:gravity="center"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="20dp"
@@ -191,7 +191,7 @@
             android:background="@drawable/bottom_btn"
             android:clickable="true"
             android:gravity="center"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="20dp"
@@ -218,7 +218,7 @@
             android:background="@drawable/bottom_btn"
             android:clickable="true"
             android:gravity="center"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="20dp"

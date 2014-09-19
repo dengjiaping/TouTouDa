@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/activity_bg"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <include
         android:layout_width="fill_parent"
@@ -12,9 +12,9 @@
 
     <TableLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+        android:layout_height="fill_parent">
 
-        <TableRow android:background="@drawable/menu_mid_selector" >
+        <TableRow android:background="@drawable/menu_mid_selector">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -37,7 +37,7 @@
 
         <TableRow
             android:layout_marginTop="1dp"
-            android:background="@drawable/menu_mid_selector" >
+            android:background="@drawable/menu_mid_selector">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -57,9 +57,10 @@
                 android:inputType="phone"
                 android:textSize="14sp" />
         </TableRow>
- <TableRow
+
+        <TableRow
             android:layout_marginTop="1dp"
-            android:background="@drawable/menu_mid_selector" >
+            android:background="@drawable/menu_mid_selector">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -80,9 +81,10 @@
                 android:singleLine="true"
                 android:textSize="14sp" />
         </TableRow>
+
         <TableRow
             android:layout_marginTop="1dp"
-            android:background="@drawable/menu_mid_selector" >
+            android:background="@drawable/menu_mid_selector">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -103,11 +105,10 @@
                 android:textSize="14sp" />
         </TableRow>
 
-       
 
         <TableRow
             android:layout_marginTop="1dp"
-            android:background="@drawable/menu_mid_selector" >
+            android:background="@drawable/menu_mid_selector">
 
             <TextView
                 android:layout_width="wrap_content"

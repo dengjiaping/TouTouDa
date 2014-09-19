@@ -125,8 +125,8 @@ public class FloatingActionButton extends ImageButton {
 //        drawable.addState(new int[]{android.R.attr.state_pressed}, createDrawable(mColorPressed));
 //        drawable.addState(new int[]{}, createDrawable(mColorNormal));
 //        setBackgroundCompat(drawable);
-    	
-    	setBackgroundResource(R.color.transparent);
+
+        setBackgroundResource(R.color.transparent);
     }
 
     private Drawable createDrawable(int color) {

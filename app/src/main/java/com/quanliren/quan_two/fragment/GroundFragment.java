@@ -17,56 +17,56 @@ import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
 @EFragment(R.layout.ground)
-public class GroundFragment extends MenuFragmentBase implements ITitle{
+public class GroundFragment extends MenuFragmentBase implements ITitle {
 
-	@ViewById
-	View ground_msg;
-	@ViewById
-	View ground_date;
-	@ViewById
-	View ground_exchange;
-	@ViewById
-	View ground_shop;
-	@ViewById
-	View ground_through;
-	
-	@Override
-	public String getTitle() {
-		// TODO Auto-generated method stub
-		return "广场";
-	}
+    @ViewById
+    View ground_msg;
+    @ViewById
+    View ground_date;
+    @ViewById
+    View ground_exchange;
+    @ViewById
+    View ground_shop;
+    @ViewById
+    View ground_through;
 
-	@Click
-	void ground_msg(){
-		QuanActivity_.intent(this).start();
-	}
-	
-	@Click
-	void ground_shop(){
-		ShopVipDetail_.intent(this).start();
-	}
-	
-	@Click
-	void ground_through(){
-		User user=getHelper().getUserInfo();
-		if(user==null){
-			startLogin();
-			return;
-		}
-		if(user.getIsvip()==0){
-			goVip();
-			return;
-		}
-		ThroughActivity_.intent(this).start();
-	}
-	
-	@Click
-	void ground_date(){
-		DateListActivity_.intent(this).start();
-	}
-	
-	@Click
-	void ground_exchange(){
-		ProductListActivity_.intent(this).start();
-	}
+    @Override
+    public String getTitle() {
+        // TODO Auto-generated method stub
+        return "广场";
+    }
+
+    @Click
+    void ground_msg() {
+        QuanActivity_.intent(this).start();
+    }
+
+    @Click
+    void ground_shop() {
+        ShopVipDetail_.intent(this).start();
+    }
+
+    @Click
+    void ground_through() {
+        User user = getHelper().getUserInfo();
+        if (user == null) {
+            startLogin();
+            return;
+        }
+        if (user.getIsvip() == 0) {
+            goVip();
+            return;
+        }
+        ThroughActivity_.intent(this).start();
+    }
+
+    @Click
+    void ground_date() {
+        DateListActivity_.intent(this).start();
+    }
+
+    @Click
+    void ground_exchange() {
+        ProductListActivity_.intent(this).start();
+    }
 }

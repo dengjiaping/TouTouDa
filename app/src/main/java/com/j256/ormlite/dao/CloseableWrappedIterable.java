@@ -5,9 +5,9 @@ import java.sql.SQLException;
 /**
  * Extension to CloseableIterable which defines a class which has an iterator() method that returns a
  * {@link CloseableIterator} but also can be closed itself. This allows us to do something like this pattern:
- * 
+ * <p/>
  * <blockquote>
- * 
+ * <p/>
  * <pre>
  * CloseableWrappedIterable<Foo> wrapperIterable = fooDao.getCloseableIterable();
  * try {
@@ -18,15 +18,15 @@ import java.sql.SQLException;
  *   wrapperIterable.close();
  * }
  * </pre>
- * 
+ * <p/>
  * </blockquote>
- * 
+ *
  * @author graywatson
  */
 public interface CloseableWrappedIterable<T> extends CloseableIterable<T> {
 
-	/**
-	 * This will close the last iterator returned by the {@link #iterator()} method.
-	 */
-	public void close() throws SQLException;
+    /**
+     * This will close the last iterator returned by the {@link #iterator()} method.
+     */
+    public void close() throws SQLException;
 }

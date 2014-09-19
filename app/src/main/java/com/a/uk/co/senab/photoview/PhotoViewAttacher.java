@@ -181,17 +181,19 @@ public class PhotoViewAttacher implements IPhotoView, View.OnTouchListener,
                             mLongClickListener.onLongClick(getImageView());
                         }
                     }
+
                     @Override
                     public boolean onSingleTapUp(MotionEvent e) {
-                    	 if (null != mClickListener) {
-                    		 mClickListener.onClick(getImageView());
-                             return true;
-                         }
-                    	return false;
+                        if (null != mClickListener) {
+                            mClickListener.onClick(getImageView());
+                            return true;
+                        }
+                        return false;
                     }
+
                     @Override
                     public void onShowPress(MotionEvent e) {
-                    	Log.i("sssssssssssss", "onShowPressonShowPressonShowPressonShowPressonShowPress");
+                        Log.i("sssssssssssss", "onShowPressonShowPressonShowPressonShowPressonShowPress");
                     }
                 });
 
@@ -592,11 +594,11 @@ public class PhotoViewAttacher implements IPhotoView, View.OnTouchListener,
         mLongClickListener = listener;
     }
 
-    public final void setOnClickListener(OnClickListener listener){
-    	mClickListener=listener;
+    public final void setOnClickListener(OnClickListener listener) {
+        mClickListener = listener;
     }
-    
-    
+
+
     @Override
     public final void setOnMatrixChangeListener(OnMatrixChangedListener listener) {
         mMatrixChangeListener = listener;

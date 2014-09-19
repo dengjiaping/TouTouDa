@@ -167,7 +167,7 @@ public class DefaultHeaderTransformer extends HeaderTransformer {
     }
 
     @SuppressLint("NewApi")
-	@Override
+    @Override
     public void onRefreshMinimized() {
         // Here we fade out most of the header, leaving just the progress bar
         if (mContentLayout != null) {
@@ -180,7 +180,7 @@ public class DefaultHeaderTransformer extends HeaderTransformer {
     }
 
     @SuppressLint("NewApi")
-	@Override
+    @Override
     public boolean showHeaderView() {
         final boolean changeVis = mHeaderView.getVisibility() != View.VISIBLE;
 
@@ -199,7 +199,7 @@ public class DefaultHeaderTransformer extends HeaderTransformer {
     }
 
     @SuppressLint("NewApi")
-	@Override
+    @Override
     public boolean hideHeaderView() {
         final boolean changeVis = mHeaderView.getVisibility() != View.GONE;
 
@@ -333,7 +333,7 @@ public class DefaultHeaderTransformer extends HeaderTransformer {
         mProgressBarStyle = styleAttrs.getInt(
                 R.styleable.PullToRefreshHeader_ptrProgressBarStyle, PROGRESS_BAR_STYLE_OUTSIDE);
 
-        if(styleAttrs.hasValue(R.styleable.PullToRefreshHeader_ptrProgressBarHeight)) {
+        if (styleAttrs.hasValue(R.styleable.PullToRefreshHeader_ptrProgressBarHeight)) {
             mProgressBarHeight = styleAttrs.getDimensionPixelSize(
                     R.styleable.PullToRefreshHeader_ptrProgressBarHeight, mProgressBarHeight);
         }
@@ -431,7 +431,7 @@ public class DefaultHeaderTransformer extends HeaderTransformer {
     }
 
     @SuppressLint("NewApi")
-	class HideAnimationCallback extends AnimatorListenerAdapter {
+    class HideAnimationCallback extends AnimatorListenerAdapter {
         @Override
         public void onAnimationEnd(Animator animation) {
             View headerView = getHeaderView();
@@ -443,11 +443,11 @@ public class DefaultHeaderTransformer extends HeaderTransformer {
     }
 
     protected static TypedArray obtainStyledAttrsFromThemeAttr(Context context, int themeAttr,
-            int[] styleAttrs) {
+                                                               int[] styleAttrs) {
         // Need to get resource id of style pointed to from the theme attr
         TypedValue outValue = new TypedValue();
         context.getTheme().resolveAttribute(themeAttr, outValue, true);
-        final int styleResId =  outValue.resourceId;
+        final int styleResId = outValue.resourceId;
 
         // Now return the values (from styleAttrs) from the style
         return context.obtainStyledAttributes(styleResId, styleAttrs);

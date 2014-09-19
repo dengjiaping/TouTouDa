@@ -3,7 +3,7 @@
     android:id="@+id/pic_ll"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/menu_btm_selector" 
+    android:background="@drawable/menu_btm_selector"
     android:orientation="vertical">
 
 </LinearLayout>

@@ -52,310 +52,313 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 @EActivity
 public class InviteFriendActivity extends BaseActivity implements
-		IWeiboHandler.Response {
+        IWeiboHandler.Response {
 
-	// 新浪
-	public static final String APP_KEY = "645553196";
-	public static final String REDIRECT_URL = "http://www.quanliren.com";
-	public static final String SCOPE = "email,direct_messages_read,direct_messages_write,"
-			+ "friendships_groups_read,friendships_groups_write,statuses_to_me_read,"
-			+ "follow_app_official_microblog," + "invitation_write";
-	IWeiboShareAPI mWeiboShareAPI;
+    // 新浪
+    public static final String APP_KEY = "645553196";
+    public static final String REDIRECT_URL = "http://www.quanliren.com";
+    public static final String SCOPE = "email,direct_messages_read,direct_messages_write,"
+            + "friendships_groups_read,friendships_groups_write,statuses_to_me_read,"
+            + "follow_app_official_microblog," + "invitation_write";
+    IWeiboShareAPI mWeiboShareAPI;
 
-	public static final String APP_ID = "1101960968"; // qq
-//	public static final String WEIXIN_ID = "wx488920a29404152c";// 微信
-	public static final String WEIXIN_ID = "wx18fe5cdc33071d57";// 微信
-	Tencent mTencent;
-	QQAuth mQQAuth;
-	QQShare mQQShare = null;
-	IWXAPI api;
-	int shareType = QQShare.SHARE_TO_QQ_TYPE_DEFAULT;
-	private int mExtarFlag = 0x00;
-	@ViewById
-	View fx_sina_btn;
-	@ViewById
-	View fx_qq_btn;
-	@ViewById
-	View fx_msg_btn;
-	@ViewById
-	View fx_weixin_btn;
-	@ViewById
-	View fx_friend_btn;
+    public static final String APP_ID = "1101960968"; // qq
+    //	public static final String WEIXIN_ID = "wx488920a29404152c";// 微信
+    public static final String WEIXIN_ID = "wx18fe5cdc33071d57";// 微信
+    Tencent mTencent;
+    QQAuth mQQAuth;
+    QQShare mQQShare = null;
+    IWXAPI api;
+    int shareType = QQShare.SHARE_TO_QQ_TYPE_DEFAULT;
+    private int mExtarFlag = 0x00;
+    @ViewById
+    View fx_sina_btn;
+    @ViewById
+    View fx_qq_btn;
+    @ViewById
+    View fx_msg_btn;
+    @ViewById
+    View fx_weixin_btn;
+    @ViewById
+    View fx_friend_btn;
 
-	String title;
-	
-	String img;
-	String icon;
-	String url="http://t.cn/RhyxVBy";
-//	http://www.bjqlr.com/c.php
-	String content = "偷偷哒是一款基于地理位置的移动社交 App软件。可以查看附近帅哥美女的约会状态-约吃饭；约看电影；需要游伴；需要临时情侣等。成为会员可以发布约会信息，根据自己的需要，寻找兴趣相投的小伙伴。成功约会更可能获得靓点赠送，使用靓点可以在线兑换几十款周大福金饰或苹果5S手机等礼品。加入偷偷哒，马上进行一次神秘又浪漫的约会吧。下载地址："+url;
-	File f;
-	File ficon;
-	/** 微博 Web 授权类，提供登陆等功能 */
-	private WeiboAuth mWeiboAuth;
+    String title;
 
-	/** 封装了 "access_token"，"expires_in"，"refresh_token"，并提供了他们的管理功能 */
-	private Oauth2AccessToken mAccessToken;
+    String img;
+    String icon;
+    String url = "http://t.cn/RhyxVBy";
+    //	http://www.bjqlr.com/c.php
+    String content = "偷偷哒是一款基于地理位置的移动社交 App软件。可以查看附近帅哥美女的约会状态-约吃饭；约看电影；需要游伴；需要临时情侣等。成为会员可以发布约会信息，根据自己的需要，寻找兴趣相投的小伙伴。成功约会更可能获得靓点赠送，使用靓点可以在线兑换几十款周大福金饰或苹果5S手机等礼品。加入偷偷哒，马上进行一次神秘又浪漫的约会吧。下载地址：" + url;
+    File f;
+    File ficon;
+    /**
+     * 微博 Web 授权类，提供登陆等功能
+     */
+    private WeiboAuth mWeiboAuth;
 
-	/** 注意：SsoHandler 仅当 SDK 支持 SSO 时有效 */
-	private SsoHandler mSsoHandler;
+    /**
+     * 封装了 "access_token"，"expires_in"，"refresh_token"，并提供了他们的管理功能
+     */
+    private Oauth2AccessToken mAccessToken;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
-		title = getResources().getString(R.string.app_name) + "分享";
-		img = "share.jpg";
-		icon="icon_share.png";
-		setContentView(R.layout.fx);
+    /**
+     * 注意：SsoHandler 仅当 SDK 支持 SSO 时有效
+     */
+    private SsoHandler mSsoHandler;
 
-		getSupportActionBar().setTitle("邀请好友");
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        // TODO Auto-generated method stub
+        super.onCreate(savedInstanceState);
+        title = getResources().getString(R.string.app_name) + "分享";
+        img = "share.jpg";
+        icon = "icon_share.png";
+        setContentView(R.layout.fx);
 
-		// qq
-		mQQAuth = QQAuth.createInstance(APP_ID, this.getApplicationContext());
-		mTencent = Tencent.createInstance(APP_ID, this.getApplicationContext());
-		mQQShare = new QQShare(this, mQQAuth.getQQToken());
+        getSupportActionBar().setTitle("邀请好友");
 
-		// weixin
-		api = WXAPIFactory.createWXAPI(this, WEIXIN_ID, true);
-		api.registerApp(WEIXIN_ID);
+        // qq
+        mQQAuth = QQAuth.createInstance(APP_ID, this.getApplicationContext());
+        mTencent = Tencent.createInstance(APP_ID, this.getApplicationContext());
+        mQQShare = new QQShare(this, mQQAuth.getQQToken());
 
-		mWeiboAuth = new WeiboAuth(this, APP_KEY, REDIRECT_URL, SCOPE);
-		mWeiboShareAPI = WeiboShareSDK.createWeiboAPI(this, APP_KEY);
-		if (savedInstanceState != null) {
-			mWeiboShareAPI.handleWeiboResponse(getIntent(), this);
-		}
-		
+        // weixin
+        api = WXAPIFactory.createWXAPI(this, WEIXIN_ID, true);
+        api.registerApp(WEIXIN_ID);
+
+        mWeiboAuth = new WeiboAuth(this, APP_KEY, REDIRECT_URL, SCOPE);
+        mWeiboShareAPI = WeiboShareSDK.createWeiboAPI(this, APP_KEY);
+        if (savedInstanceState != null) {
+            mWeiboShareAPI.handleWeiboResponse(getIntent(), this);
+        }
+
 //		if (mWeiboShareAPI.checkEnvironment(true)) {
 //			if (i.compareAndSet(false, true))
 //				mWeiboShareAPI.registerApp();
 //		}
 
-		f = new File(StaticFactory.APKCardPath);
-		if (!f.exists()) {
-			f.mkdirs();
-		}
-		f = new File(f, img.hashCode() + "");
+        f = new File(StaticFactory.APKCardPath);
+        if (!f.exists()) {
+            f.mkdirs();
+        }
+        f = new File(f, img.hashCode() + "");
 //		if (!f.exists()) {
-			try {
-				InputStream i = getAssets().open(img);
-				OutputStream os = new FileOutputStream(f);
-				Util.CopyStream(i, os);
-				os.close();
-				i.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			} finally {
-			}
+        try {
+            InputStream i = getAssets().open(img);
+            OutputStream os = new FileOutputStream(f);
+            Util.CopyStream(i, os);
+            os.close();
+            i.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+        }
 //		}
-		File f1 = new File(StaticFactory.APKCardPath);
-		ficon = new File(f1, icon.hashCode() + "");
+        File f1 = new File(StaticFactory.APKCardPath);
+        ficon = new File(f1, icon.hashCode() + "");
 //		if (!ficon.exists()) {
-			try {
-				InputStream i = getAssets().open(icon);
-				OutputStream os = new FileOutputStream(ficon);
-				Util.CopyStream(i, os);
-				os.close();
-				i.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			} finally {
-			}
+        try {
+            InputStream i = getAssets().open(icon);
+            OutputStream os = new FileOutputStream(ficon);
+            Util.CopyStream(i, os);
+            os.close();
+            i.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+        }
 //		}
-	}
+    }
 
-	protected void onNewIntent(Intent intent) {
-		super.onNewIntent(intent);
-		mWeiboShareAPI.handleWeiboResponse(intent, this);
-	}
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        mWeiboShareAPI.handleWeiboResponse(intent, this);
+    }
 
-	@Override
-	public void onResponse(BaseResponse baseResp) {
-		switch (baseResp.errCode) {
-		case WBConstants.ErrorCode.ERR_OK:
-			showCustomToast("分享成功");
-			break;
-		case WBConstants.ErrorCode.ERR_CANCEL:
-			showCustomToast("取消分享");
-			break;
-		case WBConstants.ErrorCode.ERR_FAIL:
-			showCustomToast("分享失败，请再试一次");
-			break;
-		}
-	}
+    @Override
+    public void onResponse(BaseResponse baseResp) {
+        switch (baseResp.errCode) {
+            case WBConstants.ErrorCode.ERR_OK:
+                showCustomToast("分享成功");
+                break;
+            case WBConstants.ErrorCode.ERR_CANCEL:
+                showCustomToast("取消分享");
+                break;
+            case WBConstants.ErrorCode.ERR_FAIL:
+                showCustomToast("分享失败，请再试一次");
+                break;
+        }
+    }
 
-	/**
-	 * QQ分享
-	 * 
-	 * @param v
-	 */
-	@Click(R.id.fx_qq_btn)
-	public void shareToQQ(View v) {
-		PackageInfo packageInfo;
-		try {
-			packageInfo = getPackageManager().getPackageInfo(
-					"com.tencent.mobileqq", 0);
-		} catch (NameNotFoundException e) {
-			packageInfo = null;
-			e.printStackTrace();
-		}
-		if (packageInfo == null) {
-			Toast.makeText(this, "未安装QQ", Toast.LENGTH_SHORT).show();
-			return;
-		}
-		Bundle bundle = new Bundle();
-		bundle.putString(QQShare.SHARE_TO_QQ_TARGET_URL, url);
-		bundle.putString(QQShare.SHARE_TO_QQ_TITLE, title);
-		bundle.putString(QQShare.SHARE_TO_QQ_IMAGE_LOCAL_URL,ficon.getPath());
-		bundle.putString(QQShare.SHARE_TO_QQ_SUMMARY,
-				content);
-		bundle.putString(QQShare.SHARE_TO_QQ_APP_NAME, getResources().getString(R.string.app_name));
-		
-		doShareToQQ(bundle);
-	}
+    /**
+     * QQ分享
+     *
+     * @param v
+     */
+    @Click(R.id.fx_qq_btn)
+    public void shareToQQ(View v) {
+        PackageInfo packageInfo;
+        try {
+            packageInfo = getPackageManager().getPackageInfo(
+                    "com.tencent.mobileqq", 0);
+        } catch (NameNotFoundException e) {
+            packageInfo = null;
+            e.printStackTrace();
+        }
+        if (packageInfo == null) {
+            Toast.makeText(this, "未安装QQ", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Bundle bundle = new Bundle();
+        bundle.putString(QQShare.SHARE_TO_QQ_TARGET_URL, url);
+        bundle.putString(QQShare.SHARE_TO_QQ_TITLE, title);
+        bundle.putString(QQShare.SHARE_TO_QQ_IMAGE_LOCAL_URL, ficon.getPath());
+        bundle.putString(QQShare.SHARE_TO_QQ_SUMMARY,
+                content);
+        bundle.putString(QQShare.SHARE_TO_QQ_APP_NAME, getResources().getString(R.string.app_name));
 
-	/**
-	 * 用异步方式启动分享
-	 * 
-	 * @param params
-	 */
-	private void doShareToQQ(final Bundle params) {
+        doShareToQQ(bundle);
+    }
 
-		new Thread(new Runnable() {
+    /**
+     * 用异步方式启动分享
+     *
+     * @param params
+     */
+    private void doShareToQQ(final Bundle params) {
 
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				mQQShare.shareToQQ(InviteFriendActivity.this, params,
-						new IUiListener() {
+        new Thread(new Runnable() {
 
-							@Override
-							public void onCancel() {
-								if (shareType != QQShare.SHARE_TO_QQ_TYPE_IMAGE) {
-									runOnUiThread(new Runnable() {
-										public void run() {
-											showCustomToast("取消分享");
-										}
-									});
+            @Override
+            public void run() {
+                // TODO Auto-generated method stub
+                mQQShare.shareToQQ(InviteFriendActivity.this, params,
+                        new IUiListener() {
 
-								}
-							}
+                            @Override
+                            public void onCancel() {
+                                if (shareType != QQShare.SHARE_TO_QQ_TYPE_IMAGE) {
+                                    runOnUiThread(new Runnable() {
+                                        public void run() {
+                                            showCustomToast("取消分享");
+                                        }
+                                    });
 
-							@Override
-							public void onComplete(final Object response) {
-								// TODO Auto-generated method stub
-								runOnUiThread(new Runnable() {
-									public void run() {
-										showCustomToast("分享成功");
-									}
-								});
-							}
+                                }
+                            }
 
-							@Override
-							public void onError(final UiError e) {
-								// TODO Auto-generated method stub
+                            @Override
+                            public void onComplete(final Object response) {
+                                // TODO Auto-generated method stub
+                                runOnUiThread(new Runnable() {
+                                    public void run() {
+                                        showCustomToast("分享成功");
+                                    }
+                                });
+                            }
 
-								runOnUiThread(new Runnable() {
-									public void run() {
-										showCustomToast("分享失败");
-									}
-								});
-							}
+                            @Override
+                            public void onError(final UiError e) {
+                                // TODO Auto-generated method stub
 
-						});
-			}
-		}).start();
-	}
+                                runOnUiThread(new Runnable() {
+                                    public void run() {
+                                        showCustomToast("分享失败");
+                                    }
+                                });
+                            }
 
-	@Click({R.id.fx_friend_btn,R.id.fx_weixin_btn})
-	public void shareToWeiXin(View v) {
-		if (!api.openWXApp()) {
-			Toast.makeText(this, "未安装微信", Toast.LENGTH_SHORT).show();
-			return;
-		}
-		WXWebpageObject webpage = new WXWebpageObject();
-		webpage.webpageUrl = url;
+                        });
+            }
+        }).start();
+    }
 
-		WXMediaMessage msg = new WXMediaMessage(webpage);
-		msg.title = title;
-		msg.description =content;
-		try {
-			Bitmap thumb = null;  
-		      AssetManager am = getResources().getAssets();  
-		      try  
-		      {  
-		          InputStream is = am.open("icon_share.png");  
-		          thumb = BitmapFactory.decodeStream(is);  
-		          is.close();  
-		      }  
-		      catch (IOException e)  
-		      {  
-		          e.printStackTrace();  
-		      }  
-		  
-			msg.thumbData = bmpToByteArray(thumb, true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		SendMessageToWX.Req req = new SendMessageToWX.Req();
-		req.transaction = buildTransaction("webpage");
-		req.message = msg;
-		switch (v.getId()) {
-		case R.id.fx_weixin_btn:
-			req.scene = SendMessageToWX.Req.WXSceneSession;
-			break;
-		case R.id.fx_friend_btn:
-			req.scene = SendMessageToWX.Req.WXSceneTimeline;
-			break;
-		}
-		api.sendReq(req);
-		
+    @Click({R.id.fx_friend_btn, R.id.fx_weixin_btn})
+    public void shareToWeiXin(View v) {
+        if (!api.openWXApp()) {
+            Toast.makeText(this, "未安装微信", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        WXWebpageObject webpage = new WXWebpageObject();
+        webpage.webpageUrl = url;
 
-	}
+        WXMediaMessage msg = new WXMediaMessage(webpage);
+        msg.title = title;
+        msg.description = content;
+        try {
+            Bitmap thumb = null;
+            AssetManager am = getResources().getAssets();
+            try {
+                InputStream is = am.open("icon_share.png");
+                thumb = BitmapFactory.decodeStream(is);
+                is.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
-	public static byte[] bmpToByteArray(final Bitmap bmp,
-			final boolean needRecycle) {
-		ByteArrayOutputStream output = new ByteArrayOutputStream();
-		bmp.compress(CompressFormat.PNG, 100, output);
-		if (needRecycle) {
-			bmp.recycle();
-		}
+            msg.thumbData = bmpToByteArray(thumb, true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        SendMessageToWX.Req req = new SendMessageToWX.Req();
+        req.transaction = buildTransaction("webpage");
+        req.message = msg;
+        switch (v.getId()) {
+            case R.id.fx_weixin_btn:
+                req.scene = SendMessageToWX.Req.WXSceneSession;
+                break;
+            case R.id.fx_friend_btn:
+                req.scene = SendMessageToWX.Req.WXSceneTimeline;
+                break;
+        }
+        api.sendReq(req);
 
-		byte[] result = output.toByteArray();
-		try {
-			output.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 
-		return result;
-	}
+    }
 
-	private static final int THUMB_SIZE = 50;
+    public static byte[] bmpToByteArray(final Bitmap bmp,
+                                        final boolean needRecycle) {
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        bmp.compress(CompressFormat.PNG, 100, output);
+        if (needRecycle) {
+            bmp.recycle();
+        }
 
-	public static String buildTransaction(final String type) {
-		return (type == null) ? String.valueOf(System.currentTimeMillis())
-				: type + System.currentTimeMillis();
-	}
+        byte[] result = output.toByteArray();
+        try {
+            output.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-	AtomicBoolean i = new AtomicBoolean(false);
+        return result;
+    }
 
-	@Click(R.id.fx_sina_btn)
-	public void shareToSina(View v) {
-		if (mWeiboShareAPI.checkEnvironment(true)) {
-			if (i.compareAndSet(false, true))
-				mWeiboShareAPI.registerApp();
-			sendMultiMessage(true, false, false, false, false, false);
-		}
-	}
+    private static final int THUMB_SIZE = 50;
 
-	/**
-	 * 微博认证授权回调类。 1. SSO 授权时，需要在 {@link #onActivityResult} 中调用
-	 * {@link com.sina.weibo.sdk.auth.sso.SsoHandler#authorizeCallBack} 后， 该回调才会被执行。 2. 非 SSO
-	 * 授权时，当授权结束后，该回调就会被执行。 当授权成功后，请保存该 access_token、expires_in、uid 等信息到
-	 * SharedPreferences 中。
-	 */
-	/*class AuthListener implements WeiboAuthListener {
+    public static String buildTransaction(final String type) {
+        return (type == null) ? String.valueOf(System.currentTimeMillis())
+                : type + System.currentTimeMillis();
+    }
+
+    AtomicBoolean i = new AtomicBoolean(false);
+
+    @Click(R.id.fx_sina_btn)
+    public void shareToSina(View v) {
+        if (mWeiboShareAPI.checkEnvironment(true)) {
+            if (i.compareAndSet(false, true))
+                mWeiboShareAPI.registerApp();
+            sendMultiMessage(true, false, false, false, false, false);
+        }
+    }
+
+    /**
+     * 微博认证授权回调类。 1. SSO 授权时，需要在 {@link #onActivityResult} 中调用
+     * {@link com.sina.weibo.sdk.auth.sso.SsoHandler#authorizeCallBack} 后， 该回调才会被执行。 2. 非 SSO
+     * 授权时，当授权结束后，该回调就会被执行。 当授权成功后，请保存该 access_token、expires_in、uid 等信息到
+     * SharedPreferences 中。
+     */
+    /*class AuthListener implements WeiboAuthListener {
 		@Override
 		public void onComplete(Bundle values) {
 			// 从 Bundle 中解析 Token
@@ -390,30 +393,29 @@ public class InviteFriendActivity extends BaseActivity implements
 					.show();
 		}
 	}*/
+    private TextObject getTextObj() {
+        TextObject textObject = new TextObject();
+        textObject.text = content;
+        return textObject;
+    }
 
-	private TextObject getTextObj() {
-		TextObject textObject = new TextObject();
-		textObject.text = content;
-		return textObject;
-	}
-
-	private void sendMultiMessage(boolean hasText, boolean hasImage,
-			boolean hasWebpage, boolean hasMusic, boolean hasVideo,
-			boolean hasVoice) {
-		// 1. 初始化微博的分享消息
-		WeiboMultiMessage weiboMessage = new WeiboMultiMessage();
-		if (hasText) {
-			weiboMessage.textObject = getTextObj();
+    private void sendMultiMessage(boolean hasText, boolean hasImage,
+                                  boolean hasWebpage, boolean hasMusic, boolean hasVideo,
+                                  boolean hasVoice) {
+        // 1. 初始化微博的分享消息
+        WeiboMultiMessage weiboMessage = new WeiboMultiMessage();
+        if (hasText) {
+            weiboMessage.textObject = getTextObj();
 //			weiboMessage.imageObject = getImageObj();
-		}
-		// 2. 初始化从第三方到微博的消息请求
-		SendMultiMessageToWeiboRequest request = new SendMultiMessageToWeiboRequest();
-		// 用transaction唯一标识一个请求
-		request.transaction = String.valueOf(System.currentTimeMillis());
-		request.multiMessage = weiboMessage;
-		// 3. 发送请求消息到微博，唤起微博分享界面
-		mWeiboShareAPI.sendRequest(request);
-	}
+        }
+        // 2. 初始化从第三方到微博的消息请求
+        SendMultiMessageToWeiboRequest request = new SendMultiMessageToWeiboRequest();
+        // 用transaction唯一标识一个请求
+        request.transaction = String.valueOf(System.currentTimeMillis());
+        request.multiMessage = weiboMessage;
+        // 3. 发送请求消息到微博，唤起微博分享界面
+        mWeiboShareAPI.sendRequest(request);
+    }
 
 	/*private ImageObject getImageObj() {
 		ImageObject imageObject = new ImageObject();
@@ -421,14 +423,14 @@ public class InviteFriendActivity extends BaseActivity implements
 		return imageObject;
 	}*/
 
-	// 短信分享
-	@Click(R.id.fx_msg_btn)
-	public void shareToMsg(View v) {
-		Uri smsToUri = Uri.parse("smsto:");
-		Intent mIntent = new Intent(Intent.ACTION_SENDTO,
-				smsToUri);
-		mIntent.putExtra("sms_body", content);
-		startActivity(mIntent);
-	}
+    // 短信分享
+    @Click(R.id.fx_msg_btn)
+    public void shareToMsg(View v) {
+        Uri smsToUri = Uri.parse("smsto:");
+        Intent mIntent = new Intent(Intent.ACTION_SENDTO,
+                smsToUri);
+        mIntent.putExtra("sms_body", content);
+        startActivity(mIntent);
+    }
 
 }
