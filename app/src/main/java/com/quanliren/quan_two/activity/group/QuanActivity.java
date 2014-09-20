@@ -10,9 +10,7 @@ import android.view.ViewGroup;
 
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.activity.base.BaseActivity;
-import com.quanliren.quan_two.activity.group.quan.QuanAboutMeFragment_;
-import com.quanliren.quan_two.activity.group.quan.QuanPullListViewFragment;
-import com.quanliren.quan_two.activity.group.quan.QuanPullListViewFragment_;
+import com.quanliren.quan_two.activity.group.quan.*;
 import com.quanliren.quan_two.custom.TabLinearLayout;
 import com.quanliren.quan_two.custom.TabLinearLayout.OnTabClickListener;
 import com.quanliren.quan_two.fragment.impl.LoaderImpl;

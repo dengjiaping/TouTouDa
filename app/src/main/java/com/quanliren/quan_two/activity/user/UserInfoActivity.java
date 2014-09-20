@@ -14,7 +14,7 @@ import com.loopj.android.http.RequestParams;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.activity.base.BaseUserActivity;
-import com.quanliren.quan_two.activity.group.PhotoAlbumMainActivity_;
+import com.quanliren.quan_two.activity.group.*;
 import com.quanliren.quan_two.bean.User;
 import com.quanliren.quan_two.bean.UserTable;
 import com.quanliren.quan_two.custom.NumberProgressBar;

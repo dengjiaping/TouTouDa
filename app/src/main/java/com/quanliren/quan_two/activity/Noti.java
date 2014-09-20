@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.quanliren.quan_two.activity.user.ChatActivity_;
+import com.quanliren.quan_two.activity.user.*;
 import com.quanliren.quan_two.application.AM;
 
 public class Noti extends Activity {

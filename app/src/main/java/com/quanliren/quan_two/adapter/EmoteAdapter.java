@@ -7,8 +7,7 @@ import android.widget.ImageView;
 
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.adapter.base.BaseArrayListAdapter;
-import com.quanliren.quan_two.application.AppClass;
-import com.quanliren.quan_two.application.AppClass_;
+import com.quanliren.quan_two.application.*;
 import com.quanliren.quan_two.bean.emoticon.EmoticonActivityListBean.EmoticonZip.EmoticonImageBean.EmoticonRes;
 
 import java.util.List;

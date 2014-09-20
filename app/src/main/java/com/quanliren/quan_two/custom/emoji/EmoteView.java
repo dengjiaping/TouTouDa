@@ -24,7 +24,7 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.activity.base.BaseActivity;
-import com.quanliren.quan_two.activity.seting.EmoticonListActivity_;
+import com.quanliren.quan_two.activity.seting.*;
 import com.quanliren.quan_two.application.AppClass;
 import com.quanliren.quan_two.bean.emoticon.EmoticonActivityListBean.EmoticonZip;
 import com.quanliren.quan_two.bean.emoticon.EmoticonActivityListBean.EmoticonZip.EmoticonImageBean;

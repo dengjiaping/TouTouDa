@@ -23,7 +23,7 @@ import com.google.gson.reflect.TypeToken;
 import com.loopj.android.http.RequestParams;
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.activity.base.BaseActivity;
-import com.quanliren.quan_two.activity.seting.HtmlActivity_;
+import com.quanliren.quan_two.activity.seting.*;
 import com.quanliren.quan_two.adapter.ShopAdapter;
 import com.quanliren.quan_two.adapter.ShopAdapter.IBuyListener;
 import com.quanliren.quan_two.bean.OrderBean;

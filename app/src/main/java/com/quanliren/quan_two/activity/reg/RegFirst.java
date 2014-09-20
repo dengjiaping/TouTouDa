@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.activity.base.BaseActivity;
-import com.quanliren.quan_two.activity.seting.ServiceInfoActivity_;
+import com.quanliren.quan_two.activity.seting.*;
 import com.quanliren.quan_two.util.URL;
 import com.quanliren.quan_two.util.Util;
 import com.quanliren.quan_two.util.http.JsonHttpResponseHandler;

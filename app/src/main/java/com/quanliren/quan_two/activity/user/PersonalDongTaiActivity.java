@@ -15,7 +15,7 @@ import com.nineoldandroids.view.ViewHelper;
 import com.nineoldandroids.view.ViewPropertyAnimator;
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.activity.base.BaseActivity;
-import com.quanliren.quan_two.activity.group.DongTaiDetailActivity_;
+import com.quanliren.quan_two.activity.group.*;
 import com.quanliren.quan_two.adapter.QuanAdapter;
 import com.quanliren.quan_two.adapter.QuanAdapter.IQuanAdapter;
 import com.quanliren.quan_two.bean.CacheBean;

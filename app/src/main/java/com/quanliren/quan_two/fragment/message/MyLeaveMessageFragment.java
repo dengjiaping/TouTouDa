@@ -28,7 +28,7 @@ import com.nineoldandroids.view.ViewHelper;
 import com.nineoldandroids.view.ViewPropertyAnimator;
 import com.quanliren.quan_two.activity.PropertiesActivity;
 import com.quanliren.quan_two.activity.R;
-import com.quanliren.quan_two.activity.user.ChatActivity_;
+import com.quanliren.quan_two.activity.user.*;
 import com.quanliren.quan_two.adapter.LeaveMessageAdapter;
 import com.quanliren.quan_two.bean.ChatListBean;
 import com.quanliren.quan_two.bean.DfMessage;

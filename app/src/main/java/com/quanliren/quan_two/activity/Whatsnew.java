@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 import com.loopj.android.http.RequestParams;
 import com.quanliren.quan_two.activity.base.BaseActivity;
-import com.quanliren.quan_two.activity.whats.WahtsFragment1_;
+import com.quanliren.quan_two.activity.whats.*;
 import com.quanliren.quan_two.fragment.impl.LoaderImpl;
 import com.quanliren.quan_two.share.CommonShared;
 import com.quanliren.quan_two.util.URL;

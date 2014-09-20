@@ -13,8 +13,7 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.quanliren.quan_two.activity.R;
-import com.quanliren.quan_two.activity.user.UserInfoActivity_;
-import com.quanliren.quan_two.activity.user.UserOtherInfoActivity_;
+import com.quanliren.quan_two.activity.user.*;
 import com.quanliren.quan_two.bean.DongTaiBean;
 import com.quanliren.quan_two.custom.UserNickNameRelativeLayout;
 import com.quanliren.quan_two.util.ImageUtil;

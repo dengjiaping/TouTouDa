@@ -17,7 +17,7 @@ import com.nineoldandroids.view.ViewHelper;
 import com.nineoldandroids.view.ViewPropertyAnimator;
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.activity.base.BaseActivity;
-import com.quanliren.quan_two.activity.image.ImageBrowserActivity_;
+import com.quanliren.quan_two.activity.image.*;
 import com.quanliren.quan_two.adapter.ImageAdapter;
 import com.quanliren.quan_two.adapter.ProductGridAdapter.IProductGridListener;
 import com.quanliren.quan_two.bean.ProductBean;

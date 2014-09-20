@@ -14,7 +14,7 @@ import com.j256.ormlite.table.TableUtils;
 import com.loopj.android.http.RequestParams;
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.activity.base.BaseActivity;
-import com.quanliren.quan_two.activity.user.LoginActivity_;
+import com.quanliren.quan_two.activity.user.*;
 import com.quanliren.quan_two.application.AM;
 import com.quanliren.quan_two.bean.LoginUser;
 import com.quanliren.quan_two.bean.MoreLoginUser;

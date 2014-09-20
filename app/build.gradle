@@ -18,6 +18,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    sourceSets {
+        main {
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+    }
 }
 
 dependencies {
@@ -44,11 +53,5 @@ apt {
         // You can set optional annotation processing options here, like these commented options:
         // logLevel 'INFO'
         // logFile '/var/log/aa.log'
-    }
-}
-
-android {
-    lintOptions {
-        checkReleaseBuilds false
     }
 }

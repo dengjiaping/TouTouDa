@@ -15,8 +15,7 @@ import com.nineoldandroids.view.ViewPropertyAnimator;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.quanliren.quan_two.activity.R;
-import com.quanliren.quan_two.activity.user.PersonalDongTaiActivity_;
-import com.quanliren.quan_two.activity.user.UserPicFragment_;
+import com.quanliren.quan_two.activity.user.*;
 import com.quanliren.quan_two.bean.ImageBean;
 import com.quanliren.quan_two.bean.MessageList;
 import com.quanliren.quan_two.bean.User;
@@ -155,6 +154,7 @@ public abstract class BaseUserActivity extends BaseActivity implements
             mActionBarBackgroundDrawable.setAlpha(newAlpha);
         }
     };
+
     UserPicFragment_ fragment;
 
     public void initViewByUser() {

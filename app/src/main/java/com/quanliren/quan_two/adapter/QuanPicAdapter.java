@@ -9,7 +9,7 @@ import android.widget.ImageView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.quanliren.quan_two.activity.R;
-import com.quanliren.quan_two.activity.image.ImageBrowserActivity_;
+import com.quanliren.quan_two.activity.image.*;
 import com.quanliren.quan_two.bean.ImageBean;
 import com.quanliren.quan_two.util.StaticFactory;
 

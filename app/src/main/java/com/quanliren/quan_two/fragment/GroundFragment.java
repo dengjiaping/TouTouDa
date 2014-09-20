@@ -4,11 +4,10 @@ import android.view.View;
 
 import com.quanliren.quan_two.activity.PropertiesActivity.ITitle;
 import com.quanliren.quan_two.activity.R;
-import com.quanliren.quan_two.activity.group.QuanActivity_;
-import com.quanliren.quan_two.activity.group.ThroughActivity_;
-import com.quanliren.quan_two.activity.group.date.DateListActivity_;
-import com.quanliren.quan_two.activity.shop.ShopVipDetail_;
-import com.quanliren.quan_two.activity.shop.product.ProductListActivity_;
+import com.quanliren.quan_two.activity.group.*;
+import com.quanliren.quan_two.activity.group.date.*;
+import com.quanliren.quan_two.activity.shop.*;
+import com.quanliren.quan_two.activity.shop.product.*;
 import com.quanliren.quan_two.bean.User;
 import com.quanliren.quan_two.fragment.base.MenuFragmentBase;
 

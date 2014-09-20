@@ -10,15 +10,14 @@ import android.view.ViewGroup;
 
 import com.quanliren.quan_two.activity.PropertiesActivity.ITitle;
 import com.quanliren.quan_two.activity.R;
-import com.quanliren.quan_two.activity.user.SearchFriendActivity_;
+import com.quanliren.quan_two.activity.user.*;
 import com.quanliren.quan_two.fragment.base.MenuFragmentBase;
 import com.quanliren.quan_two.fragment.custom.PageTab;
 import com.quanliren.quan_two.fragment.custom.PageTab.OnPageTitleClickListener;
-import com.quanliren.quan_two.fragment.custom.PageTab_;
+import com.quanliren.quan_two.fragment.custom.*;
 import com.quanliren.quan_two.fragment.impl.LoaderImpl;
 import com.quanliren.quan_two.fragment.message.MyCareGragment;
-import com.quanliren.quan_two.fragment.message.MyCareGragment_;
-import com.quanliren.quan_two.fragment.message.MyLeaveMessageFragment_;
+import com.quanliren.quan_two.fragment.message.*;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
