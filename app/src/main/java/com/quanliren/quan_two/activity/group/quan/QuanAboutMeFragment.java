@@ -47,7 +47,7 @@ import java.util.List;
 public class QuanAboutMeFragment extends MenuFragmentBase implements
         LoaderImpl, IXListViewListener, IQuanDetailReplyAdapter {
 
-    public static final String TAG = "QuanPullListViewFragment";
+    public static final String TAG = "QuanAboutMeFragment";
     public String CACHEKEY = TAG;
     @ViewById
     XXListView listview;

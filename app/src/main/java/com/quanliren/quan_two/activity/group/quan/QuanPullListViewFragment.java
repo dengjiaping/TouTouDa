@@ -26,6 +26,7 @@ import com.quanliren.quan_two.bean.CacheBean;
 import com.quanliren.quan_two.bean.DongTaiBean;
 import com.quanliren.quan_two.bean.LoginUser;
 import com.quanliren.quan_two.bean.User;
+import com.quanliren.quan_two.custom.LineToMenu;
 import com.quanliren.quan_two.fragment.base.MenuFragmentBase;
 import com.quanliren.quan_two.fragment.impl.LoaderImpl;
 import com.quanliren.quan_two.util.ImageUtil;
@@ -59,6 +60,9 @@ public class QuanPullListViewFragment extends MenuFragmentBase implements
     RequestParams ap;
     public static final int ALL = 1;
     public static final int MYCARE = 2;
+
+    @ViewById
+    LineToMenu empty;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -99,6 +103,9 @@ public class QuanPullListViewFragment extends MenuFragmentBase implements
             view.setLayoutParams(new AbsListView.LayoutParams(AbsListView.LayoutParams.FILL_PARENT, ImageUtil.dip2px(getActivity(), 50)));
             listview.addFooterView(view);
             adapter = new QuanAdapter(getActivity(), list, this);
+
+            listview.setEmptyView(empty);
+
             listview.setAdapter(adapter);
             listview.setXListViewListener(this);
         } catch (JsonSyntaxException e) {
@@ -128,7 +135,6 @@ public class QuanPullListViewFragment extends MenuFragmentBase implements
 
     @OnActivityResult(1)
     void onPublishResult(int result, Intent data) {
-        if (type == ALL) {
             if (result == 1) {
                 refere();
             } else if (result == 2) {
@@ -145,7 +151,6 @@ public class QuanPullListViewFragment extends MenuFragmentBase implements
                 if (position != -1)
                     deleteAnimate(position);
             }
-        }
     }
 
     @Override
@@ -250,6 +255,8 @@ public class QuanPullListViewFragment extends MenuFragmentBase implements
 
     public void refere() {
         if (getActivity() != null) {
+            empty.setVisibility(View.GONE);
+            listview.setVisibility(View.VISIBLE);
             listview.startRefresh();
         }
     }

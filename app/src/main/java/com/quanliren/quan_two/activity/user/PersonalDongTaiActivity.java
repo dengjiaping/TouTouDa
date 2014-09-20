@@ -43,7 +43,7 @@ import java.util.List;
 @EActivity(R.layout.personaldongtai)
 public class PersonalDongTaiActivity extends BaseActivity implements IXListViewListener, IQuanAdapter, OnRefreshListener {
 
-    public static final String TAG = "QuanPullListViewFragment";
+    public static final String TAG = "PersonalDongTaiActivity";
     public String CACHEKEY = "";
     @ViewById
     XListView listview;
