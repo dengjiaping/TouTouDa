@@ -10,6 +10,12 @@
         android:layout_marginLeft="27dp"
         android:background="@color/fill_line" />
 
+    <com.quanliren.quan_two.custom.LineToMenu1
+        android:id="@+id/empty"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <com.a.me.maxwin.view.XXListView
         android:id="@+id/listview"
         android:layout_width="fill_parent"

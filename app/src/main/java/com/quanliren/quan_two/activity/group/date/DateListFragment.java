@@ -33,6 +33,7 @@ import com.quanliren.quan_two.bean.CustomFilterBean;
 import com.quanliren.quan_two.bean.DateBean;
 import com.quanliren.quan_two.bean.User;
 import com.quanliren.quan_two.custom.FloatingActionButton;
+import com.quanliren.quan_two.custom.LineToMenu1;
 import com.quanliren.quan_two.db.DBHelper;
 import com.quanliren.quan_two.fragment.base.MenuFragmentBase;
 import com.quanliren.quan_two.fragment.impl.LoaderImpl;
@@ -71,6 +72,9 @@ public class DateListFragment extends MenuFragmentBase implements
     @OrmLiteDao(helper = DBHelper.class, model = CustomFilterBean.class)
     Dao<CustomFilterBean, String> customFilterBeanDao;
     View view;
+
+    @ViewById
+    LineToMenu1 empty;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -137,6 +141,7 @@ public class DateListFragment extends MenuFragmentBase implements
             View view = new View(getActivity());
             view.setLayoutParams(new AbsListView.LayoutParams(AbsListView.LayoutParams.FILL_PARENT, ImageUtil.dip2px(getActivity(), 50)));
             listview.addFooterView(view);
+            listview.setEmptyView(empty);
             listview.setAdapter(adapter);
             listview.setXListViewListener(this);
             image.attachToListView(listview);
@@ -247,8 +252,11 @@ public class DateListFragment extends MenuFragmentBase implements
 
     @OnActivityResult(FILTER)
     void onFilterResult(int result) {
-        if (result == 1)
+        if (result == 1) {
+            empty.setVisibility(View.GONE);
+            listview.setVisibility(View.VISIBLE);
             listview.startRefresh();
+        }
     }
 
     @OptionsItem
@@ -263,8 +271,11 @@ public class DateListFragment extends MenuFragmentBase implements
 
     @OnActivityResult(PUBLISH)
     void onPublishResult(int result) {
-        if (result == 1)
+        if (result == 1) {
+            empty.setVisibility(View.GONE);
+            listview.setVisibility(View.VISIBLE);
             listview.startRefresh();
+        }
     }
 
     @Override
@@ -331,6 +342,8 @@ public class DateListFragment extends MenuFragmentBase implements
                 adapter.notifyDataSetChanged();
 
                 if (adapter.getCount() == 0) {
+                    empty.setVisibility(View.GONE);
+                    listview.setVisibility(View.VISIBLE);
                     listview.startRefresh();
                 }
             }

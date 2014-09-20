@@ -136,6 +136,7 @@ public class MyDateListFragment extends MenuFragmentBase implements
                                 new TypeToken<ArrayList<DateBean>>() {
                                 }.getType());
                         if (p == 0) {
+                            CACHEKEY = TAG+ ac.getLoginUserId();
                             CacheBean cb = new CacheBean(CACHEKEY,
                                     jo.getString(URL.LIST), new Date().getTime());
                             cacheDao.delete(cb);

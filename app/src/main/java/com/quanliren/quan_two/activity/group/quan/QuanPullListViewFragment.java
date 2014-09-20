@@ -180,6 +180,12 @@ public class QuanPullListViewFragment extends MenuFragmentBase implements
                                 new TypeToken<ArrayList<DongTaiBean>>() {
                                 }.getType());
                         if (p == 0) {
+                            LoginUser user = getHelper().getUser();
+                            if (user == null) {
+                                CACHEKEY = TAG + type;
+                            } else {
+                                CACHEKEY = user.getId() + TAG + type;
+                            }
                             CacheBean cb = new CacheBean(CACHEKEY,
                                     jo.getString(URL.LIST), new Date().getTime());
                             cacheDao.delete(cb);

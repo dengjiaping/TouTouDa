@@ -18,8 +18,10 @@ import com.nineoldandroids.animation.ValueAnimator;
 import com.nineoldandroids.view.ViewHelper;
 import com.nineoldandroids.view.ViewPropertyAnimator;
 import com.quanliren.quan_two.activity.R;
-import com.quanliren.quan_two.activity.group.*;
-import com.quanliren.quan_two.activity.user.*;
+import com.quanliren.quan_two.activity.group.DongTaiDetailActivity_;
+import com.quanliren.quan_two.activity.group.PublishActivity_;
+import com.quanliren.quan_two.activity.user.UserInfoActivity_;
+import com.quanliren.quan_two.activity.user.UserOtherInfoActivity_;
 import com.quanliren.quan_two.adapter.QuanDetailReplyAdapter.IQuanDetailReplyAdapter;
 import com.quanliren.quan_two.adapter.QuanReplyAdapter;
 import com.quanliren.quan_two.bean.CacheBean;
@@ -135,6 +137,7 @@ public class QuanAboutMeFragment extends MenuFragmentBase implements
                                 new TypeToken<ArrayList<DongTaiReplyBean>>() {
                                 }.getType());
                         if (p == 0) {
+                            CACHEKEY = TAG + ac.getLoginUserId();
                             CacheBean cb = new CacheBean(CACHEKEY,
                                     jo.getString(URL.LIST), new Date().getTime());
                             cacheDao.delete(cb);

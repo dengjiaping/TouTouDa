@@ -1,5 +1,7 @@
 package com.quanliren.quan_two.fragment;
 
+import android.view.View;
+
 import com.a.me.maxwin.view.XXListView;
 import com.a.me.maxwin.view.XXListView.IXListViewListener;
 import com.google.gson.Gson;
@@ -11,12 +13,15 @@ import com.quanliren.quan_two.activity.PropertiesActivity.ITitle;
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.activity.location.GDLocation;
 import com.quanliren.quan_two.activity.location.ILocationImpl;
-import com.quanliren.quan_two.activity.user.*;
-import com.quanliren.quan_two.activity.user.perf.*;
+import com.quanliren.quan_two.activity.user.FilterNearPeopleActivity_;
+import com.quanliren.quan_two.activity.user.UserInfoActivity_;
+import com.quanliren.quan_two.activity.user.UserOtherInfoActivity_;
+import com.quanliren.quan_two.activity.user.perf.FilterPerfs_;
 import com.quanliren.quan_two.adapter.NearPeopleAdapter;
 import com.quanliren.quan_two.bean.CacheBean;
 import com.quanliren.quan_two.bean.CustomFilterBean;
 import com.quanliren.quan_two.bean.User;
+import com.quanliren.quan_two.custom.LineToMenu;
 import com.quanliren.quan_two.db.DBHelper;
 import com.quanliren.quan_two.fragment.base.MenuFragmentBase;
 import com.quanliren.quan_two.util.URL;
@@ -52,7 +57,8 @@ public class NearPeopleFragment extends MenuFragmentBase implements
     GDLocation location;
     @OrmLiteDao(helper = DBHelper.class, model = CustomFilterBean.class)
     Dao<CustomFilterBean, String> customFilterBeanDao;
-
+    @ViewById
+    LineToMenu empty;
     @Pref
     FilterPerfs_ perf;
 
@@ -92,7 +98,7 @@ public class NearPeopleFragment extends MenuFragmentBase implements
                         }.getType());
             }
             adapter = new NearPeopleAdapter(getActivity(), list);
-
+            listview.setEmptyView(empty);
             listview.setAdapter(adapter);
             listview.setXListViewListener(this);
         } catch (JsonSyntaxException e) {
@@ -224,8 +230,11 @@ public class NearPeopleFragment extends MenuFragmentBase implements
 
     @OnActivityResult(FILTER)
     void onFilterResult(int result) {
-        if (result == 1)
+        if (result == 1) {
+            empty.setVisibility(View.GONE);
+            listview.setVisibility(View.VISIBLE);
             listview.startRefresh();
+        }
     }
 
     @Override
