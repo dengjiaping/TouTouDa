@@ -19,14 +19,14 @@ import com.nineoldandroids.animation.ValueAnimator;
 import com.nineoldandroids.view.ViewHelper;
 import com.nineoldandroids.view.ViewPropertyAnimator;
 import com.quanliren.quan_two.activity.R;
-import com.quanliren.quan_two.activity.group.*;
+import com.quanliren.quan_two.activity.group.DongTaiDetailActivity_;
+import com.quanliren.quan_two.activity.group.PublishActivity_;
 import com.quanliren.quan_two.adapter.QuanAdapter;
 import com.quanliren.quan_two.adapter.QuanAdapter.IQuanAdapter;
 import com.quanliren.quan_two.bean.CacheBean;
 import com.quanliren.quan_two.bean.DongTaiBean;
 import com.quanliren.quan_two.bean.LoginUser;
 import com.quanliren.quan_two.bean.User;
-import com.quanliren.quan_two.custom.LineToMenu;
 import com.quanliren.quan_two.fragment.base.MenuFragmentBase;
 import com.quanliren.quan_two.fragment.impl.LoaderImpl;
 import com.quanliren.quan_two.util.ImageUtil;
@@ -61,8 +61,8 @@ public class QuanPullListViewFragment extends MenuFragmentBase implements
     public static final int ALL = 1;
     public static final int MYCARE = 2;
 
-    @ViewById
-    LineToMenu empty;
+//    @ViewById
+//    LineToMenu empty;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -104,7 +104,7 @@ public class QuanPullListViewFragment extends MenuFragmentBase implements
             listview.addFooterView(view);
             adapter = new QuanAdapter(getActivity(), list, this);
 
-            listview.setEmptyView(empty);
+//            listview.setEmptyView(empty);
 
             listview.setAdapter(adapter);
             listview.setXListViewListener(this);
@@ -255,8 +255,8 @@ public class QuanPullListViewFragment extends MenuFragmentBase implements
 
     public void refere() {
         if (getActivity() != null) {
-            empty.setVisibility(View.GONE);
-            listview.setVisibility(View.VISIBLE);
+//            empty.setVisibility(View.GONE);
+//            listview.setVisibility(View.VISIBLE);
             listview.startRefresh();
         }
     }
