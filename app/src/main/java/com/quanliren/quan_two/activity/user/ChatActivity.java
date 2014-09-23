@@ -1148,6 +1148,7 @@ public class ChatActivity extends BaseActivity implements IXListViewListener,
                     startImage((DfMessage) msg.obj);
                     break;
                 case 2:
+                    listview.setTranscriptMode(AbsListView.TRANSCRIPT_MODE_NORMAL);
                     playVoice((DfMessage) msg.obj);
                     break;
                 case 3:

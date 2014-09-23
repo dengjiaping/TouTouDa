@@ -100,7 +100,7 @@ public class MyDateListFragment extends MenuFragmentBase implements
             }
             adapter = new DateAdapter(getActivity(), list, this);
             View view = new View(getActivity());
-            view.setLayoutParams(new AbsListView.LayoutParams(AbsListView.LayoutParams.FILL_PARENT, ImageUtil.dip2px(getActivity(), 50)));
+            view.setLayoutParams(new AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT, ImageUtil.dip2px(getActivity(), 50)));
             listview.setEmptyView(empty);
             listview.addFooterView(view);
             listview.setAdapter(adapter);
@@ -163,7 +163,6 @@ public class MyDateListFragment extends MenuFragmentBase implements
             }
         }
 
-        ;
     };
 
 
