@@ -58,6 +58,9 @@ public class MyDateListFragment extends MenuFragmentBase implements
     RequestParams ap = null;
     View view;
 
+    @ViewById
+    View empty;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -98,6 +101,7 @@ public class MyDateListFragment extends MenuFragmentBase implements
             adapter = new DateAdapter(getActivity(), list, this);
             View view = new View(getActivity());
             view.setLayoutParams(new AbsListView.LayoutParams(AbsListView.LayoutParams.FILL_PARENT, ImageUtil.dip2px(getActivity(), 50)));
+            listview.setEmptyView(empty);
             listview.addFooterView(view);
             listview.setAdapter(adapter);
             listview.setXListViewListener(this);
@@ -188,8 +192,11 @@ public class MyDateListFragment extends MenuFragmentBase implements
 
     @OnActivityResult(PUBLISH)
     void onPublishResult(int result) {
-        if (result == 1)
+        if (result == 1) {
+            empty.setVisibility(View.GONE);
+            listview.setVisibility(View.VISIBLE);
             listview.startRefresh();
+        }
     }
 
     @Override
@@ -256,6 +263,8 @@ public class MyDateListFragment extends MenuFragmentBase implements
                 adapter.notifyDataSetChanged();
 
                 if (adapter.getCount() == 0) {
+                    empty.setVisibility(View.GONE);
+                    listview.setVisibility(View.VISIBLE);
                     listview.startRefresh();
                 }
             }

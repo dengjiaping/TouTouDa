@@ -1,5 +1,7 @@
 package com.quanliren.quan_two.fragment;
 
+import android.view.View;
+
 import com.a.me.maxwin.view.XXListView;
 import com.a.me.maxwin.view.XXListView.IXListViewListener;
 import com.google.gson.Gson;
@@ -54,8 +56,8 @@ public class NearPeopleFragment extends MenuFragmentBase implements
     GDLocation location;
     @OrmLiteDao(helper = DBHelper.class, model = CustomFilterBean.class)
     Dao<CustomFilterBean, String> customFilterBeanDao;
-//    @ViewById
-//    LineToMenu empty;
+    @ViewById
+    View empty;
     @Pref
     FilterPerfs_ perf;
 
@@ -95,7 +97,7 @@ public class NearPeopleFragment extends MenuFragmentBase implements
                         }.getType());
             }
             adapter = new NearPeopleAdapter(getActivity(), list);
-//            listview.setEmptyView(empty);
+            listview.setEmptyView(empty);
             listview.setAdapter(adapter);
             listview.setXListViewListener(this);
         } catch (JsonSyntaxException e) {
@@ -228,8 +230,8 @@ public class NearPeopleFragment extends MenuFragmentBase implements
     @OnActivityResult(FILTER)
     void onFilterResult(int result) {
         if (result == 1) {
-//            empty.setVisibility(View.GONE);
-//            listview.setVisibility(View.VISIBLE);
+            empty.setVisibility(View.GONE);
+            listview.setVisibility(View.VISIBLE);
             listview.startRefresh();
         }
     }

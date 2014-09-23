@@ -10,11 +10,30 @@
         android:layout_marginLeft="27dp"
         android:background="@color/fill_line" />
 
-    <com.quanliren.quan_two.custom.LineToMenu1
+    <RelativeLayout
         android:id="@+id/empty"
-        android:visibility="gone"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:visibility="gone"
+        android:layout_height="match_parent" >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:src="@drawable/no_find_1"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"
+            android:layout_marginRight="8dp"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:src="@drawable/no_find_2"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"
+            android:layout_marginRight="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="110dp"
+            android:layout_alignParentBottom="true"
+            android:layout_height="wrap_content"/>
+        </RelativeLayout>
 
     <com.a.me.maxwin.view.XXListView
         android:id="@+id/listview"

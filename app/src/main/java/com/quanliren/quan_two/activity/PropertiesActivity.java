@@ -29,8 +29,12 @@ import com.quanliren.quan_two.bean.User;
 import com.quanliren.quan_two.bean.UserTable;
 import com.quanliren.quan_two.bean.VersionBean;
 import com.quanliren.quan_two.db.DBHelper;
-import com.quanliren.quan_two.fragment.*;
+import com.quanliren.quan_two.fragment.GroundFragment_;
+import com.quanliren.quan_two.fragment.MessageFragment_;
+import com.quanliren.quan_two.fragment.NearPeopleFragment_;
+import com.quanliren.quan_two.fragment.SetingMoreFragment_;
 import com.quanliren.quan_two.util.BroadcastUtil;
+import com.quanliren.quan_two.util.LogUtil;
 import com.quanliren.quan_two.util.StaticFactory;
 import com.quanliren.quan_two.util.URL;
 import com.quanliren.quan_two.util.Util;
@@ -129,6 +133,9 @@ public class PropertiesActivity extends BaseActivity {
         checkVersion();
 
         sendLog();
+
+        LogUtil.d("");
+
     }
 
     public static final String USERINFOCACHE = "userinfo";
@@ -188,11 +195,9 @@ public class PropertiesActivity extends BaseActivity {
             // }
         }
         boolean showComplete = false;
-        Fragment showFragment = null;// 将要显示的
         for (Fragment fg : addedList) {
             if (((Object) fg).getClass().getName().equals(clazz.getName())) {
                 ft.show(fg);
-                showFragment = fg;
                 try {
                     getSupportActionBar().setTitle(((ITitle) fg).getTitle());
                 } catch (Exception e) {
@@ -205,7 +210,6 @@ public class PropertiesActivity extends BaseActivity {
             for (Fragment fg : unaddList) {
                 if (((Object) fg).getClass().getName().equals(clazz.getName())) {
                     ft.add(R.id.content, fg, ((Object) fg).getClass().getName());
-                    showFragment = fg;
                     addedList.add(fg);
                     try {
                         getSupportActionBar()

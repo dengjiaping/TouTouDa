@@ -61,8 +61,8 @@ public class QuanPullListViewFragment extends MenuFragmentBase implements
     public static final int ALL = 1;
     public static final int MYCARE = 2;
 
-//    @ViewById
-//    LineToMenu empty;
+    @ViewById
+    View empty;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -104,7 +104,7 @@ public class QuanPullListViewFragment extends MenuFragmentBase implements
             listview.addFooterView(view);
             adapter = new QuanAdapter(getActivity(), list, this);
 
-//            listview.setEmptyView(empty);
+            listview.setEmptyView(empty);
 
             listview.setAdapter(adapter);
             listview.setXListViewListener(this);
@@ -255,8 +255,8 @@ public class QuanPullListViewFragment extends MenuFragmentBase implements
 
     public void refere() {
         if (getActivity() != null) {
-//            empty.setVisibility(View.GONE);
-//            listview.setVisibility(View.VISIBLE);
+            empty.setVisibility(View.GONE);
+            listview.setVisibility(View.VISIBLE);
             listview.startRefresh();
         }
     }

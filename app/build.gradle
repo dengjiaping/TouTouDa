@@ -24,6 +24,12 @@ android {
         }
     }
 
+    signingConfigs {
+        debug {
+           //storeFile file("your.keystore")
+        }
+    }
+
     lintOptions {
         checkReleaseBuilds false
     }

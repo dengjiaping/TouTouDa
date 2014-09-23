@@ -72,8 +72,8 @@ public class DateListFragment extends MenuFragmentBase implements
     Dao<CustomFilterBean, String> customFilterBeanDao;
     View view;
 
-//    @ViewById
-//    LineToMenu1 empty;
+    @ViewById
+    View empty;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -140,7 +140,7 @@ public class DateListFragment extends MenuFragmentBase implements
             View view = new View(getActivity());
             view.setLayoutParams(new AbsListView.LayoutParams(AbsListView.LayoutParams.FILL_PARENT, ImageUtil.dip2px(getActivity(), 50)));
             listview.addFooterView(view);
-//            listview.setEmptyView(empty);
+            listview.setEmptyView(empty);
             listview.setAdapter(adapter);
             listview.setXListViewListener(this);
             image.attachToListView(listview);
@@ -252,8 +252,8 @@ public class DateListFragment extends MenuFragmentBase implements
     @OnActivityResult(FILTER)
     void onFilterResult(int result) {
         if (result == 1) {
-//            empty.setVisibility(View.GONE);
-//            listview.setVisibility(View.VISIBLE);
+            empty.setVisibility(View.GONE);
+            listview.setVisibility(View.VISIBLE);
             listview.startRefresh();
         }
     }
@@ -271,8 +271,8 @@ public class DateListFragment extends MenuFragmentBase implements
     @OnActivityResult(PUBLISH)
     void onPublishResult(int result) {
         if (result == 1) {
-//            empty.setVisibility(View.GONE);
-//            listview.setVisibility(View.VISIBLE);
+            empty.setVisibility(View.GONE);
+            listview.setVisibility(View.VISIBLE);
             listview.startRefresh();
         }
     }
@@ -341,8 +341,8 @@ public class DateListFragment extends MenuFragmentBase implements
                 adapter.notifyDataSetChanged();
 
                 if (adapter.getCount() == 0) {
-//                    empty.setVisibility(View.GONE);
-//                    listview.setVisibility(View.VISIBLE);
+                    empty.setVisibility(View.GONE);
+                    listview.setVisibility(View.VISIBLE);
                     listview.startRefresh();
                 }
             }

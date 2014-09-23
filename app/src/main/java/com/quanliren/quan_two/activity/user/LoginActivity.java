@@ -135,6 +135,12 @@ public class LoginActivity extends BaseActivity implements OnRefreshListener {
                     public void run() {
                         getSupportActionBar().show();
                         scrollview.scrollTo(0, 0);
+
+                        if(pop!=null){
+                            pop.dismiss();
+                            isShow = false;
+                            animate(more_username_btn).setDuration(200).rotation(0).start();
+                        }
                     }
                 });
 
@@ -400,7 +406,7 @@ public class LoginActivity extends BaseActivity implements OnRefreshListener {
         final RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) userlogo_ll
                 .getLayoutParams();
         int screenY = getResources().getDisplayMetrics().heightPixels / 2;
-        screenY = (int) (screenY - lp.topMargin);
+        screenY = (screenY - lp.topMargin);
         screenY -= userlogo_ll.getHeight() / 2;
 
         anim3 = ObjectAnimator.ofInt(lp.topMargin, screenY).setDuration(200);
@@ -409,8 +415,7 @@ public class LoginActivity extends BaseActivity implements OnRefreshListener {
 
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-                int n = (Integer) animation.getAnimatedValue();
-                lp.topMargin = n;
+                lp.topMargin = Integer.valueOf(animation.getAnimatedValue().toString());
                 userlogo_ll.setLayoutParams(lp);
             }
         });
@@ -518,13 +523,9 @@ public class LoginActivity extends BaseActivity implements OnRefreshListener {
             }
         }
 
-        ;
-
         public void onStart() {
 
         }
-
-        ;
 
         public void onFailure() {
             margin_ll.clearAnimation();
@@ -532,16 +533,12 @@ public class LoginActivity extends BaseActivity implements OnRefreshListener {
             stopAnimate();
             showIntentErrorToast();
         }
-
-        ;
     };
 
     protected void onDestroy() {
         super.onDestroy();
         location.destory();
     }
-
-    ;
 
     @Click(R.id.forgetpassword)
     public void findpassword(View v) {

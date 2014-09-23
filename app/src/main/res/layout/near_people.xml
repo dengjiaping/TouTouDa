@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:background="@color/activity_bg"
     android:fitsSystemWindows="true"
     android:clipToPadding="true"
     android:layout_height="fill_parent">
-    <com.quanliren.quan_two.custom.LineToMenu
+    <ImageView
         android:id="@+id/empty"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
+        android:src="@drawable/no_find_1"
         android:visibility="gone"
-        android:layout_height="match_parent"/>
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
+        android:layout_marginRight="8dp"
+        android:layout_alignParentRight="true"
+        android:layout_height="wrap_content"/>
     <com.a.me.maxwin.view.XXListView
         android:id="@+id/listview"
         android:layout_width="fill_parent"
@@ -23,4 +28,4 @@
         android:scrollbars="vertical" />
 
 
-</FrameLayout>
+</RelativeLayout>

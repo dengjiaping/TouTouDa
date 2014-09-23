@@ -1,10 +1,10 @@
 package com.quanliren.quan_two.util;
 
 public class URL {
-    	public static final String URL="http://182.92.158.55";
-	public static final String IP="182.92.158.55";
-//    public static final String URL = "http://192.168.1.21:8888";
-//    public static final String IP = "192.168.1.21";
+//    	public static final String URL="http://182.92.158.55";
+//	public static final String IP="182.92.158.55";
+    public static final String URL = "http://192.168.1.21:8888";
+    public static final String IP = "192.168.1.21";
 
     //	public static final String URL="http://192.168.1.9:8080";
 //    public static final String IP="192.168.1.9";
@@ -17,8 +17,6 @@ public class URL {
     public static final String RESPONSE = "responses";
     public static final String INFO = "info";
     public static final String PAGEINDEX = "p";
-    public static final String TOTAL = "total";
-    public static final String COUNT = "count";
     public static final String LIST = "list";
 
     /**
