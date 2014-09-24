@@ -104,8 +104,6 @@ public class QuanPullListViewFragment extends MenuFragmentBase implements
             listview.addFooterView(view);
             adapter = new QuanAdapter(getActivity(), list, this);
 
-            listview.setEmptyView(empty);
-
             listview.setAdapter(adapter);
             listview.setXListViewListener(this);
         } catch (JsonSyntaxException e) {
@@ -172,8 +170,6 @@ public class QuanPullListViewFragment extends MenuFragmentBase implements
             listview.stop();
         }
 
-        ;
-
         public void onSuccess(JSONObject jo) {
             try {
                 int status = jo.getInt(URL.STATUS);
@@ -201,6 +197,11 @@ public class QuanPullListViewFragment extends MenuFragmentBase implements
                         }
                         adapter.notifyDataSetChanged();
                         listview.setPage(p = jo.getInt(URL.PAGEINDEX));
+
+                        if(adapter.getCount()==0){
+                            empty.setVisibility(View.VISIBLE);
+                            listview.setVisibility(View.GONE);
+                        }
                         break;
                     default:
                         showFailInfo(jo);
@@ -213,7 +214,11 @@ public class QuanPullListViewFragment extends MenuFragmentBase implements
             }
         }
 
-        ;
+        @Override
+        public void onStart() {
+            empty.setVisibility(View.GONE);
+            listview.setVisibility(View.VISIBLE);
+        }
     };
 
     private void performDismiss(final View dismissView, final int position) {

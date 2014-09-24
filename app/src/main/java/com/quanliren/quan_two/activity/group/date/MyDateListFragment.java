@@ -101,7 +101,6 @@ public class MyDateListFragment extends MenuFragmentBase implements
             adapter = new DateAdapter(getActivity(), list, this);
             View view = new View(getActivity());
             view.setLayoutParams(new AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT, ImageUtil.dip2px(getActivity(), 50)));
-            listview.setEmptyView(empty);
             listview.addFooterView(view);
             listview.setAdapter(adapter);
             listview.setXListViewListener(this);
@@ -151,6 +150,10 @@ public class MyDateListFragment extends MenuFragmentBase implements
                         }
                         adapter.notifyDataSetChanged();
                         listview.setPage(p = jo.getInt(URL.PAGEINDEX));
+                        if(adapter.getCount()==0){
+                            empty.setVisibility(View.VISIBLE);
+                            listview.setVisibility(View.GONE);
+                        }
                         break;
                     default:
                         showFailInfo(jo);
@@ -163,6 +166,11 @@ public class MyDateListFragment extends MenuFragmentBase implements
             }
         }
 
+        @Override
+        public void onStart() {
+            empty.setVisibility(View.GONE);
+            listview.setVisibility(View.VISIBLE);
+        }
     };
 
 

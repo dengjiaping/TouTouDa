@@ -54,7 +54,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 @EFragment(R.layout.user_pic_fragment)
 public class UserPicFragment extends MenuFragmentBase implements
@@ -76,8 +75,6 @@ public class UserPicFragment extends MenuFragmentBase implements
 
     User user;
     String userId;
-
-    AtomicBoolean b = new AtomicBoolean(false);
 
     public void setList(ArrayList<ImageBean> list) {
         this.listSource = list;
