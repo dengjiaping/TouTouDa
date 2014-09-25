@@ -28,6 +28,7 @@ public class DateListActivity extends BaseActivity implements OnTabClickListener
     @ViewById
     ViewPager viewpager;
     List<Fragment> views = new ArrayList<Fragment>();
+    FragmentPagerAdapter adapter;
 
     @AfterViews
     void initView() {
@@ -53,7 +54,7 @@ public class DateListActivity extends BaseActivity implements OnTabClickListener
             public void onPageScrollStateChanged(int arg0) {
             }
         });
-        viewpager.setAdapter(new mPagerAdapter(getSupportFragmentManager()));
+        viewpager.setAdapter(adapter=new mPagerAdapter(getSupportFragmentManager()));
     }
 
     @Override
@@ -61,6 +62,7 @@ public class DateListActivity extends BaseActivity implements OnTabClickListener
         // TODO Auto-generated method stub
         super.onResume();
         getSupportActionBar().setTitle("偷偷约");
+        adapter.notifyDataSetChanged();
     }
 
     @Override
@@ -88,7 +90,11 @@ public class DateListActivity extends BaseActivity implements OnTabClickListener
 
         @Override
         public int getCount() {
-            return views.size();
+            if(getHelper().getUser()!=null) {
+                return views.size();
+            }else{
+                return 1;
+            }
         }
 
         @Override

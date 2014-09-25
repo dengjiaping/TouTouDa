@@ -30,7 +30,7 @@ public class QuanActivity extends BaseActivity implements OnTabClickListener {
     @ViewById
     ViewPager viewpager;
     List<Fragment> views = new ArrayList<Fragment>();
-
+    FragmentPagerAdapter adapter;
     @AfterViews
     void initView() {
 
@@ -69,7 +69,13 @@ public class QuanActivity extends BaseActivity implements OnTabClickListener {
             public void onPageScrollStateChanged(int arg0) {
             }
         });
-        viewpager.setAdapter(new mPagerAdapter(getSupportFragmentManager()));
+        viewpager.setAdapter(adapter=new mPagerAdapter(getSupportFragmentManager()));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        adapter.notifyDataSetChanged();
     }
 
     @Override
@@ -96,7 +102,11 @@ public class QuanActivity extends BaseActivity implements OnTabClickListener {
 
         @Override
         public int getCount() {
-            return views.size();
+            if(getHelper().getUser()!=null) {
+                return views.size();
+            }else{
+                return 1;
+            }
         }
 
         @Override
