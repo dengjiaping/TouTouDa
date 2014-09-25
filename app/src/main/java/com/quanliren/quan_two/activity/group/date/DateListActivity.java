@@ -90,11 +90,12 @@ public class DateListActivity extends BaseActivity implements OnTabClickListener
 
         @Override
         public int getCount() {
-            if(getHelper().getUser()!=null) {
-                return views.size();
-            }else{
-                return 1;
-            }
+//            if(getHelper().getUser()!=null) {
+//                return views.size();
+//            }else{
+//                return 1;
+//            }
+            return views.size();
         }
 
         @Override

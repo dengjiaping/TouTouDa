@@ -84,7 +84,7 @@ public class RegGetCode extends BaseActivity {
 
     public void setListener() {
         phone_txt.setText(phone);
-        code_edit.setText(code);
+//        code_edit.setText(code);
         resend_btn.setText("收到短信大约需要" + allSec + "秒");
         handler.postDelayed(runable, 1000);
     }

@@ -27,6 +27,9 @@ public class SocketManage {
     public static final String DEVICE_TYPE = "deviceType";// 设备类型 android or ios
     public static final String SEND_USER_ID = "sendUid";// 发送者ID
     public static final String RECEIVER_USER_ID = "receiverUid";// 接收者ID
+    public static final String ORDER_SENDERROR="order_senderror";//发送失败
+    public static final int ERROR_TYPE_MORE=1;//超过陌生人聊天限制数
+    public static final String TYPE="type";//失败类型
 
     public static final int D_destroy = 0;//损坏
     public static final int D_downloading = 1;//正在下载

@@ -47,7 +47,7 @@ public class ForgetPassWordActivity2 extends BaseActivity {
         getSupportActionBar().setTitle(R.string.findpassword);
 
         phone_txt.setText(phone);
-        code_txt.setText(code);
+//        code_txt.setText(code);
 
     }
 

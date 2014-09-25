@@ -21,7 +21,8 @@ import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.activity.base.BaseActivity;
 import com.quanliren.quan_two.activity.location.GDLocation;
 import com.quanliren.quan_two.activity.location.ILocationImpl;
-import com.quanliren.quan_two.activity.shop.*;
+import com.quanliren.quan_two.activity.shop.ShopVipDetail_;
+import com.quanliren.quan_two.bean.User;
 import com.quanliren.quan_two.util.URL;
 import com.quanliren.quan_two.util.Util;
 import com.quanliren.quan_two.util.http.JsonHttpResponseHandler;
@@ -177,6 +178,7 @@ public class DatePublishActivity extends BaseActivity implements ILocationImpl {
 
                     @Override
                     public void onCheckedChanged(RadioGroup group, int checkedId) {
+                        money_btn.setText("");
                         int radioButtonId = group.getCheckedRadioButtonId();
                         switch (radioButtonId) {
                             case R.id.none_rb:
@@ -277,6 +279,12 @@ public class DatePublishActivity extends BaseActivity implements ILocationImpl {
                                                 none_rb.setChecked(true);
                                             }
                                             break;
+                                    }
+                                }else if(v.getId()==R.id.money_btn&&give_rb.isChecked()){
+                                    User user=getHelper().getUserInfo();
+                                    if(Integer.valueOf(cstr[which])>user.getCoin()){
+                                        goCoin();
+                                        ((TextView) v).setText("0");
                                     }
                                 }
                             }

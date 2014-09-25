@@ -48,6 +48,7 @@ import com.quanliren.quan_two.activity.base.BaseActivity;
 import com.quanliren.quan_two.activity.group.*;
 import com.quanliren.quan_two.activity.group.date.*;
 import com.quanliren.quan_two.activity.image.*;
+import com.quanliren.quan_two.activity.shop.ShopVipDetail_;
 import com.quanliren.quan_two.adapter.MessageAdapter;
 import com.quanliren.quan_two.bean.ChatListBean;
 import com.quanliren.quan_two.bean.DateBean;
@@ -260,10 +261,40 @@ public class ChatActivity extends BaseActivity implements IXListViewListener,
                     }
                 }
                 adapter.notifyDataSetChanged();
+
+                if(i.getExtras().containsKey(SocketManage.TYPE)){
+                    int type=i.getIntExtra(SocketManage.TYPE,0);
+                    switch (type){
+                        case SocketManage.ERROR_TYPE_MORE:
+                            showMoreMsg();
+                            break;
+                    }
+
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void showMoreMsg(){
+        new AlertDialog.Builder(this)
+                .setMessage("您今天已经向20位陌生人打招呼了，如果想继续与其他陌生人打招呼，请立刻成为会员吧~")
+                .setTitle("提示")
+                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                    }
+                })
+                .setPositiveButton("成为会员",
+                        new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog,
+                                                int which) {
+                                ShopVipDetail_.intent(ChatActivity.this).start();
+                            }
+                        }).create().show();
     }
 
     @UiThread(delay = 1000)
@@ -571,6 +602,10 @@ public class ChatActivity extends BaseActivity implements IXListViewListener,
                         msg.setDownload(SocketManage.D_downloaded);
                         messageDao.update(msg);
                         adapter.notifyDataSetChanged();
+                        break;
+                    case 3:
+                        fail();
+                        showMoreMsg();
                         break;
                     default:
                         fail();

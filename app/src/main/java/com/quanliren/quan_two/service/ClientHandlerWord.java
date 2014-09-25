@@ -19,8 +19,9 @@ import com.j256.ormlite.stmt.Where;
 import com.quanliren.quan_two.activity.Noti;
 import com.quanliren.quan_two.activity.PropertiesActivity;
 import com.quanliren.quan_two.activity.R;
-import com.quanliren.quan_two.activity.shop.product.*;
-import com.quanliren.quan_two.activity.user.*;
+import com.quanliren.quan_two.activity.shop.product.MyExchangeListActivity_;
+import com.quanliren.quan_two.activity.user.ChatActivity;
+import com.quanliren.quan_two.activity.user.ChatActivity_;
 import com.quanliren.quan_two.application.AppClass;
 import com.quanliren.quan_two.bean.ChatListBean;
 import com.quanliren.quan_two.bean.DfMessage;
@@ -99,6 +100,8 @@ public class ClientHandlerWord {
             c.sendBroadcast(i);
         } else if (order.equals(SocketManage.ORDER_EXCHANGE)) {
             exchange(jo);
+        }else if(order.equals(SocketManage.ORDER_SENDERROR)){
+            sendederror(jo);
         }
     }
 
@@ -170,6 +173,25 @@ public class ClientHandlerWord {
                 helper.getDao(DfMessage.class).update(m);
                 Intent i = new Intent(ChatActivity.CHANGESEND);
                 i.putExtra("bean", m);
+                c.sendBroadcast(i);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void sendederror(JSONObject jo) {
+        try {
+            String msgid = jo.getString(SocketManage.MESSAGE_ID);
+            List<DfMessage> list = helper.getDao(DfMessage.class).queryForEq(
+                    "msgid", msgid);
+            if (list.size() > 0) {
+                DfMessage m = list.get(0);
+                m.setDownload(SocketManage.D_destroy);
+                helper.getDao(DfMessage.class).update(m);
+                Intent i = new Intent(ChatActivity.CHANGESEND);
+                i.putExtra("bean", m);
+                i.putExtra("type",jo.getInt(SocketManage.TYPE));
                 c.sendBroadcast(i);
             }
         } catch (Exception e) {
