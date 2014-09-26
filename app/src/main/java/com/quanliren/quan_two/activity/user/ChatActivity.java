@@ -1,7 +1,10 @@
 package com.quanliren.quan_two.activity.user;
 
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.NotificationManager;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -15,10 +18,10 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
-import android.text.ClipboardManager;
 import android.text.Editable;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -45,9 +48,9 @@ import com.loopj.android.http.FileAsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.activity.base.BaseActivity;
-import com.quanliren.quan_two.activity.group.*;
-import com.quanliren.quan_two.activity.group.date.*;
-import com.quanliren.quan_two.activity.image.*;
+import com.quanliren.quan_two.activity.group.DongTaiDetailActivity_;
+import com.quanliren.quan_two.activity.group.date.DateDetailActivity_;
+import com.quanliren.quan_two.activity.image.ImageBrowserActivity_;
 import com.quanliren.quan_two.activity.shop.ShopVipDetail_;
 import com.quanliren.quan_two.adapter.MessageAdapter;
 import com.quanliren.quan_two.bean.ChatListBean;
@@ -95,6 +98,7 @@ import org.androidannotations.annotations.Receiver;
 import org.androidannotations.annotations.SystemService;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
+import org.androidannotations.api.SdkVersionHelper;
 import org.apache.http.Header;
 import org.json.JSONObject;
 
@@ -1340,9 +1344,16 @@ public class ChatActivity extends BaseActivity implements IXListViewListener,
         adapter.notifyDataSetChanged();
     }
 
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public void copy(String content, Context context) {
-        ClipboardManager c = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-        c.setText(content);
+        if(SdkVersionHelper.getSdkInt()>=11){
+            ClipboardManager c = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+            c.setPrimaryClip(ClipData.newPlainText(null, content));
+        }else{
+            android.text.ClipboardManager c = (android.text.ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+            c.setText(content);
+        }
+
         Toast.makeText(this, "已复制", Toast.LENGTH_SHORT).show();
     }
 

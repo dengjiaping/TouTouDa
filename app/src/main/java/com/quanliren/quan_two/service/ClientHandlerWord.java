@@ -99,13 +99,26 @@ public class ClientHandlerWord {
             Intent i = new Intent(BroadcastUtil.ACTION_OUTLINE);
             c.sendBroadcast(i);
         } else if (order.equals(SocketManage.ORDER_EXCHANGE)) {
-            exchange(jo);
+            exchange(session,jo);
         }else if(order.equals(SocketManage.ORDER_SENDERROR)){
             sendederror(jo);
         }
     }
 
-    public void exchange(JSONObject jo) {
+    public void exchange(ConnectionThread session,JSONObject jo) {
+
+        try {
+            if (jo.opt(SocketManage.MESSAGE_ID) != null) {
+                JSONObject jos = new JSONObject();
+                jos.put(SocketManage.ORDER, SocketManage.ORDER_SENDED);
+                jos.put(SocketManage.MESSAGE_ID,
+                        jo.opt(SocketManage.MESSAGE_ID));
+                session.write(jos.toString());
+            }
+        } catch (JSONException e1) {
+            e1.printStackTrace();
+        }
+
         ExchangeRemindBean rrb = new Gson().fromJson(jo.toString(),
                 new TypeToken<ExchangeRemindBean>() {
                 }.getType());
