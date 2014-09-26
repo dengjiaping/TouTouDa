@@ -1,11 +1,13 @@
 package com.quanliren.quan_two.custom;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Path;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.PathShape;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
@@ -48,6 +50,7 @@ public class SanJiaoTextView extends TextView {
         return width;
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @SuppressWarnings("deprecation")
     public void setBackgroundColor(int color) {
         path = new Path();

@@ -83,7 +83,7 @@
                 android:background="@drawable/filter_tab_left"
                 android:clickable="true"
                 android:gravity="center"
-                android:text="@string/_30min"
+                android:text="@string/_1hour"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -95,7 +95,7 @@
                 android:background="@drawable/filter_tab_left"
                 android:clickable="true"
                 android:gravity="center"
-                android:text="@string/_1hour"
+                android:text="@string/_1day"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -107,7 +107,7 @@
                 android:background="@drawable/filter_tab_left"
                 android:clickable="true"
                 android:gravity="center"
-                android:text="@string/_1day"
+                android:text="@string/_3day"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -119,7 +119,7 @@
                 android:background="@drawable/filter_tab_right"
                 android:clickable="true"
                 android:gravity="center"
-                android:text="@string/_3day"
+                android:text="@string/_week"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
         </LinearLayout>

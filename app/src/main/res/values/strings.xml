@@ -12,7 +12,6 @@
     <string name="seting_invite_friend">邀请好友</string>
     <string name="loginout">注销登陆</string>
     <string name="shop_vip">成为会员</string>
-    <string name="shop_power">购买体力</string>
     <string name="shop">商城</string>
     <string name="seting">设置</string>
     <string name="home">主页</string>
@@ -37,7 +36,6 @@
     <string name="create">创建</string>
     <string name="save">保存</string>
     <string name="edit">编辑</string>
-    <string name="buypower">购买体力</string>
     <string name="confirm">确认</string>
     <string name="ok">完成</string>
     <string name="manage">管理</string>
@@ -70,10 +68,10 @@
     <string name="normaltalk">按住 说话</string>
     <string name="filter">筛选</string>
     <string name="all">全部</string>
-    <string name="_30min">30分钟</string>
     <string name="_1hour">一小时</string>
     <string name="_1day">一天</string>
     <string name="_3day">三天</string>
+    <string name="_week">一周</string>
     <string name="jubao">举报</string>
     <string name="ziliao">资料</string>
     <string name="forget_password">忘记密码</string>

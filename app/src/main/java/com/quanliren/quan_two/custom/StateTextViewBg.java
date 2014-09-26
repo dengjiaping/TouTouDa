@@ -52,22 +52,22 @@ public class StateTextViewBg extends TextView {
 
         list.add(new StateBean(R.drawable.ic_state_normal_large,
                 R.drawable.ic_state_normal_large, R.string.state_normal,
-                R.color.state_quite_color));
+                R.color.state_quite_color_large));
         list.add(new StateBean(R.drawable.ic_state_dinner,
                 R.drawable.ic_state_dinner_large, R.string.state_dinner,
-                R.color.state_dinner_color));
+                R.color.state_dinner_color_large));
         list.add(new StateBean(R.drawable.ic_state_movie,
                 R.drawable.ic_state_movie_large, R.string.state_movie,
-                R.color.state_movie_color));
+                R.color.state_movie_color_large));
         list.add(new StateBean(R.drawable.ic_state_car,
                 R.drawable.ic_state_car_large, R.string.state_car,
-                R.color.state_car_color));
+                R.color.state_car_color_large));
         list.add(new StateBean(R.drawable.ic_state_friend,
                 R.drawable.ic_state_friend_large, R.string.state_friend,
-                R.color.state_friend_color));
+                R.color.state_friend_color_large));
         list.add(new StateBean(R.drawable.ic_state_girl,
                 R.drawable.ic_state_girl_large, R.string.state_girl,
-                R.color.state_girl_color));
+                R.color.state_girl_color_large));
 
         setGravity(Gravity.CENTER_VERTICAL);
 
