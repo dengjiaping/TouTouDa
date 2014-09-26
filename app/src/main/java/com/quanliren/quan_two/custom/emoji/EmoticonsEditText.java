@@ -81,8 +81,8 @@ public class EmoticonsEditText extends EditText {
                     int id = AppClass.mEmoticonsId.get(matcher.group());
                     // Bitmap bitmap = ImageLoader.getInstance().loadImageSync(
                     // "drawable://" + id);
-                    GifDrawable bitmap = (GifDrawable) DrawableCache
-                            .getInstance().getDrawable(id, getContext());
+                    GifDrawable bitmap = DrawableCache
+                            .getInstance().getDrawable(Long.valueOf(id), getContext());
                     if (bitmap != null) {
                         bitmap.setBounds(8, 0, ImageUtil.dip2px(getContext(), 30),
                                 ImageUtil.dip2px(getContext(), 30));

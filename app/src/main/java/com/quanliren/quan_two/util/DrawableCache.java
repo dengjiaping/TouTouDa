@@ -66,15 +66,15 @@ public class DrawableCache {
     /**
      * 依据所指定的drawable下的图片资源ID号（可以根据自己的需要从网络或本地path下获取），重新获取相应Drawable对象的实例
      */
-    public GifDrawable getDrawable(int resId, Context context) {
+    public GifDrawable getDrawable(Long resId, Context context) {
         GifDrawable bmp = null;
-        if (hashRefs.containsKey(resId)) {
-            MySoftRef ref = (MySoftRef) hashRefs.get(resId);
-            bmp = (GifDrawable) ref.get();
+        if (hashRefs.containsKey(Long.valueOf(resId))) {
+            MySoftRef ref =  hashRefs.get(resId);
+            bmp =  ref.get();
         }
         if (bmp == null) {
             try {
-                bmp = new GifDrawable(context.getResources(), resId);
+                bmp = new GifDrawable(context.getResources(), Integer.valueOf(resId.toString()));
             } catch (NotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {

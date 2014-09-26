@@ -85,7 +85,7 @@ public class EmoticonsTextView extends HandyTextView {
                 if (AppClass.mEmoticonsId.containsKey(matcher.group())) {
                     int id = AppClass.mEmoticonsId.get(matcher.group());
 
-                    GifDrawable bitmap = (GifDrawable) DrawableCache.getInstance().getDrawable(id, getContext());
+                    GifDrawable bitmap = (GifDrawable) DrawableCache.getInstance().getDrawable(Long.valueOf(id), getContext());
 //					Bitmap bitmap = ImageLoader.getInstance().loadImageSync("drawable://" + id);
                     if (bitmap != null) {
                         num++;
