@@ -87,14 +87,11 @@ public class ModifyPasswordActivity extends BaseActivity {
             customShowDialog(1);
         }
 
-        ;
-
         public void onFailure() {
             customDismissDialog();
             showIntentErrorToast();
         }
 
-        ;
 
         public void onSuccess(JSONObject jo) {
             customDismissDialog();
@@ -115,7 +112,7 @@ public class ModifyPasswordActivity extends BaseActivity {
                         userTableDao.create(new UserTable(user));
 
                         //保存登陆用户
-                        TableUtils.createTable(getConnectionSource(), LoginUser.class);
+                        TableUtils.clearTable(getConnectionSource(), LoginUser.class);
                         loginUserDao.create(lu);
 
                         finish();
@@ -129,8 +126,6 @@ public class ModifyPasswordActivity extends BaseActivity {
             }
         }
 
-        ;
     }
 
-    ;
 }

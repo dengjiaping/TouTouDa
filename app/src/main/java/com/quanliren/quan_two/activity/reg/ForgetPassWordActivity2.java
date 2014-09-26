@@ -132,8 +132,6 @@ public class ForgetPassWordActivity2 extends BaseActivity {
             }
         }
 
-        ;
     }
 
-    ;
 }
