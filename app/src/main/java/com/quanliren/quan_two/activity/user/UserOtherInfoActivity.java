@@ -589,7 +589,7 @@ public class UserOtherInfoActivity extends BaseUserActivity implements
             showCustomToast("这是自己哟~");
             return;
         }
-        ChatActivity_.intent(this).flags(Intent.FLAG_ACTIVITY_CLEAR_TOP).friend(this.user).start();
+        ChatActivity_.intent(this).friend(this.user).start();
     }
 
 }
