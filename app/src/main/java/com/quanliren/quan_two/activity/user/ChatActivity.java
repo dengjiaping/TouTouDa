@@ -53,6 +53,7 @@ import com.quanliren.quan_two.activity.group.date.DateDetailActivity_;
 import com.quanliren.quan_two.activity.image.ImageBrowserActivity_;
 import com.quanliren.quan_two.activity.shop.ShopVipDetail_;
 import com.quanliren.quan_two.adapter.MessageAdapter;
+import com.quanliren.quan_two.application.AM;
 import com.quanliren.quan_two.bean.ChatListBean;
 import com.quanliren.quan_two.bean.DateBean;
 import com.quanliren.quan_two.bean.DfMessage;
@@ -367,6 +368,7 @@ public class ChatActivity extends BaseActivity implements IXListViewListener,
         if (friend == null) {
             return;
         }
+        AM.getActivityManager().popActivity(UserOtherInfoActivity_.class.getName());
         UserOtherInfoActivity_.intent(this).userId(friend.getId()).start();
     }
 

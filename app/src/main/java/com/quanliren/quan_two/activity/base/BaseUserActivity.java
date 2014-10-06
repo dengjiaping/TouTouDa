@@ -16,6 +16,7 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.activity.user.*;
+import com.quanliren.quan_two.application.AM;
 import com.quanliren.quan_two.bean.ImageBean;
 import com.quanliren.quan_two.bean.MessageList;
 import com.quanliren.quan_two.bean.User;
@@ -105,9 +106,12 @@ public abstract class BaseUserActivity extends BaseActivity implements
 
     @Click(R.id.personal_ll)
     public void personal_btn(View v) {
-        if (user != null)
+        if (user != null) {
+            AM.getActivityManager().popActivity(PersonalDongTaiActivity_.class.getName());
             PersonalDongTaiActivity_.intent(this).otherid(user.getId())
                     .start();
+        }
+
     }
 
     protected void initView() {

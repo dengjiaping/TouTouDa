@@ -20,6 +20,7 @@ import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.activity.base.BaseUserActivity;
 import com.quanliren.quan_two.activity.image.*;
 import com.quanliren.quan_two.activity.shop.*;
+import com.quanliren.quan_two.application.AM;
 import com.quanliren.quan_two.bean.ImageBean;
 import com.quanliren.quan_two.bean.LoginUser;
 import com.quanliren.quan_two.bean.User;
@@ -589,6 +590,7 @@ public class UserOtherInfoActivity extends BaseUserActivity implements
             showCustomToast("这是自己哟~");
             return;
         }
+        AM.getActivityManager().popActivity(ChatActivity_.class.getName());
         ChatActivity_.intent(this).friend(this.user).start();
     }
 
