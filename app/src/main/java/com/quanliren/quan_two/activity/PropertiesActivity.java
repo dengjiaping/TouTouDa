@@ -171,6 +171,7 @@ public class PropertiesActivity extends BaseActivity {
     protected void onDestroy() {
         // TODO Auto-generated method stub
         super.onDestroy();
+        AM.getActivityManager().popAllActivity();
     }
 
     @Override

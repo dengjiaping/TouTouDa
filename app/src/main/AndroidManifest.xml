@@ -320,9 +320,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppBaseThemeTranslucent"
             android:windowSoftInputMode="stateVisible|adjustResize"></activity>
-        <activity
-            android:name=".group.ChoseLocationActivity_"
-            android:screenOrientation="portrait"></activity>
 
         <activity
             android:name=".shop.ShopVipDetail_"
