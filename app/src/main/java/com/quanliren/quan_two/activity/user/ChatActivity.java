@@ -424,6 +424,7 @@ public class ChatActivity extends BaseActivity implements IXListViewListener,
                         messageDao.update(messageDao.updateBuilder()
                                 .updateColumnValue("isRead", 1).where()
                                 .in("id", sb.toString()).prepareUpdate());
+                        updateSecondTitle();
                     }
                     if (list.size() > 0) {
                         try {
@@ -478,11 +479,31 @@ public class ChatActivity extends BaseActivity implements IXListViewListener,
         }).start();
     }
 
+    public void updateSecondTitle(){
+        try {
+            QueryBuilder<DfMessage, Integer> qb = messageDao.queryBuilder();
+            Where where = qb.where();
+            where.and(where.eq("userid", user.getId()), where.eq("receiverUid", user.getId()), where.eq("sendUid", friend.getId()), where.eq("isRead", 0));
+            int count=(int) qb.countOf();
+            if(count>0){
+                setSubTitle("您还有"+count+"条未读消息，向下拖动即可阅读");
+            }else{
+                setSubTitle(null);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @UiThread
+    public void setSubTitle(String str){
+        getSupportActionBar().setSubtitle(str);
+    }
+
     @Override
     public void onLoadMore() {
     }
-
-    ;
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
@@ -1226,6 +1247,7 @@ public class ChatActivity extends BaseActivity implements IXListViewListener,
 
     void startDetail(DfMessage bean) {
         OtherMessage msg = bean.getOtherContent();
+        DateBean db = new DateBean();
         switch (msg.getInfoType()) {
             case 0:
                 DongTaiBean dbean = new DongTaiBean();
@@ -1238,10 +1260,13 @@ public class ChatActivity extends BaseActivity implements IXListViewListener,
                         .init(false).start();
                 break;
             case 1:
-            case 2:
-                DateBean db = new DateBean();
                 db.setDtid(Integer.valueOf(msg.getDtid()));
                 db.setUserid(user.getId());
+                DateDetailActivity_.intent(this).bean(db).start();
+                break;
+            case 2:
+                db.setDtid(Integer.valueOf(msg.getDtid()));
+                db.setUserid(friend.getId());
                 DateDetailActivity_.intent(this).bean(db).start();
                 break;
             case 3:

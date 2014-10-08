@@ -69,16 +69,16 @@ public class ShopVipDetail extends BaseActivity implements IBuyListener {
     @AfterViews
     void initView() {
 
-        list.add(new ShopBean(-1, 0, "会员购买", "￥0", 0));
-        list.add(new ShopBean(0, R.drawable.shop_icon_month_vip1, "1个月会员", "￥12.00", 1));
-        list.add(new ShopBean(1, R.drawable.shop_icon_month_vip2, "3个月会员", "￥30.00", 2));
-        list.add(new ShopBean(2, R.drawable.shop_icon_year_vip, "12个月年费会员", "￥88.00", 3));
-        list.add(new ShopBean(-1, 0, "靓点购买", "￥0", 0));
-        list.add(new ShopBean(3, R.drawable.shop_icon_5, "5个靓点", "￥50.00", 1));
-        list.add(new ShopBean(4, R.drawable.shop_icon_10, "10个靓点", "￥98.00", 2));
-        list.add(new ShopBean(5, R.drawable.shop_icon_20, "20个靓点", "￥198.00", 2));
-        list.add(new ShopBean(6, R.drawable.shop_icon_50, "50个靓点", "￥488.00", 2));
-        list.add(new ShopBean(7, R.drawable.shop_icon_100, "100个靓点", "￥998.00", 3));
+        list.add(new ShopBean(-1, 0, "会员购买", "¥0", 0));
+        list.add(new ShopBean(0, R.drawable.shop_icon_month_vip1, "1个月会员", "¥12.00", 1));
+        list.add(new ShopBean(1, R.drawable.shop_icon_month_vip2, "3个月会员", "¥30.00", 2));
+        list.add(new ShopBean(2, R.drawable.shop_icon_year_vip, "12个月年费会员", "¥88.00", 3));
+        list.add(new ShopBean(-1, 0, "靓点购买", "¥0", 0));
+        list.add(new ShopBean(3, R.drawable.shop_icon_5, "5个靓点", "¥50.00", 1));
+        list.add(new ShopBean(4, R.drawable.shop_icon_10, "10个靓点", "¥98.00", 2));
+        list.add(new ShopBean(5, R.drawable.shop_icon_20, "20个靓点", "¥198.00", 2));
+        list.add(new ShopBean(6, R.drawable.shop_icon_50, "50个靓点", "¥488.00", 2));
+        list.add(new ShopBean(7, R.drawable.shop_icon_100, "100个靓点", "¥998.00", 3));
 
         adapter = new ShopAdapter(this, list, this);
         listview.setAdapter(adapter);

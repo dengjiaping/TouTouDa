@@ -44,7 +44,7 @@
                 app:cpb_colorIndicator="@color/vipbtn"
                 app:cpb_cornerRadius="5dp"
                 app:cpb_textError="失败"
-                app:cpb_textIdle="￥998.00" />
+                app:cpb_textIdle="¥998.00" />
         </RelativeLayout>
     </LinearLayout>
 

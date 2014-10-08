@@ -539,6 +539,9 @@ public class LoginActivity extends BaseActivity implements OnRefreshListener {
     protected void onDestroy() {
         super.onDestroy();
         location.destory();
+        if(pop!=null&& pop.isShowing()){
+pop.dismiss();
+        }
     }
 
     @Click(R.id.forgetpassword)

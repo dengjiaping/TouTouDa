@@ -46,6 +46,8 @@ public class AlarmReceiver extends BroadcastReceiver {
                         context.startService(i);
                     }
                     return;
+                }else{
+                    ac.stopServices();
                 }
             } catch (Exception e) {
                 e.printStackTrace();

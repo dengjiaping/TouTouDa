@@ -433,14 +433,14 @@ public class DateDetailActivity extends BaseActivity implements
             case 0:
                 holder.coin.setVisibility(View.GONE);
                 break;
-            case 1:
+            case 2:
                 holder.coin.setVisibility(View.VISIBLE);
                 holder.coin
                         .setText(Html
                                 .fromHtml("<font color=\"#95948f\">赠送靓点：</font><font color=\"#228ada\">"
                                         + db.getCoin() + "</font>"));
                 break;
-            case 2:
+            case 1:
                 holder.coin.setVisibility(View.VISIBLE);
                 holder.coin
                         .setText(Html

@@ -18,8 +18,7 @@ import com.nineoldandroids.view.ViewHelper;
 import com.nineoldandroids.view.ViewPropertyAnimator;
 import com.quanliren.quan_two.activity.R;
 import com.quanliren.quan_two.activity.base.BaseUserActivity;
-import com.quanliren.quan_two.activity.image.*;
-import com.quanliren.quan_two.activity.shop.*;
+import com.quanliren.quan_two.activity.image.ImageBrowserActivity_;
 import com.quanliren.quan_two.application.AM;
 import com.quanliren.quan_two.bean.ImageBean;
 import com.quanliren.quan_two.bean.LoginUser;
@@ -489,7 +488,7 @@ public class UserOtherInfoActivity extends BaseUserActivity implements
         if (user == null) {
             return;
         }
-        LoginUser my = getHelper().getUser();
+        User my=getHelper().getUserInfo();
         if (my == null) {
             startLogin();
             return;
@@ -498,6 +497,10 @@ public class UserOtherInfoActivity extends BaseUserActivity implements
             showCustomToast("这是自己哟~");
             return;
         }
+if(my.getCoin()<=0){
+    goCoin();
+    return;
+}
         mdialog = new CustomDialogEditText.Builder(this)
                 .setTitle("请输入要赠送的靓点个数")
                 .setPositiveButton("赠送", new DialogInterface.OnClickListener() {
@@ -510,6 +513,10 @@ public class UserOtherInfoActivity extends BaseUserActivity implements
                                     .valueOf(getHelper().getUserInfo().getCoin())) {
                                 goCoin();
                             } else {
+                                if(Integer.valueOf(num)==0){
+                                    showCustomToast("赠送靓点至少为1个！");
+                                    return;
+                                }
                                 RequestParams ap = getAjaxParams();
                                 ap.put("otherid", user.getId());
                                 ap.put("coin", num);

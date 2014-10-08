@@ -57,8 +57,8 @@ public class EmoticonDownloadListAdapter extends ParentsAdapter {
                     holder.buy.setText("会员");
                     break;
                 case 2:
-                    holder.buy.setmIdleText("￥" + zip.getPrice());
-                    holder.buy.setText("￥" + zip.getPrice());
+                    holder.buy.setmIdleText("¥" + zip.getPrice());
+                    holder.buy.setText("¥" + zip.getPrice());
                     break;
             }
             if (zip.isHave()) {

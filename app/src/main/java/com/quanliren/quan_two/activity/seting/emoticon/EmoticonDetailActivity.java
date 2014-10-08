@@ -275,7 +275,7 @@ public class EmoticonDetailActivity extends BaseActivity implements
                 price.setText("会员专属");
                 break;
             case 2:
-                price.setText("￥" + bean.getPrice());
+                price.setText("¥" + bean.getPrice());
                 break;
         }
 

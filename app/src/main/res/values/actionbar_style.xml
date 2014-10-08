@@ -3,6 +3,7 @@
 
     <style name="Widget.AppCompat.Light.ActionBar.My" parent="@style/Widget.AppCompat.Light.ActionBar">
         <item name="titleTextStyle">@style/actionbar.title.style</item>
+        <item name="subtitleTextStyle">@style/actionbar.subtitle.style</item>
         <item name="background">@color/actionbar</item>
         <item name="displayOptions">homeAsUp|showTitle</item>
         <item name="indeterminateProgressStyle">@style/IndeterminateProgress</item>
@@ -14,7 +15,9 @@
         <item name="android:minHeight">32dip</item>
         <item name="android:maxHeight">32dip</item>
     </style>
-
+    <style name="actionbar.subtitle.style" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle">
+        <item name="android:textColor">@color/white</item>
+    </style>
     <style name="Widget.AppCompat.Light.ActionBar.My.NoHomeAsUp" parent="Widget.AppCompat.Light.ActionBar.My">
         <item name="displayOptions">showTitle</item>
     </style>

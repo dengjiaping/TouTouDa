@@ -26,7 +26,8 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.sql.SQLException;
@@ -255,38 +256,37 @@ public class QuanPushService extends Service {
                     }
                 } catch (Exception e) {
                 }
-
-                PrintStream out = new PrintStream(s.getOutputStream(), true, "utf-8");
-                out.write(getBytes(str.getBytes().length));
-                Thread.sleep(50);
-                StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < str.length(); i++) {
-                    sb.append(str.substring(i, i + 1));
-                    if (sb.length() >= 50) {
-                        out.write(sb.toString().getBytes());
-                        Thread.sleep(50);
-                        sb = new StringBuilder();
-                    } else if (i == str.length() - 1) {
-                        out.write(sb.toString().getBytes());
-                    }
-                }
-                Thread.sleep(100);
-//                PrintWriter out = new PrintWriter(new OutputStreamWriter(
-//                        s.getOutputStream()));
+//                PrintStream out = new PrintStream(s.getOutputStream(), true, "utf-8");
+//                out.write(getBytes(str.getBytes().length));
 //                Thread.sleep(50);
 //                StringBuilder sb = new StringBuilder();
 //                for (int i = 0; i < str.length(); i++) {
 //                    sb.append(str.substring(i, i + 1));
 //                    if (sb.length() >= 50) {
-//                        out.print(sb.toString());
+//                        out.write(sb.toString().getBytes());
 //                        Thread.sleep(50);
 //                        sb = new StringBuilder();
 //                    } else if (i == str.length() - 1) {
-//                        out.println(sb.toString());
+//                        out.write(sb.toString().getBytes());
 //                    }
 //                }
-//                out.flush();
 //                Thread.sleep(100);
+                PrintWriter out = new PrintWriter(new OutputStreamWriter(
+                        s.getOutputStream()));
+                Thread.sleep(50);
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < str.length(); i++) {
+                    sb.append(str.substring(i, i + 1));
+                    if (sb.length() >= 50) {
+                        out.print(sb.toString());
+                        Thread.sleep(50);
+                        sb = new StringBuilder();
+                    } else if (i == str.length() - 1) {
+                        out.println(sb.toString());
+                    }
+                }
+                out.flush();
+                Thread.sleep(100);
             } catch (Exception e) {
                 e.printStackTrace();
                 if (mConnection != null) {

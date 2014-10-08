@@ -4,6 +4,7 @@
     <style name="Widget.AppCompat.Light.ActionBar.My" parent="@style/Widget.AppCompat.Light.ActionBar">
         <item name="android:titleTextStyle">@style/actionbar.title.style</item>
         <item name="android:background">@color/actionbar</item>
+        <item name="android:subtitleTextStyle">@style/actionbar.subtitle.style</item>
         <item name="android:displayOptions">homeAsUp|showTitle</item>
         <item name="android:indeterminateProgressStyle">@style/IndeterminateProgress</item>
     </style>
@@ -23,7 +24,9 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">20sp</item>
     </style>
-
+    <style name="actionbar.subtitle.style" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle">
+        <item name="android:textColor">@color/white</item>
+    </style>
     <!-- menu -->
     <style name="MyABmenuTextAppearance" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu">
         <item name="android:textSize">16sp</item>
