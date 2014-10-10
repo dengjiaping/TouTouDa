@@ -10,6 +10,15 @@ public class ShopBean implements Serializable {
     private String price;
     private int viewType;
     private int progress;
+    private int gnumber;
+
+    public int getGnumber() {
+        return gnumber;
+    }
+
+    public void setGnumber(int gnumber) {
+        this.gnumber = gnumber;
+    }
 
     public int getProgress() {
         return progress;

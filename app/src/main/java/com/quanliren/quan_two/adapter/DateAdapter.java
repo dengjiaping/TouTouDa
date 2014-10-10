@@ -12,11 +12,12 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.quanliren.quan_two.activity.R;
-import com.quanliren.quan_two.activity.user.*;
+import com.quanliren.quan_two.activity.user.UserInfoActivity_;
+import com.quanliren.quan_two.activity.user.UserOtherInfoActivity_;
 import com.quanliren.quan_two.adapter.QuanAdapter.IQuanAdapter;
 import com.quanliren.quan_two.bean.DateBean;
-import com.quanliren.quan_two.custom.CustomVip;
 import com.quanliren.quan_two.custom.StateTextViewBg;
+import com.quanliren.quan_two.custom.UserNickNameRelativeLayout;
 import com.quanliren.quan_two.util.StaticFactory;
 import com.quanliren.quan_two.util.Util;
 
@@ -40,12 +41,11 @@ public class DateAdapter extends ParentsAdapter {
         ViewHolder holder;
         if (convertView == null) {
             holder = new ViewHolder();
-            convertView = View.inflate(c, R.layout.date_item, null);
+            convertView = View.inflate(c, R.layout.date_item_new, null);
             holder.userlogo = (ImageView) convertView
                     .findViewById(R.id.userlogo);
-            holder.nickname = (TextView) convertView
-                    .findViewById(R.id.nickname);
-            holder.sex = (TextView) convertView.findViewById(R.id.sex);
+            holder.nick_ll = (UserNickNameRelativeLayout) convertView
+                    .findViewById(R.id.nick_ll);
             holder.location_tv = (TextView) convertView
                     .findViewById(R.id.location_tv);
             holder.coin = (TextView) convertView.findViewById(R.id.coin_tv);
@@ -66,11 +66,9 @@ public class DateAdapter extends ParentsAdapter {
                     .findViewById(R.id.reply_tv);
             holder.state = (StateTextViewBg) convertView
                     .findViewById(R.id.state);
-            holder.vip = (CustomVip) convertView.findViewById(R.id.vip);
-            holder.people_num_ll = convertView.findViewById(R.id.people_num_ll);
-            holder.aim_ll = convertView.findViewById(R.id.aim_ll);
             holder.reply_ll = convertView.findViewById(R.id.reply_ll);
-            holder.content_rl = convertView.findViewById(R.id.content_rl);
+            holder.content_rl = convertView.findViewById(R.id.top);
+            holder.img_state= (ImageView) convertView.findViewById(R.id.img_state);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -79,32 +77,29 @@ public class DateAdapter extends ParentsAdapter {
         DateBean db = (DateBean) getItem(position);
         ImageLoader.getInstance().displayImage(
                 db.getAvatar() + StaticFactory._160x160, holder.userlogo);
-        holder.nickname.setText(db.getNickname());
-        switch (Integer.valueOf(db.getSex())) {
-            case 0:
-                holder.sex.setBackgroundResource(R.drawable.girl_icon);
-                break;
-            case 1:
-                holder.sex.setBackgroundResource(R.drawable.boy_icon);
-                break;
-            default:
-                break;
-        }
-        holder.sex.setText(db.getAge());
+        holder.nick_ll.setUser(db.getNickname(), db.getSex(), db.getAge(), db.getIsvip());
         holder.userlogo.setTag(position);
         holder.userlogo.setOnClickListener(userlogo);
         holder.state.setState(db.getDtype());
 
-        if (db.getIsvip() > 0) {
-            holder.vip.setVisibility(View.VISIBLE);
-            holder.vip.setVip(db.getIsvip());
-            holder.nickname.setTextColor(c.getResources().getColor(
-                    R.color.vip_name));
-        } else {
-            holder.vip.setVisibility(View.GONE);
-            holder.nickname.setTextColor(c.getResources().getColor(
-                    R.color.username));
+        switch (db.getDtype()){
+            case 1:
+                holder.img_state.setImageResource(R.drawable.ic_state_dinner_largest);
+                break;
+            case 2:
+                holder.img_state.setImageResource(R.drawable.ic_state_movie_largest);
+                break;
+            case 3:
+                holder.img_state.setImageResource(R.drawable.ic_state_car_largest);
+                break;
+            case 4:
+                holder.img_state.setImageResource(R.drawable.ic_state_friend_largest);
+                break;
+            case 5:
+                holder.img_state.setImageResource(R.drawable.ic_state_girl_largest);
+                break;
         }
+
         if (Integer.valueOf(db.getCnum()) <= 0) {
             holder.reply_ll.setVisibility(View.GONE);
         } else {
@@ -112,7 +107,7 @@ public class DateAdapter extends ParentsAdapter {
             holder.reply_tv.setText(db.getCnum() + "");
         }
         if (db.getApplynum() > 0) {
-            holder.bm_people_num.setText("已有" + db.getApplynum() + "人报名");
+            holder.bm_people_num.setText(db.getApplynum() + "人已报名");
         } else {
             holder.bm_people_num.setText("");
         }
@@ -130,43 +125,44 @@ public class DateAdapter extends ParentsAdapter {
 
         switch (db.getCtype()) {
             case 0:
-                holder.coin.setVisibility(View.GONE);
+                holder.coin
+                        .setText("");
                 break;
             case 2:
-                holder.coin.setVisibility(View.VISIBLE);
                 holder.coin
                         .setText(Html
-                                .fromHtml("<font color=\"#95948f\">赠送靓点：</font><font color=\"#228ada\">"
+                                .fromHtml("赠送靓点　<font color=\"#228ada\">"
                                         + db.getCoin() + "</font>"));
                 break;
             case 1:
-                holder.coin.setVisibility(View.VISIBLE);
                 holder.coin
                         .setText(Html
-                                .fromHtml("<font color=\"#95948f\">我要靓点：</font><font color=\"#228ada\">"
+                                .fromHtml("我要靓点　<font color=\"#228ada\">"
                                         + db.getCoin() + "</font>"));
                 break;
         }
 
         if (db.getDtype() == 5) {
-            holder.aim_ll.setVisibility(View.VISIBLE);
-            holder.aim_tv.setText(db.getAim() + "");
-            holder.people_num_ll.setVisibility(View.GONE);
+            holder.aim_tv.setVisibility(View.VISIBLE);
+            holder.aim_tv.setText(Html.fromHtml("目的　<font color=\"#228ada\">"
+                    + db.getAim() + "</font>"));
+            holder.people_num_tv.setVisibility(View.GONE);
         } else {
-            holder.aim_ll.setVisibility(View.GONE);
-            holder.people_num_ll.setVisibility(View.VISIBLE);
+            holder.aim_tv.setVisibility(View.GONE);
+            holder.people_num_tv.setVisibility(View.VISIBLE);
             holder.people_num_tv.setText(Html
-                    .fromHtml("<font color=\"#228ada\">" + db.getPeoplenum() + "</font>" + "人"));
+                    .fromHtml("人数　<font color=\"#228ada\">" + db.getPeoplenum() + "</font>人"));
         }
-
-        holder.place_tv.setText(db.getAddress());
-        holder.sex_tv.setText(Html.fromHtml("<font color=\"#228ada\">"
+        holder.place_tv.setText(Html.fromHtml("<font color=\"#393939\">"
+                + db.getAddress() + "</font>"));
+        holder.sex_tv.setText(Html.fromHtml("性别　<font color=\"#228ada\">"
                 + db.getObjsex() + "</font>"));
-        holder.money_tv.setText(Html.fromHtml("<font color=\"#228ada\">"
+        holder.money_tv.setText(Html.fromHtml("消费　<font color=\"#228ada\">"
                 + db.getWhopay() + "</font>"));
-        holder.time_tv.setText(Html.fromHtml("<font color=\"#228ada\">"
+        holder.time_tv.setText(Html.fromHtml("时间　<font color=\"#228ada\">"
                 + db.getDtime() + "</font>"));
-        holder.remark_tv.setText(db.getRemark());
+        holder.remark_tv.setText(Html.fromHtml("<font color=\"#393939\">"
+                + db.getRemark() + "</font>"));
         holder.content_rl.setTag(db);
         holder.content_rl.setOnClickListener(detail);
         holder.content_rl.setOnLongClickListener(detailLongClick);
@@ -175,12 +171,13 @@ public class DateAdapter extends ParentsAdapter {
 
     class ViewHolder {
         ImageView userlogo;
-        TextView nickname, sex, location_tv, coin, place_tv, people_num_tv,
+        TextView  location_tv, coin, place_tv, people_num_tv,
                 aim_tv, sex_tv, money_tv, time_tv, remark_tv, bm_people_num,
                 reply_tv;
+        UserNickNameRelativeLayout nick_ll;
         StateTextViewBg state;
-        View people_num_ll, aim_ll, reply_ll, content_rl;
-        CustomVip vip;
+        View   reply_ll, content_rl;
+        ImageView img_state;
     }
 
     OnClickListener userlogo = new OnClickListener() {

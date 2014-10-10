@@ -8,6 +8,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -28,9 +29,13 @@ import com.quanliren.quan_two.adapter.ShopAdapter;
 import com.quanliren.quan_two.adapter.ShopAdapter.IBuyListener;
 import com.quanliren.quan_two.bean.OrderBean;
 import com.quanliren.quan_two.bean.ShopBean;
+import com.quanliren.quan_two.bean.ShopListBean;
 import com.quanliren.quan_two.bean.User;
 import com.quanliren.quan_two.bean.UserTable;
 import com.quanliren.quan_two.fragment.SetingMoreFragment;
+import com.quanliren.quan_two.pull.PullToRefreshLayout;
+import com.quanliren.quan_two.pull.lib.ActionBarPullToRefresh;
+import com.quanliren.quan_two.pull.lib.listeners.OnRefreshListener;
 import com.quanliren.quan_two.util.URL;
 import com.quanliren.quan_two.util.http.JsonHttpResponseHandler;
 
@@ -48,7 +53,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @EActivity(R.layout.vip_detail)
-public class ShopVipDetail extends BaseActivity implements IBuyListener {
+public class ShopVipDetail extends BaseActivity implements IBuyListener,OnRefreshListener {
     private static final int RQF_PAY = 1;
     private static final int RQF_LOGIN = 2;
 
@@ -58,6 +63,9 @@ public class ShopVipDetail extends BaseActivity implements IBuyListener {
     ListView listview;
     ShopAdapter adapter;
     List<ShopBean> list = new ArrayList<ShopBean>();
+
+    @ViewById
+    PullToRefreshLayout layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,16 +77,18 @@ public class ShopVipDetail extends BaseActivity implements IBuyListener {
     @AfterViews
     void initView() {
 
-        list.add(new ShopBean(-1, 0, "会员购买", "¥0", 0));
-        list.add(new ShopBean(0, R.drawable.shop_icon_month_vip1, "1个月会员", "¥12.00", 1));
-        list.add(new ShopBean(1, R.drawable.shop_icon_month_vip2, "3个月会员", "¥30.00", 2));
-        list.add(new ShopBean(2, R.drawable.shop_icon_year_vip, "12个月年费会员", "¥88.00", 3));
-        list.add(new ShopBean(-1, 0, "靓点购买", "¥0", 0));
-        list.add(new ShopBean(3, R.drawable.shop_icon_5, "5个靓点", "¥50.00", 1));
-        list.add(new ShopBean(4, R.drawable.shop_icon_10, "10个靓点", "¥98.00", 2));
-        list.add(new ShopBean(5, R.drawable.shop_icon_20, "20个靓点", "¥198.00", 2));
-        list.add(new ShopBean(6, R.drawable.shop_icon_50, "50个靓点", "¥488.00", 2));
-        list.add(new ShopBean(7, R.drawable.shop_icon_100, "100个靓点", "¥998.00", 3));
+        ActionBarPullToRefresh.from(this).setAutoStart(true).allChildrenArePullable().listener(this).setup(layout);
+
+//        list.add(new ShopBean(-1, 0, "会员购买", "¥0", 0));
+//        list.add(new ShopBean(0, R.drawable.shop_icon_month_vip1, "1个月会员", "¥12.00", 1));
+//        list.add(new ShopBean(1, R.drawable.shop_icon_month_vip2, "3个月会员", "¥30.00", 2));
+//        list.add(new ShopBean(2, R.drawable.shop_icon_year_vip, "12个月年费会员", "¥88.00", 3));
+//        list.add(new ShopBean(-1, 0, "靓点购买", "¥0", 0));
+//        list.add(new ShopBean(3, R.drawable.shop_icon_5, "5个靓点", "¥50.00", 1));
+//        list.add(new ShopBean(4, R.drawable.shop_icon_10, "10个靓点", "¥98.00", 2));
+//        list.add(new ShopBean(5, R.drawable.shop_icon_20, "20个靓点", "¥198.00", 2));
+//        list.add(new ShopBean(6, R.drawable.shop_icon_50, "50个靓点", "¥488.00", 2));
+//        list.add(new ShopBean(7, R.drawable.shop_icon_100, "100个靓点", "¥998.00", 3));
 
         adapter = new ShopAdapter(this, list, this);
         listview.setAdapter(adapter);
@@ -312,4 +322,67 @@ public class ShopVipDetail extends BaseActivity implements IBuyListener {
         dialog.show();
     }
 
+    @Override
+    public void onRefreshStarted(View view) {
+        ac.finalHttp.post(URL.SHOPLIST,null,new JsonHttpResponseHandler(){
+            @Override
+            public void onSuccess(JSONObject response) {
+                try {
+                    int status=response.getInt(URL.STATUS);
+                    switch (status){
+                        case 0:
+                            ShopListBean sb=new Gson().fromJson(response.getString(URL.RESPONSE),new TypeToken<ShopListBean>(){}.getType());
+                            setSourse(sb);
+                            break;
+                        default:
+                            showFailInfo(response);
+                            break;
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }finally {
+                    layout.setRefreshComplete();
+                }
+            }
+
+            @Override
+            public void onFailure() {
+                layout.setRefreshComplete();
+            }
+        });
+    }
+
+    String[] vips=new String[]{"1","3","12"};
+
+    Integer[] vip_icons=new Integer[]{R.drawable.shop_icon_month_vip1,R.drawable.shop_icon_month_vip2,R.drawable.shop_icon_year_vip};
+
+    String[] conis=new String[]{"5","10","20","50","100"};
+    Integer[] coin_icons=new Integer[]{R.drawable.shop_icon_5,R.drawable.shop_icon_10,R.drawable.shop_icon_20,R.drawable.shop_icon_50,R.drawable.shop_icon_100};
+
+    @UiThread
+    public void setSourse(ShopListBean sb){
+        list.clear();
+        list.add(new ShopBean(-1, 0, "会员购买", "¥0", 0));
+        for (int i = 0; i < sb.viplist.size(); i++) {
+            int viewType=1;
+            if(i>0&&i<sb.viplist.size()-1){
+                viewType=2;
+            }else if(i==sb.viplist.size()-1){
+                viewType=3;
+            }
+            list.add(new ShopBean(sb.viplist.get(i).getGnumber(), vip_icons[i], vips[i]+"个月会员", "¥"+sb.viplist.get(i).getPrice(), viewType));
+        }
+        list.add(new ShopBean(-1, 0, "靓点购买", "¥0", 0));
+        for (int i = 0; i < sb.coinlist.size(); i++) {
+            int viewType=1;
+            if(i>0&&i<sb.coinlist.size()-1){
+                viewType=2;
+            }else if(i==sb.coinlist.size()-1){
+                viewType=3;
+            }
+            list.add(new ShopBean(sb.coinlist.get(i).getGnumber(), coin_icons[i], conis[i]+"个靓点", "¥"+sb.coinlist.get(i).getPrice(), viewType));
+        }
+        adapter.setList(list);
+        adapter.notifyDataSetChanged();
+    }
 }

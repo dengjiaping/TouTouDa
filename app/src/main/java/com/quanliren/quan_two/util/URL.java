@@ -3,8 +3,8 @@ package com.quanliren.quan_two.util;
 public class URL {
 //    public static final String URL="http://182.92.158.55";
 //    public static final String IP="182.92.158.55";
-    public static final String URL = "http://192.168.1.21:8888";
-    public static final String IP = "192.168.1.21";
+    public static final String URL = "http://192.168.1.22:8889";
+    public static final String IP = "192.168.1.22";
 
 //    	public static final String URL="http://192.168.1.9:8080";
 //    public static final String IP="192.168.1.9";
@@ -271,5 +271,8 @@ public class URL {
      * 发送错误日志*
      */
     public static final String SEND_LOG = URL + "/uploading_log.php";
-
+    /**
+     * 商城
+     */
+    public static final String SHOPLIST=URL+"/pricing_list.php";
 }

@@ -64,6 +64,7 @@ import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 import org.json.JSONObject;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -142,7 +143,7 @@ public class DateDetailActivity extends BaseActivity implements
         view.setLayoutParams(lp);
 
         listview.addHeaderView(convertView = View.inflate(this,
-                R.layout.date_item, null));
+                R.layout.date_item_new, null));
 
         listview.addFooterView(view);
         listview.setAdapter(adapter = new QuanDetailReplyAdapter(this,
@@ -346,23 +347,23 @@ public class DateDetailActivity extends BaseActivity implements
 
     class ViewHolder {
         ImageView userlogo;
-        TextView nickname, sex, location_tv, coin, place_tv, people_num_tv,
+        TextView  location_tv, coin, place_tv, people_num_tv,
                 aim_tv, sex_tv, money_tv, time_tv, remark_tv, bm_people_num,
                 reply_tv;
-        StateTextViewBg state;
-        View vip, people_num_ll, aim_ll, reply_ll, content_rl;
         UserNickNameRelativeLayout nick_ll;
+        StateTextViewBg state;
+        View   reply_ll, content_rl;
+        ImageView img_state;
     }
 
-    public void setHeadSource(DateBean db) {
+    public void setHeadSource(DateBean db) throws ParseException {
         ViewHolder holder;
         if (convertView.getTag() == null) {
             holder = new ViewHolder();
             holder.userlogo = (ImageView) convertView
                     .findViewById(R.id.userlogo);
-            holder.nickname = (TextView) convertView
-                    .findViewById(R.id.nickname);
-            holder.sex = (TextView) convertView.findViewById(R.id.sex);
+            holder.nick_ll = (UserNickNameRelativeLayout) convertView
+                    .findViewById(R.id.nick_ll);
             holder.location_tv = (TextView) convertView
                     .findViewById(R.id.location_tv);
             holder.coin = (TextView) convertView.findViewById(R.id.coin_tv);
@@ -385,13 +386,9 @@ public class DateDetailActivity extends BaseActivity implements
                     .findViewById(R.id.reply_tv);
             holder.state = (StateTextViewBg) convertView
                     .findViewById(R.id.state);
-            holder.vip = convertView.findViewById(R.id.vip);
-            holder.people_num_ll = convertView.findViewById(R.id.people_num_ll);
-            holder.aim_ll = convertView.findViewById(R.id.aim_ll);
             holder.reply_ll = convertView.findViewById(R.id.reply_ll);
-            holder.content_rl = convertView.findViewById(R.id.content_rl);
-            holder.nick_ll = (UserNickNameRelativeLayout) convertView
-                    .findViewById(R.id.nick_ll);
+            holder.content_rl = convertView.findViewById(R.id.top);
+            holder.img_state= (ImageView) convertView.findViewById(R.id.img_state);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -399,12 +396,27 @@ public class DateDetailActivity extends BaseActivity implements
         holder.content_rl.setOnClickListener(content);
         ImageLoader.getInstance().displayImage(
                 db.getAvatar() + StaticFactory._160x160, holder.userlogo);
-
-        holder.nick_ll.setUser(db.getNickname(), db.getSex(), db.getAge(),
-                db.getIsvip());
-
+        holder.nick_ll.setUser(db.getNickname(), db.getSex(), db.getAge(), db.getIsvip());
         holder.userlogo.setOnClickListener(userlogo);
         holder.state.setState(db.getDtype());
+
+        switch (db.getDtype()){
+            case 1:
+                holder.img_state.setImageResource(R.drawable.ic_state_dinner_largest);
+                break;
+            case 2:
+                holder.img_state.setImageResource(R.drawable.ic_state_movie_largest);
+                break;
+            case 3:
+                holder.img_state.setImageResource(R.drawable.ic_state_car_largest);
+                break;
+            case 4:
+                holder.img_state.setImageResource(R.drawable.ic_state_friend_largest);
+                break;
+            case 5:
+                holder.img_state.setImageResource(R.drawable.ic_state_girl_largest);
+                break;
+        }
 
         if (Integer.valueOf(db.getCnum()) <= 0) {
             holder.reply_ll.setVisibility(View.GONE);
@@ -413,7 +425,7 @@ public class DateDetailActivity extends BaseActivity implements
             holder.reply_tv.setText(db.getCnum() + "");
         }
         if (db.getApplynum() > 0) {
-            holder.bm_people_num.setText("已有" + db.getApplynum() + "人报名");
+            holder.bm_people_num.setText(db.getApplynum() + "人已报名");
         } else {
             holder.bm_people_num.setText("");
         }
@@ -431,50 +443,60 @@ public class DateDetailActivity extends BaseActivity implements
 
         switch (db.getCtype()) {
             case 0:
-                holder.coin.setVisibility(View.GONE);
+                holder.coin
+                        .setText("");
                 break;
             case 2:
-                holder.coin.setVisibility(View.VISIBLE);
                 holder.coin
                         .setText(Html
-                                .fromHtml("<font color=\"#95948f\">赠送靓点：</font><font color=\"#228ada\">"
+                                .fromHtml("赠送靓点　<font color=\"#228ada\">"
                                         + db.getCoin() + "</font>"));
                 break;
             case 1:
-                holder.coin.setVisibility(View.VISIBLE);
                 holder.coin
                         .setText(Html
-                                .fromHtml("<font color=\"#95948f\">我要靓点：</font><font color=\"#228ada\">"
+                                .fromHtml("我要靓点　<font color=\"#228ada\">"
                                         + db.getCoin() + "</font>"));
                 break;
         }
 
         if (db.getDtype() == 5) {
-            holder.aim_ll.setVisibility(View.VISIBLE);
-            holder.aim_tv.setText(db.getAim() + "");
-            holder.people_num_ll.setVisibility(View.GONE);
+            holder.aim_tv.setVisibility(View.VISIBLE);
+            holder.aim_tv.setText(Html.fromHtml("目的　<font color=\"#228ada\">"
+                    + db.getAim() + "</font>"));
+            holder.people_num_tv.setVisibility(View.GONE);
         } else {
-            holder.aim_ll.setVisibility(View.GONE);
-            holder.people_num_ll.setVisibility(View.VISIBLE);
+            holder.aim_tv.setVisibility(View.GONE);
+            holder.people_num_tv.setVisibility(View.VISIBLE);
             holder.people_num_tv.setText(Html
-                    .fromHtml("<font color=\"#228ada\">" + db.getPeoplenum()
-                            + "</font>" + "人"));
+                    .fromHtml("人数　<font color=\"#228ada\">" + db.getPeoplenum() + "</font>人"));
+        }
+        holder.place_tv.setText(Html.fromHtml("<font color=\"#393939\">"
+                + db.getAddress() + "</font>"));
+        holder.sex_tv.setText(Html.fromHtml("性别　<font color=\"#228ada\">"
+                + db.getObjsex() + "</font>"));
+        holder.money_tv.setText(Html.fromHtml("消费　<font color=\"#228ada\">"
+                + db.getWhopay() + "</font>"));
+        holder.time_tv.setText(Html.fromHtml("时间　<font color=\"#228ada\">"
+                + db.getDtime() + "</font>"));
+        holder.remark_tv.setText(Html.fromHtml("<font color=\"#393939\">"
+                + db.getRemark() + "</font>"));
+
+        Date date=Util.fmtDateTime1.parse(db.getDtime());
+
+        boolean timeOut=false;
+
+        if(date.getTime()<=new Date().getTime()){
+            timeOut=true;
         }
 
-        holder.place_tv.setText(db.getAddress());
-        holder.sex_tv.setText(Html.fromHtml("<font color=\"#228ada\">"
-                + db.getObjsex() + "</font>"));
-        holder.money_tv.setText(Html.fromHtml("<font color=\"#228ada\">"
-                + db.getWhopay() + "</font>"));
-        holder.time_tv.setText(Html.fromHtml("<font color=\"#228ada\">"
-                + db.getDtime() + "</font>"));
-        holder.remark_tv.setText(db.getRemark());
-
-        if (db.getDtstate() == 1 || db.getIsapply() == 1) {
+        if (db.getDtstate() == 1 || db.getIsapply() == 1||timeOut) {
             if (db.getDtstate() == 1) {
                 join.setmEnableText("已结束");
             } else if (db.getIsapply() == 1) {
                 join.setmEnableText("已报名");
+            }else if(timeOut){
+                join.setmEnableText("已过期");
             }
             join.setProgress(-2);
         }
@@ -484,7 +506,6 @@ public class DateDetailActivity extends BaseActivity implements
         } else {
             collect_txt.setText("收藏");
         }
-
         adapter.setList(db.getCommlist());
         adapter.notifyDataSetChanged();
     }

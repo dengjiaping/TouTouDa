@@ -50,7 +50,7 @@ public class MyApplyDateListFragment extends MenuFragmentBase implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         if (view == null) {
-            view = inflater.inflate(R.layout.quanpulllistview, null);
+            view = inflater.inflate(R.layout.date_quanpulllistview, null);
         } else {
             ViewParent parent = view.getParent();
             if (parent != null && parent instanceof ViewGroup) {

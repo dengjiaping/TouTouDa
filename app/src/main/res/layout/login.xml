@@ -95,6 +95,7 @@
                         android:background="@null"
                         android:gravity="center_vertical"
                         android:singleLine="true"
+                        android:inputType="phone"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
 

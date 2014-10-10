@@ -37,8 +37,8 @@
 
             <com.quanliren.quan_two.custom.StateTextViewBg
                 android:id="@+id/state"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"></com.quanliren.quan_two.custom.StateTextViewBg>
+                android:layout_width="150dp"
+                android:layout_height="25dp"></com.quanliren.quan_two.custom.StateTextViewBg>
 
             <TextView
                 android:id="@+id/coin_tv"

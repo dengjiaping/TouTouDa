@@ -391,10 +391,10 @@ public class LoginActivity extends BaseActivity implements OnRefreshListener {
         str_username = username.getText().toString().trim();
         str_password = password.getText().toString().trim();
 
-//        if (!Util.isMobileNO(str_username)) {
-//            showCustomToast("请输入正确的用户名");
-//            return;
-//        } else
+        if (!Util.isMobileNO(str_username)) {
+            showCustomToast("请输入正确的用户名");
+            return;
+        } else
         if (!Util.isPassword(str_password)) {
             showCustomToast("请输入正确的密码");
             return;

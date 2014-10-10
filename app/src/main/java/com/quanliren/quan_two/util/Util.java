@@ -35,6 +35,8 @@ public class Util {
 
     public static final SimpleDateFormat fmtDateTime = new SimpleDateFormat(
             "yyyy-MM-dd HH:mm:ss");
+    public static final SimpleDateFormat fmtDateTime1 = new SimpleDateFormat(
+            "yyyy-MM-dd HH:mm");
     public static final SimpleDateFormat fmtDate = new SimpleDateFormat(
             "yyyy-MM-dd");
     public static final String FILE = "file://";

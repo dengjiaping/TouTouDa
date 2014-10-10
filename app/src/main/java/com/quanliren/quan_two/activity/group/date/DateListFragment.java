@@ -4,12 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.AbsListView;
-import android.widget.ImageView.ScaleType;
-import android.widget.RelativeLayout;
 
 import com.a.me.maxwin.view.XXListView;
 import com.a.me.maxwin.view.XXListView.IXListViewListener;
@@ -32,7 +29,6 @@ import com.quanliren.quan_two.bean.CacheBean;
 import com.quanliren.quan_two.bean.CustomFilterBean;
 import com.quanliren.quan_two.bean.DateBean;
 import com.quanliren.quan_two.bean.User;
-import com.quanliren.quan_two.custom.FloatingActionButton;
 import com.quanliren.quan_two.db.DBHelper;
 import com.quanliren.quan_two.fragment.base.MenuFragmentBase;
 import com.quanliren.quan_two.fragment.impl.LoaderImpl;
@@ -54,7 +50,7 @@ import java.util.Date;
 import java.util.List;
 
 @EFragment
-@OptionsMenu({R.menu.date_nav_menu})
+@OptionsMenu({R.menu.date_nav_menu,R.menu.date_filter_menu})
 public class DateListFragment extends MenuFragmentBase implements
         IXListViewListener, ILocationImpl, LoaderImpl, IQuanAdapter {
     private static final String TAG = "DateListFragment";
@@ -64,7 +60,7 @@ public class DateListFragment extends MenuFragmentBase implements
     int p = 0;
     @ViewById
     XXListView listview;
-    FloatingActionButton image;
+//    FloatingActionButton image;
     DateAdapter adapter;
     RequestParams ap = null;
     GDLocation location;
@@ -81,24 +77,24 @@ public class DateListFragment extends MenuFragmentBase implements
         if (view == null) {
             view = inflater.inflate(R.layout.date_quanpulllistview, null);
 
-            image = new FloatingActionButton(getActivity());
-            image.setShadow(false);
-            RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(ImageUtil.dip2px(getActivity(), 48), ImageUtil.dip2px(getActivity(), 48));
-            rlp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
-            rlp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
-            rlp.bottomMargin = ImageUtil.dip2px(getActivity(), 60);
-            rlp.rightMargin = ImageUtil.dip2px(getActivity(), 10);
-            image.setLayoutParams(rlp);
-            image.setScaleType(ScaleType.CENTER_CROP);
-            image.setOnClickListener(new OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    FilterDateActivity_.intent(DateListFragment.this).startForResult(FILTER);
-                }
-            });
-            image.setImageResource(R.drawable.filter_icon);
-            ((RelativeLayout) view).addView(image);
+//            image = new FloatingActionButton(getActivity());
+//            image.setShadow(false);
+//            RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(ImageUtil.dip2px(getActivity(), 48), ImageUtil.dip2px(getActivity(), 48));
+//            rlp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
+//            rlp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
+//            rlp.bottomMargin = ImageUtil.dip2px(getActivity(), 60);
+//            rlp.rightMargin = ImageUtil.dip2px(getActivity(), 10);
+//            image.setLayoutParams(rlp);
+//            image.setScaleType(ScaleType.CENTER_CROP);
+//            image.setOnClickListener(new OnClickListener() {
+//
+//                @Override
+//                public void onClick(View v) {
+//                    FilterDateActivity_.intent(DateListFragment.this).startForResult(FILTER);
+//                }
+//            });
+//            image.setImageResource(R.drawable.filter_icon);
+//            ((RelativeLayout) view).addView(image);
         } else {
             ViewParent parent = view.getParent();
             if (parent != null && parent instanceof ViewGroup) {
@@ -142,7 +138,7 @@ public class DateListFragment extends MenuFragmentBase implements
             listview.addFooterView(view);
             listview.setAdapter(adapter);
             listview.setXListViewListener(this);
-            image.attachToListView(listview);
+//            image.attachToListView(listview);
             location = new GDLocation(getActivity().getApplicationContext(),
                     this, false);
         } catch (JsonSyntaxException e) {
@@ -273,6 +269,11 @@ public class DateListFragment extends MenuFragmentBase implements
             return;
         }
         DatePublishActivity_.intent(this).startForResult(PUBLISH);
+    }
+
+    @OptionsItem
+    void filter(){
+        FilterDateActivity_.intent(DateListFragment.this).startForResult(FILTER);
     }
 
     @OnActivityResult(PUBLISH)

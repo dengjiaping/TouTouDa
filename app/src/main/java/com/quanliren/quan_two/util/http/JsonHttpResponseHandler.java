@@ -3,6 +3,7 @@ package com.quanliren.quan_two.util.http;
 import com.quanliren.quan_two.util.LogUtil;
 
 import org.apache.http.Header;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
@@ -16,6 +17,22 @@ public class JsonHttpResponseHandler extends com.loopj.android.http.JsonHttpResp
             LogUtil.d(response.toString());
         }
         onSuccess(response);
+    }
+
+    @Override
+    public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+        if(throwable!=null){
+            LogUtil.d(throwable.toString());
+        }
+        onFailure();
+    }
+
+    @Override
+    public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
+        if(throwable!=null){
+            LogUtil.d(throwable.toString());
+        }
+        onFailure();
     }
 
     @Override
