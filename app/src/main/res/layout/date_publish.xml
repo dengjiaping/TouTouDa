@@ -146,7 +146,7 @@
                 android:background="@drawable/date_publish_select_input_bg"
                 android:clickable="true"
                 android:gravity="center_vertical"
-                android:hint="请输入文字"
+                android:hint="请输入地点"
                 android:textColor="@color/title"
                 android:textSize="14sp"
                 app:maxlen="20" />
@@ -354,7 +354,7 @@
                 android:background="@drawable/date_publish_select_input_bg"
                 android:clickable="true"
                 android:gravity="center_vertical"
-                android:hint="请输入文字"
+                android:hint="请输入说明"
                 android:textColor="@color/title"
                 android:textSize="14sp"
                 app:maxlen="100" />

@@ -156,6 +156,10 @@ public class ChatActivity extends BaseActivity implements IXListViewListener,
     @AfterViews
     void initView() {
         user = getHelper().getUserInfo();
+        if(user==null){
+            finish();
+            return;
+        }
         adapter = new MessageAdapter(this, new ArrayList<MessageListBean>(),
                 friend, itemHandler);
         listview.setAdapter(adapter);
@@ -408,6 +412,7 @@ public class ChatActivity extends BaseActivity implements IXListViewListener,
                     for (DfMessage dfMessage : list) {
                         if (dfMessage.getIsRead() == 0) {
                             ids.add(dfMessage.getId());
+                            dfMessage.setIsRead(1);
                         }
                         if (dfMessage.getMsgtype() == 2
                                 && (dfMessage.getDownload() == SocketManage.D_nodownload || dfMessage

@@ -161,8 +161,12 @@ public class DateAdapter extends ParentsAdapter {
                 + db.getWhopay() + "</font>"));
         holder.time_tv.setText(Html.fromHtml("时间　<font color=\"#228ada\">"
                 + db.getDtime() + "</font>"));
-        holder.remark_tv.setText(Html.fromHtml("<font color=\"#393939\">"
-                + db.getRemark() + "</font>"));
+        if(db.getRemark()==null||db.getRemark().equals("")){
+            holder.remark_tv.setText(Html.fromHtml("<font color=\"#393939\">无</font>"));
+        }else {
+            holder.remark_tv.setText(Html.fromHtml("<font color=\"#393939\">"
+                    + db.getRemark() + "</font>"));
+        }
         holder.content_rl.setTag(db);
         holder.content_rl.setOnClickListener(detail);
         holder.content_rl.setOnLongClickListener(detailLongClick);

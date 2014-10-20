@@ -1,3 +1,4 @@
+/*
 package com.quanliren.quan_two.service;
 
 import android.app.AlarmManager;
@@ -33,7 +34,7 @@ import java.net.Socket;
 import java.sql.SQLException;
 import java.util.List;
 
-public class QuanPushService extends Service {
+public class QuanPushServiceCopy extends Service {
     private static final String TAG = "QuanPushService";
     private static final long KEEP_ALIVE_INTERVAL = 1000 * 30;
 
@@ -54,7 +55,9 @@ public class QuanPushService extends Service {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        /** 屏幕启动时的广播 **/
+        */
+/** 屏幕启动时的广播 **//*
+
         IntentFilter filter = new IntentFilter();
         filter.addAction(Intent.ACTION_SCREEN_ON);
         registerReceiver(broadcast = new ChatBroadcast(), filter);
@@ -187,7 +190,7 @@ public class QuanPushService extends Service {
 
                 String str = null;
                 while ((str = in.readLine()) != null) {
-                    Log.i(TAG,"receive------------" + str);
+                    // Log.i(TAG,"receive------------" + str);
                     if (str.equals("#") || str.equals("*")) {
                         continue;
                     }
@@ -299,7 +302,15 @@ public class QuanPushService extends Service {
         public void abort() {
             try {
                 mSocket.shutdownOutput();
+            } catch (IOException e) {
+            }
+
+            try {
                 mSocket.shutdownInput();
+            } catch (IOException e) {
+            }
+
+            try {
                 mSocket.close();
             } catch (IOException e) {
             }
@@ -369,3 +380,4 @@ public class QuanPushService extends Service {
         return byte_3;
     }
 }
+*/

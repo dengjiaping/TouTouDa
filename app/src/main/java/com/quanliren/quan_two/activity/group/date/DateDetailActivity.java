@@ -479,9 +479,12 @@ public class DateDetailActivity extends BaseActivity implements
                 + db.getWhopay() + "</font>"));
         holder.time_tv.setText(Html.fromHtml("时间　<font color=\"#228ada\">"
                 + db.getDtime() + "</font>"));
-        holder.remark_tv.setText(Html.fromHtml("<font color=\"#393939\">"
-                + db.getRemark() + "</font>"));
-
+        if(db.getRemark()==null||db.getRemark().equals("")){
+            holder.remark_tv.setText(Html.fromHtml("<font color=\"#393939\">无</font>"));
+        }else {
+            holder.remark_tv.setText(Html.fromHtml("<font color=\"#393939\">"
+                    + db.getRemark() + "</font>"));
+        }
         Date date=Util.fmtDateTime1.parse(db.getDtime());
 
         boolean timeOut=false;

@@ -98,6 +98,9 @@ public class ClientHandlerWord {
         } else if (order.equals(SocketManage.ORDER_OUTLINE)) {
             Intent i = new Intent(BroadcastUtil.ACTION_OUTLINE);
             c.sendBroadcast(i);
+            NotificationManagerCompat notificationManager = NotificationManagerCompat
+                    .from(c);
+            notificationManager.cancelAll();
         } else if (order.equals(SocketManage.ORDER_EXCHANGE)) {
             exchange(session,jo);
         }else if(order.equals(SocketManage.ORDER_SENDERROR)){
