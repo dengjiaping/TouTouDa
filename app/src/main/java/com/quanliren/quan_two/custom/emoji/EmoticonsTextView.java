@@ -2,7 +2,8 @@ package com.quanliren.quan_two.custom.emoji;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
@@ -20,7 +21,6 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import pl.droidsonroids.gif.DrawableCallBack;
 import pl.droidsonroids.gif.GifDrawable;
 
 public class EmoticonsTextView extends HandyTextView {
@@ -49,7 +49,6 @@ public class EmoticonsTextView extends HandyTextView {
 
     @Override
     public void setText(CharSequence text, BufferType type) {
-        callBack = null;
         num = 0;
         if (!TextUtils.isEmpty(text)) {
             super.setText(replace(text), type);
@@ -89,21 +88,6 @@ public class EmoticonsTextView extends HandyTextView {
 //					Bitmap bitmap = ImageLoader.getInstance().loadImageSync("drawable://" + id);
                     if (bitmap != null) {
                         num++;
-//						if(num>9){
-//							bitmap.stop();
-//						}
-                        if (callBack == null) {
-                            bitmap.setCallBack(callBack = new DrawableCallBack() {
-                                public void invalidateDrawable(int time, Drawable draw) {
-                                    if (num > 9) {
-                                        return;
-                                    }
-                                    postInvalidate();
-                                }
-
-                                ;
-                            });
-                        }
                         bitmap.setBounds(8, 0, imgSize,
                                 imgSize);
                         ImageSpan span = new ImageSpan(bitmap, ImageSpan.ALIGN_BOTTOM);
@@ -112,11 +96,35 @@ public class EmoticonsTextView extends HandyTextView {
                     }
                 }
             }
+            if (num<= 9) {
+                b1=true;
+                handler.post(refere);
+            }else{
+                b1=false;
+            }
             return builder;
         } catch (Exception e) {
             return text;
         }
     }
 
-    DrawableCallBack callBack;
+    boolean b1 = true;
+    int defaultTime = 150;
+    Handler handler = new Handler(Looper.getMainLooper());
+
+    Runnable refere = new Runnable() {
+
+        @Override
+        public void run() {
+            invalidate();
+            if (b1)
+                handler.postDelayed(this, defaultTime);
+        }
+    };
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        b1 = false;
+    }
 }

@@ -50,7 +50,7 @@
             android:layout_marginLeft="4dp"
             android:visibility="gone">
 
-            <pl.droidsonroids.gif.MyGifImageView
+            <com.quanliren.quan_two.custom.MyGifImageView
                 android:id="@+id/gif"
                 android:layout_width="100dp"
                 android:layout_height="100dp"

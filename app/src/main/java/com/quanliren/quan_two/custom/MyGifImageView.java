@@ -1,4 +1,4 @@
-package pl.droidsonroids.gif;
+package com.quanliren.quan_two.custom;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -9,8 +9,10 @@ import android.widget.ImageView;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import pl.droidsonroids.gif.GifDrawable;
+
 /**
- * An {@link android.widget.ImageView} which tries treating background and src as {@link GifDrawable}
+ * An {@link android.widget.ImageView} which tries treating background and src as {@link pl.droidsonroids.gif.GifDrawable}
  *
  * @author koral--
  */
@@ -29,7 +31,7 @@ public class MyGifImageView extends ImageView {
 
     /**
      * Like eqivalent from superclass but also try to interpret src and background
-     * attributes as {@link GifDrawable}.
+     * attributes as {@link pl.droidsonroids.gif.GifDrawable}.
      *
      * @param context
      * @param attrs
@@ -55,27 +57,19 @@ public class MyGifImageView extends ImageView {
     }
 
     AtomicBoolean b = new AtomicBoolean(false);
-    int defaultTime = 200;
+    int defaultTime = 150;
 
     @Override
     public void setImageDrawable(Drawable drawable) {
         if (drawable instanceof GifDrawable) {
             GifDrawable gif = (GifDrawable) drawable;
-            gif.setCallBack(callback);
+//            gif.setCallBack(callback);
             super.setImageDrawable(gif);
         } else {
             super.setImageDrawable(drawable);
         }
     }
 
-    DrawableCallBack callback = new DrawableCallBack() {
-        @Override
-        public void invalidateDrawable(int time, Drawable draw) {
-            if (b.compareAndSet(false, true)) {
-                defaultTime = time;
-            }
-        }
-    };
 
     boolean b1 = true;
 
@@ -97,5 +91,4 @@ public class MyGifImageView extends ImageView {
         b1 = false;
     }
 
-    ;
 }

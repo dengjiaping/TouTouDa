@@ -13,7 +13,6 @@ import java.util.Hashtable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import pl.droidsonroids.gif.DrawableCallBack;
 import pl.droidsonroids.gif.GifDrawable;
 
 public class DrawableCache {
@@ -113,32 +112,6 @@ public class DrawableCache {
         });
     }
 
-    public void displayDrawable(final ImageView imageview, final String imageUrl, final DrawableCallBack callBack) {
-        executorService.execute(new Runnable() {
-
-            @Override
-            public void run() {
-                try {
-                    GifDrawable bmp = null;
-                    if (hashRefs.containsKey(Long.valueOf(imageUrl.hashCode()))) {
-                        MySoftRef ref = (MySoftRef) hashRefs.get(Long.valueOf(imageUrl.hashCode()));
-                        bmp = (GifDrawable) ref.get();
-                        if (bmp != null)
-                            bmp.start();
-                    }
-                    GifDrawable b = bmp;
-                    if (b == null) {
-                        b = new GifDrawable(imageUrl);
-                    }
-                    b.setCallBack(callBack);
-                    addCacheDrawable(b, Long.valueOf(imageUrl.hashCode()));
-                    hanlder.post(new postRunnable(imageview, b));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
 
     class postRunnable implements Runnable {
         ImageView imageview;

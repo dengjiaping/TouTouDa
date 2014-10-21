@@ -34,7 +34,11 @@ android {
         checkReleaseBuilds false
     }
 }
-
+repositories {
+    flatDir {
+        dirs'libs'
+    }
+}
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:support-v4:20.+'
@@ -46,6 +50,8 @@ dependencies {
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.3'
     compile 'com.loopj.android:android-async-http:1.4.6'
     compile 'com.nineoldandroids:library:2.4.0'
+    compile(name:'android-gif-drawable-1.0.11', ext:'aar')
+
     //androidTestCompile 'org.robolectric:robolectric:2.3'
 }
 apt {

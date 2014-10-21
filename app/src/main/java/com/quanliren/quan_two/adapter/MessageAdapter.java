@@ -19,11 +19,12 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 import com.quanliren.quan_two.activity.R;
-import com.quanliren.quan_two.activity.user.*;
+import com.quanliren.quan_two.activity.user.UserOtherInfoActivity_;
 import com.quanliren.quan_two.application.AppClass;
 import com.quanliren.quan_two.bean.DfMessage;
 import com.quanliren.quan_two.bean.User;
 import com.quanliren.quan_two.bean.emoticon.EmoticonActivityListBean.EmoticonZip.EmoticonJsonBean;
+import com.quanliren.quan_two.custom.MyGifImageView;
 import com.quanliren.quan_two.service.SocketManage;
 import com.quanliren.quan_two.util.DrawableCache;
 import com.quanliren.quan_two.util.ImageUtil;
@@ -34,7 +35,6 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import pl.droidsonroids.gif.MyGifImageView;
 
 public class MessageAdapter extends ParentsAdapter {
     AppClass ac;

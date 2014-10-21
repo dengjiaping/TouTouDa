@@ -10,7 +10,7 @@ public class BroadcastUtil {
 
     public static final String ACTION_CHECKCONNECT = packagestr + "service.checkconnect";
     public static final String ACTION_CHECKMESSAGE = packagestr + "service.checkmessage";
-    public static final int CHECKMESSAGETIME = 5 * 1000;
+    public static final int CHECKMESSAGETIME = 10 * 1000;
     public static final int CHECKCONNECT = 30 * 1000;
     public static final String ACTION_OUTLINE = packagestr + "service.outline";
 
