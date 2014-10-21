@@ -1,10 +1,10 @@
 package com.quanliren.quan_two.util;
 
 public class URL {
-    public static final String URL="http://182.92.158.55";
-    public static final String IP="182.92.158.55";
-//    public static final String URL = "http://192.168.1.22:8889";
-//    public static final String IP = "192.168.1.22";
+//    public static final String URL="http://182.92.158.55";
+//    public static final String IP="182.92.158.55";
+    public static final String URL = "http://192.168.1.22:8889";
+    public static final String IP = "192.168.1.22";
 
 //    	public static final String URL="http://192.168.1.9:8080";
 //    public static final String IP="192.168.1.9";
