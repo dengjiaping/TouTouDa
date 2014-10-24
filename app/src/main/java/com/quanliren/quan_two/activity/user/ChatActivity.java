@@ -1344,7 +1344,7 @@ public class ChatActivity extends BaseActivity implements IXListViewListener,
         public void onClick(DialogInterface dialog, int which) {
             switch (which) {
                 case 0:
-                    copy(msg.getContent(), ChatActivity.this);
+                    copy(msg.getContent());
                     break;
                 case 1:
                     deleteMsg(msg);
@@ -1377,7 +1377,7 @@ public class ChatActivity extends BaseActivity implements IXListViewListener,
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public void copy(String content, Context context) {
+    public void copy(String content) {
         if(SdkVersionHelper.getSdkInt()>=11){
             ClipboardManager c = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
             c.setPrimaryClip(ClipData.newPlainText(null, content));

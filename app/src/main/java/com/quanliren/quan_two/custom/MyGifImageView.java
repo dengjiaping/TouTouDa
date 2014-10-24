@@ -7,8 +7,6 @@ import android.os.Looper;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-import java.util.concurrent.atomic.AtomicBoolean;
-
 import pl.droidsonroids.gif.GifDrawable;
 
 /**
@@ -56,7 +54,6 @@ public class MyGifImageView extends ImageView {
         handler.post(refere);
     }
 
-    AtomicBoolean b = new AtomicBoolean(false);
     int defaultTime = 150;
 
     @Override
