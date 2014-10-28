@@ -76,7 +76,7 @@ public class DateAdapter extends ParentsAdapter {
 
         DateBean db = (DateBean) getItem(position);
         ImageLoader.getInstance().displayImage(
-                db.getAvatar() + StaticFactory._160x160, holder.userlogo);
+                db.getAvatar() + StaticFactory._160x160, holder.userlogo,ac.options_userlogo);
         holder.nick_ll.setUser(db.getNickname(), db.getSex(), db.getAge(), db.getIsvip());
         holder.userlogo.setTag(position);
         holder.userlogo.setOnClickListener(userlogo);
