@@ -11,6 +11,9 @@ public class AM {
     private static AM instance;
 
     private AM() {
+        if (activityStack == null) {
+            activityStack = new Stack<Activity>();
+        }
     }
 
     public static AM getActivityManager() {
